@@ -17,6 +17,9 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { RestaurantOrdersComponent } from './components/restaurant-orders/restaurant-orders.component';
+import { NavbarComponent } from './components/header/navbar/navbar.component';
+import { MostPopularComponent } from './components/most-popular/most-popular.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { RestaurantOrdersComponent } from './components/restaurant-orders/restau
     FeedbackComponent,
     MenuComponent,
     SliderComponent,
-    RestaurantOrdersComponent
+    RestaurantOrdersComponent,
+    NavbarComponent,
+    MostPopularComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
