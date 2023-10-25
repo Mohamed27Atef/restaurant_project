@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,9 @@ import { RestaurantOrdersComponent } from './components/restaurant-orders/restau
 import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { SearchComponent } from './components/search/search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
 
 @NgModule({
   declarations: [
@@ -40,11 +44,14 @@ import { SearchComponent } from './components/search/search.component';
     RestaurantOrdersComponent,
     NavbarComponent,
     MostPopularComponent,
-    SearchComponent
+    SearchComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
