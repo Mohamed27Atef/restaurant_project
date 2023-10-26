@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 import { CategoryService } from 'src/app/services/category.service';
@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit {
   categories!: Category[];
   isSearch: boolean = false;
   restaurantResult: Restaurant[] = [];
+  @Output() myEvent = new EventEmitter();
+
   constructor(private categoryService : CategoryService, private RestaurantService: RestaurantService){}
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class SearchComponent implements OnInit {
 
   SelectCategory(categorySelected : string) {
     this.category_id = Number(categorySelected);
+    this.myEvent.emit(categorySelected);
   }
 
   searchOfRestaurantByName(name : string) {
