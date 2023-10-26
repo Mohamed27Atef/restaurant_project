@@ -149,3 +149,15 @@ input.form-control::placeholder {
     background-color: #f9b116;
     color: #000;
 }
+
+.searchPargraph {
+    margin: 8px;
+    max-height: 200px;
+}
+.samllFont {
+    font-size: 15px;
+    color: gray;
+  }
+.rate{
+    font-size: 12px !important;
+}
