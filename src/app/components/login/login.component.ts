@@ -12,7 +12,9 @@ export class LoginComponent {
   constructor(private myServices: LoginService) {}
   email: any = '';
   password: any = '';
-
+  emailError: string = '';
+  passwordError: string = '';
+  emailOrPasswordError: string = '';
   signIn() {
     let loginData: any = {
       email: this.email,
@@ -30,6 +32,15 @@ export class LoginComponent {
       error: (errorMassage) => {
         if (errorMassage) {
           console.log(errorMassage);
+          if (this.email == '') {
+            this.emailError = 'Email is required.';
+          }
+          if (this.password == '') {
+            this.passwordError = 'Password is required.';
+          }
+          if ((this.email && this.password) != '') {
+            this.emailOrPasswordError = 'Email Or Password Is Incorrect';
+          }
         }
       },
     });

@@ -1,4 +1,7 @@
 <form>
+  <div *ngIf="email && password != ''" class="text-danger my-1">
+    {{ emailOrPasswordError }}
+  </div>
   <div class="mb-3">
     <label for="loginEmail" class="form-label">Email</label>
     <input
@@ -8,6 +11,9 @@
       name="loginEmail"
       [(ngModel)]="email"
     />
+    <div *ngIf="email == ''" class="text-danger mt-1">
+      {{ emailError }}
+    </div>
   </div>
   <div class="mb-3">
     <label for="loginPassword" class="form-label">Password</label>
@@ -18,6 +24,9 @@
       name="loginPassword"
       [(ngModel)]="password"
     />
+    <div *ngIf="password == ''" class="text-danger mt-1">
+      {{ passwordError }}
+    </div>
   </div>
   <div class="row mb-4">
     <div class="col-md-6 d-flex justify-content-center">
