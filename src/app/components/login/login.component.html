@@ -1,7 +1,13 @@
 <form>
   <div class="mb-3">
-    <label for="loginEmail" class="form-label">Email or Username</label>
-    <input type="text" class="form-control" id="loginEmail" name="loginEmail" />
+    <label for="loginEmail" class="form-label">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      id="loginEmail"
+      name="loginEmail"
+      [(ngModel)]="email"
+    />
   </div>
   <div class="mb-3">
     <label for="loginPassword" class="form-label">Password</label>
@@ -10,6 +16,7 @@
       class="form-control"
       id="loginPassword"
       name="loginPassword"
+      [(ngModel)]="password"
     />
   </div>
   <div class="row mb-4">
@@ -27,5 +34,5 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-warning shadow-lg">Sign in</button>
+  <button (click)="signIn()" class="btn btn-warning shadow-lg">Sign in</button>
 </form>
