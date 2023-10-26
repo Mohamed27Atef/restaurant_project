@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
+import { Restaurant } from 'src/app/interfaces/restaurant';
 import { CategoryService } from 'src/app/services/category.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
@@ -10,12 +11,13 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private categoryService : CategoryService, private RestaurantService: RestaurantService){
-
-  }
-
+  category_id: number = 0;
   categories!: Category[];
-  
+  isSearch: boolean = false;
+  restaurantResult: Restaurant[] = [];
+
+  constructor(private categoryService : CategoryService, private RestaurantService: RestaurantService){}
+
   ngOnInit(): void {
     this.categoryService.getAllCategory().subscribe({
       next: data => {
@@ -23,23 +25,31 @@ export class SearchComponent implements OnInit {
       },
       error: err => console.log(err)
     })
-   
-
   }
 
   SelectCategory(categorySelected : string) {
-    this.RestaurantService.getRestaurantByCategoryId(Number(categorySelected)).subscribe({
-      next: data => {
-        console.log(data)
-      },
-      error: err => console.log(err)
-    })
+    this.category_id = Number(categorySelected);
   }
 
   searchOfRestaurantByName(name : string) {
-    this.RestaurantService.searchRestaurantByName(name).subscribe({
+    this.isSearch = true
+    if(name == ""){
+      this.getByCategoryId();
+      this.isSearch = false;
+    }
+    else
+      this.searchRestaurantBycategoryAndName(name);
+  }
+
+  getByCategoryId() {
+    this.RestaurantService.getRestaurantByCategoryId(this.category_id).subscribe({
+      next : data => this.restaurantResult = data,
+    })
+  }
+  searchRestaurantBycategoryAndName(name: string) {
+    this.RestaurantService.searchRestaurantByNameAndCategory(name, this.category_id).subscribe({
       next: data => {
-        console.log(data)
+        this.restaurantResult = data;
       },
       error: err => console.log(err)
     })
