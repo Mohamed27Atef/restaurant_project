@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 import { RestaurantService } from 'src/app/services/restaurant.service';
@@ -10,12 +10,16 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class RestaurantOwlCarouselComponent implements OnInit {
   restaurants!: Restaurant[];
+
   constructor(private restaurantService: RestaurantService) {}
+  
   ngOnInit(): void {
     this.restaurantService.getAllRestaurant().subscribe({
       next: data => this.restaurants = data,
     })
   }
+
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,

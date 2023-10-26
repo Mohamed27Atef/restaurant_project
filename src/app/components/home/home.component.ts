@@ -1,21 +1,20 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { SearchComponent } from '../search/search.component';
+import { RestaurantService } from 'src/app/services/restaurant.service';
+import { RestaurantOwlCarouselComponent } from '../restaurant-owl-carousel/restaurant-owl-carousel.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  @ViewChild("search") searchComponent! : SearchComponent;
-  
-  
-  
-  
-  ngOnInit(): void {
-    console.log(this.searchComponent.category_id);
+export class HomeComponent{
+  @ViewChild("restaurant") restaurantComponent! : RestaurantOwlCarouselComponent;
+  categoryId!: number;
+  constructor(private restaurantSerivce: RestaurantService){}
+  getCategoryId(cat_id : string) {
+    this.categoryId = Number(cat_id);
+    this.restaurantSerivce.getRestaurantByCategoryId(this.categoryId).subscribe({
+      next: data => this.restaurantComponent.restaurants = data,
+    })
   }
-
-
-
 }
