@@ -18,7 +18,6 @@ export class LoginComponent {
       email: this.email,
       password: this.password,
     };
-
     this.myServices.login(loginData).subscribe({
       next: (loginResponse: any) => {
         let token: any = jwtDecode(loginResponse.token);

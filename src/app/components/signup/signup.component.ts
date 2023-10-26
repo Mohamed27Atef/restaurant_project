@@ -1,5 +1,5 @@
 import { ReadPropExpr } from '@angular/compiler';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { SignUpService } from 'src/app/services/sign-up.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class SignupComponent {
   email: any;
   password: any;
   repeatPassword: any;
-  @ViewChild('login') login!: ElementRef;
 
   signUp() {
     let signUpData: any = {
@@ -23,11 +22,13 @@ export class SignupComponent {
       lastName: this.LastName,
       email: this.email,
       password: this.password,
-      repeatPassword: this.repeatPassword,
+      confirmPassword: this.repeatPassword,
+      phone: '63010714182',
+      address: 'string',
     };
     this.myService.register(signUpData).subscribe({
       next: () => {
-        this.login.nativeElement.click();
+        console.log('Success');
       },
       error: (errorMassage) => {
         console.log(errorMassage);
