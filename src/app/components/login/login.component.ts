@@ -12,11 +12,14 @@ export class LoginComponent {
   constructor(private myServices: LoginService) {}
   email: any = '';
   password: any = '';
-  loginData: any = { email: '', password: '' };
+
   signIn() {
-    this.loginData.email = this.email;
-    this.loginData.password = this.password;
-    this.myServices.login(this.loginData).subscribe({
+    let loginData: any = {
+      email: this.email,
+      password: this.password,
+    };
+
+    this.myServices.login(loginData).subscribe({
       next: (loginResponse: any) => {
         let token: any = jwtDecode(loginResponse.token);
         let tokenExpiration: any = new Date(loginResponse.expiration);
