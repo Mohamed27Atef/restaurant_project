@@ -157,7 +157,8 @@ input.form-control::placeholder {
 .samllFont {
     font-size: 15px;
     color: gray;
-  }
-.rate{
-    font-size: 12px !important;
+}
+.star-rating {
+    font-size: 2em;
+    color: #ffc107;
 }

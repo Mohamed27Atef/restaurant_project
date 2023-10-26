@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import {HttpClientModule} from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
 import { FormsModule } from '@angular/forms';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -29,6 +29,7 @@ import { MostPopularComponent } from './components/most-popular/most-popular.com
 import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     MostPopularComponent,
     SearchComponent,
     ContactUsComponent,
+    RestaurantOwlCarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     BrowserAnimationsModule,
     HttpClientModule,
     NgxStarRatingModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
 
   ],
   providers: [],

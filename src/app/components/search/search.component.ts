@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
   categories!: Category[];
   isSearch: boolean = false;
   restaurantResult: Restaurant[] = [];
-
   constructor(private categoryService : CategoryService, private RestaurantService: RestaurantService){}
 
   ngOnInit(): void {
