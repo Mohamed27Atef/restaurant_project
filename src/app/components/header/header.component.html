@@ -131,6 +131,7 @@
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              #closeModal
             ></button>
           </div>
           <div class="modal-body bg-dark">
@@ -175,8 +176,9 @@
                       id="pills-login"
                       role="tabpanel"
                       aria-labelledby="tab-login"
+                      #GoToLogin
                     >
-                      <app-login></app-login>
+                      <app-login (clickEvent)="LoginClick()"></app-login>
                     </div>
 
                     <!-- sign Up -->
@@ -186,7 +188,7 @@
                       role="tabpanel"
                       aria-labelledby="tab-register"
                     >
-                      <app-signup></app-signup>
+                      <app-signup (clickEvent)="signUpClick()"></app-signup>
                     </div>
                   </div>
                 </div>

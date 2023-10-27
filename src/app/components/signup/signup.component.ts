@@ -1,5 +1,5 @@
 import { ReadPropExpr } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SignUpService } from 'src/app/services/sign-up.service';
 
 @Component({
@@ -16,6 +16,8 @@ export class SignupComponent {
   password: any;
   repeatPassword: any;
 
+  @Output() clickEvent = new EventEmitter<void>();
+
   signUp() {
     let signUpData: any = {
       firstName: this.firstName,
@@ -28,7 +30,8 @@ export class SignupComponent {
     };
     this.myService.register(signUpData).subscribe({
       next: () => {
-        console.log('Success');
+        console.log('Success Sign Up');
+        this.clickEvent.emit();
       },
       error: (errorMassage) => {
         console.log(errorMassage);

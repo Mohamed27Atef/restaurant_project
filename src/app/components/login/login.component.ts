@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { LoginService } from 'src/app/services/login.service';
 import { getCookie, setCookie } from 'typescript-cookie';
@@ -15,6 +15,9 @@ export class LoginComponent {
   emailError: string = '';
   passwordError: string = '';
   emailOrPasswordError: string = '';
+
+  @Output() clickEvent = new EventEmitter<void>();
+
   signIn() {
     let loginData: any = {
       email: this.email,
@@ -28,6 +31,7 @@ export class LoginComponent {
           expires: tokenExpiration,
           path: '',
         });
+        this.clickEvent.emit();
       },
       error: (errorMassage) => {
         if (errorMassage) {
