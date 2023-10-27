@@ -152,7 +152,7 @@
                         role="tab"
                         aria-controls="pills-login"
                         aria-selected="true"
-                        #login
+                        #goToLogin
                         >Login</a
                       >
                     </li>
@@ -176,9 +176,8 @@
                       id="pills-login"
                       role="tabpanel"
                       aria-labelledby="tab-login"
-                      #GoToLogin
                     >
-                      <app-login (clickEvent)="LoginClick()"></app-login>
+                      <app-login (clickEvent)="closeModalClick()"></app-login>
                     </div>
 
                     <!-- sign Up -->
@@ -188,7 +187,7 @@
                       role="tabpanel"
                       aria-labelledby="tab-register"
                     >
-                      <app-signup (clickEvent)="signUpClick()"></app-signup>
+                      <app-signup (clickEvent)="goToLoginClick()"></app-signup>
                     </div>
                   </div>
                 </div>

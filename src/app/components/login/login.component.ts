@@ -32,6 +32,7 @@ export class LoginComponent {
           path: '',
         });
         this.clickEvent.emit();
+        console.log(token);
       },
       error: (errorMassage) => {
         if (errorMassage) {

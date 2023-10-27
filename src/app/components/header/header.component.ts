@@ -22,11 +22,11 @@ export class HeaderComponent {
     }
   }
   @ViewChild('closeModal') closeModal!: ElementRef;
-  @ViewChild('GoToLogin') GoToLogin!: ElementRef;
-  LoginClick() {
+  @ViewChild('goToLogin') goToLogin!: ElementRef;
+  closeModalClick() {
     this.closeModal.nativeElement.click();
   }
-  signUpClick() {
-    this.GoToLogin.nativeElement.click();
+  goToLoginClick() {
+    this.goToLogin.nativeElement.click();
   }
 }

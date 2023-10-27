@@ -1,4 +1,3 @@
-import { ReadPropExpr } from '@angular/compiler';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SignUpService } from 'src/app/services/sign-up.service';
 
