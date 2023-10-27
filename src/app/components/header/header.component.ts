@@ -1,3 +1,4 @@
+import { Block } from '@angular/compiler';
 import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 import { getCookie } from 'typescript-cookie';
 
@@ -38,4 +39,11 @@ export class HeaderComponent {
     this.Token != null
       ? this.Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
       : '';
+  logOutButton = document.getElementById('logOut');
+  userIcon() {
+    if (this.name != '') {
+      console.log(this.userIcon);
+      // this.logOutButton?.style.display = 'Block';
+    }
+  }
 }
