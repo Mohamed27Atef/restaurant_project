@@ -33,6 +33,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CartItemsPageComponent } from './components/cart-items-page/cart-items-page.component';
 
 
+import { SerchRetaurantComponent } from './components/serch-retaurant/serch-retaurant.component';
 
 
 @NgModule({
@@ -58,7 +59,7 @@ import { CartItemsPageComponent } from './components/cart-items-page/cart-items-
     ContactUsComponent,
     RestaurantOwlCarouselComponent,
     CartItemsPageComponent,
-
+    SerchRetaurantComponent,
   ],
   imports: [
     BrowserModule,
