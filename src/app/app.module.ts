@@ -28,8 +28,8 @@ import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
