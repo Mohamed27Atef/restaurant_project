@@ -49,7 +49,8 @@
             >
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
-            <a class="cart_link" href="#">
+            <a class="cart_link" (click)="openCart()"  href="#">
+
               <svg
                 version="1.1"
                 id="Capa_1"
@@ -104,6 +105,7 @@
                 <g></g>
               </svg>
             </a>
+
             <form class="form-inline">
               <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -176,6 +178,7 @@
                       aria-labelledby="tab-login"
                     >
                       <app-login></app-login>
+
                     </div>
 
                     <!-- sign Up -->
@@ -186,6 +189,7 @@
                       aria-labelledby="tab-register"
                     >
                       <app-signup></app-signup>
+
                     </div>
                   </div>
                 </div>
@@ -196,5 +200,6 @@
       </div>
     </div>
   </header>
+  <app-shopping-cart></app-shopping-cart>
   <!-- end header section -->
 </div>

@@ -1,1 +1,19 @@
-<p>shopping-cart works!</p>
+<div class="shopping-cart" [class.open]="isOpen">
+  <div *ngIf="isOpen">
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <img [src]="item.imageUrl" alt="{{ item.name }}" class="item-image" />
+      <div class="item-details">
+        <h3>{{ item.name }}</h3>
+        <p>Price: ${{ item.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <button (click)="removeFromCart(item)">Remove</button>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <p>Total Items: {{ getTotalItems() }}</p>
+    </div>
+  </div>
+</div>
+
+
+

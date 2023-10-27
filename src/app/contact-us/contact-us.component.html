@@ -16,4 +16,7 @@
     <button type="submit">Submit</button>
   </form>
 </div>
+<div *ngIf="isSubmitted" class="confirmation-message" [@fadeInOut]>
+  Thank you for your message. We have received your email.
+</div>
 
