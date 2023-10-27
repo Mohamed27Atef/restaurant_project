@@ -30,6 +30,8 @@ import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
+import { GetLocationComponent } from './components/get-location/get-location.component';
+import { FAQComponent } from './components/faq/faq.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-caro
     SearchComponent,
     ContactUsComponent,
     RestaurantOwlCarouselComponent,
+    GetLocationComponent,
+    FAQComponent,
   ],
   imports: [
     BrowserModule,
