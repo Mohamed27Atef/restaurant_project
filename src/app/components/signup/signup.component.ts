@@ -21,7 +21,8 @@ export class SignupComponent {
   confirmPasswordError: any;
 
   @Output() clickEvent = new EventEmitter<void>();
-
+  registerCheck: boolean = false;
+  checkboxError: boolean = false;
   signUp() {
     let signUpData: any = {
       firstName: this.firstName,
@@ -32,6 +33,11 @@ export class SignupComponent {
       phone: '63010714182',
       address: 'string',
     };
+    if (!this.registerCheck) {
+      this.checkboxError = true; // Apply the red border
+    } else {
+      this.checkboxError = false; // Remove the red border
+    }
     this.myService.register(signUpData).subscribe({
       next: () => {
         console.log('Success Sign Up');

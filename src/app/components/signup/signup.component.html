@@ -74,12 +74,16 @@
       {{ confirmPasswordError }}
     </div>
   </div>
-  <div class="mb-3 form-check">
+  <div
+    class="mb-3 form-check"
+    [style.border]="checkboxError == false ? 'none' : '2px solid red'"
+  >
     <input
       type="checkbox"
       class="form-check-input"
       id="registerCheck"
       name="registerCheck"
+      [(ngModel)]="registerCheck"
     />
     <label class="form-check-label" for="registerCheck"
       >I have read and agree to the terms</label
