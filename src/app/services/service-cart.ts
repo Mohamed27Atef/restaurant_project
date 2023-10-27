@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { CartItem } from 'src/app/interfaces/CartItem';
 
 @Injectable({
   providedIn: 'root',
@@ -29,12 +30,4 @@ export class CartService {
     const isOpen = this.isCartOpenSubject.value;
     this.isCartOpenSubject.next(!isOpen);
   }
-}
-
-export interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  imageUrl: string;
 }
