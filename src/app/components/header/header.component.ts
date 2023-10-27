@@ -1,4 +1,5 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input } from '@angular/core';
+import { getCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-header',
@@ -23,10 +24,18 @@ export class HeaderComponent {
   }
   @ViewChild('closeModal') closeModal!: ElementRef;
   @ViewChild('goToLogin') goToLogin!: ElementRef;
+
   closeModalClick() {
     this.closeModal.nativeElement.click();
   }
   goToLoginClick() {
     this.goToLogin.nativeElement.click();
   }
+  JsonToken: any = getCookie('User');
+
+  Token: any = this.JsonToken != undefined ? JSON.parse(this.JsonToken) : null;
+  name: any =
+    this.Token != null
+      ? this.Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+      : '';
 }

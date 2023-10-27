@@ -15,6 +15,7 @@ export class LoginComponent {
   emailError: string = '';
   passwordError: string = '';
   emailOrPasswordError: string = '';
+  @Output() userName: any = new EventEmitter();
 
   @Output() clickEvent = new EventEmitter<void>();
 
@@ -27,12 +28,14 @@ export class LoginComponent {
       next: (loginResponse: any) => {
         let token: any = jwtDecode(loginResponse.token);
         let tokenExpiration: any = new Date(loginResponse.expiration);
-        setCookie('User', token, {
+        let JsonToken = JSON.stringify(token);
+        setCookie('User', JsonToken, {
           expires: tokenExpiration,
           path: '',
         });
+        console.log(JsonToken);
         this.clickEvent.emit();
-        console.log(token);
+        this.userName.emit(true);
       },
       error: (errorMassage) => {
         if (errorMassage) {
