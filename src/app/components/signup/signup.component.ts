@@ -10,11 +10,16 @@ import { SignUpService } from 'src/app/services/sign-up.service';
 export class SignupComponent {
   constructor(private myService: SignUpService) {}
 
-  firstName: any;
-  LastName: any;
-  email: any;
-  password: any;
-  repeatPassword: any;
+  firstName: any = '';
+  LastName: any = '';
+  email: any = null;
+  password: any = '';
+  confirmPassword: any = '';
+  firstNameError: any;
+  LastNameError: any;
+  emailError: any;
+  passwordError: any;
+  confirmPasswordError: any;
 
   @Output() clickEvent = new EventEmitter<void>();
 
@@ -24,7 +29,7 @@ export class SignupComponent {
       lastName: this.LastName,
       email: this.email,
       password: this.password,
-      confirmPassword: this.repeatPassword,
+      confirmPassword: this.confirmPassword,
       phone: '63010714182',
       address: 'string',
     };
@@ -35,6 +40,27 @@ export class SignupComponent {
       },
       error: (errorMassage) => {
         console.log(errorMassage);
+        this.firstNameError =
+          this.firstName == ''
+            ? 'First Name is required.'
+            : errorMassage.error.errors.FirstName;
+        this.LastNameError =
+          this.LastName == ''
+            ? 'Last Name is required.'
+            : errorMassage.error.errors.LastName;
+        this.emailError =
+          this.email == null
+            ? 'Email is required.'
+            : errorMassage.error.errors.Email[0];
+        this.passwordError =
+          this.password == ''
+            ? 'Password is required.'
+            : errorMassage.error.errors.Password;
+        this.confirmPasswordError =
+          this.confirmPassword == ''
+            ? 'Confirm Password is required.'
+            : errorMassage.error.errors.ConfirmPassword;
+        console.log(errorMassage.error.errors.Email[0]);
       },
     });
   }
