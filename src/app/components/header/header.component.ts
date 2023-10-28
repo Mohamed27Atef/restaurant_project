@@ -10,7 +10,15 @@ import { getCookie } from 'typescript-cookie';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private cartService: ShoppingCartService) {}
+  constructor(private cartService: ShoppingCartService) {
+    let JsonToken = getCookie('User');
+
+    let Token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
+    this.name =
+      Token != null
+        ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+        : '';
+  }
   isCartVisible: boolean = false;
 
   toggleCart() {
