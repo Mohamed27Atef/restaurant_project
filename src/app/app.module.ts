@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import {HttpClientModule} from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
 import { FormsModule } from '@angular/forms';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -27,6 +27,7 @@ import { MostPopularComponent } from './components/most-popular/most-popular.com
 import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { ImagesComponent } from './components/restaurant/images/images.component';
 import { InfoComponent } from './components/restaurant/info/info.component';
@@ -35,6 +36,19 @@ import { ReservationsComponent } from './components/restaurant/reservations/rese
 import { ContactComponent } from './components/restaurant/contact/contact.component';
 import { MenuComponent } from './components/restaurant/menu/menu.component';
 
+
+import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
+
+import { GetLocationComponent } from './components/get-location/get-location.component';
+import { FAQComponent } from './components/faq/faq.component';
+
+import { SerchRetaurantComponent } from './components/serch-retaurant/serch-retaurant.component';
+import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { RouterModule } from '@angular/router';
+import { CartService } from './services/service-cart';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
 
 
 @NgModule({
@@ -56,6 +70,7 @@ import { MenuComponent } from './components/restaurant/menu/menu.component';
     MostPopularComponent,
     SearchComponent,
     ContactUsComponent,
+
     RestaurantComponent,
     ImagesComponent,
     InfoComponent,
@@ -63,6 +78,13 @@ import { MenuComponent } from './components/restaurant/menu/menu.component';
     ReservationsComponent,
     ContactComponent,
     MenuComponent,
+    RestaurantOwlCarouselComponent,
+    GetLocationComponent,
+    FAQComponent,
+    SerchRetaurantComponent,
+    CartPageComponent,
+    CartItemsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -70,7 +92,10 @@ import { MenuComponent } from './components/restaurant/menu/menu.component';
     BrowserAnimationsModule,
     HttpClientModule,
     NgxStarRatingModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+    RouterModule,
+    SidebarModule
 
   ],
   providers: [],
