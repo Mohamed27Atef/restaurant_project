@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { CartService } from 'src/app/services/service-cart';
-
+import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: ShoppingCartService) {}
+  isCartVisible: boolean = false;
 
-  openCart() {
-    this.cartService.toggleCart();
+  toggleCart() {
+    console.log('toggleCart called');
+    this.isCartVisible = !this.isCartVisible;
   }
   navbarCollapsed = true;
   toggalClass = "navbar-toggler navbar-toggler-right";

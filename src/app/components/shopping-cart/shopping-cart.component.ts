@@ -1,31 +1,37 @@
 import { Component } from '@angular/core';
-import { CartService  } from 'src/app/services/service-cart';
-import { CartItem } from 'src/app/interfaces/CartItem';
+import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
-  selector: 'app-shopping-cart',
-  templateUrl: 'shopping-cart.component.html',
-  styleUrls: ['shopping-cart.component.css']
-})
+    selector: 'app-shopping-cart',
+    templateUrl: './shopping-cart.component.html',
+    styleUrls: ['./shopping-cart.component.css']
+    })
 export class ShoppingCartComponent {
-  cartItems: any[] = [];
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: ShoppingCartService,private router: Router) {}
+  isCartVisible: boolean = false;
 
-  isOpen = false;
-
-  ngOnInit() {
-    this.cartService.isCartOpen$.subscribe((isOpen) => {
-      this.isOpen = isOpen;
-    });
-    this.cartItems = this.cartService.getCartItems();
+  getCartItems() {
+    return this.cartService.getCartItems();
   }
-    removeFromCart(item: CartItem) {
-      this.cartService.removeFromCart(item);
+  calculateTotalPrice(): number {
+    const items = this.getCartItems();
+    let total = 0;
+    for (const item of items) {
+      total += item.price;
     }
-
-    getTotalItems(): number {
-      return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+    return total;
   }
+  emptyCart() {
+    this.cartService.cartItems = [];
   }
+  goToCartPage() {
+    this.router.navigate(['/cart']);
+  }
+  toggleCart() {
+    this.cartService.toggleCartVisibility();
+  }
+}
 

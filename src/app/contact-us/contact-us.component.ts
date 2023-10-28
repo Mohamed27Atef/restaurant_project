@@ -3,7 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 
 @Component({
-  selector: 'app-contact-form',
+  selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css'],
   animations: [
@@ -30,5 +30,4 @@ export class ContactUsComponent {
       this.message = '';
     }, 3000);
   }
-
 }
