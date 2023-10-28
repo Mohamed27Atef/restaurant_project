@@ -1,1 +1,34 @@
-<p>shopping-cart works!</p>
+<div class="cart"
+    [style.position]="'fixed'"
+    [style.top.px]="0"
+    [style.right.px]="0"
+    [style.width.px]="300"
+    [style.height.%]="100"
+    [style.backgroundColor]="'#fff'"
+    [style.boxShadow]="'0 0 10px rgba(0, 0, 0, 0.2)'"
+    [style.overflowY]="'auto'"
+    [style.transition]="'opacity 0.3s ease, visibility 0.3s ease'"
+    [style.zIndex.px]="100"
+>
+  <ul>
+    <li *ngFor="let item of getCartItems()" style="padding: 10px; border-bottom: 1px solid #eee;">
+      {{ item.name }} - ${{ item.price }}
+    </li>
+  </ul>
+  <div class="total" style="border-top: 1px solid #eee; padding: 10px; font-weight: bold; display: flex; justify-content: space-between;">
+    <p>Total Items: {{ getCartItems().length }}</p>
+    <p>Total Price: ${{ calculateTotalPrice() }}</p>
+  </div>
+  <button (click)="emptyCart()" style="display: block; width: 100%; background-color: #ffbe33; color: white; padding: 10px; text-align: center; border: none; cursor: pointer; transition: background-color 0.3s;">
+    Empty Cart
+  </button>
+  <a href="/cart" target="_blank" style="display: block; width: 100%; background-color: #007bff; color: white; padding: 10px; text-align: center; border: none; cursor: pointer; transition: background-color 0.3s;">
+    View Cart Page
+  </a>
+</div>
+
+
+
+
+
+

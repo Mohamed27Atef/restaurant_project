@@ -1,8 +1,4 @@
 <div class="hero_area">
-  <!-- <div class="bg-box">
-    <img src="assets/images/hero-bg.jpg" alt="" />
-  </div> -->
-  <!-- header section strats -->
   <header class="header_section">
     <div class="container">
       <nav class="navbar navbar-expand-lg custom_nav-container">
@@ -43,13 +39,21 @@
           <div class="user_option">
             <a
               class="user_link"
-              href="/login"
-              data-bs-toggle="modal"
-              data-bs-target="#loginModal"
+              [attr.href]="name ? null : '/login'"
+              [attr.data-bs-toggle]="name ? null : 'modal'"
+              [attr.data-bs-target]="name ? null : '#loginModal'"
+              (click)="userIcon()"
             >
-              <i class="fa fa-user" aria-hidden="true"></i>
+              <i class="fa fa-user" aria-hidden="true"></i
+              ><span>{{ name }}</span>
+              <!-- <div id="logOut" class="">
+                <a href="#" class="btn btn-warning btn-lg">
+                  <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Log
+                  out
+                </a>
+              </div> -->
             </a>
-            <a class="cart_link" href="#">
+            <a class="cart_link" (click)="toggleCart()" href="#">
               <svg
                 version="1.1"
                 id="Capa_1"
@@ -104,6 +108,7 @@
                 <g></g>
               </svg>
             </a>
+            <app-shopping-cart *ngIf="isCartVisible"></app-shopping-cart>
             <form class="form-inline">
               <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -131,6 +136,7 @@
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              #closeModal
             ></button>
           </div>
           <div class="modal-body bg-dark">
@@ -151,7 +157,7 @@
                         role="tab"
                         aria-controls="pills-login"
                         aria-selected="true"
-                        #login
+                        #goToLogin
                         >Login</a
                       >
                     </li>
@@ -176,7 +182,7 @@
                       role="tabpanel"
                       aria-labelledby="tab-login"
                     >
-                      <app-login></app-login>
+                      <app-login (clickEvent)="closeModalClick()"></app-login>
                     </div>
 
                     <!-- sign Up -->
@@ -186,7 +192,7 @@
                       role="tabpanel"
                       aria-labelledby="tab-register"
                     >
-                      <app-signup></app-signup>
+                      <app-signup (clickEvent)="goToLoginClick()"></app-signup>
                     </div>
                   </div>
                 </div>
@@ -199,3 +205,4 @@
   </header>
   <!-- end header section -->
 </div>
+

@@ -11,7 +11,7 @@
       name="loginEmail"
       [(ngModel)]="email"
     />
-    <div *ngIf="email == ''" class="text-danger mt-1">
+    <div *ngIf="email == ''" class="text-danger mt-1 fw-bold">
       {{ emailError }}
     </div>
   </div>
@@ -24,7 +24,7 @@
       name="loginPassword"
       [(ngModel)]="password"
     />
-    <div *ngIf="password == ''" class="text-danger mt-1">
+    <div *ngIf="password == ''" class="text-danger mt-1 fw-bold">
       {{ passwordError }}
     </div>
   </div>

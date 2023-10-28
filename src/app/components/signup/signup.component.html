@@ -9,6 +9,9 @@
         name="registerFirstName"
         [(ngModel)]="firstName"
       />
+      <div *ngIf="firstName == ''" class="text-danger mt-1 fw-bold">
+        {{ firstNameError }}
+      </div>
     </div>
     <div class="col-md-6">
       <label for="registerUsername" class="form-label">Last Name</label>
@@ -19,6 +22,9 @@
         name="registerLastName"
         [(ngModel)]="LastName"
       />
+      <div *ngIf="LastName == ''" class="text-danger mt-1 fw-bold">
+        {{ LastNameError }}
+      </div>
     </div>
   </div>
   <div class="mb-3">
@@ -30,6 +36,12 @@
       name="registerEmail"
       [(ngModel)]="email"
     />
+    <div
+      *ngIf="email == null || email != null"
+      class="text-danger mt-1 fw-bold"
+    >
+      {{ emailError }}
+    </div>
   </div>
   <div class="mb-3">
     <label for="registerPassword" class="form-label">Password</label>
@@ -40,21 +52,44 @@
       name="registerPassword"
       [(ngModel)]="password"
     />
+    <div *ngIf="password == ''" class="text-danger mt-1 fw-bold">
+      {{ passwordError }}
+    </div>
   </div>
   <div class="mb-3">
-    <label for="registerRepeatPassword" class="form-label"
-      >Repeat Password</label
+    <label for="registerconfirmPassword" class="form-label"
+      >Confirm Password</label
     >
     <input
       type="password"
       class="form-control"
-      id="registerRepeatPassword"
-      name="registerRepeatPassword"
-      [(ngModel)]="repeatPassword"
+      id="registerconfirmPassword"
+      name="registerConfirmPassword"
+      [(ngModel)]="confirmPassword"
     />
+    <div
+      *ngIf="confirmPassword == '' || confirmPassword != ''"
+      class="text-danger mt-1 fw-bold"
+    >
+      {{ confirmPasswordError }}
+    </div>
   </div>
+
   <div class="mb-3 form-check">
   <app-get-location></app-get-location>
+
+  <div
+    class="mb-3 form-check"
+    [style.border]="checkboxError == false ? 'none' : '2px solid red'"
+  >
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="registerCheck"
+      name="registerCheck"
+      [(ngModel)]="registerCheck"
+    />
+
     <label class="form-check-label" for="registerCheck"
       >Share location with us?</label
     >
