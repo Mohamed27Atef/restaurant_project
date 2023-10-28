@@ -60,9 +60,9 @@
 
   <div class="mb-3">
     <label for="registerconfirmPassword" class="form-label"
-    >Confirm Password</label>
+      >Confirm Password</label
+    >
 
-  
     <input
       type="password"
       class="form-control"
@@ -79,12 +79,12 @@
   </div>
 
   <div class="mb-3 form-check">
-  <app-get-location></app-get-location>
-  <div
-    class="mb-3 form-check"
-    [style.border]="checkboxError == false ? 'none' : '2px solid red'"
-  >
-    <!-- <input
+    <app-get-location></app-get-location>
+    <div
+      class="mb-3 form-check"
+      [style.border]="checkboxError == false ? 'none' : '2px solid red'"
+    >
+      <!-- <input
       type="checkbox"
       class="form-check-input"
       id="registerCheck"
@@ -92,11 +92,11 @@
       [(ngModel)]="registerCheck"
     /> -->
 
-    <label class="form-check-label" for="registerCheck"
-      >Share location with us?</label
-    >
-  </div>
+      <label class="form-check-label" for="registerCheck"
+        >Share location with us?</label
+      >
+    </div>
 
-  <button (click)="signUp()" class="btn btn-warning shadow">Sign up</button>
-</div>
+    <button (click)="signUp()" class="btn btn-warning shadow">Sign up</button>
+  </div>
 </form>

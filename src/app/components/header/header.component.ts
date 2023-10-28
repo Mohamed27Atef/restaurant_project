@@ -2,7 +2,7 @@ import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 
 import { Block } from '@angular/compiler';
 import { Component, ViewChild, ElementRef, Input } from '@angular/core';
-import { getCookie } from 'typescript-cookie';
+import { getCookie, removeCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-header',
@@ -55,11 +55,23 @@ export class HeaderComponent {
   userName(name: string) {
     this.name = name;
   }
-  logOutButton = document.getElementById('logOut');
-  userIcon() {
+
+  toggleLogoutButton(event: Event) {
     if (this.name != '') {
-      console.log(this.userIcon);
-      // this.logOutButton?.style.display = 'Block';
+      event.preventDefault(); // Prevent the default action of the link
+
+      const logOutButton = document.getElementById('logOut');
+      if (logOutButton) {
+        logOutButton.classList.toggle('hidden');
+        logOutButton.style.top = logOutButton.classList.contains('hidden')
+          ? '-60px'
+          : '30px';
+      }
     }
+  }
+
+  LogOut() {
+    removeCookie('User');
+    this.name = '';
   }
 }

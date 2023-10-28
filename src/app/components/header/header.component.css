@@ -208,8 +208,12 @@
 
 #logOut {
   position: absolute;
-  top: 30px;
+  top: -60px;
   right: 150px;
   z-index: 1;
+  transition: top 0.3s;
 }
 
+.hidden {
+  display: none;
+}
