@@ -35,6 +35,7 @@ import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CartService } from './services/service-cart';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 
 
@@ -73,9 +74,10 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
     FormsModule,
     CarouselModule,
     RouterModule,
+    SidebarModule
 
   ],
-  providers: [ShoppingCartService,CartService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
