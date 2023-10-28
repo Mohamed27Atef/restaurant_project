@@ -25,9 +25,4 @@ export class CartService {
   getCartItems(): CartItem[] {
     return this.cartItems;
   }
-
-  toggleCart() {
-    const isOpen = this.isCartOpenSubject.value;
-    this.isCartOpenSubject.next(!isOpen);
-  }
 }

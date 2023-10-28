@@ -25,7 +25,7 @@ export class ShoppingCartComponent {
     return total;
   }
   emptyCart() {
-    this.cartService.cartItems = [];
+    this.cartService.emptyCart();
   }
   goToCartPage() {
     this.router.navigate(['/cart']);
