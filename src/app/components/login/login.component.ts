@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { LoginService } from 'src/app/services/login.service';
 import { getCookie, setCookie } from 'typescript-cookie';
@@ -15,6 +15,10 @@ export class LoginComponent {
   emailError: string = '';
   passwordError: string = '';
   emailOrPasswordError: string = '';
+  @Output() userName: any = new EventEmitter();
+
+  @Output() clickEvent = new EventEmitter<void>();
+
   signIn() {
     let loginData: any = {
       email: this.email,
@@ -24,10 +28,14 @@ export class LoginComponent {
       next: (loginResponse: any) => {
         let token: any = jwtDecode(loginResponse.token);
         let tokenExpiration: any = new Date(loginResponse.expiration);
-        setCookie('User', token, {
+        let JsonToken = JSON.stringify(token);
+        setCookie('User', JsonToken, {
           expires: tokenExpiration,
           path: '',
         });
+        console.log(JsonToken);
+        this.clickEvent.emit();
+        this.userName.emit(true);
       },
       error: (errorMassage) => {
         if (errorMassage) {
