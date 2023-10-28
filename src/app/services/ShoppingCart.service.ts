@@ -5,7 +5,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  cartItems: any[] = [];
+  cartItems: any[] = [
+    {name: 'test', price: 20},
+  ];
 
   private isCartVisibleSource = new BehaviorSubject<boolean>(false);
   isCartVisible$ = this.isCartVisibleSource.asObservable();

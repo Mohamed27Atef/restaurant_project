@@ -35,6 +35,7 @@ import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CartService } from './services/service-cart';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { CartService } from './services/service-cart';
     RestaurantOwlCarouselComponent,
     SerchRetaurantComponent,
     CartPageComponent,
+    CartItemsComponent,
   ],
   imports: [
     BrowserModule,
