@@ -7,10 +7,10 @@
         class="form-control"
         id="registerFirstName"
         name="registerFirstName"
-        [(ngModel)]="firstName"
+        [(ngModel)]="user.firstName"
       />
-      <div *ngIf="firstName == ''" class="text-danger mt-1 fw-bold">
-        {{ firstNameError }}
+      <div *ngIf="user.firstName == ''" class="text-danger mt-1 fw-bold">
+        {{ user.firstNameError }}
       </div>
     </div>
     <div class="col-md-6">
@@ -20,10 +20,10 @@
         class="form-control"
         id="registerLastName"
         name="registerLastName"
-        [(ngModel)]="LastName"
+        [(ngModel)]="user.LastName"
       />
-      <div *ngIf="LastName == ''" class="text-danger mt-1 fw-bold">
-        {{ LastNameError }}
+      <div *ngIf="user.LastName == ''" class="text-danger mt-1 fw-bold">
+        {{ user.LastNameError }}
       </div>
     </div>
   </div>
@@ -34,13 +34,13 @@
       class="form-control"
       id="registerEmail"
       name="registerEmail"
-      [(ngModel)]="email"
+      [(ngModel)]="user.email"
     />
     <div
-      *ngIf="email == null || email != null"
+      *ngIf="user.email == null || user.email != null"
       class="text-danger mt-1 fw-bold"
     >
-      {{ emailError }}
+      {{ user.emailError }}
     </div>
   </div>
   <div class="mb-3">
@@ -50,10 +50,10 @@
       class="form-control"
       id="registerPassword"
       name="registerPassword"
-      [(ngModel)]="password"
+      [(ngModel)]="user.password"
     />
-    <div *ngIf="password == ''" class="text-danger mt-1 fw-bold">
-      {{ passwordError }}
+    <div *ngIf="user.password == ''" class="text-danger mt-1 fw-bold">
+      {{ user.passwordError }}
     </div>
   </div>
   <div class="mb-3">
@@ -65,13 +65,13 @@
       class="form-control"
       id="registerconfirmPassword"
       name="registerConfirmPassword"
-      [(ngModel)]="confirmPassword"
+      [(ngModel)]="user.confirmPassword"
     />
     <div
-      *ngIf="confirmPassword == '' || confirmPassword != ''"
+      *ngIf="user.confirmPassword == '' || user.confirmPassword != ''"
       class="text-danger mt-1 fw-bold"
     >
-      {{ confirmPasswordError }}
+      {{ user.confirmPasswordError }}
     </div>
   </div>
   <div
