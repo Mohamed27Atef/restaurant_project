@@ -205,9 +205,11 @@
   top: 0;
 }
 
+
 #logOut {
   position: absolute;
   top: 30px;
   right: 150px;
   z-index: 1;
 }
+

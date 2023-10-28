@@ -7,7 +7,7 @@
 }
 
 .wider-form {
-  width: 100%; /* Make the form 100% wide within the container */
+  width: 100%;
 }
 label {
   display: block;

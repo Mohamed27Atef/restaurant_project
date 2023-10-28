@@ -31,6 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
 import { SerchRetaurantComponent } from './components/serch-retaurant/serch-retaurant.component';
+import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { RouterModule } from '@angular/router';
+import { CartService } from './services/service-cart';
 
 
 @NgModule({
@@ -56,6 +60,7 @@ import { SerchRetaurantComponent } from './components/serch-retaurant/serch-reta
     ContactUsComponent,
     RestaurantOwlCarouselComponent,
     SerchRetaurantComponent,
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,10 +69,11 @@ import { SerchRetaurantComponent } from './components/serch-retaurant/serch-reta
     HttpClientModule,
     NgxStarRatingModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+    RouterModule,
 
   ],
-  providers: [],
+  providers: [ShoppingCartService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
