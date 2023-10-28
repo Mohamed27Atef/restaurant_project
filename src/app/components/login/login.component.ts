@@ -35,7 +35,9 @@ export class LoginComponent {
         });
         console.log(JsonToken);
         this.clickEvent.emit();
-        this.userName.emit(true);
+        this.userName.emit(
+          token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+        );
       },
       error: (errorMassage) => {
         if (errorMassage) {
