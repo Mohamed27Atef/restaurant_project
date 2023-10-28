@@ -30,11 +30,16 @@ import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
+
+import { GetLocationComponent } from './components/get-location/get-location.component';
+import { FAQComponent } from './components/faq/faq.component';
+
 import { SerchRetaurantComponent } from './components/serch-retaurant/serch-retaurant.component';
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CartService } from './services/service-cart';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 
 
@@ -60,9 +65,12 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
     SearchComponent,
     ContactUsComponent,
     RestaurantOwlCarouselComponent,
+    GetLocationComponent,
+    FAQComponent,
     SerchRetaurantComponent,
     CartPageComponent,
     CartItemsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -73,9 +81,10 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
     FormsModule,
     CarouselModule,
     RouterModule,
+    SidebarModule
 
   ],
-  providers: [ShoppingCartService,CartService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

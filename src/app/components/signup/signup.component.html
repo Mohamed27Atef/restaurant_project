@@ -43,6 +43,7 @@
       {{ user.emailError }}
     </div>
   </div>
+
   <div class="mb-3">
     <label for="registerPassword" class="form-label">Password</label>
     <input
@@ -56,10 +57,12 @@
       {{ user.passwordError }}
     </div>
   </div>
+
   <div class="mb-3">
     <label for="registerconfirmPassword" class="form-label"
-      >Confirm Password</label
-    >
+    >Confirm Password</label>
+
+  
     <input
       type="password"
       class="form-control"
@@ -74,20 +77,26 @@
       {{ user.confirmPasswordError }}
     </div>
   </div>
+
+  <div class="mb-3 form-check">
+  <app-get-location></app-get-location>
   <div
     class="mb-3 form-check"
     [style.border]="checkboxError == false ? 'none' : '2px solid red'"
   >
-    <input
+    <!-- <input
       type="checkbox"
       class="form-check-input"
       id="registerCheck"
       name="registerCheck"
       [(ngModel)]="registerCheck"
-    />
+    /> -->
+
     <label class="form-check-label" for="registerCheck"
-      >I have read and agree to the terms</label
+      >Share location with us?</label
     >
   </div>
+
   <button (click)="signUp()" class="btn btn-warning shadow">Sign up</button>
+</div>
 </form>
