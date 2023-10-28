@@ -24,11 +24,6 @@ export class HeaderComponent {
   toggalClass = "navbar-toggler navbar-toggler-right";
   divClass = "collapse navbar-collapse";
 
-  navbarCollapsed = true;
-  toggalClass = 'navbar-toggler navbar-toggler-right';
-  divClass = 'collapse navbar-collapse';
-
-
   showToggle() {
     this.navbarCollapsed = !this.navbarCollapsed;
     if (this.navbarCollapsed) {
