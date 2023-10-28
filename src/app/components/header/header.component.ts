@@ -41,13 +41,8 @@ export class HeaderComponent {
   goToLoginClick() {
     this.goToLogin.nativeElement.click();
   }
-  JsonToken: any = getCookie('User');
 
-  Token: any = this.JsonToken != undefined ? JSON.parse(this.JsonToken) : null;
-  name: any =
-    this.Token != null
-      ? this.Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
-      : '';
+  name: string = '';
 
   userName(name: string) {
     this.name = name;

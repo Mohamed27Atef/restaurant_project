@@ -33,7 +33,6 @@ export class LoginComponent {
           expires: tokenExpiration,
           path: '',
         });
-        console.log(JsonToken);
         this.clickEvent.emit();
         this.userName.emit(
           token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
