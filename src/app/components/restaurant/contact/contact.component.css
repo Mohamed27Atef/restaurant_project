@@ -1,0 +1,19 @@
+
+.restaurant-contact h3 {
+    font-size: 22px;
+    margin-bottom: 23px;
+    text-align: center;
+
+  }
+  .restaurant-contact i {
+    font-size: 30px;
+    color: #ff5722;
+    text-align: center;
+
+  }
+  .restaurant-contact p {
+    font-size: 15px;
+    text-align: center;
+    color: #555;
+  }
+  
