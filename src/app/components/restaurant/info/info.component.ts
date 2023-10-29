@@ -35,8 +35,6 @@ export class InfoComponent implements AfterViewInit{
   checkifClosed(day : string) {
     return this.closingDays.find(r => r == day)? true: false;
   }
-
-   
 }
 
 
