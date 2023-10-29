@@ -47,7 +47,8 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CartService } from './services/service-cart';
 import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
-import { CartItemsComponent } from './components/cart-items/cart-items.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { StepsComponent } from './components/steps/steps.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
     FAQComponent,
     SerchRetaurantComponent,
     CartPageComponent,
-    CartItemsComponent,
+    CartItemComponent,
+    StepsComponent,
 
   ],
   imports: [
