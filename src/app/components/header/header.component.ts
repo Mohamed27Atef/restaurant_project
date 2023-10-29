@@ -8,7 +8,7 @@ import {
   Input,
   HostListener,
 } from '@angular/core';
-import { getCookie } from 'typescript-cookie';
+import { getCookie, removeCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,6 @@ import { getCookie } from 'typescript-cookie';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-
   constructor(private cartService: ShoppingCartService) {
     let JsonToken = getCookie('User');
 
