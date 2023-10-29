@@ -26,7 +26,6 @@ import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { ImagesComponent } from './components/restaurant/images/images.component';
@@ -69,8 +68,6 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
     NavbarComponent,
     MostPopularComponent,
     SearchComponent,
-    ContactUsComponent,
-
     RestaurantComponent,
     ImagesComponent,
     InfoComponent,
