@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SignUpService } from 'src/app/services/sign-up.service';
+import { User } from './signup.interface';
 
 @Component({
   selector: 'app-signup',
@@ -8,28 +9,24 @@ import { SignUpService } from 'src/app/services/sign-up.service';
 })
 export class SignupComponent {
   constructor(private myService: SignUpService) {}
-
-  firstName: any = '';
-  LastName: any = '';
-  email: any = null;
-  password: any = '';
-  confirmPassword: any = '';
-  firstNameError: any;
-  LastNameError: any;
-  emailError: any;
-  passwordError: any;
-  confirmPasswordError: any;
+  user: User = {
+    firstName: '',
+    LastName: '',
+    email: null,
+    password: '',
+    confirmPassword: '',
+  };
 
   @Output() clickEvent = new EventEmitter<void>();
   registerCheck: boolean = false;
   checkboxError: boolean = false;
   signUp() {
     let signUpData: any = {
-      firstName: this.firstName,
-      lastName: this.LastName,
-      email: this.email,
-      password: this.password,
-      confirmPassword: this.confirmPassword,
+      firstName: this.user.firstName,
+      lastName: this.user.LastName,
+      email: this.user.email,
+      password: this.user.password,
+      confirmPassword: this.user.confirmPassword,
       phone: '63010714182',
       address: 'string',
     };
@@ -45,24 +42,24 @@ export class SignupComponent {
       },
       error: (errorMassage) => {
         console.log(errorMassage);
-        this.firstNameError =
-          this.firstName == ''
+        this.user.firstNameError =
+          this.user.firstName == ''
             ? 'First Name is required.'
             : errorMassage.error.errors.FirstName;
-        this.LastNameError =
-          this.LastName == ''
+        this.user.LastNameError =
+          this.user.LastName == ''
             ? 'Last Name is required.'
             : errorMassage.error.errors.LastName;
-        this.emailError =
-          this.email == null
+        this.user.emailError =
+          this.user.email == null
             ? 'Email is required.'
             : errorMassage.error.errors.Email[0];
-        this.passwordError =
-          this.password == ''
+        this.user.passwordError =
+          this.user.password == ''
             ? 'Password is required.'
             : errorMassage.error.errors.Password;
-        this.confirmPasswordError =
-          this.confirmPassword == ''
+        this.user.confirmPasswordError =
+          this.user.confirmPassword == ''
             ? 'Confirm Password is required.'
             : errorMassage.error.errors.ConfirmPassword;
         console.log(errorMassage.error.errors.Email[0]);
