@@ -78,7 +78,7 @@ export class HeaderComponent {
         logOutButton.classList.toggle('hidden');
         logOutButton.style.top = logOutButton.classList.contains('hidden')
           ? '-60px'
-          : '80px';
+          : '75px';
       }
     }
   }
