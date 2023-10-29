@@ -23,6 +23,14 @@ export class RestaurantService {
   }
   getRestaurantByName( q: string): Observable<any> {
     return this.httpClient.get(this.BaseUrl + "search/" + q);
-}
+  }
+
+  getRestaurantById(id: number): Observable<any> {
+    return this.httpClient.get(this.BaseUrl + id )
+  }
+
+  getRestaurantImages(id: number): Observable<any> {
+    return this.httpClient.get(this.BaseUrl + "getimages/" + id )
+  }
 
 }

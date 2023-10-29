@@ -1,8 +1,14 @@
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 
 import { Block } from '@angular/compiler';
-import { Component, ViewChild, ElementRef, Input } from '@angular/core';
-import { getCookie, removeCookie } from 'typescript-cookie';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  Input,
+  HostListener,
+} from '@angular/core';
+import { getCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +16,7 @@ import { getCookie, removeCookie } from 'typescript-cookie';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+
   constructor(private cartService: ShoppingCartService) {
     let JsonToken = getCookie('User');
 
@@ -20,6 +27,14 @@ export class HeaderComponent {
         : '';
   }
   isCartVisible: boolean = false;
+
+  @ViewChild('cart') cart!: ElementRef;
+  @HostListener('document:click', ['$event'])
+  clickOutsideCart(event: Event) {
+    if (!this.cart.nativeElement.contains(event.target) && this.isCartVisible) {
+      this.isCartVisible = false;
+    }
+  }
 
   toggleCart() {
     console.log('toggleCart called');
