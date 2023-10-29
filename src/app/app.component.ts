@@ -8,5 +8,4 @@ import Isotope from 'isotope-layout';
 })
 export class AppComponent {
   title = 'restaurant_project';
-
 }

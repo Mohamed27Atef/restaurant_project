@@ -1,14 +1,15 @@
-<div class="cart"
+ <div class="cart" #cart
     [style.position]="'fixed'"
-    [style.top.px]="0"
+    [style.top.px]="88"
     [style.right.px]="0"
-    [style.width.px]="300"
+    [style.width.px]="'300'"
     [style.height.%]="100"
     [style.backgroundColor]="'#fff'"
     [style.boxShadow]="'0 0 10px rgba(0, 0, 0, 0.2)'"
     [style.overflowY]="'auto'"
     [style.transition]="'opacity 0.3s ease, visibility 0.3s ease'"
-    [style.zIndex.px]="100"
+    [style.zIndex.px]="9999"
+    (click)="$event.stopPropagation()"
 >
   <ul>
     <li *ngFor="let item of getCartItems()" style="padding: 10px; border-bottom: 1px solid #eee;">
@@ -26,6 +27,8 @@
     View Cart Page
   </a>
 </div>
+
+
 
 
 
