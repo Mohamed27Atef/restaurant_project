@@ -23,6 +23,6 @@ export class RestaurantService {
   }
   getRestaurantByName( q: string): Observable<any> {
     return this.httpClient.get(this.BaseUrl + "search/" + q);
-}
+  }
 
 }

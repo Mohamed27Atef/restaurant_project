@@ -16,8 +16,16 @@ import { getCookie } from 'typescript-cookie';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private cartService: ShoppingCartService) {}
 
+  constructor(private cartService: ShoppingCartService) {
+    let JsonToken = getCookie('User');
+
+    let Token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
+    this.name =
+      Token != null
+        ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+        : '';
+  }
   isCartVisible: boolean = false;
 
   @ViewChild('cart') cart!: ElementRef;
@@ -56,13 +64,12 @@ export class HeaderComponent {
   goToLoginClick() {
     this.goToLogin.nativeElement.click();
   }
-  JsonToken: any = getCookie('User');
 
-  Token: any = this.JsonToken != undefined ? JSON.parse(this.JsonToken) : null;
-  name: any =
-    this.Token != null
-      ? this.Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
-      : '';
+  name: string = '';
+
+  userName(name: string) {
+    this.name = name;
+  }
   logOutButton = document.getElementById('logOut');
   userIcon() {
     if (this.name != '') {

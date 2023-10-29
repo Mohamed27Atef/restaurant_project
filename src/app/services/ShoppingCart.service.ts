@@ -6,7 +6,10 @@ import { CartItem } from '../interfaces/CartItem';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  cartItems: CartItem[] = [];
+
+  cartItems: any[] = [
+    {name: 'test', price: 20},
+  ];
 
   private isCartVisibleSource = new BehaviorSubject<boolean>(false);
   isCartVisible$ = this.isCartVisibleSource.asObservable();

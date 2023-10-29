@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Isotope from 'isotope-layout';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'restaurant_project';
-  isCartVisible: boolean = false;
-
 }
