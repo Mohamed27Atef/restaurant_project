@@ -72,20 +72,19 @@ export class HeaderComponent {
 
   toggleLogoutButton(event: Event) {
     if (this.name != '') {
-      event.preventDefault(); // Prevent the default action of the link
-
+      event.preventDefault();
       const logOutButton = document.getElementById('logOut');
       if (logOutButton) {
         logOutButton.classList.toggle('hidden');
         logOutButton.style.top = logOutButton.classList.contains('hidden')
           ? '-60px'
-          : '30px';
+          : '80px';
       }
     }
   }
 
   LogOut() {
-    removeCookie('User');
     this.name = '';
+    removeCookie('User');
   }
 }

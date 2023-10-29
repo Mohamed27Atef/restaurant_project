@@ -211,7 +211,7 @@
   top: -60px;
   right: 150px;
   z-index: 1;
-  transition: top 0.3s;
+  transition: top 0.3s ease-in-out;
 }
 
 .hidden {
