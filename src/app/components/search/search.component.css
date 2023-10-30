@@ -153,6 +153,7 @@ input.form-control::placeholder {
 .searchPargraph {
     margin: 8px;
     max-height: 200px;
+    overflow: scroll;
 }
 .samllFont {
     font-size: 15px;
