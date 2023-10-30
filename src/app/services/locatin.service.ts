@@ -16,6 +16,4 @@ export class LocatinService {
   getAllLocation(): Observable<any> {
     return this.httpClient.get(this.DB_URL);
   }
-
-
 }
