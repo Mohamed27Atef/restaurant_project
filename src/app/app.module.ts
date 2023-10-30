@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
@@ -57,9 +57,13 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RestaurantSelectionComponent } from './components/restaurant-selection/restaurant-selection.component';
+
+import { TableService } from './services/table.service';
+
 import { PaymentComponent } from './components/order-details/payment/payment.component';
 import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
 import { SearchTableComponent } from './components/reserve-table/search-table/search-table.component';
+
 
 
 
@@ -120,8 +124,13 @@ import { SearchTableComponent } from './components/reserve-table/search-table/se
     FormsModule,
     CarouselModule,
     RouterModule,
+
+    SidebarModule,
+    ReactiveFormsModule
+
     CommonModule,
     SidebarModule
+
 
   ],
   providers: [],
