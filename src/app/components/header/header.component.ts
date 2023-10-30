@@ -80,9 +80,15 @@ export class HeaderComponent {
       const logOutButton = document.getElementById('logOut');
       if (logOutButton) {
         logOutButton.classList.toggle('hidden');
-        logOutButton.style.top = logOutButton.classList.contains('hidden')
-          ? '-60px'
-          : '75px';
+        if (window.innerWidth <= 768) {
+          logOutButton.style.top = logOutButton.classList.contains('hidden')
+            ? '260px'
+            : '275px';
+        } else {
+          logOutButton.style.top = logOutButton.classList.contains('hidden')
+            ? '-60px'
+            : '75px';
+        }
       }
     }
   }

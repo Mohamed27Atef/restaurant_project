@@ -217,3 +217,13 @@
 .hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+  #logOut {
+    top: 260px;
+  }
+
+  .btn-lg {
+    --bs-btn-font-size: 1rem
+  }
+}
