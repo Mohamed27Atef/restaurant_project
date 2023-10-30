@@ -1,4 +1,4 @@
-.contact-us-container {
+/* .contact-us-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -7,7 +7,7 @@
 }
 
 .wider-form {
-  width: 100%; /* Make the form 100% wide within the container */
+  width: 100%;
 }
 label {
   display: block;
@@ -33,4 +33,4 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+} */

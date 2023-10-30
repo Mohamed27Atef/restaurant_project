@@ -2,5 +2,6 @@
     <div class="bg-box">
       <img src="assets/images/hero-bg.jpg" alt="" />
     </div>
-    <app-search></app-search>
+    <app-search (selectedLocatoin)="getLocatoin($event)" (myEvent)="getCategoryId($event)"></app-search>
+    <app-restaurant-owl-carousel #restaurant></app-restaurant-owl-carousel>
     </div>

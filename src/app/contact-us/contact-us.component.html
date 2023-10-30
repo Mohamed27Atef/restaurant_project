@@ -1,4 +1,4 @@
-<div class="contact-us-container">
+<!-- <div class="contact-us-container">
   <h2>Contact Us</h2>
   <form (ngSubmit)="onSubmit()" class="wider-form">
     <label for="name">Name:</label>
@@ -17,3 +17,6 @@
   </form>
 </div>
 
+<div *ngIf="isSubmitted" class="confirmation-message" [@fadeInOut]>
+  Thank you for your message. We have received your email.
+</div>

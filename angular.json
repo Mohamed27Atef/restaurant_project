@@ -35,7 +35,9 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/script.js"
+
             ]
           },
           "configurations": {
@@ -105,6 +107,7 @@
     }
   },
   "cli": {
+
     "analytics": "a88dcc99-81b3-4594-a230-114e05b99e61"
   }
 }
