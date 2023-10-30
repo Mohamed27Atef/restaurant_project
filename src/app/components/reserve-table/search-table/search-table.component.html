@@ -1,42 +1,42 @@
 <!-- search.component.html -->
 
 <div class="row flex-end">
-    <div class="col-6">
-      <div class="search-container">
-        <input
-          type="text"
-          [(ngModel)]="restaurantNumber"
-          placeholder="Enter Restaurant Number"
-          class="search-input custom-input-width"
-        />
-        <button (click)="searchByRestaurantNumber()" class="search-button">
-          Search
-        </button>
-      </div>
-    </div>
-  
-    <div class="col-6">
-      <div class="search-container">
-        <input
-          type="date"
-          [(ngModel)]="searchDate"
-          class="search-input custom-input-width"
-          (change)="searchByDate()"
-        />
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-6 mt-3 mb-5">
+  <div class="col-6">
     <div class="search-container">
       <input
         type="text"
-        [(ngModel)]="restaurantName"
-        placeholder="Enter Restaurant Name"
+        [(ngModel)]="restaurantNumber"
+        (ngModelChange)="onTableNumberChange()"
+        placeholder="Enter Table Number"
         class="search-input custom-input-width"
       />
-      <button (click)="searchByRestaurantName()" class="search-button">
+      <button (click)="searchByTableNumber()" class="search-button">
         Search
       </button>
     </div>
   </div>
+
+  <div class="col-6">
+    <div class="search-container">
+      <input
+        type="date"
+        [(ngModel)]="searchDate"
+        class="search-input custom-input-width"
+        (change)="searchByDate()"
+      />
+      <button (click)="clearDate()" class="search-button">clear</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-6 mt-3 mb-5">
+  <div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="restaurantName"
+      (ngModelChange)="searchByRestaurantName()"
+      placeholder="Enter Restaurant Name"
+      class="search-input custom-input-width"
+    />
+  </div>
+</div>

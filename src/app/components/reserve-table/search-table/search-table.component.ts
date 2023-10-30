@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserTableServicesService } from 'src/app/services/user-table.service';
 
 @Component({
@@ -6,14 +6,18 @@ import { UserTableServicesService } from 'src/app/services/user-table.service';
   templateUrl: './search-table.component.html',
   styleUrls: ['./search-table.component.css'],
 })
-export class SearchTableComponent {
+export class SearchTableComponent implements OnInit {
   restaurantNumber: string = '';
   restaurantName: string = '';
   searchDate: string = '';
   reservationResult: any[] = [];
   @Output() myEvent = new EventEmitter();
 
-  constructor(private userTableService: UserTableServicesService) {
+  constructor(private userTableService: UserTableServicesService) {}
+  ngOnInit(): void {
+    this.getAllReservation();
+  }
+  getAllReservation() {
     this.userTableService.getAllUserReservation().subscribe({
       next: (data) => {
         this.reservationResult = data;
@@ -22,8 +26,10 @@ export class SearchTableComponent {
       error: (err) => console.log(err),
     });
   }
-  searchByRestaurantNumber() {
-    console.log('Searching for restaurant number: ' + this.restaurantNumber);
+  onTableNumberChange() {
+    this.getAllReservation();
+  }
+  searchByTableNumber() {
     this.reservationResult = [];
     this.userTableService.getAllUserReservation().subscribe({
       next: (data) => {
@@ -42,12 +48,8 @@ export class SearchTableComponent {
       next: (data) => {
         let name = ` ِ${this.restaurantName}`;
         for (let i = 0; i < data.length; i++) {
-          console.log(
-            ' data[i].restaurantName ' + data[i].restaurantName.slice(1)
-          );
-          console.log(' data[i].restaurantName ' + this.restaurantName);
           const originalString = this.restaurantName;
-          if (data[i].restaurantName.slice(1) === this.restaurantName)
+          if (data[i].restaurantName.includes(this.restaurantName))
             this.reservationResult.push(data[i]);
         }
         this.myEvent.emit(this.reservationResult);
@@ -56,17 +58,25 @@ export class SearchTableComponent {
     });
   }
   searchByDate() {
-    console.log('Searching for restaurant number: ' + this.searchDate);
-    this.reservationResult = [];
-    this.userTableService.getAllUserReservation().subscribe({
-      next: (data) => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].dateTime.split('T')[0] == this.searchDate)
-            this.reservationResult.push(data[i]);
-        }
-        this.myEvent.emit(this.reservationResult);
-      },
-      error: (err) => console.log(err),
-    });
+    if (this.searchDate) {
+      this.reservationResult = [];
+      this.userTableService.getAllUserReservation().subscribe({
+        next: (data) => {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].dateTime.split('T')[0] == this.searchDate)
+              this.reservationResult.push(data[i]);
+          }
+          this.myEvent.emit(this.reservationResult);
+        },
+        error: (err) => console.log(err),
+      });
+    } else {
+      this.getAllReservation();
+    }
+  }
+
+  clearDate() {
+    this.getAllReservation();
+    this.searchDate = '';
   }
 }
