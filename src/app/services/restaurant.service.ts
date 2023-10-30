@@ -29,6 +29,11 @@ export class RestaurantService {
     return this.httpClient.get(this.BaseUrl + id )
   }
 
+  getRestaurantByLocation(location: string): Observable<any> {
+    return this.httpClient.get(this.BaseUrl + "getByAddress/" + location );
+  }
+
+
   getRestaurantImages(id: number): Observable<any> {
     return this.httpClient.get(this.BaseUrl + "getimages/" + id )
   }
