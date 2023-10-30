@@ -26,7 +26,7 @@ export class HeaderComponent {
           ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
           : '';
     } catch (error) {
-      console.error('Error decoding JWT:', error);
+      // console.error('Error decoding JWT:', error);
     }
   }
   isCartVisible: boolean = false;
