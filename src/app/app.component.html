@@ -1,5 +1,10 @@
 <!-- <app-header></app-header>
 <app-home></app-home>
+
+
+
+
+
 <app-most-popular></app-most-popular> -->
 
 <!-- <app-slider></app-slider> -->
@@ -9,5 +14,10 @@
 <app-restaurant></app-restaurant>
 <!-- <app-cart-page></app-cart-page> -->
 <!-- <app-reservation-container></app-reservation-container> -->
+
 <app-footer class="d-inline"></app-footer>
 
+<div class="cart">
+  <app-cart-item *ngFor="let product of cartItems" [product]="product"></app-cart-item>
+</div>
+<app-steps></app-steps>
