@@ -49,7 +49,11 @@ export class SearchTableComponent implements OnInit {
         let name = ` ِ${this.restaurantName}`;
         for (let i = 0; i < data.length; i++) {
           const originalString = this.restaurantName;
-          if (data[i].restaurantName.includes(this.restaurantName))
+          if (
+            data[i].restaurantName
+              .toLowerCase()
+              .includes(this.restaurantName.toLowerCase())
+          )
             this.reservationResult.push(data[i]);
         }
         this.myEvent.emit(this.reservationResult);
