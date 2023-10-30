@@ -1,0 +1,31 @@
+<div class="col-md-6 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5 fadeInUp ftco-animated">
+    <div class="all">
+    <div class="py-md-5 p-3">
+        <div class="heading-section ftco-animate mb-5 fadeInUp ftco-animated text-center">
+            <h2 class="mb-3 head">Make Reservation</h2>
+        </div>
+        <form (submit)="performAction()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="mb-2" class="head">Select Restaurant</label>
+                        <div class="select-wrap one-third">
+                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                            <select id="restaurantName"  name="restaurantName" class="form-control">
+                                <option value="">Select Restaurant</option>
+                                <!-- <option *ngFor="let restaurant of restaurants" [value]="restaurant.id">{{ restaurant.name }}</option> -->
+                                <option *ngFor="let restaurant of restaurants" [value]="restaurant">{{ restaurant }}</option>
+                            </select>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3 text-center mt-5">
+                    <div class="form-group">
+                        <input type="submit" value="confirm selection" class="btn btn-primary py-3 px-5">
+                    </div>
+                </div> 
+        </form>
+    </div>
+</div>
+</div>

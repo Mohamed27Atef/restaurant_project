@@ -1,0 +1,9 @@
+.book{
+    width: 100%;
+    min-height: 50vh;
+    background-color: yellow;
+    margin-bottom: 40px;
+    background-image: url("/assets/images/hero-bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}

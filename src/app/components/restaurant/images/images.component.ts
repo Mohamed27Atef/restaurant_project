@@ -1,14 +1,15 @@
-import { Component, OnInit} from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'resturamt-images',
   templateUrl: './images.component.html',
   styleUrls: ['./images.component.css']
 })
-export class ImagesComponent implements OnInit {
+export class ImagesComponent implements AfterViewInit {
   constructor() { }
-
-  ngOnInit(): void {
+  @Input("images") images!: string[];
+  @Input() mainImage!: string;
+  ngAfterViewInit(): void {
     const slides = document.querySelectorAll('.slide');
     const navCircles = document.querySelectorAll('.nav-circle');
     let currentIndex: number = 0;

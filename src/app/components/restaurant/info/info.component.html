@@ -1,4 +1,4 @@
-<h1 class="RestaurantTitle">Atef Restaurant</h1>
+<h1 class="RestaurantTitle">{{name}}</h1>
 <!-- open&close -->
 <div class="container demo-bg">
   <div class="row">
@@ -8,14 +8,11 @@
       <div class="business-hours">
         <h2 class="title">Opening Hours</h2>
         <ul class="list-unstyled opening-hours">
-          <li>Sunday <span class="pull-right">Closed</span></li>
-          <li>Monday <span class="pull-right">9:00am-9:00pm</span></li>
-          <li>Tuesday <span class="pull-right">9:00am-9:00pm</span></li>
-          <li>Wednesday <span class="pull-right">9:00am-9:00pm</span></li>
-          <li>Thursday <span class="pull-right">9:00am-9:00pm</span></li>
-          <li>Friday <span class="pull-right">9:00am-9:00pm</span></li>
-          <li>Saturday <span class="pull-right">9:00am-9:00pm</span></li>
+          <li *ngFor="let days of WeekDays"> {{days}} <span class="pull-right">
 
+            <span *ngIf="checkifClosed(days)">Closed</span>
+            <span *ngIf="!checkifClosed(days)">{{oppeningHour.toFixed(2)}} am-{{closingHour.toFixed(2)}} pm</span>
+          </span></li>
         </ul>
       </div>
     </div>
@@ -27,7 +24,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body text-center"> 
-                 <span class="myratings">4.5</span>
+                 <span class="myratings">{{rate}}</span>
                     <fieldset class="rating">
                         <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                         <input type="radio" id="star4half" name="rating" value="4.5" checked/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -39,7 +36,7 @@
                         <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
                         <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
                         <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                        <input type="radio" class="reset-option" name="rating" value="4.5" />
+                        <input type="radio" class="reset-option" name="rating" [value]="rate" />
                     </fieldset>
                 </div>
             </div>
