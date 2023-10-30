@@ -34,6 +34,8 @@ import { OffersComponent } from './components/restaurant/offers/offers.component
 import { ReservationsComponent } from './components/restaurant/reservations/reservations.component';
 import { ContactComponent } from './components/restaurant/contact/contact.component';
 import { MenuComponent } from './components/restaurant/menu/menu.component';
+import { CommonModule } from '@angular/common';
+
 
 
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
@@ -55,6 +57,9 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RestaurantSelectionComponent } from './components/restaurant-selection/restaurant-selection.component';
+import { PaymentComponent } from './components/order-details/payment/payment.component';
+import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
+import { SearchTableComponent } from './components/reserve-table/search-table/search-table.component';
 
 
 
@@ -98,6 +103,9 @@ import { RestaurantSelectionComponent } from './components/restaurant-selection/
     ReservationContainerComponent,
     ReservationFormComponent,
     RestaurantSelectionComponent,
+    PaymentComponent,
+    ReserveTableComponent,
+    SearchTableComponent,
   
 
 
@@ -112,6 +120,7 @@ import { RestaurantSelectionComponent } from './components/restaurant-selection/
     FormsModule,
     CarouselModule,
     RouterModule,
+    CommonModule,
     SidebarModule
 
   ],
