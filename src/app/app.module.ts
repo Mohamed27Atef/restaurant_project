@@ -7,7 +7,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -99,10 +98,8 @@ import { SearchTableComponent } from './components/reserve-table/search-table/se
     FAQComponent,
     SerchRetaurantComponent,
     CartPageComponent,
-
     CartItemComponent,
     StepsComponent,
-
     CartItemsComponent,
     ReservationContainerComponent,
     ReservationFormComponent,
@@ -124,14 +121,10 @@ import { SearchTableComponent } from './components/reserve-table/search-table/se
     FormsModule,
     CarouselModule,
     RouterModule,
-
     SidebarModule,
-    ReactiveFormsModule
-
-    CommonModule,
-    SidebarModule
-
-
+    ReactiveFormsModule,
+    SidebarModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
