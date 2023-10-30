@@ -24,7 +24,9 @@
         class="search-input custom-input-width"
         (change)="searchByDate()"
       />
-      <button (click)="clearDate()" class="search-button">clear</button>
+      <button (click)="clearDate()" class="search-button" *ngIf="searchDate">
+        clear
+      </button>
     </div>
   </div>
 </div>
