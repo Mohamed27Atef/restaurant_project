@@ -47,10 +47,15 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CartService } from './services/service-cart';
 import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
+
+import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { StepsComponent } from './components/steps/steps.component';
+
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RestaurantSelectionComponent } from './components/restaurant-selection/restaurant-selection.component';
+
 
 
 
@@ -85,11 +90,16 @@ import { RestaurantSelectionComponent } from './components/restaurant-selection/
     FAQComponent,
     SerchRetaurantComponent,
     CartPageComponent,
+
+    CartItemComponent,
+    StepsComponent,
+
     CartItemsComponent,
     ReservationContainerComponent,
     ReservationFormComponent,
     RestaurantSelectionComponent,
   
+
 
 
   ],
