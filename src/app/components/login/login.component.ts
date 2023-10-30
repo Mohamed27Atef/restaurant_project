@@ -26,16 +26,18 @@ export class LoginComponent {
     };
     this.myServices.login(loginData).subscribe({
       next: (loginResponse: any) => {
-        let token: any = jwtDecode(loginResponse.token);
+        let tokenDecoded: any = jwtDecode(loginResponse.token);
         let tokenExpiration: any = new Date(loginResponse.expiration);
-        let JsonToken = JSON.stringify(token);
-        setCookie('User', JsonToken, {
+        let jsonTokenWithoutDecode = JSON.stringify(loginResponse.token);
+        setCookie('User', jsonTokenWithoutDecode, {
           expires: tokenExpiration,
           path: '',
         });
         this.clickEvent.emit();
         this.userName.emit(
-          token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+          tokenDecoded[
+            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+          ]
         );
       },
       error: (errorMassage) => {
