@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartItem } from 'src/app/interfaces/CartItem';
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 
 @Component({
@@ -7,18 +8,18 @@ import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent {
-  cartItems: any[];
+  cartItems: CartItem[];
 
   constructor(private cartService: ShoppingCartService) {
     this.cartItems = this.cartService.getCartItems();
   }
 
-  incrementItem(item: any) {
+  incrementItem(item: CartItem) {
 
     this.cartService.incrementCartItem(item);
   }
 
-  decrementItem(item: any) {
+  decrementItem(item: CartItem) {
     this.cartService.decrementCartItem(item);
   }
 

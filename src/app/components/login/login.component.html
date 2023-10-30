@@ -17,13 +17,29 @@
   </div>
   <div class="mb-3">
     <label for="loginPassword" class="form-label">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="loginPassword"
-      name="loginPassword"
-      [(ngModel)]="password"
-    />
+    <div class="input-group">
+      <input
+        [type]="passwordVisible ? 'text' : 'password'"
+        type="password"
+        class="form-control"
+        id="loginPassword"
+        name="loginPassword"
+        [(ngModel)]="password"
+      />
+      <button
+        class="btn btn-light"
+        type="button"
+        (click)="togglePasswordVisibility()"
+      >
+        <i
+          class="fa"
+          [ngClass]="{
+            'fa-eye': passwordVisible,
+            'fa-eye-slash': !passwordVisible
+          }"
+        ></i>
+      </button>
+    </div>
     <div *ngIf="password == ''" class="text-danger mt-1 fw-bold">
       {{ passwordError }}
     </div>

@@ -26,16 +26,19 @@ export class LoginComponent {
     };
     this.myServices.login(loginData).subscribe({
       next: (loginResponse: any) => {
-        let token: any = jwtDecode(loginResponse.token);
+        let tokenDecoded: any = jwtDecode(loginResponse.token);
         let tokenExpiration: any = new Date(loginResponse.expiration);
-        let JsonToken = JSON.stringify(token);
-        setCookie('User', JsonToken, {
+        let jsonTokenWithoutDecode = JSON.stringify(loginResponse.token);
+        setCookie('User', jsonTokenWithoutDecode, {
           expires: tokenExpiration,
           path: '',
         });
-        console.log(JsonToken);
         this.clickEvent.emit();
-        this.userName.emit(true);
+        this.userName.emit(
+          tokenDecoded[
+            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+          ]
+        );
       },
       error: (errorMassage) => {
         if (errorMassage) {
@@ -52,5 +55,11 @@ export class LoginComponent {
         }
       },
     });
+  }
+
+  passwordVisible: boolean = false;
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
   }
 }

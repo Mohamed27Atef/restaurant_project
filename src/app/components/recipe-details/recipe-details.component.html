@@ -1,1 +1,153 @@
-<p>recipe-details works!</p>
+<div class="container my-1">
+  <div class="row mt-4">
+    <div class="col-md-1">
+      <ul class="thumbnail-list" id="scrollbar">
+        <li>
+          <img
+            src="https://i.dummyjson.com/data/products/1/1.jpg"
+            class="thumbnail"
+            alt="Thumbnail 1"
+          />
+        </li>
+        <li>
+          <img
+            src="https://i.dummyjson.com/data/products/2/3.jpg"
+            class="thumbnail"
+            alt="Thumbnail 2"
+          />
+        </li>
+        <li>
+          <img
+            src="https://i.dummyjson.com/data/products/2/2.jpg"
+            class="thumbnail"
+            alt="Thumbnail 3"
+          />
+        </li>
+        <li>
+          <img
+            src="https://i.dummyjson.com/data/products/2/3.jpg"
+            class="thumbnail"
+            alt="Thumbnail 2"
+          />
+        </li>
+        <li>
+          <img
+            src="https://i.dummyjson.com/data/products/1/1.jpg"
+            class="thumbnail"
+            alt="Thumbnail 1"
+          />
+        </li>
+        <li>
+          <img
+            src="https://i.dummyjson.com/data/products/2/2.jpg"
+            class="thumbnail"
+            alt="Thumbnail 3"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-7 main-image">
+      <img
+        src="https://i.dummyjson.com/data/products/1/1.jpg"
+        alt="Product Image"
+      />
+    </div>
+    <div class="col-md-4">
+      <div class="product-details">
+        <h3 class="my-2">Product Name</h3>
+        <p class="price">$99.99</p>
+        <!-- <p>Availability: In Stock</p> -->
+        <p class="product-rating mb-3" data-section="product">
+          <span class="stars-num">3.5</span
+          ><span class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          <span>(1 reviews)</span>
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac
+          habitasse platea dictumst.
+        </p>
+      </div>
+      <div class="product-buttons">
+        <div class="d-flex align-items-center controls my-3">
+          <button class="remove rounded-5 btn btn-warning" (click)="remove()">
+            <i class="fa-solid fa-minus fa-sm"></i>
+          </button>
+          <div class="quantity mx-3">1</div>
+          <button class="plus rounded-5 btn btn-warning" (click)="plus()">
+            <i class="fa-solid fa-plus fa-sm"></i>
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-outline-warning me-4 text-dark">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Add to Cart
+          </button>
+          <div id="wishlistBtn" class="btn border-0 btn-outline-dark">
+            <i
+              class="far fa-heart favorite-button fa-lg toggle-favorite me-2"
+            ></i
+            ><span>Add to wishlist</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h2>Product Description</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam voluptas
+        earum distinctio repellendus, saepe reprehenderit quos esse laudantium
+        rerum officiis dignissimos aliquid incidunt voluptatibus mollitia ab
+        obcaecati, quibusdam repellat est!
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="text-center">
+      <h2>Related Products</h2>
+    </div>
+    <div class="d-flex justify-content-center gap-4">
+      <div class="related-products">
+        <a href="#">
+          <img
+            src="https://i.dummyjson.com/data/products/1/1.jpg"
+            alt="Product Image"
+          />
+        </a>
+      </div>
+      <div class="related-products">
+        <a href="#">
+          <img
+            src="https://i.dummyjson.com/data/products/1/1.jpg"
+            alt="Product Image"
+          />
+        </a>
+      </div>
+      <div class="related-products">
+        <a href="#">
+          <img
+            src="https://i.dummyjson.com/data/products/1/1.jpg"
+            alt="Product Image"
+          />
+        </a>
+      </div>
+      <div class="related-products">
+        <a href="#">
+          <img
+            src="https://i.dummyjson.com/data/products/1/1.jpg"
+            alt="Product Image"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
