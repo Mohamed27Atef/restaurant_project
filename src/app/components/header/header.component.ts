@@ -8,7 +8,7 @@ import {
   Input,
   HostListener,
 } from '@angular/core';
-import { getCookie } from 'typescript-cookie';
+import { getCookie, removeCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,6 @@ import { getCookie } from 'typescript-cookie';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-
   constructor(private cartService: ShoppingCartService) {
     let JsonToken = getCookie('User');
 
@@ -70,11 +69,22 @@ export class HeaderComponent {
   userName(name: string) {
     this.name = name;
   }
-  logOutButton = document.getElementById('logOut');
-  userIcon() {
+
+  toggleLogoutButton(event: Event) {
     if (this.name != '') {
-      console.log(this.userIcon);
-      // this.logOutButton?.style.display = 'Block';
+      event.preventDefault();
+      const logOutButton = document.getElementById('logOut');
+      if (logOutButton) {
+        logOutButton.classList.toggle('hidden');
+        logOutButton.style.top = logOutButton.classList.contains('hidden')
+          ? '-60px'
+          : '75px';
+      }
     }
+  }
+
+  LogOut() {
+    this.name = '';
+    removeCookie('User');
   }
 }
