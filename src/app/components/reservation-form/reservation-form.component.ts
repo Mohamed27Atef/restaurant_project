@@ -18,8 +18,6 @@ export class ReservationFormComponent implements OnInit {
                       {hours:2,description:" 2 hours for 10$"},
                       {hours:3,description:" 3 hours for 15$"}]
                     
- //tables:Table[]=[{id:1,name:"solo",capacity:1},{id:2,name:"family",capacity:5}]
-
 
  constructor(private _TableService:TableService){
   
