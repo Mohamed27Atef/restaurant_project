@@ -208,8 +208,22 @@
 
 #logOut {
   position: absolute;
-  top: 30px;
+  top: -60px;
   right: 150px;
   z-index: 1;
+  transition: top 0.3s ease-in-out;
 }
 
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #logOut {
+    top: 260px;
+  }
+
+  .btn-lg {
+    --bs-btn-font-size: 1rem
+  }
+}
