@@ -44,7 +44,7 @@
                         <div class="select-wrap one-third">
                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                             <select formControlName="tableType" id="tableType" name="tableType" class="form-control">
-                                <option *ngFor="let table of tables" [value]="table.id">{{ getTableType(table.tableType)}}</option>
+                                <option *ngFor="let table of tables" [value]="table.tableType">{{ getTableType(table.tableType)}}</option>
                             </select>
                         </div>
                             <span class="text-danger small" *ngIf="reservationForm.get('tableType')?.getError('required')&& reservationForm.get('tableType')?.touched">Required !</span>

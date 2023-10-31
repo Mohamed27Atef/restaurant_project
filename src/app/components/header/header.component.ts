@@ -7,17 +7,21 @@ import {
   ElementRef,
   Input,
   HostListener,
+  AfterViewInit,
 } from '@angular/core';
 import { getCookie, removeCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  constructor(private cartService: ShoppingCartService) {
+export class HeaderComponent{
+
+  myroute!: string;
+  constructor(private cartService: ShoppingCartService, public route:Router) {
     let jsonTokenWithoutDecode: any = getCookie('User');
     try {
       let Token: any = jwtDecode(jsonTokenWithoutDecode);
@@ -96,5 +100,10 @@ export class HeaderComponent {
   LogOut() {
     this.name = '';
     removeCookie('User');
+  }
+
+  clearLink(){
+    this.myroute = this.route.url.split("#")[0];
+    
   }
 }

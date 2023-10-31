@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MenuService {
 
-  baseUrl: string = 'https://localhost:7058/api/Menu/';
+  baseUrl: string = 'https://localhost:44397/api/Menu/';
 
   constructor(private httpClient: HttpClient) { }
   getMenuByRestaurnatId(restaurantId: number): Observable<any> {

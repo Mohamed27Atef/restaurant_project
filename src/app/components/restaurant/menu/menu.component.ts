@@ -16,8 +16,6 @@ export class MenuComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     const menuContainer = this.el.nativeElement.querySelector('.menu-container');
-
-
     if (menuContainer) {
       const menuIsotope = new Isotope(menuContainer, {
         itemSelector: '.menu-item',
