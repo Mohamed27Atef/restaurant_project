@@ -20,7 +20,6 @@ export class TableReservationComponent implements OnInit {
 
 
   constructor(private _TableService:TableService){
-  
   }
    ngOnInit(): void {
     this._TableService.getTableByRestaurantId(this.RestaurantId).subscribe((data)=>{

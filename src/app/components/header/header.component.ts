@@ -21,10 +21,12 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 export class HeaderComponent{
 
   myroute!: string;
+  jsonTokenWithoutDecode!: any;
+
   constructor(private cartService: ShoppingCartService, public route:Router) {
-    let jsonTokenWithoutDecode: any = getCookie('User');
+    this.jsonTokenWithoutDecode = getCookie('User');
     try {
-      let Token: any = jwtDecode(jsonTokenWithoutDecode);
+      let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
       this.name =
         Token != null
           ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']

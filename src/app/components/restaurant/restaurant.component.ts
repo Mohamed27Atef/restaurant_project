@@ -15,19 +15,19 @@ import { ActivatedRoute, TitleStrategy } from '@angular/router';
   templateUrl: './restaurant.component.html',
   styleUrls: ['./restaurant.component.css']
 })
-export class RestaurantComponent {
+export class RestaurantComponent implements OnInit {
 
   currentRestaurant!: RestaurantInfo;
   id!: number;
   images!: string[];
-  // menus!: Menu[];
-  // recipes!: Recipe[];
+
   looding: boolean = false
 
   @ViewChild("menu") menuCompent!: MenuComponent;
   constructor(private restaurantService: RestaurantService, private menuService: MenuService, activeRoute : ActivatedRoute){
     this.id =activeRoute.snapshot.params["id"];
-
+  }
+  ngOnInit(): void {
     this.restaurantService.getRestaurantById(this.id).subscribe({
       next: data => {this.currentRestaurant = data;}
     })
@@ -37,12 +37,12 @@ export class RestaurantComponent {
     this.menuService.getMenuByRestaurnatId(this.id).subscribe({
       
       next: data => {
+        this.looding= true;
         this.menuCompent.menus = data.menuDto;
         this.menuCompent.recipes = data.recipeDtos;
+        console.log(this.menuCompent.recipes);
       }
     })
-
-
   }
 
 

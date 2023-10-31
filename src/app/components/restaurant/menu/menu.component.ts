@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Renderer2, AfterViewInit, AfterViewChecked } from '@angular/core';
 import * as Isotope from 'isotope-layout';
 import { Menu } from 'src/app/interfaces/menu';
 import { Recipe } from 'src/app/interfaces/recipe';
@@ -14,7 +14,10 @@ export class MenuComponent implements AfterViewInit {
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
+
   ngAfterViewInit() {
+
+
     const menuContainer = this.el.nativeElement.querySelector('.menu-container');
     if (menuContainer) {
       const menuIsotope = new Isotope(menuContainer, {

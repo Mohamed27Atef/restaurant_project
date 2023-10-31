@@ -7,5 +7,8 @@
 </div> 
 
 <restaurant-menu #menu></restaurant-menu>
-<!-- <restaurant-offers></restaurant-offers>
-<restaurant-reservations></restaurant-reservations> -->
+<div *ngIf="looding">
+    <app-book-container [restaurantId]="currentRestaurant.id" [openHour]="currentRestaurant.openHours" [closeHour]="currentRestaurant.closingHours"></app-book-container>
+</div>
+
+<restaurant-offers></restaurant-offers>
