@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
 
 
 
@@ -34,6 +33,8 @@ import { OffersComponent } from './components/restaurant/offers/offers.component
 import { ReservationsComponent } from './components/restaurant/reservations/reservations.component';
 import { ContactComponent } from './components/restaurant/contact/contact.component';
 import { MenuComponent } from './components/restaurant/menu/menu.component';
+import { CommonModule } from '@angular/common';
+
 
 
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
@@ -55,6 +56,13 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RestaurantSelectionComponent } from './components/restaurant-selection/restaurant-selection.component';
+
+import { TableService } from './services/table.service';
+
+import { PaymentComponent } from './components/order-details/payment/payment.component';
+import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
+import { SearchTableComponent } from './components/reserve-table/search-table/search-table.component';
+
 
 
 
@@ -90,14 +98,15 @@ import { RestaurantSelectionComponent } from './components/restaurant-selection/
     FAQComponent,
     SerchRetaurantComponent,
     CartPageComponent,
-
     CartItemComponent,
     StepsComponent,
-
     CartItemsComponent,
     ReservationContainerComponent,
     ReservationFormComponent,
     RestaurantSelectionComponent,
+    PaymentComponent,
+    ReserveTableComponent,
+    SearchTableComponent,
   
 
 
@@ -112,8 +121,10 @@ import { RestaurantSelectionComponent } from './components/restaurant-selection/
     FormsModule,
     CarouselModule,
     RouterModule,
-    SidebarModule
-
+    SidebarModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

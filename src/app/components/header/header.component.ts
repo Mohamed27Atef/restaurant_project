@@ -11,25 +11,31 @@ import {
   HostListener,
   OnInit,
 } from '@angular/core';
-import { getCookie } from 'typescript-cookie';
+import { getCookie, removeCookie } from 'typescript-cookie';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent  {
+
+=======
+export class HeaderComponent {
   cartItems$: Observable<any[]>; // Change this to an Observable
   totalPrice: number = 0;
   constructor(private cartService: ShoppingCartService) {
-    let JsonToken = getCookie('User');
-
-    let Token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
-    this.name =
-      Token != null
-        ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
-        : '';
-        this.cartItems$ = cartService.getCartItems();
+     this.cartItems$ = cartService.getCartItems();
+    let jsonTokenWithoutDecode: any = getCookie('User');
+    try {
+      let Token: any = jwtDecode(jsonTokenWithoutDecode);
+      this.name =
+        Token != null
+          ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+          : '';
+    } catch (error) {
+      // console.error('Error decoding JWT:', error);
+    }
   }
   isCartVisible: boolean = false;
 
@@ -88,11 +94,28 @@ export class HeaderComponent  {
   userName(name: string) {
     this.name = name;
   }
-  logOutButton = document.getElementById('logOut');
-  userIcon() {
+
+  toggleLogoutButton(event: Event) {
     if (this.name != '') {
-      console.log(this.userIcon);
-      // this.logOutButton?.style.display = 'Block';
+      event.preventDefault();
+      const logOutButton = document.getElementById('logOut');
+      if (logOutButton) {
+        logOutButton.classList.toggle('hidden');
+        if (window.innerWidth <= 768) {
+          logOutButton.style.top = logOutButton.classList.contains('hidden')
+            ? '260px'
+            : '275px';
+        } else {
+          logOutButton.style.top = logOutButton.classList.contains('hidden')
+            ? '-60px'
+            : '75px';
+        }
+      }
     }
+  }
+
+  LogOut() {
+    this.name = '';
+    removeCookie('User');
   }
 }

@@ -42,16 +42,21 @@
               [attr.href]="name ? null : '/login'"
               [attr.data-bs-toggle]="name ? null : 'modal'"
               [attr.data-bs-target]="name ? null : '#loginModal'"
-              (click)="userIcon()"
+              (click)="toggleLogoutButton($event)"
             >
-              <i class="fa fa-user" aria-hidden="true"></i
-              ><span>{{ name }}</span>
-              <!-- <div id="logOut" class="">
-                <a href="#" class="btn btn-warning btn-lg">
+              <div class="d-flex align-items-center">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span [attr.class]="name ? 'text-nowrap ms-1' : null">{{
+                  name
+                }}</span>
+              </div>
+
+              <div id="logOut" class="hidden">
+                <a (click)="LogOut()" class="btn btn-warning btn-lg">
                   <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Log
                   out
                 </a>
-              </div> -->
+              </div>
             </a>
             <a class="cart_link" (click)="toggleCart()" href="#" #cart>
               <svg
@@ -208,4 +213,3 @@
   </header>
   <!-- end header section -->
 </div>
-

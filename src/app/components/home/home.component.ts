@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { RestaurantOwlCarouselComponent } from '../restaurant-owl-carousel/restaurant-owl-carousel.component';
+import { data } from 'isotope-layout';
 
 @Component({
   selector: 'app-home',
@@ -16,5 +17,11 @@ export class HomeComponent{
     this.restaurantSerivce.getRestaurantByCategoryId(this.categoryId).subscribe({
       next: data => this.restaurantComponent.restaurants = data,
     })
+  }
+
+  getLocatoin(location: string) {
+    this.restaurantSerivce.getRestaurantByLocation(location).subscribe({
+      next: data => this.restaurantComponent.restaurants = data
+    }) 
   }
 }

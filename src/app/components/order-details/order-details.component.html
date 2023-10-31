@@ -1,1 +1,57 @@
-<p>order-details works!</p>
+<h2 class="Title-order-details text-center mb-5">Order Details</h2>
+<app-payment></app-payment>
+
+<div class="">
+  <table class="m-auto">
+    <tr>
+      <th>img</th>
+      <th>Status</th>
+      <th>DeliveryMethod</th>
+      <th>OrderDate</th>
+      <th>Amount</th>
+      <th>Price</th>
+      <th>Restaurant Name</th>
+      <th>Details</th>
+      <th>Cancel</th>
+    </tr>
+    <tr>
+      <td><img src="image1.jpg" alt="Item 1" /></td>
+      <td>Pending</td>
+      <td>Delivery</td>
+      <td>2023-10-29</td>
+      <td>
+        <button class="minus-button btn">-</button>
+        <span class="quantity">15</span>
+        <button class="plus-button btn">+</button>
+      </td>
+      <td>$<span class="p-2">30.00</span></td>
+      <td>Restaurant A</td>
+      <td><button class="details-button btn btn-warning">Details</button></td>
+      <td><button class="cancel-button btn btn-danger">Cancel</button></td>
+    </tr>
+    <tr>
+      <td><img src="image2.jpg" alt="Item 2" /></td>
+      <td>Delivered</td>
+      <td>Pickup</td>
+      <td>2023-10-28</td>
+      <td>
+        <button class="minus-button btn">-</button>
+        <span class="quantity">1</span>
+        <button class="plus-button btn">+</button>
+      </td>
+      <td>$<span class="p-2">15.00</span></td>
+      <td>Restaurant B</td>
+      <td><button class="details-button btn btn-warning">Details</button></td>
+      <td><button class="cancel-button btn btn-danger">Cancel</button></td>
+    </tr>
+  </table>
+  <div class="container-order-details">
+    <h2 class="order-details-total-price text-center m-5 p-3">
+      <span id="order-total-price-title">Total Price = </span>
+      <span id="order-total-price">$550</span>
+    </h2>
+    <div class="order-deatails-btn">
+      <button class="details-button">Order</button>
+    </div>
+  </div>
+</div>

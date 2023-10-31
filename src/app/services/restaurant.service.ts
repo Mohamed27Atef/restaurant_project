@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RestaurantService {
 
-  private BaseUrl: string = 'https://localhost:44397/api/Resturant/';
+  private BaseUrl: string = 'https://localhost:7058/api/Resturant/';
 
   constructor(private httpClient : HttpClient) { }
 
@@ -17,7 +17,7 @@ export class RestaurantService {
   searchRestaurantByNameAndCategory(name: string, categoryId: number) : Observable<any> {
     return this.httpClient.get(this.BaseUrl + "search/?q=" + name + "&cat=" + categoryId);
   }
-
+ 
   getAllRestaurant(): Observable<any> {
       return this.httpClient.get(this.BaseUrl);
   }
@@ -28,6 +28,11 @@ export class RestaurantService {
   getRestaurantById(id: number): Observable<any> {
     return this.httpClient.get(this.BaseUrl + id )
   }
+
+  getRestaurantByLocation(location: string): Observable<any> {
+    return this.httpClient.get(this.BaseUrl + "getByAddress/" + location );
+  }
+
 
   getRestaurantImages(id: number): Observable<any> {
     return this.httpClient.get(this.BaseUrl + "getimages/" + id )

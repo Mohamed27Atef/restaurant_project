@@ -5,12 +5,16 @@ import { environment } from '../../environments/environment.dev';
 @Injectable({
   providedIn: 'root',
 })
-export class SignUpService {
+export class RecipeService {
   constructor(private myClient: HttpClient) {}
   private apiPort = environment.apiPort;
-  private DB_URL = `https://localhost:7058/api/Account/register`;
+  private DB_URL = `https://localhost:${this.apiPort}/api/Recipe/`;
 
-  register(registerData: any) {
-    return this.myClient.post(this.DB_URL, registerData);
+  getRecipe(id: number) {
+    return this.myClient.get(this.DB_URL + id);
+  }
+
+  getRecipeByMenuId(id: number) {
+    return this.myClient.get(this.DB_URL + 'getRecipeByMenuId/' + id);
   }
 }
