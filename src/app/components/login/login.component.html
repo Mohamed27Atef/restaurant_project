@@ -1,6 +1,9 @@
 <form>
-  <div *ngIf="email && password != ''" class="text-danger my-1">
-    {{ emailOrPasswordError }}
+  <div
+    *ngIf="userLogin.email && userLogin.password != ''"
+    class="text-danger my-1"
+  >
+    {{ userLogin.emailOrPasswordError }}
   </div>
   <div class="mb-3">
     <label for="loginEmail" class="form-label">Email</label>
@@ -9,22 +12,22 @@
       class="form-control"
       id="loginEmail"
       name="loginEmail"
-      [(ngModel)]="email"
+      [(ngModel)]="userLogin.email"
     />
-    <div *ngIf="email == ''" class="text-danger mt-1 fw-bold">
-      {{ emailError }}
+    <div *ngIf="userLogin.email == ''" class="text-danger mt-1 fw-bold">
+      {{ userLogin.emailError }}
     </div>
   </div>
   <div class="mb-3">
     <label for="loginPassword" class="form-label">Password</label>
     <div class="input-group">
       <input
-        [type]="passwordVisible ? 'text' : 'password'"
+        [type]="userLogin.passwordVisible ? 'text' : 'password'"
         type="password"
         class="form-control"
         id="loginPassword"
         name="loginPassword"
-        [(ngModel)]="password"
+        [(ngModel)]="userLogin.password"
       />
       <button
         class="btn btn-light"
@@ -34,14 +37,14 @@
         <i
           class="fa"
           [ngClass]="{
-            'fa-eye': passwordVisible,
-            'fa-eye-slash': !passwordVisible
+            'fa-eye': userLogin.passwordVisible,
+            'fa-eye-slash': !userLogin.passwordVisible
           }"
         ></i>
       </button>
     </div>
-    <div *ngIf="password == ''" class="text-danger mt-1 fw-bold">
-      {{ passwordError }}
+    <div *ngIf="userLogin.password == ''" class="text-danger mt-1 fw-bold">
+      {{ userLogin.passwordError }}
     </div>
   </div>
   <div class="row mb-4">
@@ -51,9 +54,8 @@
         <input
           class="form-check-input"
           type="checkbox"
-          value=""
           id="loginCheck"
-          checked
+          [(ngModel)]="rememberMe"
         />
         <label class="form-check-label" for="loginCheck"> Remember me </label>
       </div>

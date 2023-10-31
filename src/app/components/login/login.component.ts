@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { LoginService } from 'src/app/services/login.service';
 import { getCookie, setCookie } from 'typescript-cookie';
+import { UserLogin } from '../../interfaces/login';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,19 @@ import { getCookie, setCookie } from 'typescript-cookie';
 })
 export class LoginComponent {
   constructor(private myServices: LoginService) {}
-  email: any = '';
-  password: any = '';
-  emailError: string = '';
-  passwordError: string = '';
-  emailOrPasswordError: string = '';
+  userLogin: UserLogin = {
+    email: '',
+    password: '',
+  };
+
   @Output() userName: any = new EventEmitter();
 
   @Output() clickEvent = new EventEmitter<void>();
 
   signIn() {
     let loginData: any = {
-      email: this.email,
-      password: this.password,
+      email: this.userLogin.email,
+      password: this.userLogin.password,
     };
     this.myServices.login(loginData).subscribe({
       next: (loginResponse: any) => {
@@ -43,23 +44,22 @@ export class LoginComponent {
       error: (errorMassage) => {
         if (errorMassage) {
           console.log(errorMassage);
-          if (this.email == '') {
-            this.emailError = 'Email is required.';
+          if (this.userLogin.email == '') {
+            this.userLogin.emailError = 'Email is required.';
           }
-          if (this.password == '') {
-            this.passwordError = 'Password is required.';
+          if (this.userLogin.password == '') {
+            this.userLogin.passwordError = 'Password is required.';
           }
-          if ((this.email && this.password) != '') {
-            this.emailOrPasswordError = 'Email Or Password Is Incorrect';
+          if ((this.userLogin.email && this.userLogin.password) != '') {
+            this.userLogin.emailOrPasswordError =
+              'Email Or Password Is Incorrect';
           }
         }
       },
     });
   }
 
-  passwordVisible: boolean = false;
-
   togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
+    this.userLogin.passwordVisible = !this.userLogin.passwordVisible;
   }
 }
