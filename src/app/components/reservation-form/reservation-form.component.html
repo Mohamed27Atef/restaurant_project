@@ -4,22 +4,14 @@
         <div class="heading-section ftco-animate mb-5 fadeInUp ftco-animated text-center">
             <h2 class="mb-4 head">Make Reservation</h2>
         </div>
-        <form (submit)="performAction()"[formGroup]="reservationForm">
+        <form (submit)="performAction()"[formGroup]="reservationForm">   
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="head" for=""> First Name</label>
-                        <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
+                        <label class="head" for="">Name</label>
+                        <input formControlName="firstName" type="text" class="form-control" placeholder="Name">
                         <span class="text-danger small" *ngIf="reservationForm.get('firstName')?.getError('minlength')">Min Lenght is 3</span>
                         <span class="text-danger small" *ngIf="reservationForm.get('firstName')?.getError('required')&& reservationForm.get('firstName')?.touched">Required</span>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="head" for=""> Last Name</label>
-                        <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name">
-                        <span class="text-danger small" *ngIf="reservationForm.get('lastName')?.getError('required')&& reservationForm.get('lastName')?.touched">Required !</span>
-                        <span class="text-danger small" *ngIf="reservationForm.get('lastName')?.getError('minlength')">Min Lenght is 3</span>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -43,7 +35,7 @@
                         <label class="head" for="">Time</label>
                         <input formControlName="time" type="time" class="form-control" id="book_date" placeholder="Time">
                         <span class="text-danger small" *ngIf="reservationForm.get('time')?.getError('required')&& reservationForm.get('time')?.touched">Required !</span>
-
+                        <span class="text-danger small" *ngIf="reservationForm.hasError('dateTimeInvalid')">The selected date and time must be in the future</span>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -54,11 +46,24 @@
                             <select formControlName="tableType" id="tableType" name="tableType" class="form-control">
                                 <option *ngFor="let table of tables" [value]="table.id">{{ getTableType(table.tableType)}}</option>
                             </select>
-                            </div>
+                        </div>
                             <span class="text-danger small" *ngIf="reservationForm.get('tableType')?.getError('required')&& reservationForm.get('tableType')?.touched">Required !</span>
-                         </div>
                     </div>
                 </div>
+            
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="head" for="">Duration</label>
+                        <div class="select-wrap one-third">
+                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                            <select formControlName="dur"  name="duration" class="form-control">
+                                <option *ngFor="let duration of durations" [value]="duration.hours">{{ duration.description}}</option>
+                            </select>
+                        </div>
+                            <span class="text-danger small" *ngIf="reservationForm.get('dur')?.getError('required')&& reservationForm.get('dur')?.touched">Required !</span>
+                    </div>
+                </div>
+            </div>    
                 <div class="col-md-12 text-center">
                     <div class="form-group mt-3">
                         <textarea class="form-control ui-timepicker-input" placeholder="Type your notes here.......(optional)" id="w3review" name="w3review" rows="4" cols="50"></textarea>

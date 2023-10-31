@@ -1,61 +1,31 @@
-<div class="container my-1">
+<div class="container my-2">
+  <div class="row justify-content-strat align-items-center">
+    <div class="col-1">
+      <a href="#" class="nav-link">Restaurant</a>
+    </div>
+    <div class="col-1 text-center">
+      <i class="fas fa-angle-right" style="color: #ffc107"></i>
+    </div>
+    <div class="col-1">
+      <a href="#" class="nav-link">Category</a>
+    </div>
+  </div>
+
   <div class="row mt-4">
-    <div class="col-md-1">
+    <div class="col-md-1" style="width: 84px">
       <ul class="thumbnail-list" id="scrollbar">
-        <li>
-          <img
-            src="https://i.dummyjson.com/data/products/1/1.jpg"
-            class="thumbnail"
-            alt="Thumbnail 1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://i.dummyjson.com/data/products/2/3.jpg"
-            class="thumbnail"
-            alt="Thumbnail 2"
-          />
-        </li>
-        <li>
-          <img
-            src="https://i.dummyjson.com/data/products/2/2.jpg"
-            class="thumbnail"
-            alt="Thumbnail 3"
-          />
-        </li>
-        <li>
-          <img
-            src="https://i.dummyjson.com/data/products/2/3.jpg"
-            class="thumbnail"
-            alt="Thumbnail 2"
-          />
-        </li>
-        <li>
-          <img
-            src="https://i.dummyjson.com/data/products/1/1.jpg"
-            class="thumbnail"
-            alt="Thumbnail 1"
-          />
-        </li>
-        <li>
-          <img
-            src="https://i.dummyjson.com/data/products/2/2.jpg"
-            class="thumbnail"
-            alt="Thumbnail 3"
-          />
+        <li *ngFor="let img of recipe.images">
+          <img src="{{ img }}" class="thumbnail" alt="Thumbnail" />
         </li>
       </ul>
     </div>
-    <div class="col-md-7 main-image">
-      <img
-        src="https://i.dummyjson.com/data/products/1/1.jpg"
-        alt="Product Image"
-      />
+    <div class="col-md-7 rounded-1 main-image">
+      <img src="{{ recipe.imageUrl }}" alt="Product Image" />
     </div>
     <div class="col-md-4">
       <div class="product-details">
-        <h3 class="my-2">Product Name</h3>
-        <p class="price">$99.99</p>
+        <h3 class="my-3">{{ recipe.name }}</h3>
+        <p class="price">${{ recipe.price }}</p>
         <!-- <p>Availability: In Stock</p> -->
         <p class="product-rating mb-3" data-section="product">
           <span class="stars-num">3.5</span
@@ -88,12 +58,12 @@
             <i class="fa-solid fa-cart-shopping"></i>
             Add to Cart
           </button>
-          <div id="wishlistBtn" class="btn border-0 btn-outline-dark">
+          <!-- <div id="wishlistBtn" class="btn border-0 btn-outline-dark">
             <i
               class="far fa-heart favorite-button fa-lg toggle-favorite me-2"
             ></i
             ><span>Add to wishlist</span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -103,10 +73,7 @@
     <div class="col-md-12">
       <h2>Product Description</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam voluptas
-        earum distinctio repellendus, saepe reprehenderit quos esse laudantium
-        rerum officiis dignissimos aliquid incidunt voluptatibus mollitia ab
-        obcaecati, quibusdam repellat est!
+        {{ recipe.description }}
       </p>
     </div>
   </div>
@@ -115,38 +82,40 @@
     <div class="text-center">
       <h2>Related Products</h2>
     </div>
-    <div class="d-flex justify-content-center gap-4">
-      <div class="related-products">
-        <a href="#">
-          <img
-            src="https://i.dummyjson.com/data/products/1/1.jpg"
-            alt="Product Image"
-          />
-        </a>
-      </div>
-      <div class="related-products">
-        <a href="#">
-          <img
-            src="https://i.dummyjson.com/data/products/1/1.jpg"
-            alt="Product Image"
-          />
-        </a>
-      </div>
-      <div class="related-products">
-        <a href="#">
-          <img
-            src="https://i.dummyjson.com/data/products/1/1.jpg"
-            alt="Product Image"
-          />
-        </a>
-      </div>
-      <div class="related-products">
-        <a href="#">
-          <img
-            src="https://i.dummyjson.com/data/products/1/1.jpg"
-            alt="Product Image"
-          />
-        </a>
+    <div class="d-flex justify-content-center overflow-auto">
+      <div class="d-flex flex-row gap-3">
+        <div class="related-products">
+          <a href="#">
+            <img
+              src="https:/localhost:44397/images/1.jpg"
+              alt="Product Image"
+            />
+          </a>
+        </div>
+        <div class="related-products">
+          <a href="#">
+            <img
+              src="https://localhost:44397/images/2.jpg"
+              alt="Product Image"
+            />
+          </a>
+        </div>
+        <div class="related-products">
+          <a href="#">
+            <img
+              src="https:/localhost:44397/images/1.jpg"
+              alt="Product Image"
+            />
+          </a>
+        </div>
+        <div class="related-products">
+          <a href="#">
+            <img
+              src="https://localhost:44397/images/2.jpg"
+              alt="Product Image"
+            />
+          </a>
+        </div>
       </div>
     </div>
   </div>
