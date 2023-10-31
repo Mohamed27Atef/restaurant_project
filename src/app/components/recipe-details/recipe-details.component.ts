@@ -1,11 +1,44 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.component.html',
   styleUrls: ['./recipe-details.component.css'],
 })
-export class RecipeDetailsComponent implements AfterViewInit {
+export class RecipeDetailsComponent implements OnInit, AfterViewInit {
+  recipe: any;
+  relatedRecipe: any;
+  Id: number = 0;
+  constructor(
+    private myService: RecipeService,
+    private myActive: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.Id = this.myActive.snapshot.params['id'];
+    this.Id = 1;
+    this.myService.getRecipe(this.Id).subscribe({
+      next: (data) => {
+        this.recipe = data;
+        console.log(this.recipe);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+    this.myService.getRecipeByMenuId(this.Id).subscribe({
+      next: (data) => {
+        this.relatedRecipe = data;
+        console.log(this.recipe);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   ngAfterViewInit() {
     const favoriteIcons = document.querySelectorAll('.favorite-button');
     const thumbnailImages = document.querySelectorAll('.thumbnail');

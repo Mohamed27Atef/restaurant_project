@@ -17,7 +17,7 @@ export class RestaurantService {
   searchRestaurantByNameAndCategory(name: string, categoryId: number) : Observable<any> {
     return this.httpClient.get(this.BaseUrl + "search/?q=" + name + "&cat=" + categoryId);
   }
-
+ 
   getAllRestaurant(): Observable<any> {
       return this.httpClient.get(this.BaseUrl);
   }
