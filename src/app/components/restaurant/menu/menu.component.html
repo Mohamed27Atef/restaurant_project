@@ -9,13 +9,13 @@
       <div class="col-lg-12 d-flex justify-content-center">
         <ul id="menu-flters">
           <li data-filter="*" class="filter-active">Show All</li>
-          <li *ngFor="let menu of menus" [attr.data-filter]="'.filter-{{menu.title}}'">{{ menu.title }}</li>
+          <li *ngFor="let menu of menus" [attr.data-filter]="getMenuClass(menu.title)">{{ menu.title }}</li>
         </ul>
       </div>
     </div>
   
     <div class="row menu-container">
-      <div *ngFor="let recipe of recipes" class="col-lg-6 menu-item 'filter-{{recipe.menuName}}'">
+      <div *ngFor="let recipe of recipes" [class]="getRecipeClass(recipe.menuName)">
         <div class="d-flex align-items-center">
           <img class="flex-shrink-0 img-fluid rounded" [src]="recipe.imageUrl" alt="Alternative Text" style="width: 50px;">
           <div class="w-100 d-flex flex-column text-start ps-4">
