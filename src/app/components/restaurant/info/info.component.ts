@@ -9,6 +9,8 @@ export class InfoComponent implements AfterViewInit{
 
   constructor() { }
   ngAfterViewInit(): void {
+    this.generateStarsArray();
+
     const todayIndex = new Date().getDay(); 
     const listItems = document.querySelectorAll('.opening-hours li');
 
@@ -18,6 +20,13 @@ export class InfoComponent implements AfterViewInit{
   }
   @Input() rate!: number;
   @Input() name!: string;
+  starsArray: number[] = [];
+  
+
+  generateStarsArray() {
+    this.starsArray = Array.from({ length: Math.floor(this.rate) });
+  }
+
   @Input() closingDays!: string[];
   @Input() oppeningHour!: number;
   @Input() closingHour!: number;

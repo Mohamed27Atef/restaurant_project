@@ -27,12 +27,13 @@ export class RestaurantComponent {
   constructor(private restaurantService: RestaurantService, private menuService: MenuService){
 
     this.restaurantService.getRestaurantById(this.id).subscribe({
-      next: data => {this.currentRestaurant = data;console.log(data)}
+      next: data => {this.currentRestaurant = data;}
     })
     this.restaurantService.getRestaurantImages(this.id).subscribe({
       next: data => this.images = data
     })
     this.menuService.getMenuByRestaurnatId(this.id).subscribe({
+      
       next: data => {
         this.menuCompent.menus = data.menuDto;
         this.menuCompent.recipes = data.recipeDtos;

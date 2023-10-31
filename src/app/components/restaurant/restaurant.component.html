@@ -4,7 +4,7 @@
 <div *ngIf="currentRestaurant">
     <restaurant-info [oppeningHour]="currentRestaurant.openHours" [closingHour]="currentRestaurant.closingHours" [closingDays]="currentRestaurant.clossingDays" [name]="currentRestaurant.name" [rate]="currentRestaurant.rate"></restaurant-info>
     <restaurant-contact  [address]="currentRestaurant.address" [email]="currentRestaurant.email" [phone]="currentRestaurant.phone"></restaurant-contact>
-</div>
+</div> 
 
 <restaurant-menu #menu></restaurant-menu>
 <!-- <restaurant-offers></restaurant-offers>
