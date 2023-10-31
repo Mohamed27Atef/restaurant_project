@@ -11,32 +11,28 @@
       <div class="col-lg-12 d-flex justify-content-center">
         <ul id="menu-flters">
           <li data-filter="*" class="filter-active">Show All</li>
-          <li data-filter=".filter-starters">Starters</li>
-          <li data-filter=".filter-salads">Salads</li>
-          <li data-filter=".filter-specialty">Specialty</li>
-          <li data-filter=".filter-BadGhaly">bad ghaly</li>
+          <li *ngFor="let menu of menus" [attr.data-filter]="'.filter-' + menu.title">{{menu.title}}</li>
 
         </ul>
       </div>
     </div>
   
           <div class="row menu-container">
-  
-            <div class="col-lg-6 menu-item filter-specialty">
+            <div *ngFor="let recipe of recipes" class="col-lg-6 menu-item filter-">
               <div class="d-flex align-items-center">
-                <img class="flex-shrink-0 img-fluid rounded" src="assets/images/f2.png" alt="Alternative Text" style="width: 50px;">
+                <img class="flex-shrink-0 img-fluid rounded" [src]="recipe.imageUrl" alt="Alternative Text" style="width: 50px;">
                 <div class="w-100 d-flex flex-column text-start ps-4">
                     <div class="menu-content">
-                      <a href="#">Eisaa With rice</a><span>$6.95</span>
+                      <a href="#">{{recipe.name}}</a><span>${{recipe.price.toFixed(2)}} </span>
                     </div>
                     <div class="menu-ingredients">
-                      Eissa, rice, frise, salad, bread
+                      {{recipe.description}}
                     </div>
                   </div>
               </div>
             </div>
-  
-            <div class="col-lg-6 menu-item filter-specialty">
+
+            <!-- <div class="col-lg-6 menu-item filter-specialty">
               <div class="d-flex align-items-center">
                 <img class="flex-shrink-0 img-fluid rounded" src="assets/images/f2.png" alt="Alternative Text" style="width: 50px;">
                 <div class="w-100 d-flex flex-column text-start ps-4">
@@ -104,8 +100,8 @@
                     </div>
                   </div>
               </div>
-            </div>
-  
+            </div>  -->
+
           </div>
   
         </div>
