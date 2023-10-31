@@ -1,13 +1,15 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.dev';
 import { getCookie } from 'typescript-cookie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableService {
-  private BaseUrl: string = 'https://localhost:7058/';
+  private apiPort = environment.apiPort;
+  private BaseUrl: string = `https://localhost:${this.apiPort}/`;
   constructor(private httpClient : HttpClient) { }
   getTableByRestaurantId(RestaurantId: number) : Observable<any> {
     return this.httpClient.get(this.BaseUrl +"api/Resturant/"+ "getTableRestaurant/" + RestaurantId);
