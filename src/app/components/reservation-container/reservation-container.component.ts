@@ -14,7 +14,7 @@ export class ReservationContainerComponent {
     this.showSecondForm =true;
     this.selectedRestaurantId=data;
     console.log(this.selectedRestaurantId)
-  }
+  } 
   handlesubmitSecond(){
     this.showFirstForm = true;
     this.showSecondForm =false;  
