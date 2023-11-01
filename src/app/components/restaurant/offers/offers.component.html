@@ -9,9 +9,13 @@
       <div class="row" data-aos="fade-up" data-aos-delay="100">
         <div class="col-lg-3">
           <ul class="nav nav-tabs flex-column">
-            <li class="nav-item">
-              <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Modi sit est</a>
+            <li *ngFor="let recipe of recipes" class="nav-item">
+              <a class="nav-link active show" data-bs-toggle="tab" [href]="'#tab-' + recipe.id">{{recipe.name}}</a>
             </li>
+
+
+
+<!-- 
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Unde praesentium sed</a>
             </li>
@@ -23,12 +27,28 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Iusto ut expedita aut</a>
-            </li>
+            </li> -->
+            
           </ul>
         </div>
         <div class="col-lg-9 mt-4 mt-lg-0">
           <div class="tab-content">
-            <div class="tab-pane active show" id="tab-1">
+
+
+
+              <div *ngFor="let recipe of recipes" class="tab-pane" [id]="'tab-' + recipe.id">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>{{recipe.name}}</h3>
+                    <p class="fst-italic">{{recipe.description}}</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img [src]="recipe.imageUrl" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+
+            <!-- <div class="tab-pane active show" id="tab-1">
               <div class="row">
                 <div class="col-lg-8 details order-2 order-lg-1">
                   <h3>Architecto ut aperiam autem id</h3>
@@ -37,18 +57,6 @@
                 </div>
                 <div class="col-lg-4 text-center order-1 order-lg-2">
                   <img src="assets/images/specials-1.png" alt="" class="img-fluid">
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="tab-2">
-              <div class="row">
-                <div class="col-lg-8 details order-2 order-lg-1">
-                  <h3>Et blanditiis nemo veritatis excepturi</h3>
-                  <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                  <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
-                </div>
-                <div class="col-lg-4 text-center order-1 order-lg-2">
-                  <img src="assets/images/specials-2.png" alt="" class="img-fluid">
                 </div>
               </div>
             </div>
@@ -87,7 +95,7 @@
                   <img src="assets/images/specials-5.png" alt="" class="img-fluid">
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
