@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { PaymentComponent } from './components/order-details/payment/payment.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { HomeComponent } from './components/home/home.component';
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
+  { path: 'orderDetials', component: OrderDetailsComponent },
+  { path: 'payment', component: PaymentComponent },
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },
 ];

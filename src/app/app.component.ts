@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import Isotope from 'isotope-layout';
+import { HttpClient } from '@angular/common/http';
+import { ShoppingCartService } from './services/ShoppingCart.service';
 
 @Component({
   selector: 'app-root',
@@ -8,29 +9,7 @@ import Isotope from 'isotope-layout';
 })
 export class AppComponent {
   title = 'restaurant_project';
-  cartItems: any[];
-
-  constructor() {
-    this.cartItems = [
-      {
-        name: 'Product 1',
-        description: 'Description 1',
-        price: 19.99,
-        image: '/assets/TaskDay3/1.jpg',
-        quantity: 1, // Initial quantity
-      },
-      {
-        name: 'Product 2',
-        description: 'Description 2',
-        price: 24.99,
-        image: '/assets/TaskDay3/2.jpg',
-        quantity: 1, // Initial quantity
-      },
-    ];
-
+  constructor(private cartService: ShoppingCartService,private http: HttpClient) {}
+  ngOnInit() {
   }
-  loggedInUser = {
-    name: 'Atef',
-    photoUrl: 'assets\images\client1.jpg', 
-  };
 }
