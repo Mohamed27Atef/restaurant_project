@@ -14,8 +14,8 @@
 
   <ul>
     <li *ngFor="let item of cartItems" style="padding: 10px; border-bottom: 1px solid #eee;">
-      <img [src]="item.image" alt="{{ item.name }}" class="product-image small-rounded-image">
-      {{ item.name }} - {{ item.retsurantName }} -${{ item.price }}
+      <img [src]="item.imageUrl" alt="{{ item.recipeName }}" class="product-image small-rounded-image">
+      {{ item.recipeName }} - {{ item.restaurantName }} -${{ item.totalPrice }}
       <span style="color: white; background-color: white;">
         dummy data
       </span>

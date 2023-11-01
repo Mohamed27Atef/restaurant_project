@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { Router } from '@angular/router';
+import { CartItem } from 'src/app/interfaces/CartItem';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,30 +11,35 @@ import { Router } from '@angular/router';
 export class ShoppingCartComponent implements OnInit {
   isCartVisible: boolean = false;
   totalPrice: number = 0;
-  cartItems: any[] = [];
+  cartItems: CartItem[] = [];
 
   constructor(private cartService: ShoppingCartService, private router: Router, private el: ElementRef, private renderer: Renderer2) { }
 
-  increaseQuantity(item: any) {
+  increaseQuantity(item: CartItem) {
     item.quantity++;
-    this.updatePrice();
+    this.updatePrice(item);
   }
 
-  decreaseQuantity(item: any) {
+  decreaseQuantity(item: CartItem) {
     if (item.quantity > 1) {
       item.quantity--;
-      this.updatePrice();
+      this.updatePrice(item);
     }
   }
 
-  updatePrice() {
+  updatePrice(item: CartItem) {
+    item.totalPrice = item.recipePrice * item.quantity;
+    this.updatetotal();
+  }
+
+  updatetotal() {
     this.totalPrice = this.calculateTotalPrice();
   }
 
   calculateTotalPrice(): number {
     let total = 0;
     for (const item of this.cartItems) {
-      total += item.price * item.quantity;
+      total += item.totalPrice;
     }
     return total;
   }
@@ -43,10 +49,12 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cartService.getCartItems().subscribe(items => {
-      this.cartItems = items;
-      this.updatePrice();
-    });
+    this.cartService.getCartItems().subscribe({
+      next: items => {
+        this.cartItems = items;
+        this.updatetotal();
+      }
+    })
   }
 
   goToCartPage() {
