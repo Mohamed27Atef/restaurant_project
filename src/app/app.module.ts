@@ -66,6 +66,7 @@ import { TableReservationComponent } from './components/restaurant/table-reserva
 import { BookContainerComponent } from './components/restaurant/book-container/book-container.component';
 import { BookSelectionComponent } from './components/restaurant/book-selection/book-selection.component';
 import { PalstineComponent } from './components/palstine/palstine.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
 
 
 
@@ -115,7 +116,8 @@ import { PalstineComponent } from './components/palstine/palstine.component';
     BookContainerComponent,
     BookSelectionComponent,
     PalstineComponent,
-  
+    HeaderComponent,
+
 
 
 

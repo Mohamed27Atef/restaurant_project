@@ -1,0 +1,65 @@
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterRecipes()" id="searchText" placeholder="Search by name" class="search-input" />
+</div>
+<div class="recipe-page">
+  <div class="filters-column">
+    <!-- Filters for rating, price range, and restaurant name -->
+    <div class="filter-group">
+      <div class="rating-filters">
+        <div class="rating-filter">
+          <label for="minRating">Minimum Rating:</label>
+          <input type="number" [(ngModel)]="minRating" (ngModelChange)="filterRecipes()" id="minRating" placeholder="Min Rating" />
+        </div>
+        <div class="rating-filter">
+          <label for="maxRating">Maximum Rating:</label>
+          <input type="number" [(ngModel)]="maxRating" (ngModelChange)="filterRecipes()" id="maxRating" placeholder="Max Rating" />
+        </div>
+      </div>
+    </div>
+    <hr /> <!-- Thin line to separate filters -->
+
+
+    <div class="filter-group">
+      <label for="minPrice">Minimum Price:</label>
+      <input type="number" [(ngModel)]="minPrice" (ngModelChange)="filterRecipes()" id="minPrice" placeholder="Min Price" />
+    </div>
+    <div class="filter-group">
+      <label for="maxPrice">Maximum Price:</label>
+      <input type="number" [(ngModel)]="maxPrice" (ngModelChange)="filterRecipes()" id="maxPrice" placeholder="Max Price" />
+    </div>
+    <hr /> <!-- Thin line to separate filters -->
+    <div class="filter-group">
+      <label for="categoryFilter">Filter by Category:</label>
+      <select [(ngModel)]="selectedCategoryFilter" (ngModelChange)="filterByCategory(selectedCategoryFilter)" id="categoryFilter">
+        <option value="All Categories">All Categories</option>
+        <option *ngFor="let category of uniqueCategories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    <hr />
+    <div class="filter-group">
+      <label for="restaurantFilter">Filter by Restaurant Name:</label>
+      <select [(ngModel)]="restaurantFilter" (ngModelChange)="filterRecipes()" id="restaurantFilter">
+        <option value="">Select a Restaurant</option>
+        <option *ngFor="let restaurant of uniqueRestaurants" [value]="restaurant">{{ restaurant }}</option>
+      </select>
+    </div>
+  </div>
+
+
+
+  <div class="recipes-column">
+    <!-- Recipe list -->
+    <div class="recipe-list">
+      <div *ngFor="let recipe of filteredRecipes" class="recipe-item">
+        <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" class="recipe-image" />
+        <div class="recipe-details">
+          <h2>{{ recipe.name }}</h2>
+          <p>Rating: {{ recipe.rating }}</p>
+          <p>Restaurant Name: {{ recipe.restaurantName }}</p>
+          <p>Category: {{ recipe.category }}</p>
+          <p>Price: ${{ recipe.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

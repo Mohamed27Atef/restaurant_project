@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { Router } from '@angular/router';
+import { CartItem } from 'src/app/interfaces/CartItem';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class ShoppingCartComponent implements OnInit {
   isCartVisible: boolean = false;
   totalPrice: number = 0;
-  cartItems: any[] = [];
+  cartItems: CartItem[] = [];
 
   constructor(private cartService: ShoppingCartService, private router: Router, private el: ElementRef, private renderer: Renderer2) { }
 

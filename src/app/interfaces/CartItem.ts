@@ -3,7 +3,7 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
-  imageUrl: string;
-  resturantName:string;
+  image: string;
+  retsurantName:string;
   resturantId:number;
 }
