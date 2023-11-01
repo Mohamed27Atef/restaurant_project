@@ -1,41 +1,95 @@
-<div class="cart" #cart
-    [style.position]="'fixed'"
-    [style.top.px]="88"
-    [style.right.px]="0"
-    [style.width.px]="'300'"
-    [style.height.%]="100"
-    [style.backgroundColor]="'#fff'"
-    [style.boxShadow]="'0 0 10px rgba(0, 0, 0, 0.2)'"
-    [style.overflowY]="'auto'"
-    [style.transition]="'opacity 0.3s ease, visibility 0.3s ease'"
-    [style.zIndex.px]="9999"
-    (click)="$event.stopPropagation()"
+<div
+  class="cart"
+  #cart
+  [style.position]="'fixed'"
+  [style.top.px]="88"
+  [style.right.px]="0"
+  [style.width.px]="'300'"
+  [style.height.%]="100"
+  [style.backgroundColor]="'#fff'"
+  [style.boxShadow]="'0 0 10px rgba(0, 0, 0, 0.2)'"
+  [style.overflowY]="'auto'"
+  [style.transition]="'opacity 0.3s ease, visibility 0.3s ease'"
+  [style.zIndex.px]="9999"
+  (click)="$event.stopPropagation()"
 >
-
   <ul>
-    <li *ngFor="let item of cartItems" style="padding: 10px; border-bottom: 1px solid #eee;">
-      <img [src]="item.imageUrl" alt="{{ item.recipeName }}" class="product-image small-rounded-image">
+    <li
+      *ngFor="let item of cartItems"
+      style="padding: 10px; border-bottom: 1px solid #eee"
+    >
+      <img
+        [src]="item.imageUrl"
+        alt="{{ item.recipeName }}"
+        class="product-image small-rounded-image"
+      />
       {{ item.recipeName }} - {{ item.restaurantName }} -${{ item.totalPrice }}
-      <span style="color: white; background-color: white;">
-        dummy data
-      </span>
+      <span style="color: white; background-color: white"> dummy data </span>
       <div class="product-quantity">
-        <button (click)="decreaseQuantity(item)" class="quantity-button">-</button>
+        <button (click)="decreaseQuantity(item)" class="quantity-button">
+          -
+        </button>
         <span>{{ item.quantity }}</span>
-        <button (click)="increaseQuantity(item)" class="quantity-button">+</button>
-        <button (click)="removeItem(item)" class="remove-button">Remove</button> <!-- Add the Remove button -->
+        <button (click)="increaseQuantity(item)" class="quantity-button">
+          +
+        </button>
+        <button (click)="removeItem(item)" class="remove-button">Remove</button>
+        <!-- Add the Remove button -->
       </div>
     </li>
   </ul>
-  <div class="total" style="border-top: 1px solid #eee; padding: 10px; font-weight: bold; display: flex; justify-content: space-between;">
+  <div
+    class="total"
+    style="
+      border-top: 1px solid #eee;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+    "
+  >
     <p>Total Price: ${{ totalPrice }}</p>
+  </div>
+  <div
+    style="
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    "
+  >
+    <button
+      (click)="clearCart()"
+      class="clear-button"
+      style="
+        background-color: #dc3545;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+      "
+    >
+      Clear Cart
+    </button>
+    <!-- Add the Clear Cart button -->
+    <a
+      href="/cart"
+      target="_blank"
+      style="
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+      "
+      routerLink="/orderDetials"
+      >View Cart Page</a
+    >
+  </div>
 </div>
-<div style="width: 300px; display: flex; flex-direction: column; align-items: center;">
-    <button (click)="clearCart()" class="clear-button" style="background-color: #dc3545; color: white; padding: 10px; text-align: center; border: none; cursor: pointer; transition: background-color 0.3s; width: 100%;">Clear Cart</button> <!-- Add the Clear Cart button -->
-    <a href="/cart" target="_blank" style="background-color: #007bff; color: white; padding: 10px; text-align: center; border: none; cursor: pointer; transition: background-color 0.3s; width: 100%;">View Cart Page</a>
-</div>
-
-
-
-
-
