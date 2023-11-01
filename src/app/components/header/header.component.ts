@@ -23,6 +23,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 
 
+
 export class HeaderComponent{
   totalPrice: number = 0;
   myroute!: string;
@@ -31,12 +32,14 @@ export class HeaderComponent{
 
   constructor(private cartService: ShoppingCartService, public route:Router) {
     this.jsonTokenWithoutDecode = getCookie('User');
+     let UserImageFromCookie: any = getCookie('UserImage');
     try {
       let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
       this.name =
         Token != null
           ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
           : '';
+      this.userImage = UserImageFromCookie;
     } catch (error) {
       // console.error('Error decoding JWT:', error);
     }
@@ -94,9 +97,10 @@ export class HeaderComponent{
   }
 
   name: string = '';
-
-  userName(name: string) {
-    this.name = name;
+  userImage: any = null;
+  userName(user: any) {
+    this.name = user.name;
+    this.userImage = user.image;
   }
 
   toggleLogoutButton(event: Event) {
