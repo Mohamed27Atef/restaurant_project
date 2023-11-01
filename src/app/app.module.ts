@@ -60,6 +60,7 @@ import { BookSelectionComponent } from './components/restaurant/book-selection/b
 import { PalstineComponent } from './components/palstine/palstine.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { StatusComponent } from './components/status/status.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 
@@ -110,6 +111,7 @@ import { StatusComponent } from './components/status/status.component';
     PalstineComponent,
     HeaderComponent,
     StatusComponent,
+    OrdersComponent,
 
 
 
