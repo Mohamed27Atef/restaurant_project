@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
-  { path: '', component: OrderDetailsComponent },
+  { path: 'orderDetials', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },

@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 import { LoginService } from 'src/app/services/login.service';
 import { getCookie, setCookie } from 'typescript-cookie';
 import { UserLogin } from '../../interfaces/login';
+import { IsAuthService } from 'src/app/services/is-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { UserLogin } from '../../interfaces/login';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private myServices: LoginService) {}
+  constructor(private myServices: LoginService, private isAuthServices: IsAuthService) {}
   userLogin: UserLogin = {
     email: '',
     password: '',
@@ -29,6 +30,7 @@ export class LoginComponent {
       next: (loginResponse: any) => {
         let tokenDecoded: any = jwtDecode(loginResponse.token);
         let tokenExpiration: any = new Date(loginResponse.expiration);
+        this.isAuthServices.isAuth = true;
         let jsonTokenWithoutDecode = JSON.stringify(loginResponse.token);
         setCookie('User', jsonTokenWithoutDecode, {
           expires: tokenExpiration,

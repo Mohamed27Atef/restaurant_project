@@ -9,4 +9,5 @@ export interface OrderDetails {
   restaurantName: string;
   recipeName: string;
   recipeDescription: string;
+  recipeId: number
 }

@@ -31,7 +31,7 @@
           $<span>{{ item.totalPrice }}</span>
         </td>
         <td>{{ item.restaurantName }}</td>
-        <td><button class="details-button btn btn-warning">Details</button></td>
+        <td><a [routerLink]="'/recipe/' + item.recipeId" class="details-button btn btn-warning">Details</a></td>
         <td>
           <button
             class="cancel-button btn btn-danger"
