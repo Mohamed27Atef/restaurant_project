@@ -8,4 +8,5 @@ export interface OrderDetails {
   recipePrice: number;
   restaurantName: string;
   recipeName: string;
+  recipeDescription: string;
 }

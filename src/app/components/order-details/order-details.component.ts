@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { CartItem } from 'src/app/interfaces/CartItem';
 import { OrderDetails } from 'src/app/interfaces/order-details';
@@ -11,7 +12,10 @@ import { OrderDetailsService } from 'src/app/services/order-details.service';
 })
 export class OrderDetailsComponent implements OnInit {
   CartItems!: OrderDetails[];
-  constructor(private orderdetailService: OrderDetailsService) {}
+  constructor(
+    private orderdetailService: OrderDetailsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.orderdetailService.getAllCartItems().subscribe({
@@ -53,6 +57,18 @@ export class OrderDetailsComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error updating cart items:', error);
+      },
+    });
+  }
+
+  RemoveCartItem(item: any) {
+    this.orderdetailService.deleteCartItem(item.id).subscribe({
+      next: (results) => {
+        console.log(' cart items deleted successfully');
+        window.location.reload();
+      },
+      error: (error) => {
+        console.error('Error deleting cart items:', error);
       },
     });
   }

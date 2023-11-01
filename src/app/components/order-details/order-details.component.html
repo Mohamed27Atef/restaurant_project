@@ -32,7 +32,14 @@
         </td>
         <td>{{ item.restaurantName }}</td>
         <td><button class="details-button btn btn-warning">Details</button></td>
-        <td><button class="cancel-button btn btn-danger">Remove</button></td>
+        <td>
+          <button
+            class="cancel-button btn btn-danger"
+            (click)="RemoveCartItem(item)"
+          >
+            Remove
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

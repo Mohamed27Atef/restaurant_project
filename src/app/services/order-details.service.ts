@@ -28,4 +28,7 @@ export class OrderDetailsService {
   updateCartItem(cart: OrderDetails) {
     return this.myClient.put(this.DB_URL, cart, { headers });
   }
+  deleteCartItem(id: Number) {
+    return this.myClient.delete(this.DB_URL + '?id=' + id, { headers });
+  }
 }
