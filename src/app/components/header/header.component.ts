@@ -10,9 +10,11 @@ import {
   Input,
   HostListener,
   OnInit,
+  AfterViewInit,
 } from '@angular/core';
 import { getCookie, removeCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -20,15 +22,17 @@ import jwtDecode from 'jwt-decode';
   styleUrls: ['./header.component.css'],
 })
 
-=======
-export class HeaderComponent {
   cartItems$: Observable<any[]>; // Change this to an Observable
-  totalPrice: number = 0;
-  constructor(private cartService: ShoppingCartService) {
-     this.cartItems$ = cartService.getCartItems();
-    let jsonTokenWithoutDecode: any = getCookie('User');
+ 
+export class HeaderComponent{
+ totalPrice: number = 0;
+  myroute!: string;
+  jsonTokenWithoutDecode!: any;
+
+  constructor(private cartService: ShoppingCartService, public route:Router) {
+    this.jsonTokenWithoutDecode = getCookie('User');
     try {
-      let Token: any = jwtDecode(jsonTokenWithoutDecode);
+      let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
       this.name =
         Token != null
           ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
@@ -117,5 +121,10 @@ export class HeaderComponent {
   LogOut() {
     this.name = '';
     removeCookie('User');
+  }
+
+  clearLink(){
+    this.myroute = this.route.url.split("#")[0];
+    
   }
 }

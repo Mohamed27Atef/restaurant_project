@@ -10,6 +10,7 @@ export class ImagesComponent implements AfterViewInit {
   @Input("images") images!: string[];
   @Input() mainImage!: string;
   ngAfterViewInit(): void {
+    let counter:number=0;
     const slides = document.querySelectorAll('.slide');
     const navCircles = document.querySelectorAll('.nav-circle');
     let currentIndex: number = 0;
@@ -20,9 +21,9 @@ export class ImagesComponent implements AfterViewInit {
     function showSlide(index: number) {
         slideElements.forEach((slide, i) => {
             slide.style.transform = `translateX(-${index * 100}%)`;
-            navCircleElements[i].classList.remove('active');
+            // navCircleElements[i].classList.remove('active');
         });
-        navCircleElements[index].classList.add('active');
+        // navCircleElements[index].classList.add('active');
     }
 
     function nextSlide() {

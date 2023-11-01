@@ -7,10 +7,11 @@ import { getCookie } from 'typescript-cookie';
   providedIn: 'root'
 })
 export class TableService {
-  private BaseUrl: string = 'https://localhost:7058/';
+  private BaseUrl: string = 'https://localhost:44397/';
   constructor(private httpClient : HttpClient) { }
-  getTableByRestaurantId(RestaurantId: number) : Observable<any> {
-    return this.httpClient.get(this.BaseUrl +"api/Resturant/"+ "getTableRestaurant/" + RestaurantId);
+//https://localhost:7058/api/Table/getAvailableTalbe?time=2023-11-01T22%3A44%3A00.000Z&restaurantId=1
+  getTableByRestaurantIdAndDAteTime(dateTime:string,RestaurantId: number) : Observable<any> {
+    return this.httpClient.get(this.BaseUrl +"api/Table/"+ "getAvailableTalbe?time=" +dateTime+"&restaurantId="+ RestaurantId);
   }
   
   reserveTable(reservationData:object):Observable<any>{
@@ -27,6 +28,8 @@ export class TableService {
  
     return this.httpClient.post(this.BaseUrl+"api/Table",reservationData,{headers});
   }
+
+
   getTableType(tableType:string):string{
     switch(tableType){
       case "Solo":return "Solo for 1 person"
