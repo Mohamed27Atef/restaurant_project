@@ -52,7 +52,10 @@ export class MenuComponent implements AfterViewInit {
     }
 
   }
+
+
   filterMenu(menu: string) {
     this.selectedMenu = menu;
-  }
+
+ }
 }

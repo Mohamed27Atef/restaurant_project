@@ -25,7 +25,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="head" for="">Date</label>
-                        <input formControlName="date" type="date" class="form-control" placeholder="Date">
+                        <input (ngModelChange)="onDateTimeChange()" formControlName="date" type="date" class="form-control" placeholder="Date">
                         <span class="text-danger small" *ngIf="reservationForm.get('date')?.getError('required')&& reservationForm.get('date')?.touched">Required !</span>
 
                     </div>
@@ -33,7 +33,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="head" for="">Time</label>
-                        <input formControlName="time" type="time" class="form-control" id="book_date" placeholder="Time">
+                        <input (ngModelChange)="onDateTimeChange()" min="09:00" max="22:00" formControlName="time" type="time" class="form-control" id="book_date" placeholder="Time">
                         <span class="text-danger small" *ngIf="reservationForm.get('time')?.getError('required')&& reservationForm.get('time')?.touched">Required !</span>
                         <span class="text-danger small" *ngIf="reservationForm.hasError('dateTimeInvalid')">The selected date and time must be in the future</span>
                     </div>
@@ -42,12 +42,13 @@
                     <div class="form-group">
                         <label class="head" for="">Tabel Type</label>
                         <div class="select-wrap one-third">
+                            <span *ngIf="!isDateTimeSelected && isSelectClicked" class="text-danger small">Please select the date and time first.</span>  
                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                            <select formControlName="tableType" id="tableType" name="tableType" class="form-control">
-                                <option *ngFor="let table of tables" [value]="table.tableType">{{ getTableType(table.tableType)}}</option>
+                            <select (click)="onSelectClicked()" formControlName="tableType" id="tableType" name="tableType" class="form-control">
+                                <option [disabled]="!isDateTimeSelected" *ngFor="let table of tables" [value]="table.tableType">{{ getTableType(table.tableType)}}</option>
                             </select>
-                        </div>
-                            <span class="text-danger small" *ngIf="reservationForm.get('tableType')?.getError('required')&& reservationForm.get('tableType')?.touched">Required !</span>
+                        </div>  
+                        <span class="text-danger small" *ngIf="reservationForm.get('tableType')?.getError('required')&& reservationForm.get('tableType')?.touched">Required !</span>
                     </div>
                 </div>
             
