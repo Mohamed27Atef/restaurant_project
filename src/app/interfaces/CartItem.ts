@@ -1,9 +1,10 @@
 export interface CartItem {
   id: number;
-  name: string;
-  price: number;
+  recipeName: string;
+  recipePrice: number;
+  totalPrice: number;
   quantity: number;
-  image: string;
-  retsurantName:string;
+  imageUrl: string;
+  restaurantName:string;
   resturantId:number;
 }

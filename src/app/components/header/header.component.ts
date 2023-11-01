@@ -15,6 +15,7 @@ import {
 import { getCookie, removeCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { IsAuthService } from 'src/app/services/is-auth.service';
 
 @Component({
   selector: 'app-header',
@@ -22,21 +23,25 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 
-  cartItems$: Observable<any[]>; // Change this to an Observable
- 
+
+
 export class HeaderComponent{
- totalPrice: number = 0;
+  totalPrice: number = 0;
   myroute!: string;
   jsonTokenWithoutDecode!: any;
+  cartItems$!: Observable<any[]>; // Change this to an Observable
 
-  constructor(private cartService: ShoppingCartService, public route:Router) {
+  // isAuth: Boolean = this.isAuthServices.isAuth;
+  constructor(private cartService: ShoppingCartService, public route:Router, public isAuthServices: IsAuthService) {
     this.jsonTokenWithoutDecode = getCookie('User');
+     let UserImageFromCookie: any = getCookie('UserImage');
     try {
       let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
       this.name =
         Token != null
           ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
           : '';
+      this.userImage = UserImageFromCookie;
     } catch (error) {
       // console.error('Error decoding JWT:', error);
     }
@@ -94,9 +99,10 @@ export class HeaderComponent{
   }
 
   name: string = '';
-
-  userName(name: string) {
-    this.name = name;
+  userImage: any = null;
+  userName(user: any) {
+    this.name = user.name;
+    this.userImage = user.image;
   }
 
   toggleLogoutButton(event: Event) {

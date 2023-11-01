@@ -4,9 +4,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,7 +22,6 @@ import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { MostPopularComponent } from './components/most-popular/most-popular.component';
 import { SearchComponent } from './components/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { ImagesComponent } from './components/restaurant/images/images.component';
 import { InfoComponent } from './components/restaurant/info/info.component';
@@ -34,11 +30,7 @@ import { ReservationsComponent } from './components/restaurant/reservations/rese
 import { ContactComponent } from './components/restaurant/contact/contact.component';
 import { MenuComponent } from './components/restaurant/menu/menu.component';
 import { CommonModule } from '@angular/common';
-
-
-
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
-
 import { GetLocationComponent } from './components/get-location/get-location.component';
 import { FAQComponent } from './components/faq/faq.component';
 
@@ -47,12 +39,12 @@ import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
 import { CartService } from './services/service-cart';
-import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
+import { Header, SidebarModule } from '@syncfusion/ej2-angular-navigations';
 
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { StepsComponent } from './components/steps/steps.component';
 
-import { CartItemsComponent } from './components/cart-items/cart-items.component';
+// import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RestaurantSelectionComponent } from './components/restaurant-selection/restaurant-selection.component';
@@ -77,7 +69,6 @@ import { RecipeComponent } from './components/recipe/recipe.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent,
     FooterComponent,
     ErrorComponent,
     RecipeDetailsComponent,
@@ -105,7 +96,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     CartPageComponent,
     CartItemComponent,
     StepsComponent,
-    CartItemsComponent,
+    // CartItemsComponent,
     ReservationContainerComponent,
     ReservationFormComponent,
     RestaurantSelectionComponent,
@@ -117,7 +108,6 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
-
 
 
 

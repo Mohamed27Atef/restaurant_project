@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SignUpService } from 'src/app/services/sign-up.service';
-import { User } from './signup.interface';
+import { User } from '../../interfaces/signup.interface';
 
 @Component({
   selector: 'app-signup',
