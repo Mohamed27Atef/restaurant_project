@@ -1,21 +1,31 @@
-  <form>
-  <div class="mb-3">
-    <label for="registerName" class="form-label">Name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="registerName"
-      name="registerName"
-    />
-  </div>
-  <div class="mb-3">
-    <label for="registerUsername" class="form-label">Username</label>
-    <input
-      type="text"
-      class="form-control"
-      id="registerUsername"
-      name="registerUsername"
-    />
+<form>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="registerName" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="registerFirstName"
+        name="registerFirstName"
+        [(ngModel)]="user.firstName"
+      />
+      <div *ngIf="user.firstName == ''" class="text-danger mt-1 fw-bold">
+        {{ user.firstNameError }}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="registerUsername" class="form-label">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="registerLastName"
+        name="registerLastName"
+        [(ngModel)]="user.LastName"
+      />
+      <div *ngIf="user.LastName == ''" class="text-danger mt-1 fw-bold">
+        {{ user.LastNameError }}
+      </div>
+    </div>
   </div>
   <div class="mb-3">
     <label for="registerEmail" class="form-label">Email</label>
@@ -74,20 +84,17 @@
       class="mb-3 form-check"
       [style.border]="checkboxError == false ? 'none' : '2px solid red'"
     >
-       <input
+      <!-- <input
       type="checkbox"
       class="form-check-input"
       id="registerCheck"
       name="registerCheck"
       [(ngModel)]="registerCheck"
-    /> 
-
-      <label class="form-check-label" for="registerCheck"
-        >Share location with us?</label
-      >
-    </div>
-
-    <button (click)="signUp()" class="btn btn-warning shadow">Sign up</button>
-  </div>
-  <button type="submit" class="btn btn-warning shadow">Sign up</button>
+    /> -->
+    <label class="form-check-label" for="registerCheck"
+    >Share location with us?</label
+  >
+</div>
+<button (click)="signUp()" class="btn btn-warning shadow">Sign up</button>
+</div>
 </form>
