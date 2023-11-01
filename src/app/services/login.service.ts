@@ -9,7 +9,7 @@ export class LoginService {
   
   constructor(private myClient: HttpClient) {}
   private apiPort = environment.apiPort;
-  private DB_URL = `https://localhost:44397/api/Account/LogIn`;
+  private DB_URL = `https://localhost:7058/api/Account/LogIn`;
 
   login(loginData: any) {
     return this.myClient.post(this.DB_URL, loginData);
