@@ -21,4 +21,7 @@ export class UserTableServicesService {
   getAllUserReservation(): Observable<any> {
     return this.myClient.get(`${this.DB_URL}/searchByUserId`, { headers });
   }
+  deleteUserReservation(id: number) {
+    return this.myClient.delete(`${this.DB_URL}?id=${id}`, { headers });
+  }
 }
