@@ -35,11 +35,14 @@ export class LoginComponent {
           path: '',
         });
         this.clickEvent.emit();
-        this.userName.emit(
-          tokenDecoded[
+        let userData = {
+          name: tokenDecoded[
             'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
-          ]
-        );
+          ],
+          image: loginResponse.imageUrl,
+        };
+        this.userName.emit(userData);
+        setCookie('UserImage', userData.image);
       },
       error: (errorMassage) => {
         if (errorMassage) {

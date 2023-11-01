@@ -36,7 +36,7 @@
               <a class="nav-link" href="book.html">Book Table</a>
             </li>
           </ul>
-          <div class="user_option">
+          <div class="user_option gap-3">
             <a
               class="user_link"
               [attr.href]="name ? null : '/login'"
@@ -45,7 +45,17 @@
               (click)="toggleLogoutButton($event)"
             >
               <div class="d-flex align-items-center">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <img
+                  [attr.src]="
+                    userImage != null
+                      ? userImage
+                      : '../../../assets/images/user.png'
+                  "
+                  alt="User Avatar"
+                  class="user-avatar"
+                  *ngIf="name"
+                />
+                <i class="fa fa-user" aria-hidden="true" *ngIf="!name"></i>
                 <span [attr.class]="name ? 'text-nowrap ms-1' : null">{{
                   name
                 }}</span>
