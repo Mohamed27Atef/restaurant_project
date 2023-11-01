@@ -25,13 +25,20 @@
               <a class="nav-link" routerLink="">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  (click)="clearLink()"  [href]="myroute+ '#mostpopular'">Menu</a>
+              <a
+                class="nav-link"
+                (click)="clearLink()"
+                [href]="myroute + '#mostpopular'"
+                >Menu</a
+              >
             </li>
-              <li *ngIf="isAuthServices.isAuth" class="nav-item">
-                <a class="nav-link"  routerLink="userTableReservation" >Table Revervations</a>
-              </li>
-              
-              <!-- <li *ngIf="isAuthServices.isAuth" class="nav-item">
+            <li *ngIf="isAuthServices.isAuth" class="nav-item">
+              <a class="nav-link" routerLink="userTableReservation"
+                >Table Reservations</a
+              >
+            </li>
+
+            <!-- <li *ngIf="isAuthServices.isAuth" class="nav-item">
                 <a class="nav-link"  routerLink="order" >Your Orders</a>
               </li> -->
 
@@ -41,13 +48,18 @@
               </a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link"  (click)="clearLink()"  [href]="myroute+ '#reservation'">Book Table</a>
+              <a
+                class="nav-link"
+                (click)="clearLink()"
+                [href]="myroute + '#reservation'"
+                >Book Table</a
+              >
             </li>
           </ul>
           <div class="user_option gap-3">
             <a
               class="user_link"
-              [attr.href]="name ? null : '/login'"
+              [attr.href]="name ? null : '/'"
               [attr.data-bs-toggle]="name ? null : 'modal'"
               [attr.data-bs-target]="name ? null : '#loginModal'"
               (click)="toggleLogoutButton($event)"
