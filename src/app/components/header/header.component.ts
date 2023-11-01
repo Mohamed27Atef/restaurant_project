@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { getCookie, removeCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
-import { get } from 'jquery';
 
 @Component({
   selector: 'app-header',
