@@ -54,6 +54,10 @@ import { TableService } from './services/table.service';
 import { PaymentComponent } from './components/order-details/payment/payment.component';
 import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
 import { SearchTableComponent } from './components/reserve-table/search-table/search-table.component';
+import { TableReservationComponent } from './components/restaurant/table-reservation/table-reservation.component';
+import { BookContainerComponent } from './components/restaurant/book-container/book-container.component';
+import { BookSelectionComponent } from './components/restaurant/book-selection/book-selection.component';
+import { PalstineComponent } from './components/palstine/palstine.component';
 
 
 
@@ -99,6 +103,10 @@ import { SearchTableComponent } from './components/reserve-table/search-table/se
     PaymentComponent,
     ReserveTableComponent,
     SearchTableComponent,
+    TableReservationComponent,
+    BookContainerComponent,
+    BookSelectionComponent,
+    PalstineComponent,
   
 
 

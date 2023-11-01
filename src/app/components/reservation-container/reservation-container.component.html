@@ -1,4 +1,4 @@
-<div class="book">
+<div class="book" id="reservation">
     <div *ngIf="showFirstForm">
       <app-restaurant-selection (changeDataEvent)="handleChangeDataEvent($event)" ></app-restaurant-selection>
     </div>
@@ -6,3 +6,4 @@
       <app-reservation-form [RestaurantId]="selectedRestaurantId"(submitSecond)="handlesubmitSecond()" (backdata)="handleBack()"></app-reservation-form>
     </div>
   </div>
+ 

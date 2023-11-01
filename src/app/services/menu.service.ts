@@ -14,4 +14,9 @@ export class MenuService {
   getMenuByRestaurnatId(restaurantId: number): Observable<any> {
     return this.httpClient.get(this.baseUrl + restaurantId);
   }
+
+  getMostRated(restaurantId: number): Observable<any>{
+    return this.httpClient.get(this.baseUrl + "getmostRatedRecipe/" + restaurantId);
+  }
+
 }
