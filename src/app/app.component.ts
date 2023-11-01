@@ -33,20 +33,3 @@ export class AppComponent {
     this.cartService.addItemToCart(product2);
   }
 }
-//here
-
-
-
-
-// ngOnInit() {
-
-//   this.http.get('YOUR_API_ENDPOINT').subscribe((data: any) => {
-
-//     if (Array.isArray(data)) {
-
-//       data.forEach((product: any) => {
-//         this.cartService.addItemToCart(product);
-//       });
-//     }
-//   });
-// }

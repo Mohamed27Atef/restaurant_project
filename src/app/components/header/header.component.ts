@@ -22,12 +22,12 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 
-  cartItems$: Observable<any[]>; // Change this to an Observable
- 
+
 export class HeaderComponent{
- totalPrice: number = 0;
+  totalPrice: number = 0;
   myroute!: string;
   jsonTokenWithoutDecode!: any;
+  cartItems$!: Observable<any[]>; // Change this to an Observable
 
   constructor(private cartService: ShoppingCartService, public route:Router) {
     this.jsonTokenWithoutDecode = getCookie('User');
