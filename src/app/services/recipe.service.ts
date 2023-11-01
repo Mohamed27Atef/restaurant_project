@@ -10,7 +10,11 @@ export class RecipeService {
   private apiPort = environment.apiPort;
   private DB_URL = `https://localhost:${this.apiPort}/api/Recipe/`;
 
-  getRecipe(num: number) {
-    this.myClient.get(this.DB_URL + num);
+  getRecipe(id: number) {
+    return this.myClient.get(this.DB_URL + id);
+  }
+
+  getRecipeByMenuId(id: number) {
+    return this.myClient.get(this.DB_URL + 'getRecipeByMenuId/' + id);
   }
 }

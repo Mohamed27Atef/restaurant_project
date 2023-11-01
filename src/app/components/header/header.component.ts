@@ -9,6 +9,7 @@ import {
   HostListener,
 } from '@angular/core';
 import { getCookie, removeCookie } from 'typescript-cookie';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-header',
@@ -17,13 +18,16 @@ import { getCookie, removeCookie } from 'typescript-cookie';
 })
 export class HeaderComponent {
   constructor(private cartService: ShoppingCartService) {
-    let JsonToken = getCookie('User');
-
-    let Token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
-    this.name =
-      Token != null
-        ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
-        : '';
+    let jsonTokenWithoutDecode: any = getCookie('User');
+    try {
+      let Token: any = jwtDecode(jsonTokenWithoutDecode);
+      this.name =
+        Token != null
+          ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+          : '';
+    } catch (error) {
+      // console.error('Error decoding JWT:', error);
+    }
   }
   isCartVisible: boolean = false;
 
@@ -76,9 +80,15 @@ export class HeaderComponent {
       const logOutButton = document.getElementById('logOut');
       if (logOutButton) {
         logOutButton.classList.toggle('hidden');
-        logOutButton.style.top = logOutButton.classList.contains('hidden')
-          ? '-60px'
-          : '75px';
+        if (window.innerWidth <= 768) {
+          logOutButton.style.top = logOutButton.classList.contains('hidden')
+            ? '260px'
+            : '275px';
+        } else {
+          logOutButton.style.top = logOutButton.classList.contains('hidden')
+            ? '-60px'
+            : '75px';
+        }
       }
     }
   }

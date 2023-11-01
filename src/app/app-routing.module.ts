@@ -5,6 +5,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { PaymentComponent } from './components/order-details/payment/payment.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'cart', component: CartPageComponent },
   { path: '', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
+  { path: 'recipe/:id', component: RecipeDetailsComponent },
 ];
 
 @NgModule({

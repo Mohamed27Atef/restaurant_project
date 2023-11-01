@@ -217,6 +217,7 @@
   display: none;
 }
 
+
 .css-y4gjqo {
   padding: 4px;
   background: #e4f4ed;
@@ -239,3 +240,14 @@
   justify-content: center;
   color: #001433;
 }
+
+@media (max-width: 768px) {
+  #logOut {
+    top: 260px;
+  }
+
+  .btn-lg {
+    --bs-btn-font-size: 1rem
+  }
+}
+
