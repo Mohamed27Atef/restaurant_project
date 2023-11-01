@@ -31,7 +31,13 @@
           $<span>{{ item.totalPrice }}</span>
         </td>
         <td>{{ item.restaurantName }}</td>
-        <td><a [routerLink]="'/recipe/' + item.recipeId" class="details-button btn btn-warning">Details</a></td>
+        <td>
+          <a
+            [routerLink]="'/recipe/' + item.recipeId"
+            class="details-button btn btn-warning"
+            >Details</a
+          >
+        </td>
         <td>
           <button
             class="cancel-button btn btn-danger"
@@ -50,7 +56,7 @@
       <span id="order-total-price">${{ calculateTotalPrice() }}</span>
     </h2>
     <div class="order-deatails-btn">
-      <a class="details-button" routerLink="payment" (click)="updateCartItem()"
+      <a class="details-button" routerLink="/payment" (click)="updateCartItem()"
         >CheckOut</a
       >
     </div>
