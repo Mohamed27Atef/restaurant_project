@@ -1,10 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
 
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.css']
+  styleUrls: ['./feedback.component.css'],
 })
 export class FeedbackComponent {
+  feedback: Feedback = {
+    text: '',
+    rate: 0,
+    postDate: new Date(),
+    restaurantId: 0,
+    userId: 0,
+  };
 
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedRating: number = 0;
+  @Input() userName: string = '';
+  @Input() userAvatar: string = '';
+  @Input() restaurantId!: number;
+  userComment: string = '';
+
+  constructor(private feedbackService: FeedbackService) {}
+
+  rate(rating: number): void {
+    this.selectedRating = rating;
+  }
+
+  submitFeedback() {
+    const feedbackToAdd = {
+      text: this.userComment,
+      rate: this.selectedRating,
+      postDate: new Date(),
+      restaurantId: this.restaurantId,
+      userId: 1,
+    };
+
+    this.feedbackService.postFeedback(feedbackToAdd).subscribe(
+      (response) => {
+        console.log('Feedback submitted successfully.', response);
+      },
+      (error) => {
+        console.error('Error submitting feedback.', error);
+      }
+    );
+  }
+}
+
+interface Feedback {
+  text: string;
+  rate: number;
+  postDate: Date;
+  restaurantId: number;
+  userId: number;
 }

@@ -27,5 +27,10 @@ export class AppComponent {
         quantity: 1, // Initial quantity
       },
     ];
+
   }
+  loggedInUser = {
+    name: 'Atef',
+    photoUrl: 'assets\images\client1.jpg', 
+  };
 }

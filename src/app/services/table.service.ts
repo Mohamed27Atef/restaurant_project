@@ -7,7 +7,7 @@ import { getCookie } from 'typescript-cookie';
   providedIn: 'root'
 })
 export class TableService {
-  private BaseUrl: string = 'https://localhost:44397/';
+  private BaseUrl: string = 'https://localhost:7058/';
   constructor(private httpClient : HttpClient) { }
 //https://localhost:7058/api/Table/getAvailableTalbe?time=2023-11-01T22%3A44%3A00.000Z&restaurantId=1
   getTableByRestaurantIdAndDAteTime(dateTime:string,RestaurantId: number) : Observable<any> {
