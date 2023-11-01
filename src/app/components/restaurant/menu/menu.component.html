@@ -1,11 +1,12 @@
 <section id="menu" class="menu">
   <div class="container">
     <div class="section-title">
-      <h2 class="menu-title">Check our tasty <span>Menu</span></h2>
+      <h2 class="menu-title" id="mostpopular">Check our tasty <span>Menu</span></h2>
     </div>
     <div class="row">
       <div class="col-lg-12 d-flex justify-content-center">
         <ul id="menu-flters">
+
           <li (click)="filterMenu('all')" [ngClass]="{ 'filter-active': selectedMenu === 'all' }">Show All</li>
           <li *ngFor="let menu of menus" (click)="filterMenu(menu.title)" [ngClass]="{ 'filter-active': selectedMenu === menu.title }">{{ menu.title }}</li>
         </ul>
@@ -13,6 +14,7 @@
     </div>
 
     <div class="row menu-container">
+
       <ng-container *ngFor="let recipe of recipes">
         <div class="col-lg-6 menu-item" [ngClass]="'filter-' + recipe.menuName" *ngIf="selectedMenu === 'all' || selectedMenu === recipe.menuName">
           <div class="d-flex align-items-center">
@@ -24,6 +26,7 @@
               <div class="menu-ingredients">
                 {{recipe.description}}
               </div>
+      
             </div>
           </div>
         </div>

@@ -21,9 +21,9 @@ export class ImagesComponent implements AfterViewInit {
     function showSlide(index: number) {
         slideElements.forEach((slide, i) => {
             slide.style.transform = `translateX(-${index * 100}%)`;
-            navCircleElements[i].classList.remove('active');
+            // navCircleElements[i].classList.remove('active');
         });
-        navCircleElements[index].classList.add('active');
+        // navCircleElements[index].classList.add('active');
     }
 
     function nextSlide() {

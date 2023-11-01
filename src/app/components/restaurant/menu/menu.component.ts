@@ -16,10 +16,11 @@ export class MenuComponent implements AfterViewInit {
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
+
   ngAfterViewInit() {
+
+
     const menuContainer = this.el.nativeElement.querySelector('.menu-container');
-
-
     if (menuContainer) {
       const menuIsotope = new Isotope(menuContainer, {
         itemSelector: '.menu-item',
@@ -51,7 +52,16 @@ export class MenuComponent implements AfterViewInit {
     }
 
   }
+
   filterMenu(menu: string) {
     this.selectedMenu = menu;
+
+  getRecipeClass(menuName: string) : string {
+    return 'col-lg-6 menu-item filter-' + menuName;
+  }
+
+  getMenuClass(menuName : string): string {
+    return ".filter-" + menuName;
+
   }
 }

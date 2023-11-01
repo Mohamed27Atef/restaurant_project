@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoryService {
   
-  private BaseUrl: string = 'https://localhost:7058/api/Category';
+  private BaseUrl: string = 'https://localhost:44397/api/Category';
 
   constructor(private htppClient: HttpClient) { }
 
