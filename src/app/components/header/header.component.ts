@@ -1,4 +1,6 @@
+//here
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
+import { Observable,of } from 'rxjs';
 
 import { Block } from '@angular/compiler';
 import {
@@ -7,6 +9,7 @@ import {
   ElementRef,
   Input,
   HostListener,
+  OnInit,
   AfterViewInit,
 } from '@angular/core';
 import { getCookie, removeCookie } from 'typescript-cookie';
@@ -18,8 +21,11 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent{
 
+  cartItems$: Observable<any[]>; // Change this to an Observable
+ 
+export class HeaderComponent{
+ totalPrice: number = 0;
   myroute!: string;
   jsonTokenWithoutDecode!: any;
 
@@ -46,8 +52,21 @@ export class HeaderComponent{
   }
 
   toggleCart() {
-    console.log('toggleCart called');
     this.isCartVisible = !this.isCartVisible;
+    if (this.isCartVisible) {
+      this.cartService.getCartItems().subscribe((items) => {
+        this.cartItems$ = of(items);
+        this.updateTotalPrice();
+      });
+    }
+  }
+  updateTotalPrice() {
+    this.cartItems$.subscribe((items) => {
+      this.totalPrice = items.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+    });
   }
   navbarCollapsed = true;
   toggalClass = 'navbar-toggler navbar-toggler-right';
