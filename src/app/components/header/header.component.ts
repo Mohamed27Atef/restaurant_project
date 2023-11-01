@@ -1,4 +1,6 @@
+//here
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
+import { Observable,of } from 'rxjs';
 
 import { Block } from '@angular/compiler';
 import {
@@ -7,20 +9,30 @@ import {
   ElementRef,
   Input,
   HostListener,
+  OnInit,
+  AfterViewInit,
 } from '@angular/core';
 import { getCookie, removeCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  constructor(private cartService: ShoppingCartService) {
-    let jsonTokenWithoutDecode: any = getCookie('User');
+
+  cartItems$: Observable<any[]>; // Change this to an Observable
+ 
+export class HeaderComponent{
+ totalPrice: number = 0;
+  myroute!: string;
+  jsonTokenWithoutDecode!: any;
+
+  constructor(private cartService: ShoppingCartService, public route:Router) {
+    this.jsonTokenWithoutDecode = getCookie('User');
     try {
-      let Token: any = jwtDecode(jsonTokenWithoutDecode);
+      let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
       this.name =
         Token != null
           ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
@@ -40,8 +52,21 @@ export class HeaderComponent {
   }
 
   toggleCart() {
-    console.log('toggleCart called');
     this.isCartVisible = !this.isCartVisible;
+    if (this.isCartVisible) {
+      this.cartService.getCartItems().subscribe((items) => {
+        this.cartItems$ = of(items);
+        this.updateTotalPrice();
+      });
+    }
+  }
+  updateTotalPrice() {
+    this.cartItems$.subscribe((items) => {
+      this.totalPrice = items.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+    });
   }
   navbarCollapsed = true;
   toggalClass = 'navbar-toggler navbar-toggler-right';
@@ -96,5 +121,10 @@ export class HeaderComponent {
   LogOut() {
     this.name = '';
     removeCookie('User');
+  }
+
+  clearLink(){
+    this.myroute = this.route.url.split("#")[0];
+    
   }
 }

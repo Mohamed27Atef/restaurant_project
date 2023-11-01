@@ -28,7 +28,7 @@
 }
 
 .active {
-  background-color: #007bff;
+  background-color:orange;
   color: #fff;
   border: #007bff;
 }
@@ -45,7 +45,7 @@
 }
 
 .step.active::before {
-  background-color: #007bff;
+  background-color: orange;
 }
 
 .row .col-3:first-child .step::before {
@@ -65,7 +65,7 @@
 }
 
 .invoice-number {
-  color: blue;
+  color: orange;
   font-weight: bold;
   margin-left: 5px; /* Add spacing between "INVOICE" and the number */
 }

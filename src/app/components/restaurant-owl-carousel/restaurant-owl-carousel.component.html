@@ -2,8 +2,10 @@
     <owl-carousel-o>
         <ng-container *ngFor="let resturant of restaurants">
             <ng-template carouselSlide >
-                <img [src]="resturant.image"  class="images">
-                <p class="text-center" style="color: white;">{{resturant.name}}</p>
+                <a [routerLink]="'restaurant/' + resturant.id">
+                    <img [src]="resturant.image"  class="images">
+                    <p class="text-center" style="color: white;">{{resturant.name}}</p>
+                </a>
             </ng-template>
         </ng-container>    
     </owl-carousel-o>

@@ -10,6 +10,7 @@ export class RestaurantService {
   private apiPort = environment.apiPort;
   private BaseUrl: string = `https://localhost:${this.apiPort}/api/Resturant/`;
 
+
   constructor(private httpClient: HttpClient) {}
 
   getRestaurantByCategoryId(categoryId: number): Observable<any> {

@@ -6,6 +6,11 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { PaymentComponent } from './components/order-details/payment/payment.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserTableServicesService } from './services/user-table.service';
+import { TableReservationComponent } from './components/restaurant/table-reservation/table-reservation.component';
+import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
 
 const routes: Routes = [
   {
@@ -16,10 +21,13 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
   },
+  { path: '', component: HomeComponent },
+  { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
   { path: '', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'recipe/:id', component: RecipeDetailsComponent },
+  { path: 'restaurant/:id', component: RestaurantComponent },
 ];
 
 @NgModule({
