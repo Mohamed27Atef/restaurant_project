@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Recipe } from 'src/app/interfaces/recipe';
 import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -8,34 +9,25 @@ import { RecipeService } from 'src/app/services/recipe.service';
   styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit, AfterViewInit {
-  recipe: any;
+  recipe!: any;
   relatedRecipe: any;
+  quantity: number = 1
   Id: number = 0;
   constructor(
     private myService: RecipeService,
     private myActive: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.Id = this.myActive.snapshot.params['id'];
-    this.Id = 1;
     this.myService.getRecipe(this.Id).subscribe({
-      next: (data) => {
-        this.recipe = data;
-        console.log(this.recipe);
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      next: (data) => this.recipe = data,
+      error: (err) => console.log(err),
     });
     this.myService.getRecipeByMenuId(this.Id).subscribe({
-      next: (data) => {
-        this.relatedRecipe = data;
-        console.log(this.recipe);
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      next: (data) => this.relatedRecipe = data,
+      error: (err) => console.log(err),
     });
   }
 
@@ -99,16 +91,13 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   }
 
   plus() {
-    const quantityDiv: any = document.querySelector('.quantity');
-    const currentQuantity = parseInt(quantityDiv.textContent);
-    quantityDiv.textContent = (currentQuantity + 1).toString();
+   this.quantity ++;
   }
 
   remove() {
-    const quantityDiv: any = document.querySelector('.quantity');
-    const currentQuantity = parseInt(quantityDiv.textContent);
-    if (currentQuantity > 1) {
-      quantityDiv.textContent = (currentQuantity - 1).toString();
+
+    if (this.quantity > 1) {
+      this.quantity--;
     }
   }
 }
