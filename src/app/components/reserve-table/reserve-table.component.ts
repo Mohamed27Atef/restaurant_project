@@ -13,4 +13,16 @@ export class ReserveTableComponent {
   getReservation(reservation: any) {
     this.reservationTable = reservation;
   }
+
+  removeTable(item: any) {
+    console.log(item);
+    this.userTableService
+      .deleteUserReservation(item.reservationNumber)
+      .subscribe({
+        next: (data) => {
+          window.location.reload();
+        },
+        error: (e) => {},
+      });
+  }
 }

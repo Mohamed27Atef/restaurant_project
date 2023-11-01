@@ -1,17 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
-
+import{IRestaurantFeedback} from 'src/app/interfaces/RestaurantFeedback';
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.css'],
 })
 export class FeedbackComponent {
-  feedback: Feedback = {
+  feedback: IRestaurantFeedback = {
     text: '',
     rate: 0,
     postDate: new Date(),
-    restaurantId: 0,
+    ResturantId: 0,
     userId: 0,
   };
 
@@ -29,11 +29,12 @@ export class FeedbackComponent {
   }
 
   submitFeedback() {
+    console.log(this.restaurantId);
     const feedbackToAdd = {
       text: this.userComment,
       rate: this.selectedRating,
       postDate: new Date(),
-      restaurantId: this.restaurantId,
+      ResturantId: this.restaurantId,
       userId: 1,
     };
 
@@ -48,10 +49,3 @@ export class FeedbackComponent {
   }
 }
 
-interface Feedback {
-  text: string;
-  rate: number;
-  postDate: Date;
-  restaurantId: number;
-  userId: number;
-}

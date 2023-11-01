@@ -1,26 +1,28 @@
 <div class="reservation-table">
-    <h2 class="Title-reservation-table text-center mb-5">Reservation Table</h2>
-    <app-search-table (myEvent)="getReservation($event)"></app-search-table>
-    <table>
-      <tr>
-        <th>Reservation Number</th>
-        <th>Table Number</th>
-        <th>Time</th>
-        <th>Date</th>
-        <th>Table Type</th>
-        <th>Restaurant Name</th>
-        <th>Details</th>
-        <th>Cancel</th>
-      </tr>
-      <tr *ngFor="let res of reservationTable">
-        <td>{{ res.reservationNumber }}</td>
-        <td>{{ res.tableNumber }}</td>
-        <td>{{ res.dateTime.split("T")[0] }}</td>
-        <td>{{ res.dateTime.split("T")[1] }}</td>
-        <td>{{ res.tableType }}</td>
-        <td>{{ res.restaurantName }}</td>
-        <td><button class="details-button">Details</button></td>
-        <td><button class="cancel-button">Cancel</button></td>
-      </tr>
-    </table>
-  </div>
+  <h2 class="Title-reservation-table text-center mb-5">Reservation Table</h2>
+  <app-search-table (myEvent)="getReservation($event)"></app-search-table>
+  <table>
+    <tr>
+      <th>Reservation Number</th>
+      <th>Table Number</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Table Type</th>
+      <th>Restaurant Name</th>
+      <th>ٌRemove</th>
+    </tr>
+    <tr *ngFor="let res of reservationTable">
+      <td>{{ res.reservationNumber }}</td>
+      <td>{{ res.tableNumber }}</td>
+      <td>{{ res.dateTime.split("T")[0] }}</td>
+      <td>{{ res.dateTime.split("T")[1] }}</td>
+      <td>{{ res.tableType }}</td>
+      <td>{{ res.restaurantName }}</td>
+      <td>
+        <button class="cancel-button" (click)="removeTable(res)">
+          ٌRemove
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

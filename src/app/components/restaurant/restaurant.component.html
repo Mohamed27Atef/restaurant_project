@@ -6,11 +6,11 @@
     <restaurant-contact  [address]="currentRestaurant.address" [email]="currentRestaurant.email" [phone]="currentRestaurant.phone"></restaurant-contact>
 </div> 
   <restaurant-menu #menu ></restaurant-menu>
-  <!-- <div *ngIf="looding">
+  <div *ngIf="looding">
     <app-book-container [restaurantId]="currentRestaurant.id" [openHour]="currentRestaurant.openHours" [closeHour]="currentRestaurant.closingHours"></app-book-container> 
-  </div> -->
-
-  <!-- <restaurant-offers [restaurantId]="currentRestaurant.id"></restaurant-offers> -->
+  </div>
   <app-feedback [restaurantId]="currentRestaurant.id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback>
+
+  <restaurant-offers [restaurantId]="currentRestaurant.id"></restaurant-offers>
 
 
