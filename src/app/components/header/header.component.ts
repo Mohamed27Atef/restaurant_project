@@ -118,8 +118,8 @@ export class HeaderComponent {
             : '275px';
         } else {
           logOutButton.style.top = logOutButton.classList.contains('hidden')
-            ? '-60px'
-            : '75px';
+            ? '-40px'
+            : '55px';
         }
       }
     }
