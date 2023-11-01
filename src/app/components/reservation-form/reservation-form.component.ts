@@ -9,8 +9,10 @@ import { Duration } from 'src/app/interfaces/duration';
   templateUrl: './reservation-form.component.html',
   styleUrls: ['./reservation-form.component.css']
 })
-export class ReservationFormComponent implements OnInit {
+export class ReservationFormComponent {
   tables:Table[] = [];
+  isDateTimeSelected: boolean = false;
+  isSelectClicked: boolean = false;
  @Input() RestaurantId:number=1;
  @Output() submitSecond = new EventEmitter<void>();
  @Output() backdata = new EventEmitter<void>();
@@ -22,11 +24,7 @@ export class ReservationFormComponent implements OnInit {
  constructor(private _TableService:TableService){
   
  }
-  ngOnInit(): void {
-   this._TableService.getTableByRestaurantId(this.RestaurantId).subscribe((data)=>{
-      this.tables=data
-    }) 
-  }
+ 
 
 
 reservationForm:FormGroup=new FormGroup({
@@ -52,6 +50,30 @@ dateTimeValidator(reservationForm:any) {
     }
   }
   return null;
+}
+
+onDateTimeChange() {
+  
+  if (this.reservationForm.get('date')&& this.reservationForm.get('time')) {
+    const dateTime=new Date(`${this.reservationForm.get('date')?.value} ${this.reservationForm.get('time')?.value}`)
+    const currentDateTime = new Date();
+    this.isDateTimeSelected = false;
+    if(dateTime > currentDateTime){
+      this.isDateTimeSelected = true;
+      const ApidateTime=new Date(`${this.reservationForm.get('date')?.value}T${this.reservationForm.get('time')?.value}`).toISOString()
+    
+      this._TableService.getTableByRestaurantIdAndDAteTime(ApidateTime,this.RestaurantId).subscribe((data)=>{
+        this.tables=data
+        console.log(data)
+      }) 
+    }
+  }  
+}
+
+onSelectClicked(){
+  if (!this.isDateTimeSelected) {
+    this.isSelectClicked = true;
+  }
 }
 
  performAction() {

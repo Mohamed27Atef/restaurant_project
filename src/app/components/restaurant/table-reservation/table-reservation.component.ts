@@ -9,9 +9,11 @@ import { Duration } from 'src/app/interfaces/duration';
   templateUrl: './table-reservation.component.html',
   styleUrls: ['./table-reservation.component.css']
 })
-export class TableReservationComponent implements OnInit {
+export class TableReservationComponent {
   tables:Table[] = [];
   RestaurantId:number=1;
+  isDateTimeSelected: boolean = false;
+  isSelectClicked: boolean = false;
   @Output() submitSecond = new EventEmitter<void>();
   @Output() backdata = new EventEmitter<void>();
   durations:Duration[]=[{hours:1,description:" 1 hour for 5$"},
@@ -19,14 +21,8 @@ export class TableReservationComponent implements OnInit {
   {hours:3,description:" 3 hours for 15$"}]
 
 
-  constructor(private _TableService:TableService){
-  
-  }
-   ngOnInit(): void {
-    this._TableService.getTableByRestaurantId(this.RestaurantId).subscribe((data)=>{
-       this.tables=data
-     }) 
-   }
+  constructor(private _TableService:TableService){}
+ 
 
    reservationForm:FormGroup=new FormGroup({
     firstName:new FormControl(null,[Validators.required,Validators.minLength(3)]), 
@@ -34,7 +30,7 @@ export class TableReservationComponent implements OnInit {
     date:new FormControl(null,[Validators.required]), 
     time:new FormControl(null,[Validators.required]), 
     tableType:new FormControl(null,[Validators.required]),
-    dur:new FormControl(null,[Validators.required])
+    dur:new FormControl(null,[Validators.required])    
   },{validators:this.dateTimeValidator})
   
   
@@ -53,10 +49,35 @@ export class TableReservationComponent implements OnInit {
     return null;
   }
 
+  onDateTimeChange() {
+  
+    if (this.reservationForm.get('date')&& this.reservationForm.get('time')) {
+      const dateTime=new Date(`${this.reservationForm.get('date')?.value} ${this.reservationForm.get('time')?.value}`)
+      const currentDateTime = new Date();
+      this.isDateTimeSelected = false;
+      if(dateTime > currentDateTime){
+        this.isDateTimeSelected = true;
+        const ApidateTime=new Date(`${this.reservationForm.get('date')?.value}T${this.reservationForm.get('time')?.value}`).toISOString()
+      
+        this._TableService.getTableByRestaurantIdAndDAteTime(ApidateTime,this.RestaurantId).subscribe((data)=>{
+          this.tables=data
+          console.log(data)
+        }) 
+      }
+    }  
+  }
+
+  onSelectClicked(){
+    if (!this.isDateTimeSelected) {
+      this.isSelectClicked = true;
+      console.log(this.isDateTimeSelected)
+    }
+  }
+
   performAction() {
     const reservationData = {
      dateTime:new Date(`${this.reservationForm.value.date}T${this.reservationForm.value.time}`).toISOString(),
-      restaurantId:this.RestaurantId ,
+      restaurantId:this.RestaurantId.toString() ,
       tableType: this.reservationForm.value.tableType,
       name: this.reservationForm.value.firstName,
       phone: this.reservationForm.value.phone,
