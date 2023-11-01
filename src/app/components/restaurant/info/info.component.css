@@ -1,15 +1,15 @@
-.RestaurantTitle{
+.RestaurantTitle {
   position: absolute;
   top: 46px;
   border: none;
   cursor: pointer;
   font-size: 50px;
-  margin-top: -20px;
-  color:rgb(235, 156, 10);
+  margin-top: 45px;
+  color: rgb(235, 156, 10);
 }
-.demo-bg{
+.demo-bg {
   position: absolute;
-  top: 46px;
+  top: 133px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -17,10 +17,10 @@
   border: none;
   cursor: pointer;
 }
-.justify-content-center{
+.justify-content-center {
   position: absolute;
-  top: 500px;
-  left: 32%;
+  top: 549px;
+  left: 7%; 
   transform: translateX(-50%);
   z-index: 2;
   padding: 10px 20px;
@@ -67,130 +67,55 @@
 }
 /* rate */
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
- @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
 
- body {
-     background-color: #D32F2F;
-     font-family: 'Calibri', sans-serif !important
- }
+body {
+  background-color: #d32f2f;
+  font-family: "Calibri", sans-serif !important;
+}
 
-fieldset, label { margin: 0; padding: 0; }
-body{ margin: 20px; }
-h1 { font-size: 1.5em; margin: 10px; }
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 20px;
+}
+h1 {
+  font-size: 1.5em;
+  margin: 10px;
+}
 
 /****** Style Star Rating Widget *****/
 
-.rating { 
-      border: none;
-      margin-right: 20px;
-      margin-top: -20px;
-      
-}
-.myratings{
-  margin-top: -40px;
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
-  font-size: 75px;
-  color: rgb(235, 156, 10);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", serif;
+  background: #eee;
 }
 
-.rating > [id^="star"] { display: none; } 
-.rating > label:before { 
-
-  margin: 5px;
-  font-size: 2.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
+.content {
+  width: 200px;
 }
 
-.rating > .half:before { 
-  content: "\f089";
-  position: absolute;
+.ratings {
+  background-color: #fff;
+  padding: 15px;
+  /* border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 10px #e0e0e0; */
 }
 
-.rating > label { 
-  color: #ddd; 
- float: right; 
+.product-rating {
+  font-size: 50px;
+}
+
+.stars i {
+  font-size: 18px;
+  color: orange;
 }
 
 
-.rating > [id^="star"]:checked ~ label,
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
-
-.rating > [id^="star"]:checked + label:hover,
-.rating > [id^="star"]:checked ~ label:hover,
-.rating > label:hover ~ [id^="star"]:checked ~ label,
-.rating > [id^="star"]:checked ~ label:hover ~ label { color: #FFED85;  }
-
-.reset-option {
-display: none;
-}
-
-.reset-button {
-margin:6px;
-background-color: rgb(255, 255, 255);
-text-transform: uppercase;
-}
-
-
-
-.mt-100 {
-     margin-top: -110px;
-     margin-left: -310px
- }
-
- .card {
-     position: relative;
-     display: flex;
-     width: 300px;
-     height: 200px;
-     flex-direction: column;
-     min-width: 0;
-     word-wrap: break-word;
-     background-color: #fff;
-     background-clip: border-box;
-     /* border: 1px solid #d2d2dc; */
-     /* border-radius: 11px; */
-     /* -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
-     -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
-     box-shadow: 0px 0px 5px 0px rgb(161, 163, 164) */
- }
-
- .card .card-body {
-     padding: -20px
- }
-
- .card-body {
-     flex: 1 1 auto;
-     padding: -3rem
- }
-
- p {
-     font-size: 14px;
-
- }
-
- h4 {
-     margin-top: -50px
- }
-
- .btn:focus {
-     outline: none
- }
-
- .btn {
-     border-radius: 22px;
-     text-transform: capitalize;
-     font-size:1 px;
-     padding: 8px 8px;
-     cursor: pointer;
-     color: #fff;
-     background-color: #D50000
- }
-
- .btn:hover {
-     background-color: #D32F2F !important
- }
-
- 

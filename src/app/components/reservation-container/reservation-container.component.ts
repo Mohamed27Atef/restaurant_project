@@ -8,16 +8,19 @@ import { Component } from '@angular/core';
 export class ReservationContainerComponent {
   showFirstForm = true;
   showSecondForm = false;
-  handleChangeDataEvent() {
+  selectedRestaurantId:number=0;
+  handleChangeDataEvent(data:number) {
     this.showFirstForm = false;
     this.showSecondForm =true;
-  }
+    this.selectedRestaurantId=data;
+    console.log(this.selectedRestaurantId)
+  } 
   handlesubmitSecond(){
     this.showFirstForm = true;
     this.showSecondForm =false;  
   }
   handleBack(){
-    this.showFirstForm = false;
-    this.showSecondForm =true;  
+    this.showFirstForm = true;
+    this.showSecondForm =false;  
   }
 }

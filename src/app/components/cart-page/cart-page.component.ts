@@ -1,30 +1,21 @@
-import { Component } from '@angular/core';
-import { CartItem } from 'src/app/interfaces/CartItem';
+import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.css']
+  styleUrls: ['./cart-page.component.css'],
 })
-export class CartPageComponent {
-  cartItems: CartItem[];
+export class CartPageComponent implements OnInit {
+  cartItems: any[] = [];
 
-  constructor(private cartService: ShoppingCartService) {
-    this.cartItems = this.cartService.getCartItems();
-  }
+  constructor(private cartService: ShoppingCartService) {}
 
-  incrementItem(item: CartItem) {
-
-    this.cartService.incrementCartItem(item);
-  }
-
-  decrementItem(item: CartItem) {
-    this.cartService.decrementCartItem(item);
-  }
-
-  calculateTotalPrice(): number {
-    return this.cartService.calculateTotalPrice();
+  ngOnInit() {
+    this.cartService.getCartItems().subscribe((items) => {
+      this.cartItems = items;
+    });
   }
 }
+
 

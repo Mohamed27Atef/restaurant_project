@@ -1,8 +1,9 @@
-<div class="book">
+<div class="book" id="reservation">
     <div *ngIf="showFirstForm">
-      <app-restaurant-selection (changeDataEvent)="handleChangeDataEvent()"></app-restaurant-selection>
+      <app-restaurant-selection (changeDataEvent)="handleChangeDataEvent($event)" ></app-restaurant-selection>
     </div>
     <div *ngIf="showSecondForm">
-      <app-reservation-form (submitSecond)="handlesubmitSecond()" (backdata)="handleBack()"></app-reservation-form>
+      <app-reservation-form [RestaurantId]="selectedRestaurantId"(submitSecond)="handlesubmitSecond()" (backdata)="handleBack()"></app-reservation-form>
     </div>
   </div>
+ 
