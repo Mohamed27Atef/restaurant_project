@@ -56,12 +56,5 @@ export class MenuComponent implements AfterViewInit {
   filterMenu(menu: string) {
     this.selectedMenu = menu;
 
-  getRecipeClass(menuName: string) : string {
-    return 'col-lg-6 menu-item filter-' + menuName;
-  }
-
-  getMenuClass(menuName : string): string {
-    return ".filter-" + menuName;
-
   }
 }
