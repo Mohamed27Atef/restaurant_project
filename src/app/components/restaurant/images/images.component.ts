@@ -10,6 +10,7 @@ export class ImagesComponent implements AfterViewInit {
   @Input("images") images!: string[];
   @Input() mainImage!: string;
   ngAfterViewInit(): void {
+    let counter:number=0;
     const slides = document.querySelectorAll('.slide');
     const navCircles = document.querySelectorAll('.nav-circle');
     let currentIndex: number = 0;
