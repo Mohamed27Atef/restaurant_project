@@ -1,6 +1,8 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { data } from 'isotope-layout';
 import { Recipe } from 'src/app/interfaces/recipe';
+import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -11,16 +13,24 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   recipe!: any;
   relatedRecipe: any;
-  quantity: number = 1
+  quantity: number = 1;
+  numberOfReview: number = 0;
   Id: number = 0;
   constructor(
     private myService: RecipeService,
-    private myActive: ActivatedRoute
+    private myActive: ActivatedRoute,
+    private recipeFeedbackService: RecipeFeedbackService
   ) {
+    this.Id = this.myActive.snapshot.params['id'];
   }
 
   ngOnInit(): void {
-    this.Id = this.myActive.snapshot.params['id'];
+    this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
+      next: data=> {
+        // if(data)
+          this.numberOfReview = data
+      },
+    })
     this.myService.getRecipe(this.Id).subscribe({
       next: (data) => this.recipe = data,
       error: (err) => console.log(err),
