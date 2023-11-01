@@ -1,7 +1,10 @@
 export interface Recipe {
-    name: string; 
+    name: string;
+    rating: number;
+    restaurantName: string;
     description : string;
     menuName : string;
     price : number;
     imageUrl : string;
+    category:string
 }

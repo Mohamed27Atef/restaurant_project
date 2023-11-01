@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { LoginService } from 'src/app/services/login.service';
 import { getCookie, setCookie } from 'typescript-cookie';
+import { UserLogin } from '../../interfaces/login';
+import { IsAuthService } from 'src/app/services/is-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,57 +11,60 @@ import { getCookie, setCookie } from 'typescript-cookie';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private myServices: LoginService) {}
-  email: any = '';
-  password: any = '';
-  emailError: string = '';
-  passwordError: string = '';
-  emailOrPasswordError: string = '';
+  constructor(private myServices: LoginService, private isAuthServices: IsAuthService) {}
+  userLogin: UserLogin = {
+    email: '',
+    password: '',
+  };
+
   @Output() userName: any = new EventEmitter();
 
   @Output() clickEvent = new EventEmitter<void>();
 
   signIn() {
     let loginData: any = {
-      email: this.email,
-      password: this.password,
+      email: this.userLogin.email,
+      password: this.userLogin.password,
     };
     this.myServices.login(loginData).subscribe({
       next: (loginResponse: any) => {
         let tokenDecoded: any = jwtDecode(loginResponse.token);
         let tokenExpiration: any = new Date(loginResponse.expiration);
+        this.isAuthServices.isAuth = true;
         let jsonTokenWithoutDecode = JSON.stringify(loginResponse.token);
         setCookie('User', jsonTokenWithoutDecode, {
           expires: tokenExpiration,
           path: '',
         });
         this.clickEvent.emit();
-        this.userName.emit(
-          tokenDecoded[
+        let userData = {
+          name: tokenDecoded[
             'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
-          ]
-        );
+          ],
+          image: loginResponse.imageUrl,
+        };
+        this.userName.emit(userData);
+        setCookie('UserImage', userData.image);
       },
       error: (errorMassage) => {
         if (errorMassage) {
           console.log(errorMassage);
-          if (this.email == '') {
-            this.emailError = 'Email is required.';
+          if (this.userLogin.email == '') {
+            this.userLogin.emailError = 'Email is required.';
           }
-          if (this.password == '') {
-            this.passwordError = 'Password is required.';
+          if (this.userLogin.password == '') {
+            this.userLogin.passwordError = 'Password is required.';
           }
-          if ((this.email && this.password) != '') {
-            this.emailOrPasswordError = 'Email Or Password Is Incorrect';
+          if ((this.userLogin.email && this.userLogin.password) != '') {
+            this.userLogin.emailOrPasswordError =
+              'Email Or Password Is Incorrect';
           }
         }
       },
     });
   }
 
-  passwordVisible: boolean = false;
-
   togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
+    this.userLogin.passwordVisible = !this.userLogin.passwordVisible;
   }
 }

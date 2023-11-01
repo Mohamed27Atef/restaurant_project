@@ -1,0 +1,114 @@
+.recipe-page {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5%; /* 5% margin on both sides */
+}
+
+.filters-column {
+  width: 30%;
+  padding: 10px;
+}
+
+.filters-column label {
+  display: block;
+  font-weight: bold;
+}
+
+.filters-column input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.recipes-column {
+  width: 60%;
+  padding: 10px;
+}
+
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.recipe-item {
+  width: 100%; /* Each recipe takes the full width, one per line */
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+}
+
+.recipe-item:hover {
+  transform: scale(1.03);
+}
+
+.recipe-image {
+  max-width: 30%; /* 30% of the recipe item width */
+  height: auto;
+}
+
+.recipe-details {
+  padding: 10px;
+  width: 70%; /* 70% of the recipe item width for details */
+}
+
+/* Apply styles for responsiveness */
+@media (max-width: 768px) {
+  .recipe-page {
+    flex-direction: column;
+  }
+
+  .filters-column,
+  .recipes-column {
+    width: 100%;
+  }
+
+  .recipe-item {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recipe-image {
+    max-width: 100%;
+  }
+
+  .recipe-details {
+    width: 100%;
+    padding-top: 10px;
+  }
+}
+/* Style the search container to center its contents using flexbox */
+.search-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Style the search label (optional) */
+.search-label {
+  margin-top: 5px; /* Add some space between the label and the input */
+}
+
+/* Style the search input */
+.search-input {
+  width: 100%; /* Take the full width of the container */
+  text-align: center;
+  height: 40px; /* Set the height to your desired value */
+}
+
+.search-input::placeholder {
+  text-align: center; /* Center the placeholder text */
+  color: #888; /* Adjust the color of the placeholder text */
+}
