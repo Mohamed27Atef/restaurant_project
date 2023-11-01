@@ -1,6 +1,6 @@
 //here
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
-import { Observable,of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Block } from '@angular/compiler';
 import {
@@ -22,19 +22,20 @@ import { IsAuthService } from 'src/app/services/is-auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-
-
-
-export class HeaderComponent{
+export class HeaderComponent {
   totalPrice: number = 0;
   myroute!: string;
   jsonTokenWithoutDecode!: any;
   cartItems$!: Observable<any[]>; // Change this to an Observable
 
   // isAuth: Boolean = this.isAuthServices.isAuth;
-  constructor(private cartService: ShoppingCartService, public route:Router, public isAuthServices: IsAuthService) {
+  constructor(
+    private cartService: ShoppingCartService,
+    public route: Router,
+    public isAuthServices: IsAuthService
+  ) {
     this.jsonTokenWithoutDecode = getCookie('User');
-     let UserImageFromCookie: any = getCookie('UserImage');
+    let UserImageFromCookie: any = getCookie('UserImage');
     try {
       let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
       this.name =
@@ -129,8 +130,7 @@ export class HeaderComponent{
     removeCookie('User');
   }
 
-  clearLink(){
-    this.myroute = this.route.url.split("#")[0];
-    
+  clearLink() {
+    this.myroute = this.route.url.split('#')[0];
   }
 }
