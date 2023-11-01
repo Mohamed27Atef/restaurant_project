@@ -20,10 +20,8 @@ export class TableReservationComponent {
   {hours:2,description:" 2 hours for 10$"},
   {hours:3,description:" 3 hours for 15$"}]
 
-
-  constructor(private _TableService:TableService){}
- 
-
+  constructor(private _TableService:TableService){
+  }
    reservationForm:FormGroup=new FormGroup({
     firstName:new FormControl(null,[Validators.required,Validators.minLength(3)]), 
     phone:new FormControl(null,[Validators.required,Validators.pattern(/^01[0125][0-9]{8}$/)]), 

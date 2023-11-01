@@ -7,7 +7,10 @@ import { AfterViewInit, Component,Input,OnInit } from '@angular/core';
 })
 export class InfoComponent implements AfterViewInit{
 
-  constructor() { }
+
+
+  constructor() { 
+  }
   ngAfterViewInit(): void {
     this.generateStarsArray();
 

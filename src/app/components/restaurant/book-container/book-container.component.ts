@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-book-container',
@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./book-container.component.css']
 })
 export class BookContainerComponent {
+  @Input() restaurantId!: number;
+  @Input() openHour!: number
+  @Input() closeHour!: number
+  constructor() {
+  }
   showSecondForm = false;
   handleChangeDataEvent() {
     this.showSecondForm =true;
