@@ -62,10 +62,13 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   RemoveCartItem(item: any) {
+    this.CartItems.splice(
+      this.CartItems.findIndex((r) => r.id == item.id),
+      1
+    );
     this.orderdetailService.deleteCartItem(item.id).subscribe({
       next: (results) => {
         console.log(' cart items deleted successfully');
-        window.location.reload();
       },
       error: (error) => {
         console.error('Error deleting cart items:', error);
