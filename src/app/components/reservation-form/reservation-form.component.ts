@@ -21,9 +21,7 @@ export class ReservationFormComponent {
                       {hours:3,description:" 3 hours for 15$"}]
                     
 
- constructor(private _TableService:TableService){
-  
- }
+ constructor(private _TableService:TableService){}
  
 
 

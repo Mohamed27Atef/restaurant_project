@@ -1,3 +1,4 @@
+
 <div *ngIf="recipe">
   <div class="container my-2">
     <div class="row justify-content-strat align-items-center">
@@ -11,6 +12,7 @@
         <a href="#" class="nav-link">{{recipe.menuName}}</a>
       </div>
     </div>
+
 
     <div class="row mt-4">
       <div class="col-md-1" style="width: 84px">
@@ -44,6 +46,16 @@
             habitasse platea dictumst.
           </p> -->
         </div>
+
+        
+
+          <!-- <div id="wishlistBtn" class="btn border-0 btn-outline-dark">
+            <i
+              class="far fa-heart favorite-button fa-lg toggle-favorite me-2"
+            ></i
+            ><span>Add to wishlist</span>
+          </div> -->
+
         <div class="product-buttons">
           <div class="d-flex align-items-center controls my-3">
             <button class="remove rounded-5 btn btn-warning" (click)="remove()">
@@ -55,10 +67,14 @@
             </button>
           </div>
           <div>
-            <button class="btn btn-outline-warning me-4 text-dark">
-              <i class="fa-solid fa-cart-shopping"></i>
-              Add to Cart
-            </button>
+            <button (click)="addToCart()" class="btn btn-outline-warning me-4 text-dark">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Add to Cart
+
+          </button>
+                
             <!-- <div id="wishlistBtn" class="btn border-0 btn-outline-dark">
               <i
                 class="far fa-heart favorite-button fa-lg toggle-favorite me-2"
@@ -66,6 +82,7 @@
               ><span>Add to wishlist</span>
             </div> -->
           </div>
+
         </div>
       </div>
     </div>
