@@ -108,6 +108,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
+    RecipeComponent
 
 
 
