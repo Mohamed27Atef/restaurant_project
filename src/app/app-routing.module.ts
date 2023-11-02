@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserTableServicesService } from './services/user-table.service';
 import { TableReservationComponent } from './components/restaurant/table-reservation/table-reservation.component';
 import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     component: SignupComponent,
   },
   { path: '', component: HomeComponent },
+  { path: 'test', component: RecipeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'orderDetials', component: OrderDetailsComponent },
