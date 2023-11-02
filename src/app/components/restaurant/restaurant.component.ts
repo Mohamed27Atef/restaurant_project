@@ -7,7 +7,7 @@ import { MenuService } from 'src/app/services/menu.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { MenuComponent } from './menu/menu.component';
 import { ActivatedRoute, TitleStrategy } from '@angular/router';
-
+import { FeedbackComponent } from 'src/app/components/feedback/feedback.component'; // Adjust the path to your FeedbackComponent.
 
 
 @Component({
@@ -46,5 +46,8 @@ export class RestaurantComponent implements OnInit {
   }
 
 
-
+  loggedInUser = {
+    name: 'Atef',
+    photoUrl: 'assets/images/client1.jpg', 
+  };
 }

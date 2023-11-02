@@ -11,7 +11,48 @@
             <div class="row">
               <span class="header">Payment</span>
             </div>
-            <form>
+            <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+              <label for="street">Street:</label>
+              <input
+                type="text"
+                id="street"
+                name="street"
+                ngModel
+                required
+                [(ngModel)]="street"
+              />
+              <span class="error-message" *ngIf="!street"
+                >Please enter a street.</span
+              >
+
+              <label for="city">City:</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                ngModel
+                required
+                [(ngModel)]="city"
+              />
+              <span class="error-message" *ngIf="!city"
+                >Please enter a city.</span
+              >
+
+              <label for="country">Country:</label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                ngModel
+                required
+                [(ngModel)]="country"
+              />
+              <span class="error-message" *ngIf="!country"
+                >Please enter a country.</span
+              >
+            </form>
+
+            <!-- <form>
               <div class="form-group">
                 <label for="street">Street:</label>
                 <input
@@ -20,6 +61,7 @@
                   id="street"
                   name="street"
                   [(ngModel)]="street"
+                  required
                 />
               </div>
 
@@ -31,6 +73,7 @@
                   id="city"
                   name="city"
                   [(ngModel)]="city"
+                  required
                 />
               </div>
 
@@ -42,9 +85,10 @@
                   id="country"
                   name="country"
                   [(ngModel)]="country"
+                  required
                 />
               </div>
-            </form>
+            </form> -->
           </div>
         </div>
         <div class="col-md-5">
@@ -53,7 +97,11 @@
             <p>{{ CartItemSumary.length }} items</p>
             <div class="row item" *ngFor="let item of CartItemSumary">
               <div class="col-4 align-self-center">
-                <img class="img-fluid" [src]="item.imageUrl" />
+                <img
+                  class="img-fluid"
+                  [src]="item.imageUrl"
+                  style="height: 50px; width: 50px; border-radius: 50%"
+                />
               </div>
               <div class="col-8">
                 <div class="row">
@@ -69,24 +117,55 @@
             <hr />
             <div class="row lower">
               <div class="col text-left">Subtotal</div>
-              <div class="col text-right">$ {{ calculateTotalPrice() }}</div>
+              <div class="col text-right">$ {{ orderAddress.TotalPrice }}</div>
             </div>
             <div class="row lower">
               <div class="col text-left">Delivery</div>
               <div class="col text-right">Free</div>
             </div>
+            <div class="row lower" *ngIf="!oneCopon">
+              <div class="col text-left">
+                <b class="oldPrice">Total to pay</b>
+              </div>
+              <div class="col text-right">
+                <b>
+                  <span class="oldPrice" style="margin-right: 5px"
+                    >$ {{ oldTotalPrice }}</span
+                  ></b
+                >
+              </div>
+            </div>
             <div class="row lower">
               <div class="col text-left"><b>Total to pay</b></div>
               <div class="col text-right">
-                <b>$ {{ calculateTotalPrice() }}</b>
+                <b> $ {{ orderAddress.TotalPrice }}</b>
               </div>
             </div>
             <div class="row lower">
               <div class="col text-left">
-                <a href="#"><u>Add promo code</u></a>
+                <button id="btn-cupon" (click)="togglePromoInput()">
+                  <u>Add promo code</u>
+                </button>
+              </div>
+              <div *ngIf="showInput">
+                <input
+                  type="text"
+                  [(ngModel)]="promoCode"
+                  placeholder="Enter promo code"
+                />
+                <p
+                  *ngIf="this.coponObj.discountPercentage == -1"
+                  style="color: red"
+                >
+                  this is Invalid
+                </p>
+                <button (click)="applyPromoCode()" id="btn-apply">Apply</button>
               </div>
             </div>
-            <button class="btn" (click)="makeOrder()">Pay Now</button>
+            <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+              <button class="btn" (click)="makeOrder()">Pay Now</button>
+            </form>
+
             <p class="text-muted text-center">
               Complimentary Shipping & Returns
             </p>
