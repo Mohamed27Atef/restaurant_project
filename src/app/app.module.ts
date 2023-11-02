@@ -61,6 +61,10 @@ import { PalstineComponent } from './components/palstine/palstine.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback-reviews.component';
 
+import { StatusComponent } from './components/status/status.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
+
 
 
 
@@ -111,6 +115,9 @@ import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback
     PalstineComponent,
     HeaderComponent,
     FeedbackReviewsComponent,
+    StatusComponent,
+    OrdersComponent,
+    OrderUserDetailsComponent,
 
 
 

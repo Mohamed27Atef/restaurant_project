@@ -15,13 +15,15 @@ export class ReserveTableComponent {
   }
 
   removeTable(item: any) {
+    this.reservationTable.splice(
+      this.reservationTable.findIndex((r) => r.id == item.id),
+      1
+    );
     console.log(item);
     this.userTableService
       .deleteUserReservation(item.reservationNumber)
       .subscribe({
-        next: (data) => {
-          window.location.reload();
-        },
+        next: (data) => {},
         error: (e) => {},
       });
   }
