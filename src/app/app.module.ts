@@ -59,6 +59,9 @@ import { BookContainerComponent } from './components/restaurant/book-container/b
 import { BookSelectionComponent } from './components/restaurant/book-selection/book-selection.component';
 import { PalstineComponent } from './components/palstine/palstine.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { StatusComponent } from './components/status/status.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
 
 
 
@@ -108,6 +111,9 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
+    StatusComponent,
+    OrdersComponent,
+    OrderUserDetailsComponent,
 
 
 

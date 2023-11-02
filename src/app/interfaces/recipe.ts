@@ -6,5 +6,6 @@ export interface Recipe {
     menuName : string;
     price : number;
     imageUrl : string;
-    category:string
+    images: string;
+    restaurantId: number;
 }
