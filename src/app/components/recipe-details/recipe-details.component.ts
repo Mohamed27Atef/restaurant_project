@@ -21,7 +21,7 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   constructor(
     private myService: RecipeService,
     private myActive: ActivatedRoute,
-
+    private addToCartService : AddToCartService,
     private recipeFeedbackService: RecipeFeedbackService
   ) {
     this.Id = this.myActive.snapshot.params['id'];
