@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { AddToCartService } from 'src/app/services/add-to-cart.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -11,10 +12,25 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   recipe: any;
   relatedRecipe: any;
   Id: number = 0;
+ 
   constructor(
     private myService: RecipeService,
-    private myActive: ActivatedRoute
+    private myActive: ActivatedRoute,
+    private addToCartService:AddToCartService,
   ) {}
+
+  addToCart(){
+    const CartItemData={
+       quantity: "1",
+       totalPrice: "200",
+       recipeId: this.Id.toString(),
+       restaurantId: "1"
+     }
+     this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
+       next:(Response)=>console.log(Response),
+       error:(err)=>console.log(err)
+     })   
+   }
 
   ngOnInit(): void {
     this.Id = this.myActive.snapshot.params['id'];
@@ -61,6 +77,8 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
 
     this.updateStarRating();
   }
+
+ 
 
   updateStarRating() {
     const productRatingElements = document.querySelectorAll('.product-rating');
