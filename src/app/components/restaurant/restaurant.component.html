@@ -1,16 +1,19 @@
-<div *ngIf="images">
+<!-- <div *ngIf="images">
     <resturamt-images [images]="images" [mainImage]="currentRestaurant.image"></resturamt-images>
 </div>
 <div *ngIf="currentRestaurant">
     <restaurant-info [oppeningHour]="currentRestaurant.openHours" [closingHour]="currentRestaurant.closingHours" [closingDays]="currentRestaurant.clossingDays" [name]="currentRestaurant.name" [rate]="currentRestaurant.rate"></restaurant-info>
     <restaurant-contact  [address]="currentRestaurant.address" [email]="currentRestaurant.email" [phone]="currentRestaurant.phone"></restaurant-contact>
 </div> 
+
+<div *ngIf="currentRestaurant">
   <restaurant-menu #menu ></restaurant-menu>
-  <div *ngIf="looding">
+</div> -->
+  <!-- <div *ngIf="looding">
     <app-book-container [restaurantId]="currentRestaurant.id" [openHour]="currentRestaurant.openHours" [closeHour]="currentRestaurant.closingHours"></app-book-container> 
-  </div>
-  <app-feedback [restaurantId]="currentRestaurant.id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback>
+  </div> -->
 
-  <restaurant-offers [restaurantId]="currentRestaurant.id"></restaurant-offers>
+  <!-- <restaurant-offers [restaurantId]="currentRestaurant.id"></restaurant-offers> -->
+  <app-feedback [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback>
 
-
+  <app-feedback-reviews [restaurantId]="currentRestaurant.id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback-reviews>

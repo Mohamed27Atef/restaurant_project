@@ -59,6 +59,7 @@ import { BookContainerComponent } from './components/restaurant/book-container/b
 import { BookSelectionComponent } from './components/restaurant/book-selection/book-selection.component';
 import { PalstineComponent } from './components/palstine/palstine.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback-reviews.component';
 
 
 
@@ -67,6 +68,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     HomeComponent,
     FooterComponent,
@@ -108,6 +110,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
+    FeedbackReviewsComponent,
 
 
 

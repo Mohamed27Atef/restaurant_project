@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
 import{IRestaurantFeedback} from 'src/app/interfaces/RestaurantFeedback';
+
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',

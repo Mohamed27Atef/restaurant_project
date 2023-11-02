@@ -1,11 +1,10 @@
+ .menu{
+ min-height: 400px;
+ 
+ font-family: "Poppins", sans-serif;
+ color: #444444;
+}
 
-body {
-  
-
-    font-family: "Poppins", sans-serif;
-    color: #444444;
-    
-  }
   
   a {
     text-decoration: none;

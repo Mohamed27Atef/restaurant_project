@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.dev';
+import { Observable } from 'rxjs';
+import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback'
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +16,8 @@ export class FeedbackService {
   postFeedback(feedbackData: any) {
     console.log(feedbackData);
     return this.http.post(`${this.apiUrl}`, feedbackData);
+  }
+  getReviewsForRestaurant(restaurantId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/restaurant/${restaurantId}`);
   }
 }

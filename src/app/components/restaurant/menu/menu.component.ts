@@ -9,7 +9,7 @@ import { Recipe } from 'src/app/interfaces/recipe';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements AfterViewInit {
-  selectedMenu: string = 'all'; 
+  selectedMenu: string = 'all'; // Initialize with 'all'
 
   public menus: Menu[] = [];   
   public recipes: Recipe[] = []; 
@@ -52,7 +52,10 @@ export class MenuComponent implements AfterViewInit {
     }
 
   }
+
+
   filterMenu(menu: string) {
     this.selectedMenu = menu;
-  }
+
+ }
 }
