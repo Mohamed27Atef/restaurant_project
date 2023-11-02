@@ -13,4 +13,18 @@ export class ReserveTableComponent {
   getReservation(reservation: any) {
     this.reservationTable = reservation;
   }
+
+  removeTable(item: any) {
+    this.reservationTable.splice(
+      this.reservationTable.findIndex((r) => r.id == item.id),
+      1
+    );
+    console.log(item);
+    this.userTableService
+      .deleteUserReservation(item.reservationNumber)
+      .subscribe({
+        next: (data) => {},
+        error: (e) => {},
+      });
+  }
 }

@@ -153,3 +153,34 @@ input[type="checkbox"] {
 }
 #cvv:hover {
 }
+#btn-apply {
+  background-color: #4caf50; /* Background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding for better spacing */
+  border: none; /* Remove border */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+}
+
+#btn-apply:hover {
+  background-color: #45a049; /* Change background color on hover */
+}
+#btn-cupon {
+  background: none;
+  border: none;
+  color: blue; /* Set the color you want for links */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+}
+
+.error-message {
+  color: red !important; /* Make the text red */
+  display: block; /* Display on the next line (full width) */
+  margin-top: -20px !important;
+  margin-bottom: 10px !important;
+}
