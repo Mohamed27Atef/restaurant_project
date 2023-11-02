@@ -111,9 +111,7 @@ import { OrderUserDetailsComponent } from './components/order-user-details/order
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
-
-    RecipeComponent
-
+    RecipeComponent,
     StatusComponent,
     OrdersComponent,
     OrderUserDetailsComponent,
