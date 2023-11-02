@@ -11,17 +11,27 @@
             <div class="row">
               <span class="header">Payment</span>
             </div>
-            <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+            <form
+              #myForm="ngForm"
+              [formGroup]="RegisterationValidation"
+              (ngSubmit)="onSubmit()"
+            >
               <label for="street">Street:</label>
               <input
                 type="text"
                 id="street"
                 name="street"
+                formControlName="street"
                 ngModel
                 required
                 [(ngModel)]="street"
               />
-              <span class="error-message" *ngIf="!street"
+              <span
+                class="error-message"
+                *ngIf="
+                  !StreetValid &&
+                  RegisterationValidation?.get('street')?.touched
+                "
                 >Please enter a street.</span
               >
 
@@ -30,65 +40,49 @@
                 type="text"
                 id="city"
                 name="city"
+                formControlName="city"
                 ngModel
                 required
                 [(ngModel)]="city"
               />
-              <span class="error-message" *ngIf="!city"
+              <span
+                class="error-message"
+                *ngIf="
+                  !cityValid && RegisterationValidation?.get('city')?.touched
+                "
                 >Please enter a city.</span
               >
 
               <label for="country">Country:</label>
               <input
+                #countryInput
                 type="text"
                 id="country"
                 name="country"
+                formControlName="country"
                 ngModel
                 required
                 [(ngModel)]="country"
               />
-              <span class="error-message" *ngIf="!country"
+
+              <span
+                class="error-message"
+                *ngIf="
+                  !countryValid &&
+                  RegisterationValidation?.get('country')?.touched
+                "
                 >Please enter a country.</span
               >
+              <button class="btn" (click)="makeOrder()">Pay Now</button>
             </form>
-
-            <!-- <form>
-              <div class="form-group">
-                <label for="street">Street:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="street"
-                  name="street"
-                  [(ngModel)]="street"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="city">City:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="city"
-                  name="city"
-                  [(ngModel)]="city"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="country">Country:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="country"
-                  name="country"
-                  [(ngModel)]="country"
-                  required
-                />
-              </div>
-            </form> -->
+            <div
+              class="error-message"
+              *ngIf="
+                RegisterationValidation.invalid && RegisterationValidation.dirty
+              "
+            >
+              Please fix the form errors before submitting.
+            </div>
           </div>
         </div>
         <div class="col-md-5">
@@ -162,13 +156,13 @@
                 <button (click)="applyPromoCode()" id="btn-apply">Apply</button>
               </div>
             </div>
-            <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+            <!-- <form #myForm="ngForm" (ngSubmit)="onSubmit()">
               <button class="btn" (click)="makeOrder()">Pay Now</button>
-            </form>
+            </form> -->
 
-            <p class="text-muted text-center">
+            <!-- <p class="text-muted text-center">
               Complimentary Shipping & Returns
-            </p>
+            </p> -->
           </div>
         </div>
       </div>
