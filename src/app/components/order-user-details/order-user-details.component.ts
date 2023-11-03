@@ -5,6 +5,7 @@ import { getCookie } from 'typescript-cookie';
 import { Component, Input, OnInit } from '@angular/core';
 import { CartItemsOrder } from 'src/app/interfaces/cart-items-order';
 import { CartitemService } from 'src/app/services/cartitem.service';
+import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class OrderUserDetailsComponent implements OnInit {
   userName: string = '';
 
   cartItems!: CartItemsOrder[];
-  constructor(private cartItemService: CartitemService){
+  constructor(private cartItemService: CartitemService, private route: ActivatedRoute){
+    console.log(route.snapshot.params["id"])
+
     
         let jsonTokenWithoutDecode: any = getCookie('User');
     let tokenDecoded: any = jwtDecode(jsonTokenWithoutDecode);

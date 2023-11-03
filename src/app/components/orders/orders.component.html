@@ -22,11 +22,9 @@
         <td>{{order.street}}-{{order.city}}-{{order.country}}</td>
         <td>
           <a
-            routerLink="OrderUserDetails/{{ order.Id }}"
+            routerLink="OrderUserDetails/{{ order.id }}"
             type="button"
             class="btn btn-warning"
-            data-bs-toggle="modal"
-            data-bs-target="#OrderDetails"
           >
             Details
           </a>
