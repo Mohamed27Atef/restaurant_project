@@ -55,7 +55,11 @@
                 >Book Table</a
               >
             </li>
+            <li *ngIf="isAuthServices.isAuth" class="nav-item">
+              <a class="nav-link" routerLink="orders">Orders</a>
+            </li>
           </ul>
+
           <div class="user_option gap-3">
             <a
               class="user_link"
@@ -88,7 +92,7 @@
                 </a>
               </div>
             </a>
-            <a class="cart_link" (click)="toggleCart()" href="#" #cart>
+            <a class="cart_link" (click)="toggleCart()" #cart>
               <svg
                 version="1.1"
                 id="Capa_1"

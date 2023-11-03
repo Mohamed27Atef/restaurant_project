@@ -12,6 +12,11 @@ import { UserTableServicesService } from './services/user-table.service';
 import { TableReservationComponent } from './components/restaurant/table-reservation/table-reservation.component';
 import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
 
+import { OrdersComponent } from './components/orders/orders.component';
+
+import { RecipeComponent } from './components/recipe/recipe.component';
+
+
 const routes: Routes = [
   {
     path: 'login',
@@ -22,12 +27,14 @@ const routes: Routes = [
     component: SignupComponent,
   },
   { path: '', component: HomeComponent },
+  { path: 'test', component: RecipeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'orderDetials', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },
+  { path: 'orders', component: OrdersComponent },
 ];
 
 @NgModule({

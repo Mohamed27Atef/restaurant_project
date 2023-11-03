@@ -38,13 +38,10 @@ import { SerchRetaurantComponent } from './components/serch-retaurant/serch-reta
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
-import { CartService } from './services/service-cart';
-import { Header, SidebarModule } from '@syncfusion/ej2-angular-navigations';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 
-import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { StepsComponent } from './components/steps/steps.component';
 
-// import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RestaurantSelectionComponent } from './components/restaurant-selection/restaurant-selection.component';
@@ -64,6 +61,7 @@ import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback
 import { StatusComponent } from './components/status/status.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -100,9 +98,7 @@ import { OrderUserDetailsComponent } from './components/order-user-details/order
     FAQComponent,
     SerchRetaurantComponent,
     CartPageComponent,
-    CartItemComponent,
     StepsComponent,
-    // CartItemsComponent,
     ReservationContainerComponent,
     ReservationFormComponent,
     RestaurantSelectionComponent,
@@ -115,9 +111,12 @@ import { OrderUserDetailsComponent } from './components/order-user-details/order
     PalstineComponent,
     HeaderComponent,
     FeedbackReviewsComponent,
+    RecipeComponent,
     StatusComponent,
     OrdersComponent,
     OrderUserDetailsComponent,
+    ProfileComponent,
+
 
 
 
