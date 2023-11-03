@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import jwtDecode from 'jwt-decode';
 import { OrdersService } from 'src/app/services/orders.service';
 import { getCookie } from 'typescript-cookie';
 
@@ -9,14 +10,14 @@ import { getCookie } from 'typescript-cookie';
 })
 export class OrdersComponent implements OnInit {
   orders: any;
-  constructor(private myService: OrdersService) {
-    let user = getCookie('User');
-    console.log(user);
-  }
+  constructor(private myService: OrdersService) {}
   ngOnInit(): void {
     this.myService.GetOrders().subscribe({
       next: (data) => {
         this.orders = data;
+      },
+      error(err) {
+        console.log(err);
       },
     });
   }
