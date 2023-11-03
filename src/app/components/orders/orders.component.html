@@ -9,18 +9,17 @@
         <th>Details</th>
       </tr>
     </thead>
-    <tbody *ngFor="let order of orders">
-      <tr>
+
+    <tbody>
+      <tr *ngFor="let order of orders">
         <td>
-          <span class="badge bg-success rounded-pill fs-6">
-            {{ order.status }}
-          </span>
+          <span class="badge bg-success rounded-pill fs-6">{{order.status}}</span>
         </td>
-        <td>{{ order.createdAt }}</td>
+        <td>{{order.createdAt.toLocaleString()}}</td>
         <td>
-          <p class="text-muted mb-0">${{ order.totalPrice }}</p>
+          <p class="text-muted mb-0">{{order.totalPrice}}</p>
         </td>
-        <td>{{ order.address }}</td>
+        <td>{{order.street}}-{{order.status}}-{{order.country}}</td>
         <td>
           <a
             routerLink="OrderUserDetails/{{ order.id }}"
@@ -55,7 +54,7 @@
         ></button>
       </div>
       <div class="modal-body bg-dark">
-        <app-order-user-details></app-order-user-details>
+        <app-order-user-details [orderId]="1"></app-order-user-details>
       </div>
     </div>
   </div>
