@@ -10,15 +10,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let order of orders">
         <td>
-          <span class="badge bg-success rounded-pill fs-6">Shipped</span>
+          <span class="badge bg-success rounded-pill fs-6">{{order.status}}</span>
         </td>
-        <td>1/11/2023</td>
+        <td>{{order.createdAt.toLocaleString()}}</td>
         <td>
-          <p class="text-muted mb-0">IT Department</p>
+          <p class="text-muted mb-0">{{order.totalPrice}}</p>
         </td>
-        <td>Cairo</td>
+        <td>{{order.street}}-{{order.status}}-{{order.country}}</td>
         <td>
           <button
             type="button"
@@ -51,7 +51,7 @@
         ></button>
       </div>
       <div class="modal-body bg-dark">
-        <app-order-user-details></app-order-user-details>
+        <app-order-user-details [orderId]="1"></app-order-user-details>
       </div>
     </div>
   </div>
