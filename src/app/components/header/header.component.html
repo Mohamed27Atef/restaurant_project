@@ -55,7 +55,11 @@
                 >Book Table</a
               >
             </li>
+            <li *ngIf="isAuthServices.isAuth" class="nav-item">
+              <a class="nav-link" routerLink="orders">Orders</a>
+            </li>
           </ul>
+
           <div class="user_option gap-3">
             <a
               class="user_link"
