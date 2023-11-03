@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.dev';
 import { Observable } from 'rxjs';
 import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback'
+import { getCookie } from 'typescript-cookie';
 
 
 @Injectable({
@@ -14,8 +15,13 @@ export class FeedbackService {
   constructor(private http: HttpClient) {}
 
   postFeedback(feedbackData: any) {
-    console.log(feedbackData);
-    return this.http.post(`${this.apiUrl}`, feedbackData);
+    const JsonToken = getCookie('User');
+    const token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.post(`${this.apiUrl}`, feedbackData, {headers});
   }
   getReviewsForRestaurant(restaurantId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/restaurant/${restaurantId}`);

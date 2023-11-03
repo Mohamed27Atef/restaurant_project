@@ -7,7 +7,7 @@ import{IRestaurantFeedback} from 'src/app/interfaces/RestaurantFeedback';
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.css'],
 })
-export class FeedbackComponent{
+export class FeedbackComponent implements OnInit{
 
   stars: number[] = [1, 2, 3, 4, 5];
   selectedRating: number = 0;
@@ -25,6 +25,10 @@ export class FeedbackComponent{
 
   constructor(private feedbackService: FeedbackService) {
   }
+  ngOnInit(): void {
+    
+    console.log(this.restaurantId)
+  }
 
   rate(rating: number): void {
     this.selectedRating = rating;
@@ -39,11 +43,14 @@ export class FeedbackComponent{
     };
 
     this.feedbackService.postFeedback(feedbackToAdd).subscribe(
-      (response) => {
-        console.log('Feedback submitted successfully.', response);
-      },
-      (error) => {
-        console.error('Error submitting feedback.', error);
+      {
+        next: (response) => {
+          console.log('Feedback submitted successfully.', response);
+        },
+        
+        error: (error) => {
+          console.error('Error submitting feedback.', error);
+        }
       }
     );
   }
