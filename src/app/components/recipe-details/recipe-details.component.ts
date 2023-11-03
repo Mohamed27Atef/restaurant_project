@@ -1,9 +1,10 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { data } from 'isotope-layout';
 import { Recipe } from 'src/app/interfaces/recipe';
 import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { AddToCartService } from 'src/app/services/add-to-cart.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -16,20 +17,33 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   quantity: number = 1;
   numberOfReview: number = 0;
   Id: number = 0;
+ 
   constructor(
     private myService: RecipeService,
     private myActive: ActivatedRoute,
+    private addToCartService : AddToCartService,
     private recipeFeedbackService: RecipeFeedbackService
   ) {
     this.Id = this.myActive.snapshot.params['id'];
   }
 
+  addToCart(){
+    const CartItemData={
+       quantity: this.quantity,
+       totalPrice: this.recipe.totalPrice,
+       recipeId: this.Id.toString(),
+       restaurantId: this.recipe.restaurantId
+     }
+     this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
+       next:(Response)=>console.log(Response),
+       error:(err)=>console.log(err)
+     })   
+   }
+
   ngOnInit(): void {
     this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
-      next: data=> {
-        // if(data)
-          this.numberOfReview = data
-      },
+      next: data=> 
+        this.numberOfReview = data
     })
     this.myService.getRecipe(this.Id).subscribe({
       next: (data) => this.recipe = data,
@@ -63,6 +77,8 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
 
     this.updateStarRating();
   }
+
+ 
 
   updateStarRating() {
     const productRatingElements = document.querySelectorAll('.product-rating');

@@ -14,7 +14,6 @@ import { getCookie } from 'typescript-cookie';
 export class ShoppingCartService {
   private apiPort = environment.apiPort;
   private DB_URL = `https://localhost:${this.apiPort}/api/CartItem`;
-  private cartItems: any[] = [];
 
 
   constructor(private httpClient: HttpClient){}
@@ -24,18 +23,7 @@ export class ShoppingCartService {
   toggleCartVisibility() {
     this.isCartVisibleSource.next(!this.isCartVisibleSource.value);
   }
-  removeItem(item: Item) {
-    const index = this.cartItems.indexOf(item);
-    if (index >= 0) {
-      this.cartItems.splice(index, 1);
-    }
-  }
-emptyCart() {
-    this.cartItems = [];
-  }
-  addItemToCart(item: any) {
-    this.cartItems.push(item);
-  }
+
 
   getCartItems(): Observable<any> {
     const JsonToken = getCookie('User');

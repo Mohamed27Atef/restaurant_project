@@ -79,9 +79,7 @@ td .cancel-button {
   font-size: 16px;
 }
 .container-order-details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 15px;
 }
 .order-details-total-price {
   text-align: center;
@@ -98,14 +96,21 @@ td .cancel-button {
 .order-deatails-btn {
 }
 .order-deatails-btn .details-button {
-  width: 100px;
-  height: 70px;
+  display: block;
+  /* width: 100px;
+  height: 100px; */
+  padding: 15px;
   border-radius: 5px;
   background-color: #383d40;
   color: #fff;
+  text-align: center;
+  /* line-height: 100px; */
+  text-decoration: none;
+  transition: all 0.3s;
 }
+
 .order-deatails-btn .details-button:hover {
-  background-color: #156a9b;
+  background-color: #e69c00;
 }
 @media screen and (max-width: 800px) {
   table {
