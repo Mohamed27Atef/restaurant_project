@@ -20,7 +20,7 @@ export class OrderUserDetailsComponent implements OnInit {
   cartItems!: CartItemsOrder[];
   constructor(
     private cartItemService: CartitemService,
-    private myservice: OrderUserDetailsService,
+    private myService: OrderUserDetailsService,
     private myActive: ActivatedRoute
   ) {
     let jsonTokenWithoutDecode: any = getCookie('User');
@@ -36,7 +36,7 @@ export class OrderUserDetailsComponent implements OnInit {
     this.cartItemService.getOrderDetails(this.orderId).subscribe({
       next: (data) => (this.cartItems = data),
     });
-    this.myservice.GetOrderById(this.orderId).subscribe({
+    this.myService.GetOrderById(this.orderId).subscribe({
       next: (data) => {
         this.orders = data;
       },
