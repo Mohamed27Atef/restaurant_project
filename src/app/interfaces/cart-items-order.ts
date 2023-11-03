@@ -1,10 +1,10 @@
 export interface CartItemsOrder {
 
     Id : number
-    Quantity : number
+    quantity : number
     recipeName :string
     restaurantName:string
-    TotalPrice: number
+    totalPrice: number
     recipePrice : number
     imageUrl:string
     recipeDescription :string

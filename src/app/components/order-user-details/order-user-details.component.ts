@@ -15,6 +15,7 @@ import { CartitemService } from 'src/app/services/cartitem.service';
 
 export class OrderUserDetailsComponent implements OnInit {
   @Input() orderId!: number;
+  @Input() orderStatus!: string;
   userName: string = '';
 
   cartItems!: CartItemsOrder[];
