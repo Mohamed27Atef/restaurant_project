@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import jwtDecode from 'jwt-decode';
+
 import { UserOrders } from 'src/app/interfaces/user-orders';
+
 import { OrdersService } from 'src/app/services/orders.service';
 import { getCookie } from 'typescript-cookie';
 
@@ -18,8 +21,11 @@ export class OrdersComponent implements OnInit {
     this.myService.getUserOrder().subscribe({
       next: (data) => {
         this.orders = data;
-        console.log(data);
-      }
+      },
+      error(err) {
+        console.log(err);
+      },
+
     });
   }
 }

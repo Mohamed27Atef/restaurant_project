@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-4 fs-6">
   <table class="table table-hover table-lg text-center">
     <thead class="thead-light">
       <tr>
@@ -6,9 +6,10 @@
         <th>Created At</th>
         <th>Total Price</th>
         <th>Address</th>
-        <th>Actions</th>
+        <th>Details</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let order of orders">
         <td>
@@ -20,14 +21,15 @@
         </td>
         <td>{{order.street}}-{{order.status}}-{{order.country}}</td>
         <td>
-          <button
+          <a
+            routerLink="OrderUserDetails/{{ order.id }}"
             type="button"
             class="btn btn-warning"
             data-bs-toggle="modal"
             data-bs-target="#OrderDetails"
           >
             Details
-          </button>
+          </a>
         </td>
       </tr>
     </tbody>
@@ -40,9 +42,10 @@
   aria-labelledby="OrderDetails"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content bg-warning">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
       <div class="modal-header">
+        <h2>Order Details</h2>
         <button
           type="button"
           class="btn-close"
