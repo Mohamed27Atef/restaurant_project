@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
 import { StepsService } from 'src/app/services/steps.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { StepsService } from 'src/app/services/steps.service';
   styleUrls: ['./steps.component.css'],
 })
 export class StepsComponent implements OnInit {
-  status: string = '';
+  @Input() status!: string
   constructor(private StepsServices: StepsService) {}
 
   getStepStatus(stepNumber: number): string {

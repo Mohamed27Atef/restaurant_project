@@ -238,3 +238,6 @@
   object-fit: cover;
 }
 
+.offcanvas {
+  --bs-offcanvas-width: 450px
+}
