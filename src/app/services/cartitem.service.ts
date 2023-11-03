@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.dev';
 import { HeaderService } from './header.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,10 @@ export class CartitemService {
   clearCart() {
     const headers = this.headerService.getHeader();
     return this.httpClient.delete(this.BaseUrl + "/clearCart", {headers});
+  }
+  getOrderDetails(orderId: number): Observable<any> {
+    const headers = this.headerService.getHeader();
+    return this.httpClient.get(this.BaseUrl + "/getCartItemsOrderd/" + orderId, {headers});
+  
   }
 }

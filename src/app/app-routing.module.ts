@@ -13,6 +13,7 @@ import { TableReservationComponent } from './components/restaurant/table-reserva
 import { ReserveTableComponent } from './components/reserve-table/reserve-table.component';
 
 import { OrdersComponent } from './components/orders/orders.component';
+import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
 
 import { RecipeComponent } from './components/recipe/recipe.component';
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
 ];
 
 @NgModule({
