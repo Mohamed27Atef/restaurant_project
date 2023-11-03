@@ -18,6 +18,8 @@ export class OrderUserDetailsComponent implements OnInit {
   orderId!: number;
   userName: string = '';
   orders: any;
+  status!: string;
+  totalPrice!: number;
 
   cartItems!: CartItemsOrder[];
   constructor(
@@ -25,6 +27,7 @@ export class OrderUserDetailsComponent implements OnInit {
     private myService: OrderUserDetailsService,
     private myActive: ActivatedRoute
   ) {
+
     let jsonTokenWithoutDecode: any = getCookie('User');
 
     let tokenDecoded: any = jwtDecode(jsonTokenWithoutDecode);
@@ -33,6 +36,10 @@ export class OrderUserDetailsComponent implements OnInit {
         'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
       ];
     this.orderId = this.myActive.snapshot.params['id'];
+    this.myActive.queryParams.subscribe(params => {
+      this.status = params['status'];
+      this.totalPrice = params['totalPrice']
+  });
   }
 
   ngOnInit(): void {
