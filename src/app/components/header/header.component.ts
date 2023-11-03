@@ -133,4 +133,23 @@ export class HeaderComponent {
   clearLink() {
     this.myroute = this.route.url.split('#')[0];
   }
+
+  toggleTable(event: Event) {
+    if (this.name != '') {
+      event.preventDefault();
+      const table = document.getElementById('tables');
+      if (table) {
+        table.classList.toggle('hidden');
+        if (window.innerWidth <= 768) {
+          table.style.top = table.classList.contains('hidden')
+            ? '260px'
+            : '275px';
+        } else {
+          table.style.top = table.classList.contains('hidden')
+            ? '-40px'
+            : '55px';
+        }
+      }
+    }
+  }
 }
