@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { data } from 'isotope-layout';
 import { Recipe } from 'src/app/interfaces/recipe';
@@ -27,13 +27,12 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
     this.Id = this.myActive.snapshot.params['id'];
   }
 
-
   addToCart(){
     const CartItemData={
-       quantity: "1",
-       totalPrice: "200",
+       quantity: this.quantity,
+       totalPrice: this.recipe.totalPrice,
        recipeId: this.Id.toString(),
-       restaurantId: "1"
+       restaurantId: this.recipe.restaurantId
      }
      this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
        next:(Response)=>console.log(Response),
@@ -43,10 +42,8 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
-      next: data=> {
-        // if(data)
-          this.numberOfReview = data
-      },
+      next: data=> 
+        this.numberOfReview = data
     })
     this.myService.getRecipe(this.Id).subscribe({
       next: (data) => this.recipe = data,
