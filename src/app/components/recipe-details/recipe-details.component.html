@@ -10,6 +10,7 @@
     </div>
     <div class="col-1">
       <a href="#" class="nav-link">{{ recipe.menuName }}</a>
+
     </div>
   </div>
 
@@ -41,6 +42,7 @@
           <span>({{ numberOfReview }} reviews)</span>
         </p>
         <!-- <p>
+
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac
             habitasse platea dictumst.
           </p> -->
@@ -56,16 +58,18 @@
           </button>
         </div>
         <div>
-          <button class="btn btn-outline-warning me-4 text-dark">
+          <button (click)="addToCart()" class="btn btn-outline-warning me-4 text-dark">
             <i class="fa-solid fa-cart-shopping"></i>
             Add to Cart
           </button>
           <!-- <div id="wishlistBtn" class="btn border-0 btn-outline-dark">
+
               <i
                 class="far fa-heart favorite-button fa-lg toggle-favorite me-2"
               ></i
               ><span>Add to wishlist</span>
             </div> -->
+
         </div>
       </div>
     </div>
@@ -121,4 +125,5 @@
         </div>
       </div>
     </div> -->
+
 </div>

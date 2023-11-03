@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderDetails } from 'src/app/interfaces/order-details';
 import { OrderdAddress } from 'src/app/interfaces/orderd-address';
 import { CoponService } from 'src/app/services/copon.service';
@@ -28,6 +29,24 @@ export class PaymentComponent {
 
   CartItemSumary!: OrderDetails[];
 
+  RegisterationValidation = new FormGroup({
+    street: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30),
+    ]),
+    city: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30),
+    ]),
+    country: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30),
+    ]),
+  });
+
   constructor(
     private orderdetailService: OrderDetailsService,
     private createorder: CreateorderService,
@@ -42,6 +61,16 @@ export class PaymentComponent {
       },
       error: (err) => console.log(err),
     });
+  }
+
+  get StreetValid() {
+    return this.RegisterationValidation.controls['street'].valid;
+  }
+  get cityValid() {
+    return this.RegisterationValidation.controls['city'].valid;
+  }
+  get countryValid() {
+    return this.RegisterationValidation.controls['country'].valid;
   }
 
   togglePromoInput() {
