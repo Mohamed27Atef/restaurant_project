@@ -3,6 +3,7 @@ export interface UserOrders {
     createdAt: Date;
     totalPrice: number;
     country: string;
+    city: string;
     street: string;
     status: string;
 }
