@@ -1,5 +1,5 @@
 export interface UserOrders {
-    Id: number;
+    id: number;
     createdAt: Date;
     totalPrice: number;
     country: string;
