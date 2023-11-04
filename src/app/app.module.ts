@@ -62,6 +62,7 @@ import { StatusComponent } from './components/status/status.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
 
 
 
@@ -116,6 +117,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     OrdersComponent,
     OrderUserDetailsComponent,
     ProfileComponent,
+    FeedbackScoreComponent,
 
 
 
