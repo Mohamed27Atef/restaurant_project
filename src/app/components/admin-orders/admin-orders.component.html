@@ -1,4 +1,21 @@
 <div class="container">
+ 
+  <h1 class="text-center my-4"><strong>Orders</strong></h1>
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Filter by Customer Name" [(ngModel)]="filterCustomerName" (input)="applyFilters()" />
+      </div>
+      <div class="col">
+        <input type="text"  onfocus="(this.type='date')"   onblur="(this.type='text')" class="form-control" placeholder="Filter by Date" [(ngModel)]="filterDate" (input)="applyFilters()" />
+      </div>
+      <div class="col">
+        <select class="form-control" [(ngModel)]="filterStatus" (change)="applyFilters()">
+          <option value="">All Statuses</option>
+          <option *ngFor="let item of status" [value]="item">{{item}}</option>
+        </select>
+      </div>
+      </div>
+ 
 <table class="table table-bordered table-striped">
     <thead>
       <tr class="table-dark">
@@ -9,10 +26,10 @@
         <th scope="col">Total Price</th>
         <th scope="col">Status</th>
         <th scope="col">Details</th>
-      </tr>
+      </tr> 
     </thead>
     <tbody>
-      <tr *ngFor="let order of orders"> 
+      <tr *ngFor="let order of filteredOrders"> 
         <th>{{order.orderId}}</th>
         <td>{{order.customerName}}</td>
         <td>{{order.country}} - {{order.city}} - {{order.street}}</td>

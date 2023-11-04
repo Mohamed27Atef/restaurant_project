@@ -1,5 +1,5 @@
 <div class=" col-md-12 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5 fadeInUp ftco-animated">
-    <div class="all">
+    <div class="all"> 
         <div class="overlay">
             <div class=" py-md-5 p-4">
                 <div class="heading-section ftco-animate mb-5 fadeInUp ftco-animated text-center">
@@ -26,7 +26,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="head" for="">Date</label>
-                                <input (ngModelChange)="onDateTimeChange()" formControlName="date" type="date" class="form-control" placeholder="Date">
+                                <input (ngModelChange)="onDateTimeChange()" formControlName="date" type="text"  onfocus="(this.type='date')"  onblur="(this.type='text')" class="form-control" placeholder="Date">
                                 <span class="text-danger small" *ngIf="reservationForm.get('date')?.getError('required')&& reservationForm.get('date')?.touched">Required !</span>
 
                             </div>
@@ -34,7 +34,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="head" for="">Time</label>
-                                <input (ngModelChange)="onDateTimeChange()" formControlName="time" type="time" class="form-control" id="book_date" placeholder="Time">
+                                <input (ngModelChange)="onDateTimeChange()" formControlName="time" type="text"  onfocus="(this.type='time')"  onblur="(this.type='text')" class="form-control" id="book_date" placeholder="Time">
                                 <span class="text-danger small" *ngIf="reservationForm.get('time')?.getError('required')&& reservationForm.get('time')?.touched">Required !</span>
                                 <span class="text-danger small" *ngIf="reservationForm.hasError('dateTimeInvalid')">The selected date and time must be in the future</span>
                             </div>
