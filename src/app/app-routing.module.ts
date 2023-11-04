@@ -16,6 +16,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
 
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { AdminOrderContainerComponent } from './components/admin-order-container/admin-order-container.component';
+import { AdminOrderDetailsComponent } from './components/admin-order-details/admin-order-details.component';
+import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
+import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 
 
 const routes: Routes = [
@@ -37,6 +41,10 @@ const routes: Routes = [
   { path: 'restaurant/:id', component: RestaurantComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
+  { path: 'admin/orders', component: AdminOrderContainerComponent },
+  { path: 'admin/reservation', component: AdminTablesComponent },
+  { path: '**', component: HomeComponent },
+
 ];
 
 @NgModule({
