@@ -3,6 +3,7 @@
     <thead class="thead-light">
       <tr>
         <th>Status</th>
+        <th>Restaurant Name</th>
         <th>Created At</th>
         <th>Total Price</th>
         <th>Address</th>
@@ -17,6 +18,7 @@
             order.status
           }}</span>
         </td>
+        <td>{{ order.restaurantName }}</td>
         <td>{{ order.createdAt.toLocaleString() }}</td>
         <td>
           <p class="text-muted mb-0">{{ order.totalPrice }}</p>
@@ -24,7 +26,7 @@
         <td>{{ order.street }}-{{ order.city }}-{{ order.country }}</td>
         <td>
           <a
-            [routerLink]="['OrderUserDetails/' + order.id]" [queryParams]="{status: order.status, totalPrice: order.totalPrice}"
+            [routerLink]="['OrderUserDetails/' + order.id]" [queryParams]="{status: order.status, totalPrice: order.totalPrice, retaurantId: order.restaurantId}"
             type="button"
             class="btn btn-warning"
           >

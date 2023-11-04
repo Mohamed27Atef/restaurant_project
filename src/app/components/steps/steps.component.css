@@ -72,6 +72,8 @@
 
 .container{
   position: relative;
+  z-index: 20;
+
 }
 
 .horizontal-line {
@@ -81,5 +83,6 @@
   position: absolute;
  bottom: 70%;
   transform: translateX(0);
+  z-index: -2;
   animation: moveLine 0.00000000000001 linear; /* Adjust the animation duration as needed */
 }

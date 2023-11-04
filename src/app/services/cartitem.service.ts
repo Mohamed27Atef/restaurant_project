@@ -22,9 +22,9 @@ export class CartitemService {
     const headers = this.headerService.getHeader();
     return this.httpClient.delete(this.BaseUrl + "/clearCart", {headers});
   }
-  getOrderDetails(orderId: number): Observable<any> {
+  getOrderDetails(orderId: number, restaurantId: number): Observable<any> {
     const headers = this.headerService.getHeader();
-    return this.httpClient.get(this.BaseUrl + "/getCartItemsOrderd/" + orderId, {headers});
+    return this.httpClient.get(this.BaseUrl + "/getCartItemsOrderd/" + orderId+"?resraurantId=" + restaurantId, {headers});
   
   }
 }
