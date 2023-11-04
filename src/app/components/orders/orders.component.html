@@ -13,7 +13,7 @@
     <tbody>
       <tr *ngFor="let order of orders">
         <td>
-          <span class="badge bg-success rounded-pill fs-6">{{
+          <span class="badge {{ statusColor }} text-dark rounded-pill fs-6">{{
             order.status
           }}</span>
         </td>
@@ -24,7 +24,11 @@
         <td>{{ order.street }}-{{ order.city }}-{{ order.country }}</td>
         <td>
           <a
-            [routerLink]="['OrderUserDetails/' + order.id]" [queryParams]="{status: order.status, totalPrice: order.totalPrice}"
+            [routerLink]="['OrderUserDetails/' + order.id]"
+            [queryParams]="{
+              status: order.status,
+              totalPrice: order.totalPrice
+            }"
             type="button"
             class="btn btn-warning"
           >
