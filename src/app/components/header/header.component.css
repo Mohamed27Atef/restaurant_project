@@ -52,6 +52,7 @@
 
 .custom_nav-container {
   padding: 0;
+
 }
 
 .custom_nav-container .navbar-nav {
@@ -66,6 +67,7 @@
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .custom_nav-container .navbar-nav .nav-item:hover .nav-link,
@@ -214,6 +216,14 @@
   transition: top 0.3s ease-in-out;
 }
 
+#tables {
+  position: absolute;
+  top: -60px;
+  right: 450px;
+  z-index: 1;
+  transition: top 0.3s ease-in-out;
+}
+
 .hidden {
   display: none;
 }
@@ -221,6 +231,12 @@
 
 @media (max-width: 768px) {
   #logOut {
+    top: 260px;
+    left: 5px;
+    width: 130px;
+  }
+
+  #tables {
     top: 260px;
     left: 5px;
     width: 130px;
@@ -238,3 +254,6 @@
   object-fit: cover;
 }
 
+.offcanvas {
+  --bs-offcanvas-width: 450px
+}

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.dev';
 import { getCookie } from 'typescript-cookie';
+import { HeaderService } from './header.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,10 @@ export class AddToCartService {
   private BaseUrl: string = `https://localhost:${this.apiPort}/`;
 
 
-constructor(private httpClient : HttpClient) { }
+constructor(private httpClient : HttpClient, private headerService: HeaderService) { }
 
 AddRecipeToCart(CartItemData:object):Observable<any>{
-  console.log(CartItemData)
-  let JsonToken = getCookie('User');
- let Token = JsonToken !=undefined? JSON.parse(JsonToken):null;
-  console.log(Token)
-  const headers = new HttpHeaders({
-    Authorization: `Bearer ${Token}`
-  });
+  const headers = this.headerService.getHeader();
  return this.httpClient.post(this.BaseUrl+"api/CartItem",CartItemData,{headers});
 }
 
