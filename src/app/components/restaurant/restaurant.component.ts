@@ -7,6 +7,8 @@ import { MenuService } from 'src/app/services/menu.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { MenuComponent } from './menu/menu.component';
 import { ActivatedRoute, TitleStrategy } from '@angular/router';
+import { getCookie } from 'typescript-cookie';
+import jwtDecode from 'jwt-decode';
 
 
 @Component({
@@ -19,6 +21,9 @@ export class RestaurantComponent implements OnInit {
   currentRestaurant!: RestaurantInfo;
   id!: number;
   images!: string[];
+  name!: string;
+  userImage!: string;
+  jsonTokenWithoutDecode!: any;
 
   looding: boolean = false
 
@@ -27,6 +32,22 @@ export class RestaurantComponent implements OnInit {
     this.id =activeRoute.snapshot.params["id"];
   }
   ngOnInit(): void {
+
+    ///// get name and image
+    this.jsonTokenWithoutDecode = getCookie('User');
+    let UserImageFromCookie: any = getCookie('UserImage');
+    try {
+      let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
+      this.name =
+        Token != null
+          ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+          : '';
+      this.userImage = UserImageFromCookie;
+    } catch (error) {
+      // console.error('Error decoding JWT:', error);
+    }
+    ///////////////////////////////////////////
+
     this.restaurantService.getRestaurantById(this.id).subscribe({
       next: data => {this.currentRestaurant = data;}
     })
@@ -38,15 +59,23 @@ export class RestaurantComponent implements OnInit {
       next: data => {
         this.looding= true;
         this.menuCompent.menus = data.menuDto;
-        this.menuCompent.recipes = data.recipeDtos;
-        console.log(this.menuCompent.recipes);
+        const recipes = data.recipeDtos;
+        
+      const midIndex = Math.floor(recipes.length / 2);
+      this.menuCompent.recipe1 = recipes.slice(0, midIndex);
+      this.menuCompent.recipe2 = recipes.slice(midIndex);
+
+        
       }
     })
   }
 
+ 
+
+
 
   loggedInUser = {
-    name: 'Atef',
-    photoUrl: 'assets/images/client1.jpg', 
+    name: this.name,
+    photoUrl: this.userImage, 
   };
 }

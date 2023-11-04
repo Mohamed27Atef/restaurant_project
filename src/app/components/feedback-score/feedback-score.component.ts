@@ -16,6 +16,7 @@ export class FeedbackScoreComponent implements OnInit {
   ratingCounts: number[] = [0, 0, 0, 0, 0];
   averageRating: number = 0;
   selectedRating: number | null = null;
+  totalRating: number = 0;
 
   constructor(private feedbackService: FeedbackService) {}
 
@@ -26,11 +27,10 @@ export class FeedbackScoreComponent implements OnInit {
         this.calculateRatingCounts();
         this.filterDisplayedReviews(); 
 
-        let totalRating = 0;
-        for (const review of this.feedbackData.reviews) {
-          totalRating += review.rate;
+        for (const review of data) {
+          this.totalRating += review.rate;
         }
-        this.averageRating=totalRating/this.feedbackData.reviews.length;
+        this.averageRating=this.totalRating/data.length;
       
 
       });
