@@ -1,0 +1,25 @@
+<div class="container pb-5 pt-5">
+    <table class="table table-bordered table-striped">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">Table ID</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Time</th>
+            <th scope="col">Customer Phone</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr *ngFor="let reservation of reservations"> 
+            <th>{{reservation.tableNumber}}</th>
+            <td>{{reservation.customerName}}</td>
+            <td>{{reservation.duration}} Hours</td>
+            <td>{{reservation.dateTime}}</td>
+            <td>{{reservation.customerPhone}}</td>  
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      
+      
+      

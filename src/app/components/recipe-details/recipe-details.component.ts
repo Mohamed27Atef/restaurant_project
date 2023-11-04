@@ -21,7 +21,7 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   constructor(
     private myService: RecipeService,
     private myActive: ActivatedRoute,
-
+    private addToCartService:AddToCartService,
     private recipeFeedbackService: RecipeFeedbackService
   ) {
     this.Id = this.myActive.snapshot.params['id'];
@@ -30,10 +30,10 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
 
   addToCart(){
     const CartItemData={
-       quantity: "1",
-       totalPrice: "200",
-       recipeId: this.Id.toString(),
-       restaurantId: "1"
+       quantity:this.quantity,
+       totalPrice: this.recipe.price*this.quantity,
+       recipeId: this.Id,
+       restaurantId: this.recipe.restaurantId
      }
      this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
        next:(Response)=>console.log(Response),
