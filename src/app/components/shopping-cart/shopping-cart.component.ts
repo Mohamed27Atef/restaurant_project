@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { Router } from '@angular/router';
 import { CartItem } from 'src/app/interfaces/CartItem';
+import { CartitemService } from 'src/app/services/cartitem.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,7 +14,12 @@ export class ShoppingCartComponent implements OnInit {
   totalPrice: number = 0;
   cartItems: CartItem[] = [];
 
-  constructor(private cartService: ShoppingCartService, private router: Router, private el: ElementRef, private renderer: Renderer2) { }
+  constructor(private cartService: ShoppingCartService,
+     private router: Router, 
+     private el: ElementRef, 
+     private renderer: Renderer2,
+     private cartItemService: CartitemService
+     ) { }
 
   increaseQuantity(item: CartItem) {
     item.quantity++;
@@ -65,13 +71,27 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.toggleCartVisibility();
   }
 
-  removeItem(item: any) {
-    this.cartService.removeItem(item);
+  removeItem(item: CartItem) {
+    this.cartItemService.deleteCartItem(item.id).subscribe({
+      next: data => console.log(data)
+    })
+    const index = this.cartItems.indexOf(item);
+    if (index >= 0) {
+      this.cartItems.splice(index, 1);
+    }
   }
-
-
   clearCart() {
-    this.cartService.emptyCart();
+    // clear from dB
+    this.cartItemService.clearCart().subscribe({
+      next: data => console.log(data),
+      error: d => console.log(d)
+    })
+    this.cartItems = [];
+  }
+  
+
+  addItemToCart(item: any) {
+    this.cartItems.push(item);
   }
 }
 

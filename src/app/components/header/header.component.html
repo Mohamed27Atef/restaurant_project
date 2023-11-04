@@ -33,10 +33,23 @@
               >
             </li>
             <li *ngIf="isAuthServices.isAuth" class="nav-item">
-              <a class="nav-link" routerLink="userTableReservation"
-                >Table Reservations</a
-              >
+              <a class="nav-link" (click)="toggleTable($event)">Table</a>
             </li>
+            <div id="tables" class="hidden bg-dark">
+              <li *ngIf="isAuthServices.isAuth" class="nav-item">
+                <a class="nav-link" routerLink="userTableReservation"
+                  >Table Reservations</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  (click)="clearLink()"
+                  [href]="myroute + '#reservation'"
+                  >Book Table</a
+                >
+              </li>
+            </div>
 
             <!-- <li *ngIf="isAuthServices.isAuth" class="nav-item">
                 <a class="nav-link"  routerLink="order" >Your Orders</a>
@@ -47,15 +60,11 @@
                 >About <span class="sr-only">(current)</span>
               </a>
             </li> -->
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                (click)="clearLink()"
-                [href]="myroute + '#reservation'"
-                >Book Table</a
-              >
+            <li *ngIf="isAuthServices.isAuth" class="nav-item">
+              <a class="nav-link" routerLink="orders">Orders</a>
             </li>
           </ul>
+
           <div class="user_option gap-3">
             <a
               class="user_link"
@@ -88,7 +97,14 @@
                 </a>
               </div>
             </a>
-            <a class="cart_link" (click)="toggleCart()" href="#" #cart>
+            <a
+              class="cart_link pe-auto"
+              (click)="toggleCart()"
+              #cart
+              data-bs-toggle="offcanvas"
+              data-bs-target="#cartSidebar"
+              aria-controls="offcanvasRight"
+            >
               <svg
                 version="1.1"
                 id="Capa_1"
@@ -143,7 +159,7 @@
                 <g></g>
               </svg>
             </a>
-            <app-shopping-cart *ngIf="isCartVisible"></app-shopping-cart>
+
             <form class="form-inline">
               <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -153,6 +169,31 @@
           </div>
         </div>
       </nav>
+    </div>
+    <!-- sidebar -->
+    <div
+      class="offcanvas offcanvas-end custom-offcanvas"
+      tabindex="-1"
+      id="cartSidebar"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <h1
+          class="offcanvas-title fw-bold align-items-center"
+          id="offcanvasRightLabel"
+        >
+          Cart
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body bg-dark">
+        <app-shopping-cart></app-shopping-cart>
+      </div>
     </div>
 
     <!-- login modal -->
