@@ -56,6 +56,10 @@ import { BookContainerComponent } from './components/restaurant/book-container/b
 import { BookSelectionComponent } from './components/restaurant/book-selection/book-selection.component';
 import { PalstineComponent } from './components/palstine/palstine.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+
+import { CreateResturantComponent } from './components/create-resturant/create-resturant.component';
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
+
 import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback-reviews.component';
 
 import { StatusComponent } from './components/status/status.component';
@@ -116,6 +120,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
+
+    CreateResturantComponent,
+    CreateRecipeComponent,
+
     FeedbackReviewsComponent,
     RecipeComponent,
     StatusComponent,
