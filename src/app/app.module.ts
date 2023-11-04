@@ -71,6 +71,7 @@ import { AdminOrderDetailsComponent } from './components/admin-order-details/adm
 import { AdminOrderContainerComponent } from './components/admin-order-container/admin-order-container.component';
 import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
 
 
 
@@ -136,6 +137,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     AdminTablesComponent,
 
     ProfileComponent,
+    FeedbackScoreComponent,
 
 
 
