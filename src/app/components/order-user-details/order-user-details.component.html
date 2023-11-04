@@ -66,7 +66,7 @@
 
           <div>
             steps
-            <app-steps></app-steps>
+            <app-steps [status]="status"></app-steps>
           </div>
         </div>
         <div
@@ -81,7 +81,7 @@
             style="font-size: 20px"
           >
             Total paid:
-            <span class="h2 mb-0 ms-2">${{ orders.totalOrderDetials }}</span>
+            <span class="h2 mb-0 ms-2">${{ totalOrderDetials }}</span>
           </h5>
         </div>
       </div>

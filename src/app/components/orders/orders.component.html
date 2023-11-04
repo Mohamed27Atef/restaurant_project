@@ -24,7 +24,7 @@
         <td>{{ order.street }}-{{ order.city }}-{{ order.country }}</td>
         <td>
           <a
-            routerLink="OrderUserDetails/{{ order.id }}"
+            [routerLink]="['OrderUserDetails/' + order.id]" [queryParams]="{status: order.status, totalPrice: order.totalPrice}"
             type="button"
             class="btn btn-warning"
           >
@@ -54,7 +54,7 @@
         ></button>
       </div>
       <div class="modal-body bg-dark">
-        <app-order-user-details></app-order-user-details>
+        <!-- <app-order-user-details></app-order-user-details> -->
       </div>
     </div>
   </div>

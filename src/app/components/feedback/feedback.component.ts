@@ -1,14 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
-import{IRestaurantFeedback} from 'src/app/interfaces/RestaurantFeedback';
+import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
 
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.css'],
 })
-export class FeedbackComponent implements OnInit{
-
+export class FeedbackComponent implements OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
   selectedRating: number = 0;
   @Input() userName!: string;
@@ -16,18 +15,11 @@ export class FeedbackComponent implements OnInit{
   @Input() restaurantId!: number;
   userComment: string = '';
 
-  feedback: IRestaurantFeedback = {
-    text: '',
-    rate: 0,
-    postDate: new Date(),
-    ResturantId: this.restaurantId
-  };
 
-  constructor(private feedbackService: FeedbackService) {
-  }
+  constructor(private feedbackService: FeedbackService) {}
+
   ngOnInit(): void {
-    
-    console.log(this.restaurantId)
+    console.log(this.restaurantId);
   }
 
   rate(rating: number): void {
@@ -47,12 +39,14 @@ export class FeedbackComponent implements OnInit{
         next: (response) => {
           console.log('Feedback submitted successfully.', response);
         },
-        
         error: (error) => {
           console.error('Error submitting feedback.', error);
-        }
+        },
       }
     );
+
+    // Clear the form
+    this.userComment = '';
+    this.selectedRating = 0;
   }
 }
-
