@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
 import {
   AbstractControl,
   FormBuilder,
@@ -49,7 +49,8 @@ export class CreateResturantComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private Allcategory: CategoryService,
-    private resturantServ: RestaurantService
+    private resturantServ: RestaurantService,
+    private http: HttpClient
   ) {
     this.restaurantForm = this.formBuilder.group({
       Name: ['', [Validators.required]],
@@ -141,11 +142,20 @@ export class CreateResturantComponent implements OnInit {
       });
     }
   }
+  selectedFile: any = "";
+  imageSrc : any = "";
   onCategoryChange(event: Event) {
     const selectedId = parseInt((event.target as HTMLSelectElement).value, 10);
     this.selectedCategoryId = selectedId;
   }
   onOneImageUpload(event: any) {
+////////////////////////////////////////////////////////
+this.selectedFile = event.target.files[0];
+this.http.put("https://localhost:44397/api/images", this.selectedFile).subscribe({
+  next: d => console.log(d)
+})
+////////////////////////////////////////////////////////
+
     const files: FileList | null = event.target.files;
 
     if (files && files.length > 0) {

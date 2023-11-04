@@ -35,6 +35,7 @@ export class CreateRecipeComponent implements OnInit {
     imageUrl: '',
     images: [],
     menuId: 0,
+    restaurantId: 0
   };
   constructor(
     private formBuilder: FormBuilder,
