@@ -48,9 +48,9 @@ const routes: Routes = [
 
   { path: 'admin/orders', component: AdminOrderContainerComponent },
   { path: 'admin/reservation', component: AdminTablesComponent },
-  { path: 'admin', component: CreateResturantComponent },
+  // { path: 'admin', component: CreateResturantComponent },
   // create recipe
-  // { path: 'admin', component: CreateRecipeComponent },
+  { path: 'admin', component: CreateRecipeComponent },
 
   /////////////////////////////////////////////////////////////////////////////////
   { path: '**', component: HomeComponent },
