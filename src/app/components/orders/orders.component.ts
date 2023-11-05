@@ -20,36 +20,26 @@ export class OrdersComponent implements OnInit {
   }
   ngOnInit(): void {
     this.myService.getUserOrder().subscribe({
-      next: (data) => {
-        this.orders = data;
-        for (let i = 0; i < this.orders.length; i++) {
-          const status = this.orders[i].status;
-          switch (status) {
-            case 'processed':
-              this.statusColor = 'bg-primary';
-              break;
-            case 'shipped':
-              this.statusColor = 'bg-warning';
-              break;
-            case 'enRoute':
-              this.statusColor = 'bg-info';
-              break;
-            case 'arrived':
-              this.statusColor = 'bg-success';
-              break;
-            case 'Canceled':
-              this.statusColor = 'bg-danger';
-              break;
-            default:
-              this.statusColor = 'bg-Light';
-              break;
-          }
-        }
-        console.log(this.orders);
-      },
-      error(err) {
-        console.log(err);
-      },
+      next: (data) => this.orders = data,
+      error: (err) => console.log(err),
     });
+  }
+
+
+  getSatausColor(status: string) {
+    switch (status) {
+      case 'processed':
+       return 'bg-primary';
+      case 'shipped':
+       return 'bg-warning';
+      case 'enRoute':
+       return 'bg-info';
+      case 'arrived':
+       return 'bg-success';
+      case 'Canceled':
+       return 'bg-danger';
+      default:
+       return 'bg-Light';
+    }
   }
 }

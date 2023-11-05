@@ -14,7 +14,7 @@
     <tbody>
       <tr *ngFor="let order of orders">
         <td>
-          <span class="badge {{ statusColor }} text-dark rounded-pill fs-6">{{
+          <span class="badge {{ getSatausColor(order.status) }} text-dark rounded-pill fs-6">{{
             order.status
           }}</span>
         </td>
