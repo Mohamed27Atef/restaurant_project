@@ -11,7 +11,7 @@ export class FeedbackScoreComponent implements OnInit {
   @Input() userName!: string;
   @Input() userAvatar!: string;
   @Input() restaurantId!: number;
-  feedbackData: any = { reviews: [] }; 
+  feedbackData: any = { reviews: [] };
   filteredReviews: IRestaurantFeedback[] = [];
   ratingCounts: number[] = [0, 0, 0, 0, 0];
   averageRating: number = 0;
@@ -21,26 +21,25 @@ export class FeedbackScoreComponent implements OnInit {
   constructor(private feedbackService: FeedbackService) {}
 
   ngOnInit() {
-    this.feedbackService.getReviewsForRestaurant(this.restaurantId).subscribe(
-      (data: any) => {
-        this.feedbackData.reviews = data; 
+    this.feedbackService
+      .getReviewsForRestaurant(this.restaurantId)
+      .subscribe((data: any) => {
+        this.feedbackData.reviews = data;
         this.calculateRatingCounts();
-        this.filterDisplayedReviews(); 
-
-        for (const review of data) {
-          this.totalRating += review.rate;
+        this.filterDisplayedReviews();
+        if (data.length > 0) {
+          for (const review of data) {
+            this.totalRating += review.rate;
+          }
+          this.averageRating = this.totalRating / data.length;
+        } else {
+          this.averageRating = 0;
         }
-        this.averageRating=this.totalRating/data.length;
-      
-
       });
   }
 
-
-  
-
   calculateRatingCounts() {
-    console.log('Calculating Rating Counts'); 
+    console.log('Calculating Rating Counts');
 
     if (this.feedbackData.reviews && this.feedbackData.reviews.length > 0) {
       this.feedbackData.reviews.forEach((review: IRestaurantFeedback) => {
@@ -60,12 +59,9 @@ export class FeedbackScoreComponent implements OnInit {
       );
     }
   }
-  
-  
+
   filterReviewsByRating(rating: number) {
     this.selectedRating = rating;
-    // Call a method to filter and update the displayed reviews based on the selected rating
     this.filterDisplayedReviews();
   }
-  
 }

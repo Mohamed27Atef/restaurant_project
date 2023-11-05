@@ -15,7 +15,7 @@ export class RecipeFeedbackService {
 
   postFeedback(feedbackData: any) {
     const JsonToken = getCookie('User');
-    const token = JsonToken !== undefined ? JSON.parse(JsonToken) : null;
+    const token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,

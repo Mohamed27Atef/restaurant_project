@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
-import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
+import { RecipeFeedback } from 'src/app/interfaces/RecipeFeedback';
 @Component({
   selector: 'app-recipe-feedback',
   templateUrl: './recipe-feedback.component.html',
@@ -32,19 +32,16 @@ export class RecipeFeedbackComponent  implements OnInit {
       postDate: new Date(),
       RecipeId: this.recipeId,
     };
-
+  
     this.RecipeFeedbackService.postFeedback(feedbackToAdd).subscribe(
-      {
-        next: (response) => {
-          console.log('Feedback submitted successfully.', response);
-        },
-        error: (error) => {
-          console.error('Error submitting feedback.', error);
-        },
+      (response) => {
+        console.log('Feedback submitted successfully.', response);
+      },
+      (error) => {
+        console.error('Error submitting feedback.', error);
       }
     );
-
-    // Clear the form
+  
     this.userComment = '';
     this.selectedRating = 0;
   }

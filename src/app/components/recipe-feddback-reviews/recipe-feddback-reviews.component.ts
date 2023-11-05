@@ -26,11 +26,13 @@ export class RecipeFeddbackReviewsComponent  implements OnInit {
         this.feedbackData.reviews = data;
         this.calculateRatingCounts();
         this.filterDisplayedReviews();
-
+if(data.length>0){
         for (const review of data) {
           this.totalRating += review.rate;
         }
         this.averageRating = this.totalRating / data.length;
+      }
+      else{this.averageRating=0;}
       }
     );
   }
