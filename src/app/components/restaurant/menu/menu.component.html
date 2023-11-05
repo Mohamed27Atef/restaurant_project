@@ -10,7 +10,7 @@
         <ul id="menu-flters">
           <li class="m-1" (click)="filterMenu('all')" [ngClass]="{ 'filter-active': selectedMenu === 'all' }">Show All</li>
           <li class="m-1" *ngFor="let menu of menus" (click)="filterMenu(menu.title)" [ngClass]="{ 'filter-active': selectedMenu === menu.title }">{{ menu.title }}</li>
-
+<!--  -->
         </ul>
       </div>
     </div>

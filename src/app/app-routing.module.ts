@@ -42,6 +42,7 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'recipes', component: RecipeComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
 
   // admin 

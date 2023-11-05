@@ -74,6 +74,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 import { RecipeFeddbackReviewsComponent } from './components/recipe-feddback-reviews/recipe-feddback-reviews.component';
+import { MapComponent } from './components/map/map.component';
 
 
 
@@ -142,6 +143,7 @@ import { RecipeFeddbackReviewsComponent } from './components/recipe-feddback-rev
     FeedbackScoreComponent,
     RecipeFeedbackComponent,
     RecipeFeddbackReviewsComponent,
+    MapComponent,
 
 
 
