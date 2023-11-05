@@ -1,9 +1,11 @@
 export interface UserOrders {
-    Id: number;
+    id: number;
     createdAt: Date;
     totalPrice: number;
     country: string;
     city: string;
     street: string;
     status: string;
+    restaurantName: string,
+    restaurantId: number
 }

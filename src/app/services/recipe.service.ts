@@ -12,6 +12,9 @@ export class RecipeService {
   private apiPort = environment.apiPort;
   private DB_URL = `https://localhost:${this.apiPort}/api/Recipe/`;
 
+  createRecipe(recipe: Recipe) {
+    return this.myClient.post(this.DB_URL, recipe);
+  }
   getRecipe(id: number) {
     return this.myClient.get(this.DB_URL + id);
   }
@@ -19,7 +22,7 @@ export class RecipeService {
   getRecipeByMenuId(id: number) {
     return this.myClient.get(this.DB_URL + 'getRecipeByMenuId/' + id);
   }
-//This to load all recipes in Recipe Filter page
+  //This to load all recipes in Recipe Filter page
   getRecipes(): Observable<Recipe[]> {
     return this.myClient.get<Recipe[]>(this.DB_URL); //put here the url
   }

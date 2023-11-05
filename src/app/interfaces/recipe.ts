@@ -8,5 +8,6 @@ export interface Recipe {
     imageUrl : string;
     images: string;
     restaurantId: number;
-    category:string;
+    category?:string;
+
 }
