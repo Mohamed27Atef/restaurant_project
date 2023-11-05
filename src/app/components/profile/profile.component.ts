@@ -16,4 +16,23 @@ export class ProfileComponent {
     this.profile = false;
     this.profileSecurity = true;
   }
+  profileImageSrc: string = '../../../assets/images/user.png';
+
+  onImageSelected(event: any) {
+    const file = event.target.files[0];
+
+    if (file) {
+      if (file.size <= 5242880) {
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          this.profileImageSrc = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        alert('File size exceeds 5 MB. Please choose a smaller image.');
+      }
+    }
+  }
 }
