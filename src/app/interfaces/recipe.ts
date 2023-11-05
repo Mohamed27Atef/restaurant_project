@@ -1,4 +1,5 @@
 export interface Recipe {
+  id: number;
   name: string;
   rating: number;
   restaurantName: string;

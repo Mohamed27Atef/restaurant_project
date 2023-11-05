@@ -25,6 +25,7 @@ export class CreateRecipeComponent implements OnInit {
   selectedImage: string = '';
 
   receipeObj: Recipe = {
+    id: 0,
     name: '',
     rating: 0,
     restaurantName: '',
@@ -43,6 +44,7 @@ export class CreateRecipeComponent implements OnInit {
     private menuService: MenuService
   ) {
     this.RecipeForm = this.formBuilder.group({
+      Id: [null, []],
       Name: ['', [Validators.required]],
       Price: [null, [Validators.required, Validators.min(1)]],
       Description: [null, []],
@@ -82,7 +84,7 @@ export class CreateRecipeComponent implements OnInit {
       formData.Images = this.selectedImages;
 
       console.log(formData);
-
+      this.receipeObj.id = formData.Id || 0;
       this.receipeObj.name = formData.Name;
       this.receipeObj.price = formData.Price;
       this.receipeObj.menuId = formData.Menu;
@@ -120,7 +122,7 @@ export class CreateRecipeComponent implements OnInit {
 
   onImagesUpload(event: any) {
     const files: FileList | null = event.target.files;
-
+    this.selectedImages = [];
     if (files) {
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i);
@@ -132,41 +134,26 @@ export class CreateRecipeComponent implements OnInit {
       }
     }
   }
-  // onFileSelected(event: Event) {
-  //   const inputElement = event.target as HTMLInputElement;
-  //   if (inputElement.files && inputElement.files.length > 0) {
-  //     const file = inputElement.files[0];
-  //     this.saveFileToAssetsDirectory(file);
-  //   }
-  // }
-  // saveFileToAssetsDirectory(file: File) {
-  //   // Ensure the `assets` directory structure exists
-  //   const assetsDirectory = '/assets/images';
 
-  //   // Create a FileReader to read the file
-  //   const reader = new FileReader();
-
-  //   reader.onload = (event) => {
-  //     const result = event.target?.result as string;
-
-  //     // Determine the file name
-  //     const fileName = file.name;
-
-  //     // Create a URL to the image data
-  //     const imageUrl = result;
-
-  //     // Create a new Image element to display the image in your app if needed
-  //     // const img = new Image();
-  //     // img.src = imageUrl;
-  //     // document.body.appendChild(img);
-
-  //     // You can use the imageUrl and fileName as needed or save it in your Angular application
-  //     console.log('Image URL:', imageUrl);
-  //     console.log('Image File Name:', fileName);
-  //     this.imageService.saveImageToAssetsDirectory(fileName, imageUrl);
-  //     console.log(this.imageService.getImage(fileName));
-  //   };
-
-  //   reader.readAsDataURL(file);
-  // }
+  getReceipeId() {
+    this.recipeService.getRecipe(2).subscribe({
+      next: (data) => {
+        console.log(data);
+        if (data) {
+          this.RecipeForm.setValue({
+            Id: data.id,
+            Name: data.name,
+            Price: data.price,
+            Menu: data.menuId,
+            Description: data.description,
+            Image: '',
+            Images: [],
+          });
+        }
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
+  }
 }
