@@ -60,15 +60,13 @@ export class HeaderComponent {
 
   updateItems() {
     this.cartService.getCartItems().subscribe({
-      next: items => {
+      next: (items) => {
         this.cartItems = items;
-        console.log(this.cartItems)
-      }
-    })
+        console.log(this.cartItems);
+      },
+    });
   }
 
-
-  
   toggleCart() {
     this.isCartVisible = !this.isCartVisible;
     if (this.isCartVisible) {

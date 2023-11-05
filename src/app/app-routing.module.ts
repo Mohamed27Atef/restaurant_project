@@ -22,17 +22,11 @@ import { AdminOrdersComponent } from './components/admin-orders/admin-orders.com
 import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { CreateResturantComponent } from './components/create-resturant/create-resturant.component';
-
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '', component: HomeComponent },
   { path: 'test', component: RecipeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
@@ -43,8 +37,8 @@ const routes: Routes = [
   { path: 'restaurant/:id', component: RestaurantComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
-
-  // admin 
+  { path: 'profile', component: ProfileComponent },
+  // admin
 
   { path: 'admin/orders', component: AdminOrderContainerComponent },
   { path: 'admin/reservation', component: AdminTablesComponent },
@@ -54,7 +48,6 @@ const routes: Routes = [
 
   /////////////////////////////////////////////////////////////////////////////////
   { path: '**', component: HomeComponent },
-
 ];
 
 @NgModule({
