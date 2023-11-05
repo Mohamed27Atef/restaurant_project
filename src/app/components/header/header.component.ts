@@ -16,6 +16,7 @@ import { getCookie, removeCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { IsAuthService } from 'src/app/services/is-auth.service';
+import { CartItem } from 'src/app/interfaces/CartItem';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,7 @@ export class HeaderComponent {
   myroute!: string;
   jsonTokenWithoutDecode!: any;
   cartItems$!: Observable<any[]>; // Change this to an Observable
-
+  cartItems: CartItem[] = [];
   // isAuth: Boolean = this.isAuthServices.isAuth;
   constructor(
     private cartService: ShoppingCartService,
@@ -57,6 +58,17 @@ export class HeaderComponent {
     }
   }
 
+  updateItems() {
+    this.cartService.getCartItems().subscribe({
+      next: items => {
+        this.cartItems = items;
+        console.log(this.cartItems)
+      }
+    })
+  }
+
+
+  
   toggleCart() {
     this.isCartVisible = !this.isCartVisible;
     if (this.isCartVisible) {

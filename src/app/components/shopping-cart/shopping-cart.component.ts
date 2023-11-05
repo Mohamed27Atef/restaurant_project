@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { Router } from '@angular/router';
 import { CartItem } from 'src/app/interfaces/CartItem';
@@ -9,30 +9,24 @@ import { CartitemService } from 'src/app/services/cartitem.service';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnChanges {
   isCartVisible: boolean = false;
   totalPrice: number = 0;
-  cartItems: CartItem[] = [];
+  @Input() cartItems: CartItem[] = [];    
+
 
   constructor(private cartService: ShoppingCartService,
      private router: Router, 
      private el: ElementRef, 
      private renderer: Renderer2,
      private cartItemService: CartitemService
-     ) { }
+     ) {
+     
+      }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updatetotal();
 
-  increaseQuantity(item: CartItem) {
-    item.quantity++;
-    this.updatePrice(item);
   }
-
-  decreaseQuantity(item: CartItem) {
-    if (item.quantity > 1) {
-      item.quantity--;
-      this.updatePrice(item);
-    }
-  }
-
   updatePrice(item: CartItem) {
     item.totalPrice = item.recipePrice * item.quantity;
     this.updatetotal();
@@ -54,14 +48,6 @@ export class ShoppingCartComponent implements OnInit {
     this.isCartVisible = false;
   }
 
-  ngOnInit() {
-    this.cartService.getCartItems().subscribe({
-      next: items => {
-        this.cartItems = items;
-        this.updatetotal();
-      }
-    })
-  }
 
   goToCartPage() {
     this.router.navigate(['/cart']);
@@ -79,6 +65,7 @@ export class ShoppingCartComponent implements OnInit {
     if (index >= 0) {
       this.cartItems.splice(index, 1);
     }
+    this.updatetotal();
   }
   clearCart() {
     // clear from dB
@@ -87,6 +74,7 @@ export class ShoppingCartComponent implements OnInit {
       error: d => console.log(d)
     })
     this.cartItems = [];
+    this.updatetotal();
   }
   
 

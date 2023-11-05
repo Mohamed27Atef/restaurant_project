@@ -28,9 +28,10 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
   }
 
   addToCart(){
+    console.log( this.recipe)
     const CartItemData={
        quantity: this.quantity,
-       totalPrice: this.recipe.totalPrice,
+       totalPrice: this.recipe.price * this.quantity,
        recipeId: this.Id.toString(),
        restaurantId: this.recipe.restaurantId
      }
