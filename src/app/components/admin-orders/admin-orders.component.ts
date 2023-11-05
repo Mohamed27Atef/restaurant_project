@@ -9,6 +9,12 @@ import { AdminOrderService } from 'src/app/services/admin-order.service';
 })
 export class AdminOrdersComponent {
   orders:OrderForAdmin[] = [];
+  //
+  filteredOrders: OrderForAdmin[] = [];
+  filterStatus: string = "";
+  filterCustomerName: string = "";
+  filterDate: string = "";
+  //
 
   restaurantId:number=1;
   status:string[]=[ "processed","shipped","enRoute","arrived","Canceled"]
@@ -20,8 +26,20 @@ export class AdminOrdersComponent {
   ngOnInit(){ 
     this._AdminOrderService.GetOrdersByRestaurantId(this.restaurantId).subscribe((data)=>{
       this.orders=data
+      this.filteredOrders = data;
       console.log(data)
     }) 
+  }
+
+
+
+  applyFilters() {
+    this.filteredOrders = this.orders.filter((order) => {
+      const statusMatch = this.filterStatus === "" || order.status === this.filterStatus;
+      const customerMatch = this.filterCustomerName === "" || order.customerName.toLowerCase().includes(this.filterCustomerName.toLowerCase());
+      const dateMatch = this.filterDate === "" || order.date.toLowerCase().includes(this.filterDate.toLowerCase());
+      return statusMatch && customerMatch && dateMatch;
+    });
   }
 
 
@@ -38,5 +56,7 @@ export class AdminOrdersComponent {
       next:(Response)=>console.log(Response),
       error:(err)=>console.log(err)
     })
+
+   
   }
 }

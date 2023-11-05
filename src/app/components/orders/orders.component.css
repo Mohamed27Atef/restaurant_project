@@ -1,0 +1,6 @@
+.bg-success,
+.bg-warning,
+.bg-primary,
+.bg-info {
+ --bs-bg-opacity: 0.9 !important;
+}

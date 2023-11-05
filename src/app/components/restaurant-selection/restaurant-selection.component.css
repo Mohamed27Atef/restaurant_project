@@ -4,8 +4,13 @@
     color: #fff;
   }
   .all{
-    background: #fff;
+    border: 1px solid white;
   }
   .head{
     color:  #FEA116;;
+  } 
+  .overlay{
+    background-color: rgb(0, 0, 0,.7);
+    height: 100%;
+    width: 100%;
   }

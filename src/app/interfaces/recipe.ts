@@ -1,5 +1,5 @@
 export interface Recipe {
-
+  id: number;
   name: string;
   rating: number;
   restaurantName: string;
@@ -10,6 +10,5 @@ export interface Recipe {
   images: string[];
   category: string;
   menuId: Number;
-  restaurantId: number;
 
 }

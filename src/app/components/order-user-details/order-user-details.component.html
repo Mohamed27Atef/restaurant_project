@@ -27,34 +27,36 @@
                 <div
                   class="col-md-2 text-center d-flex justify-content-center align-items-center"
                 >
-                  <p class="text-muted mb-0" style="font-size: 18px">{{cartItem.recipeName}}</p>
-                </div>
-                <div
-                  class="col-md-2 text-center d-flex justify-content-center align-items-center"
-                >
-                  <p class="text-muted mb-0 small" style="font-size: 16px">
-                    price: {{cartItem.recipePrice}}
+                  <p class="text-muted mb-0" style="font-size: 18px">
+                    {{ cartItem.recipeName }}
                   </p>
                 </div>
                 <div
                   class="col-md-2 text-center d-flex justify-content-center align-items-center"
                 >
                   <p class="text-muted mb-0 small" style="font-size: 16px">
-                    Restaurant Name: {{cartItem.restaurantName}}
+                    price: {{ cartItem.recipePrice }}
                   </p>
                 </div>
                 <div
                   class="col-md-2 text-center d-flex justify-content-center align-items-center"
                 >
                   <p class="text-muted mb-0 small" style="font-size: 16px">
-                    Qty:{{cartItem.quantity}}
+                    Restaurant Name: {{ cartItem.restaurantName }}
+                  </p>
+                </div>
+                <div
+                  class="col-md-2 text-center d-flex justify-content-center align-items-center"
+                >
+                  <p class="text-muted mb-0 small" style="font-size: 16px">
+                    Qty:{{ cartItem.quantity }}
                   </p>
                 </div>
                 <div
                   class="col-md-2 text-center d-flex justify-content-center align-items-center"
                 >
                   <p class="text-muted mb-0 small" style="font-size: 18px">
-                    Total Price: {{cartItem.totalPrice}}
+                    Total Price: {{ cartItem.totalPrice }}
                   </p>
                 </div>
               </div>
@@ -62,11 +64,10 @@
             </div>
           </div>
 
-          <div>
+          <div class="steps">
             steps
             <app-steps [status]="status"></app-steps>
           </div>
-
         </div>
         <div
           class="card-footer border-0 px-4 py-5 bg-warning"
@@ -79,7 +80,8 @@
             class="d-flex align-items-center justify-content-end text-black text-uppercase mb-0"
             style="font-size: 20px"
           >
-            Total paid: <span class="h2 mb-0 ms-2">${{totalPrice}}</span>
+            Total paid:
+            <span class="h2 mb-0 ms-2">${{ totalPrice }}</span>
           </h5>
         </div>
       </div>

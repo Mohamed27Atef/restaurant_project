@@ -168,7 +168,7 @@ this.http.put("https://localhost:44397/api/images", this.selectedFile).subscribe
 
   onImagesUpload(event: any) {
     const files: FileList | null = event.target.files;
-
+    this.selectedImages = [];
     if (files) {
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i);
@@ -190,5 +190,48 @@ this.http.put("https://localhost:44397/api/images", this.selectedFile).subscribe
     if (openingValue && closingValue && openingValue <= closingValue) {
       this.closingTimeBeforeOpeningTime = true;
     }
+  }
+  convertDecimalToTimeString(decimalValue: number): string {
+    // Split the decimal value into hours and minutes
+    const hours = Math.floor(decimalValue);
+    const minutes = (decimalValue - hours) * 100;
+
+    // Format hours and minutes as a time string
+    const timeString = `${hours < 10 ? '0' : ''}${hours}:${
+      minutes < 10 ? '0' : ''
+    }${Math.round(minutes)}`;
+    console.log(timeString);
+    return timeString;
+  }
+
+  getAppId() {
+    this.resturantServ.getRestaurantByِApplicationId().subscribe({
+      next: (data) => {
+        console.log(data.namei);
+        // this.resturantObj = data;
+        console.log(this.resturantObj);
+        if (this.resturantObj) {
+          this.restaurantForm.setValue({
+            Name: data.name,
+            email: data.email,
+            Password: data.password,
+            Address: data.address,
+            Description: data.description,
+            Cusinetype: data.cusinetype,
+            Longitude: data.longitude,
+            Latitude: data.latitude,
+            category: data.cateigories[0].categoryId,
+            OpenHours: this.convertDecimalToTimeString(data.openHours),
+            ClosingHours: this.convertDecimalToTimeString(data.closingHours),
+            Image: '',
+            Images: [],
+            phone: data.phone,
+          });
+        }
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
   }
 }

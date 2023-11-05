@@ -15,7 +15,7 @@ export class RecipeService {
   createRecipe(recipe: Recipe) {
     return this.myClient.post(this.DB_URL, recipe);
   }
-  getRecipe(id: number) {
+  getRecipe(id: number): Observable<any> {
     return this.myClient.get(this.DB_URL + id);
   }
 
