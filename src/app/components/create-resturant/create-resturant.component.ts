@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 import { CategoryService } from 'src/app/services/category.service';
+import { HeaderService } from 'src/app/services/header.service';
+import { ImagesService } from 'src/app/services/images.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
@@ -27,30 +29,13 @@ export class CreateResturantComponent implements OnInit {
   selectedCategoryId!: number;
   selectedImages: string[] = [];
   selectedImage: string = '';
-  resturantObj: Restaurant = {
-    id: 0, // You can provide appropriate default values
-    name: '',
-    email: '',
-    Password: '',
-    Description: '',
-    address: '',
-    phone: '',
-    cusinetype: '',
-    longitude: 0,
-    latitude: 0,
-    rate: 0,
-    openHours: 0,
-    ClosingHours: 0,
-    image: '',
-    images: [],
-    restaurantCategories: [],
-  };
+  resturantObj!: Restaurant;
 
   constructor(
     private formBuilder: FormBuilder,
     private Allcategory: CategoryService,
     private resturantServ: RestaurantService,
-    private http: HttpClient
+    private imageService: ImagesService
   ) {
     this.restaurantForm = this.formBuilder.group({
       Name: ['', [Validators.required]],
@@ -148,13 +133,13 @@ export class CreateResturantComponent implements OnInit {
     const selectedId = parseInt((event.target as HTMLSelectElement).value, 10);
     this.selectedCategoryId = selectedId;
   }
+
+
   onOneImageUpload(event: any) {
-////////////////////////////////////////////////////////
-this.selectedFile = event.target.files[0];
-this.http.put("https://localhost:44397/api/images", this.selectedFile).subscribe({
-  next: d => console.log(d)
-})
-////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
+    const file: File = event.target.files[0];
+    this.imageService.uploadImage(file);
+    ////////////////////////////////////////////
 
     const files: FileList | null = event.target.files;
 

@@ -42,15 +42,16 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'recipes', component: RecipeComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
 
   // admin 
 
   { path: 'admin/orders', component: AdminOrderContainerComponent },
   { path: 'admin/reservation', component: AdminTablesComponent },
-  // { path: 'admin', component: CreateResturantComponent },
+  { path: 'admin', component: CreateResturantComponent },
   // create recipe
-  { path: 'admin', component: CreateRecipeComponent },
+  // { path: 'admin', component: CreateRecipeComponent },
 
   /////////////////////////////////////////////////////////////////////////////////
   { path: '**', component: HomeComponent },
