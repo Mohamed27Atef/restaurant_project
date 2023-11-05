@@ -32,6 +32,14 @@
                 >Menu</a
               >
             </li>
+            <li class="nav-item" *ngIf="!isAuthServices.isAuth">
+              <a
+                class="nav-link"
+                (click)="clearLink()"
+                [href]="myroute + '#reservation'"
+                >Book Table</a
+              >
+            </li>
             <li *ngIf="isAuthServices.isAuth" class="nav-item">
               <a class="nav-link" (click)="toggleTable($event)">Table</a>
             </li>

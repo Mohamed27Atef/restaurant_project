@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -65,20 +65,15 @@ import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback
 import { StatusComponent } from './components/status/status.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
+
+import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
+import { AdminOrderDetailsComponent } from './components/admin-order-details/admin-order-details.component';
+import { AdminOrderContainerComponent } from './components/admin-order-container/admin-order-container.component';
+import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { CreateTableComponent } from './components/create-table/create-table.component';
-import { CreateCoponComponent } from './components/create-copon/create-copon.component';
-import { CreateMenuComponent } from './components/create-menu/create-menu.component';
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
-    
     AppComponent,
     HomeComponent,
     FooterComponent,
@@ -127,15 +122,13 @@ import { CreateMenuComponent } from './components/create-menu/create-menu.compon
     StatusComponent,
     OrdersComponent,
     OrderUserDetailsComponent,
+
+    AdminOrdersComponent,
+    AdminOrderDetailsComponent,
+    AdminOrderContainerComponent,
+    AdminTablesComponent,
+
     ProfileComponent,
-    CreateTableComponent,
-    CreateCoponComponent,
-    CreateMenuComponent,
-
-
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -149,9 +142,9 @@ import { CreateMenuComponent } from './components/create-menu/create-menu.compon
     SidebarModule,
     ReactiveFormsModule,
     SidebarModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

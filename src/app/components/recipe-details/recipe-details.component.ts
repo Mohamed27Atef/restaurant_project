@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, OnInit, ViewChild, ElementRef,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { data } from 'isotope-layout';
 import { Recipe } from 'src/app/interfaces/recipe';
@@ -12,7 +12,7 @@ import { AddToCartService } from 'src/app/services/add-to-cart.service';
   styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit, AfterViewInit {
-  recipe!: any;
+loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  recipe!: any;
   relatedRecipe: any;
   quantity: number = 1;
   numberOfReview: number = 0;
@@ -41,10 +41,10 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit(): void {
-    this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
-      next: data=> 
-        this.numberOfReview = data
-    })
+    // this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
+    //   next: data=> 
+    //     this.numberOfReview = data
+    // })
     this.myService.getRecipe(this.Id).subscribe({
       next: (data) => this.recipe = data,
       error: (err) => console.log(err),

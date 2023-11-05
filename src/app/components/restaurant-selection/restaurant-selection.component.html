@@ -1,5 +1,6 @@
 <div class="col-md-6 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5 fadeInUp ftco-animated">
     <div class="all">
+        <div class="overlay">
     <div class="py-md-5 p-3">
         <div class="heading-section ftco-animate mb-5 fadeInUp ftco-animated text-center">
             <h2 class="mb-3 head">Make Reservation</h2> 
@@ -12,7 +13,7 @@
                         <div class="select-wrap one-third">
                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                             <select id="restaurantName" formControlName="rest" [(ngModel)]="selectedId" name="restaurantName" class="form-control">
-                                <option *ngFor="let restaurant of restaurants" [value]="restaurant.id">{{ restaurant.name }}</option>
+                                <option *ngFor="let restaurant of restaurants" [value]="restaurant.id">{{ restaurant.name}}</option>
                             </select>
                             </div>
                             <span class="text-danger small" *ngIf="selectionForm.get('rest')?.getError('required')&& selectionForm.get('rest')?.touched">Required</span>
@@ -26,5 +27,6 @@
                 </div> 
         </form>
     </div>
+</div>
 </div>
 </div>

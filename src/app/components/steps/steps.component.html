@@ -46,7 +46,7 @@
       <div class="icons">
         <div class="details">
           <i class="fa-solid fa-file-circle-check fa-2x"></i>
-          <span style="display: inline-block; width: 20px">Processed</span>
+          <span>Processed</span>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
       <div class="icons">
         <div class="details">
           <i class="fa-solid fa-box fa-2x"></i>
-          <span style="display: inline-block; width: 20px">Shipped</span>
+          <span>Shipped</span>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
       <div class="icons">
         <div class="details">
           <i class="fa-solid fa-truck-fast fa-2x"></i>
-          <span style="display: inline-block; width: 20px">En Route</span>
+          <span>En Route</span>
         </div>
       </div>
     </div>
@@ -70,9 +70,10 @@
       <div class="icons">
         <div class="details">
           <i class="fa-solid fa-house fa-2x"></i>
-          <span style="display: inline-block; width: 20px">Delivered</span>
+          <span>Delivered</span>
         </div>
       </div>
     </div>
+    <div class="horizontal-line" [@lineAnimation]="status"></div>
   </div>
 </div>
