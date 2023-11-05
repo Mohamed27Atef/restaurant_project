@@ -41,10 +41,10 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit(): void {
-    this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
-      next: data=> 
-        this.numberOfReview = data
-    })
+    // this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
+    //   next: data=> 
+    //     this.numberOfReview = data
+    // })
     this.myService.getRecipe(this.Id).subscribe({
       next: (data) => this.recipe = data,
       error: (err) => console.log(err),

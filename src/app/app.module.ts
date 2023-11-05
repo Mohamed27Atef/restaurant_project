@@ -63,6 +63,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
+import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 
 
 
@@ -118,6 +119,7 @@ import { FeedbackScoreComponent } from './components/feedback-score/feedback-sco
     OrderUserDetailsComponent,
     ProfileComponent,
     FeedbackScoreComponent,
+    RecipeFeedbackComponent,
 
 
 
