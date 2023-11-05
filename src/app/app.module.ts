@@ -56,14 +56,24 @@ import { BookContainerComponent } from './components/restaurant/book-container/b
 import { BookSelectionComponent } from './components/restaurant/book-selection/book-selection.component';
 import { PalstineComponent } from './components/palstine/palstine.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+
+import { CreateResturantComponent } from './components/create-resturant/create-resturant.component';
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
+
 import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback-reviews.component';
 
 import { StatusComponent } from './components/status/status.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
+
+import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
+import { AdminOrderDetailsComponent } from './components/admin-order-details/admin-order-details.component';
+import { AdminOrderContainerComponent } from './components/admin-order-container/admin-order-container.component';
+import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
+
 
 
 
@@ -112,14 +122,25 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
+
+    CreateResturantComponent,
+    CreateRecipeComponent,
+
     FeedbackReviewsComponent,
     RecipeComponent,
     StatusComponent,
     OrdersComponent,
     OrderUserDetailsComponent,
+
+    AdminOrdersComponent,
+    AdminOrderDetailsComponent,
+    AdminOrderContainerComponent,
+    AdminTablesComponent,
+
     ProfileComponent,
     FeedbackScoreComponent,
     RecipeFeedbackComponent,
+
 
 
 

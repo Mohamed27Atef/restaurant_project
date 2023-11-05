@@ -11,12 +11,17 @@ export class MenuService {
   baseUrl: string = `https://localhost:${this.apiPort}/api/Menu/`;
 
   constructor(private httpClient: HttpClient) {}
+  getMenu(): Observable<any> {
+    return this.httpClient.get(this.baseUrl);
+  }
+
   getMenuByRestaurnatId(restaurantId: number): Observable<any> {
     return this.httpClient.get(this.baseUrl + restaurantId);
   }
 
-  getMostRated(restaurantId: number): Observable<any>{
-    return this.httpClient.get(this.baseUrl + "getmostRatedRecipe/" + restaurantId);
+  getMostRated(restaurantId: number): Observable<any> {
+    return this.httpClient.get(
+      this.baseUrl + 'getmostRatedRecipe/' + restaurantId
+    );
   }
-
 }
