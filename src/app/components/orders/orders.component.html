@@ -14,14 +14,14 @@
     <tbody>
       <tr *ngFor="let order of orders">
         <td>
-          <span class="badge bg-success rounded-pill fs-6">{{
+          <span class="badge {{ statusColor }} text-dark rounded-pill fs-6">{{
             order.status
           }}</span>
         </td>
         <td>{{ order.restaurantName }}</td>
         <td>{{ order.createdAt.toLocaleString() }}</td>
         <td>
-          <p class="text-muted mb-0">{{ order.totalPrice }}</p>
+          <p class="text-muted mb-0">${{ order.totalPrice }}</p>
         </td>
         <td>{{ order.street }}-{{ order.city }}-{{ order.country }}</td>
         <td>
