@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { setCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-profile',
