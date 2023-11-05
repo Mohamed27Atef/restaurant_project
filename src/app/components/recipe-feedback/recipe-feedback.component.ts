@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
+import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
 @Component({
   selector: 'app-recipe-feedback',
@@ -11,14 +11,14 @@ export class RecipeFeedbackComponent  implements OnInit {
   selectedRating: number = 0;
   @Input() userName!: string;
   @Input() userAvatar!: string;
-  @Input() restaurantId!: number;
+  @Input() recipeId!: number;
   userComment: string = '';
 
 
-  constructor(private feedbackService: FeedbackService) {}
+  constructor(private RecipeFeedbackService: RecipeFeedbackService) {}
 
   ngOnInit(): void {
-    console.log(this.restaurantId);
+    console.log(this.recipeId);
   }
 
   rate(rating: number): void {
@@ -30,10 +30,10 @@ export class RecipeFeedbackComponent  implements OnInit {
       text: this.userComment,
       rate: this.selectedRating,
       postDate: new Date(),
-      ResturantId: this.restaurantId,
+      RecipeId: this.recipeId,
     };
 
-    this.feedbackService.postFeedback(feedbackToAdd).subscribe(
+    this.RecipeFeedbackService.postFeedback(feedbackToAdd).subscribe(
       {
         next: (response) => {
           console.log('Feedback submitted successfully.', response);

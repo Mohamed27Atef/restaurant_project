@@ -73,6 +73,7 @@ import { AdminTablesComponent } from './components/admin-tables/admin-tables.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
+import { RecipeFeddbackReviewsComponent } from './components/recipe-feddback-reviews/recipe-feddback-reviews.component';
 
 
 
@@ -140,6 +141,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     ProfileComponent,
     FeedbackScoreComponent,
     RecipeFeedbackComponent,
+    RecipeFeddbackReviewsComponent,
 
 
 

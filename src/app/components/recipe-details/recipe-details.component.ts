@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, OnInit, ViewChild, ElementRef,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { data } from 'isotope-layout';
 import { Recipe } from 'src/app/interfaces/recipe';
@@ -12,7 +12,7 @@ import { AddToCartService } from 'src/app/services/add-to-cart.service';
   styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit, AfterViewInit {
-  recipe!: any;
+loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  recipe!: any;
   relatedRecipe: any;
   quantity: number = 1;
   numberOfReview: number = 0;
@@ -21,8 +21,7 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   constructor(
     private myService: RecipeService,
     private myActive: ActivatedRoute,
-    private addToCartService:AddToCartService,
-
+    private addToCartService : AddToCartService,
     private recipeFeedbackService: RecipeFeedbackService
   ) {
     this.Id = this.myActive.snapshot.params['id'];
@@ -30,11 +29,9 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
 
   addToCart(){
     const CartItemData={
-
-       quantity:this.quantity,
-       totalPrice: this.recipe.price*this.quantity,
-       recipeId: this.Id,
-
+       quantity: this.quantity,
+       totalPrice: this.recipe.totalPrice,
+       recipeId: this.Id.toString(),
        restaurantId: this.recipe.restaurantId
      }
      this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
