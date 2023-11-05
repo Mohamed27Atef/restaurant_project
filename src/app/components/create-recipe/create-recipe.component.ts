@@ -24,20 +24,7 @@ export class CreateRecipeComponent implements OnInit {
   selectedImages: string[] = [];
   selectedImage: string = '';
 
-  receipeObj: Recipe = {
-    id: 0,
-    name: '',
-    rating: 0,
-    restaurantName: '',
-    description: '',
-    menuName: '',
-    price: 0,
-    category: '',
-    imageUrl: '',
-    images: [],
-    menuId: 0,
-    restaurantId: 0
-  };
+  receipeObj!: Recipe;
   constructor(
     private formBuilder: FormBuilder,
     private imageService: ImageService,
