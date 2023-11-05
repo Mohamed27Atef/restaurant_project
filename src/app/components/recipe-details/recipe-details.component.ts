@@ -1,6 +1,10 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { data } from 'isotope-layout';
+import { Recipe } from 'src/app/interfaces/recipe';
+import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { AddToCartService } from 'src/app/services/add-to-cart.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -8,34 +12,46 @@ import { RecipeService } from 'src/app/services/recipe.service';
   styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit, AfterViewInit {
-  recipe: any;
+  recipe!: any;
   relatedRecipe: any;
+  quantity: number = 1;
+  numberOfReview: number = 0;
   Id: number = 0;
+ 
   constructor(
     private myService: RecipeService,
-    private myActive: ActivatedRoute
-  ) {}
+    private myActive: ActivatedRoute,
+    private addToCartService : AddToCartService,
+    private recipeFeedbackService: RecipeFeedbackService
+  ) {
+    this.Id = this.myActive.snapshot.params['id'];
+  }
+
+  addToCart(){
+    const CartItemData={
+       quantity: this.quantity,
+       totalPrice: this.recipe.totalPrice,
+       recipeId: this.Id.toString(),
+       restaurantId: this.recipe.restaurantId
+     }
+     this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
+       next:(Response)=>console.log(Response),
+       error:(err)=>console.log(err)
+     })   
+   }
 
   ngOnInit(): void {
-    this.Id = this.myActive.snapshot.params['id'];
-    this.Id = 1;
+    this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
+      next: data=> 
+        this.numberOfReview = data
+    })
     this.myService.getRecipe(this.Id).subscribe({
-      next: (data) => {
-        this.recipe = data;
-        console.log(this.recipe);
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      next: (data) => this.recipe = data,
+      error: (err) => console.log(err),
     });
     this.myService.getRecipeByMenuId(this.Id).subscribe({
-      next: (data) => {
-        this.relatedRecipe = data;
-        console.log(this.recipe);
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      next: (data) => this.relatedRecipe = data,
+      error: (err) => console.log(err),
     });
   }
 
@@ -61,6 +77,8 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
 
     this.updateStarRating();
   }
+
+ 
 
   updateStarRating() {
     const productRatingElements = document.querySelectorAll('.product-rating');
@@ -99,16 +117,13 @@ export class RecipeDetailsComponent implements OnInit, AfterViewInit {
   }
 
   plus() {
-    const quantityDiv: any = document.querySelector('.quantity');
-    const currentQuantity = parseInt(quantityDiv.textContent);
-    quantityDiv.textContent = (currentQuantity + 1).toString();
+   this.quantity ++;
   }
 
   remove() {
-    const quantityDiv: any = document.querySelector('.quantity');
-    const currentQuantity = parseInt(quantityDiv.textContent);
-    if (currentQuantity > 1) {
-      quantityDiv.textContent = (currentQuantity - 1).toString();
+
+    if (this.quantity > 1) {
+      this.quantity--;
     }
   }
 }

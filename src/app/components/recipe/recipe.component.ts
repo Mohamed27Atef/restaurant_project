@@ -7,7 +7,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css']
 })
-export class RecipeComponent implements OnInit {
+export class RecipeComponent {//implements OnInit {
   recipes: Recipe[] = [];
   selectedCategoryFilter: string = 'All Categories';
   uniqueCategories: string[] = [];
@@ -32,7 +32,7 @@ export class RecipeComponent implements OnInit {
     });
   }
   private getUniqueCategories(): string[] {
-    const uniqueCategories = [...new Set(this.recipes.map((recipe) => recipe.category))];
+    const uniqueCategories = [...new Set(this.recipes.map((recipe) => recipe.menuName))];
     return uniqueCategories;
   }
 
@@ -74,7 +74,7 @@ export class RecipeComponent implements OnInit {
           recipe.rating <= this.maxRating &&
           recipe.price >= this.minPrice &&
           recipe.price <= this.maxPrice &&
-          recipe.category.toLowerCase().includes(selectedCategory.toLowerCase())
+          recipe.menuName.toLowerCase().includes(selectedCategory.toLowerCase())
         );
       });
     }

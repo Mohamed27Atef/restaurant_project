@@ -1,0 +1,61 @@
+<div class="container my-4 fs-6">
+  <table class="table table-hover table-lg text-center">
+    <thead class="thead-light">
+      <tr>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Total Price</th>
+        <th>Address</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>
+          <span class="badge bg-success rounded-pill fs-6">{{
+            order.status
+          }}</span>
+        </td>
+        <td>{{ order.createdAt.toLocaleString() }}</td>
+        <td>
+          <p class="text-muted mb-0">{{ order.totalPrice }}</p>
+        </td>
+        <td>{{ order.street }}-{{ order.city }}-{{ order.country }}</td>
+        <td>
+          <a
+            [routerLink]="['OrderUserDetails/' + order.id]" [queryParams]="{status: order.status, totalPrice: order.totalPrice}"
+            type="button"
+            class="btn btn-warning"
+          >
+            Details
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div
+  class="modal fade"
+  id="OrderDetails"
+  tabindex="-1"
+  aria-labelledby="OrderDetails"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Order Details</h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body bg-dark">
+        <!-- <app-order-user-details></app-order-user-details> -->
+      </div>
+    </div>
+  </div>
+</div>

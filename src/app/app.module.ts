@@ -38,13 +38,10 @@ import { SerchRetaurantComponent } from './components/serch-retaurant/serch-reta
 import { ShoppingCartService } from 'src/app/services/ShoppingCart.service';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { RouterModule } from '@angular/router';
-import { CartService } from './services/service-cart';
-import { Header, SidebarModule } from '@syncfusion/ej2-angular-navigations';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 
-import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { StepsComponent } from './components/steps/steps.component';
 
-// import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RestaurantSelectionComponent } from './components/restaurant-selection/restaurant-selection.component';
@@ -59,8 +56,17 @@ import { BookContainerComponent } from './components/restaurant/book-container/b
 import { BookSelectionComponent } from './components/restaurant/book-selection/book-selection.component';
 import { PalstineComponent } from './components/palstine/palstine.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+
 import { CreateResturantComponent } from './components/create-resturant/create-resturant.component';
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
+
+import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback-reviews.component';
+
+import { StatusComponent } from './components/status/status.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 
@@ -69,6 +75,7 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     HomeComponent,
     FooterComponent,
@@ -96,9 +103,7 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
     FAQComponent,
     SerchRetaurantComponent,
     CartPageComponent,
-    CartItemComponent,
     StepsComponent,
-    // CartItemsComponent,
     ReservationContainerComponent,
     ReservationFormComponent,
     RestaurantSelectionComponent,
@@ -110,8 +115,18 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
     BookSelectionComponent,
     PalstineComponent,
     HeaderComponent,
+
     CreateResturantComponent,
     CreateRecipeComponent,
+
+    FeedbackReviewsComponent,
+    RecipeComponent,
+    StatusComponent,
+    OrdersComponent,
+    OrderUserDetailsComponent,
+    ProfileComponent,
+
+
 
 
 
