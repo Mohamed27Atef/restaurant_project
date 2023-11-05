@@ -66,6 +66,9 @@ import { StatusComponent } from './components/status/status.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CreateTableComponent } from './components/create-table/create-table.component';
+import { CreateCoponComponent } from './components/create-copon/create-copon.component';
+import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 
 
 
@@ -125,6 +128,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     OrdersComponent,
     OrderUserDetailsComponent,
     ProfileComponent,
+    CreateTableComponent,
+    CreateCoponComponent,
+    CreateMenuComponent,
 
 
 
