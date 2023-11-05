@@ -1,4 +1,27 @@
 <div class="container my-4 fs-6">
+
+
+  <div class="row mb-3">
+
+    <div class="col">
+      <input type="text"  onfocus="(this.type='date')"   onblur="(this.type='text')" class="form-control" placeholder="Filter by Date" [(ngModel)]="filterDate" (input)="applyFilters()" />
+    </div>
+    <div class="col">
+      <select class="form-control" [(ngModel)]="filterRestaurant" (change)="applyFilters()">
+        <option value="">All Restaurants</option>
+        <option *ngFor="let item of restaurants" [value]="item.name">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <select class="form-control" [(ngModel)]="filterStatus" (change)="applyFilters()">
+        <option value="">All Statuses</option>
+        <option *ngFor="let item of status" [value]="item">{{item}}</option>
+      </select>
+    </div>
+  </div>
+
+
   <table class="table table-hover table-lg text-center">
     <thead class="thead-light">
       <tr>
@@ -12,7 +35,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let order of orders">
+      <tr *ngFor="let order of filteredOrders">
         <td>
           <span class="badge {{ getSatausColor(order.status) }} text-dark rounded-pill fs-6">{{
             order.status
