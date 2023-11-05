@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -71,6 +71,7 @@ import { AdminOrderDetailsComponent } from './components/admin-order-details/adm
 import { AdminOrderContainerComponent } from './components/admin-order-container/admin-order-container.component';
 import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { ProfileComponent } from './components/profile/profile.component';
+
 import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 import { RecipeFeddbackReviewsComponent } from './components/recipe-feddback-reviews/recipe-feddback-reviews.component';
@@ -78,13 +79,8 @@ import { MapComponent } from './components/map/map.component';
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
-    
     AppComponent,
     HomeComponent,
     FooterComponent,
@@ -140,13 +136,11 @@ import { MapComponent } from './components/map/map.component';
     AdminTablesComponent,
 
     ProfileComponent,
+
     FeedbackScoreComponent,
     RecipeFeedbackComponent,
     RecipeFeddbackReviewsComponent,
     MapComponent,
-
-
-
 
 
   ],
@@ -162,9 +156,9 @@ import { MapComponent } from './components/map/map.component';
     SidebarModule,
     ReactiveFormsModule,
     SidebarModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

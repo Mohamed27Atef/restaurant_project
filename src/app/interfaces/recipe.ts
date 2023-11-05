@@ -10,5 +10,4 @@ export interface Recipe {
   images: string[];
   category: string;
   menuId: Number;
-
 }
