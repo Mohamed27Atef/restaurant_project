@@ -113,7 +113,7 @@
               data-bs-target="#cartSidebar"
               aria-controls="offcanvasRight"
             >
-              <svg
+              <svg (click)="updateItems()"
                 version="1.1"
                 id="Capa_1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +200,7 @@
         ></button>
       </div>
       <div class="offcanvas-body bg-dark">
-        <app-shopping-cart></app-shopping-cart>
+        <app-shopping-cart [cartItems]="cartItems"></app-shopping-cart>
       </div>
     </div>
 

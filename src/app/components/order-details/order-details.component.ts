@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { CartItem } from 'src/app/interfaces/CartItem';
 import { OrderDetails } from 'src/app/interfaces/order-details';
+import { CartitemService } from 'src/app/services/cartitem.service';
 import { OrderDetailsService } from 'src/app/services/order-details.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class OrderDetailsComponent implements OnInit {
   CartItems!: OrderDetails[];
   constructor(
     private orderdetailService: OrderDetailsService,
-    private router: Router
+    private router: Router,
+    private cartItemService: CartitemService
   ) {}
 
   ngOnInit(): void {
@@ -66,7 +68,7 @@ export class OrderDetailsComponent implements OnInit {
       this.CartItems.findIndex((r) => r.id == item.id),
       1
     );
-    this.orderdetailService.deleteCartItem(item.id).subscribe({
+    this.cartItemService.deleteCartItem(item.id).subscribe({
       next: (results) => {
         console.log(' cart items deleted successfully');
       },

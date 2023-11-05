@@ -73,7 +73,9 @@
                 "
                 >Please enter a country.</span
               >
-              <button class="btn" (click)="makeOrder()">Pay Now</button>
+              <button 
+              routerLink="/orders"
+              class="btn" (click)="makeOrder()">Pay Now</button>
             </form>
             <div
               class="error-message"
