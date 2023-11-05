@@ -20,6 +20,7 @@ export class OrderUserDetailsComponent implements OnInit {
   orders: any;
   status!: string;
   totalPrice!: number;
+  restaurantId!: number;
 
   cartItems!: CartItemsOrder[];
   constructor(
@@ -39,11 +40,13 @@ export class OrderUserDetailsComponent implements OnInit {
     this.myActive.queryParams.subscribe(params => {
       this.status = params['status'];
       this.totalPrice = params['totalPrice']
+      this.restaurantId = params['retaurantId'];
+
   });
   }
 
   ngOnInit(): void {
-    this.cartItemService.getOrderDetails(this.orderId).subscribe({
+    this.cartItemService.getOrderDetails(this.orderId,this.restaurantId ).subscribe({
       next: (data) => (this.cartItems = data),
     });
     this.myService.GetOrderById(this.orderId).subscribe({

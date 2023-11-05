@@ -6,4 +6,6 @@ export interface UserOrders {
     city: string;
     street: string;
     status: string;
+    restaurantName: string,
+    restaurantId: number
 }
