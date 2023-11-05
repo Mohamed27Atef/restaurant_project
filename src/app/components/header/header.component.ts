@@ -138,6 +138,7 @@ export class HeaderComponent {
   LogOut() {
     this.name = '';
     removeCookie('User');
+    removeCookie('UserImage');
   }
 
   clearLink() {
