@@ -13,14 +13,13 @@ export class ImagesService {
     const formData: FormData = new FormData();
     formData.append('image', file, file.name);
     this.http.put('https://localhost:44397/api/images', formData)
-      .subscribe(
-        response => {
+      .subscribe({
+        next: response => {
           console.log(response);
         },
-        error => {
+        error: error => {
           console.error(error);
         },
-      );
-
+      });
   }
 }
