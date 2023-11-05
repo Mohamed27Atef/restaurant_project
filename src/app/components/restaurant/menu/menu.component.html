@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div *ngFor="let recipe of recipe1" class="row menu-container mt-5">
+    <div *ngFor="let recipe of  recipe1 ,let recipee of recipe2" class="row menu-container mt-5">
       <div
       class="col-lg-6 my-1 menu-item"
       [ngClass]="'filter-' + recipe.menuName"
@@ -44,24 +44,24 @@
 
         <div
           class="col-lg-6 my-1 menu-item"
-          [ngClass]="'filter-' + recipe.menuName"
-          *ngIf="selectedMenu === 'all' || selectedMenu === recipe.menuName"
+          [ngClass]="'filter-' + recipee.menuName"
+          *ngIf="selectedMenu === 'all' || selectedMenu === recipee.menuName"
          >
           <div class="row my-1">
             <div class="col-2">
               <img
                 class="img-fluid rounded"
-                [src]="recipe.imageUrl"
+                [src]="recipee.imageUrl"
               />
             </div>
 
             <div class="col">
                 <div class="menu-content">
-                  <a href="#">{{recipe.name}}</a
-                  ><span>${{recipe.price}}</span>
+                  <a href="#">{{recipee.name}}</a
+                  ><span>${{recipee.price}}</span>
                 </div>
                 <div class="menu-ingredients">
-                  {{recipe.description}}
+                  {{recipee.description}}
                 </div>
             </div>
           </div>
