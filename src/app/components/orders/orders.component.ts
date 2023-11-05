@@ -13,19 +13,43 @@ import { getCookie } from 'typescript-cookie';
 })
 export class OrdersComponent implements OnInit {
   orders!: UserOrders[];
+  statusColor: string = 'bg-success';
+
   constructor(private myService: OrdersService) {
     let user = getCookie('User');
-    console.log(user);
   }
   ngOnInit(): void {
     this.myService.getUserOrder().subscribe({
       next: (data) => {
         this.orders = data;
+        for (let i = 0; i < this.orders.length; i++) {
+          const status = this.orders[i].status;
+          switch (status) {
+            case 'processed':
+              this.statusColor = 'bg-primary';
+              break;
+            case 'shipped':
+              this.statusColor = 'bg-warning';
+              break;
+            case 'enRoute':
+              this.statusColor = 'bg-info';
+              break;
+            case 'arrived':
+              this.statusColor = 'bg-success';
+              break;
+            case 'Canceled':
+              this.statusColor = 'bg-danger';
+              break;
+            default:
+              this.statusColor = 'bg-Light';
+              break;
+          }
+        }
+        console.log(this.orders);
       },
       error(err) {
         console.log(err);
       },
-
     });
   }
 }

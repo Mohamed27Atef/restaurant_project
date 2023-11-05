@@ -65,7 +65,15 @@ import { FeedbackReviewsComponent } from './components/feedback-reviews/feedback
 import { StatusComponent } from './components/status/status.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderUserDetailsComponent } from './components/order-user-details/order-user-details.component';
+
+import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
+import { AdminOrderDetailsComponent } from './components/admin-order-details/admin-order-details.component';
+import { AdminOrderContainerComponent } from './components/admin-order-container/admin-order-container.component';
+import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FeedbackScoreComponent } from './components/feedback-score/feedback-score.component';
+import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
+import { RecipeFeddbackReviewsComponent } from './components/recipe-feddback-reviews/recipe-feddback-reviews.component';
 
 
 
@@ -124,7 +132,16 @@ import { ProfileComponent } from './components/profile/profile.component';
     StatusComponent,
     OrdersComponent,
     OrderUserDetailsComponent,
+
+    AdminOrdersComponent,
+    AdminOrderDetailsComponent,
+    AdminOrderContainerComponent,
+    AdminTablesComponent,
+
     ProfileComponent,
+    FeedbackScoreComponent,
+    RecipeFeedbackComponent,
+    RecipeFeddbackReviewsComponent,
 
 
 

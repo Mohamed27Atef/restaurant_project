@@ -69,3 +69,20 @@
   font-weight: bold;
   margin-left: 5px; /* Add spacing between "INVOICE" and the number */
 }
+
+.container{
+  position: relative;
+  z-index: 20;
+
+}
+
+.horizontal-line {
+  width: 33.33%; /* The initial width covers one step */
+  height: 5px; /* Adjust the height and color as needed */
+  background-color: orange;
+  position: absolute;
+ bottom: 70%;
+  transform: translateX(0);
+  z-index: -2;
+  animation: moveLine 0.00000000000001 linear; /* Adjust the animation duration as needed */
+}
