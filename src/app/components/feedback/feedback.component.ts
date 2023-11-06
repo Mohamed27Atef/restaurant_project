@@ -34,7 +34,7 @@ export class FeedbackComponent implements OnInit {
       rate: this.selectedRating,
       postDate: new Date(),
       ResturantId: this.restaurantId,
-    };
+    };  
 
     this.feedbackService.postFeedback(feedbackToAdd).subscribe(
       {
