@@ -8,6 +8,7 @@ import { Recipe } from '../interfaces/recipe';
   providedIn: 'root',
 })
 export class RecipeService {
+
   constructor(private myClient: HttpClient) {}
   private apiPort = environment.apiPort;
   private DB_URL = `https://localhost:${this.apiPort}/api/Recipe/`;
@@ -24,6 +25,12 @@ export class RecipeService {
   }
   //This to load all recipes in Recipe Filter page
   getRecipes(): Observable<Recipe[]> {
-    return this.myClient.get<Recipe[]>(this.DB_URL); //put here the url
+    return this.myClient.get<Recipe[]>(this.DB_URL);
+  }
+  
+
+  searchRecipesByName(name: string, page: number = 1) {
+    const url = `${this.DB_URL}search/${name}?p=${page}`;
+    return this.myClient.get<Recipe[]>(url);
   }
 }

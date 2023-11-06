@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
-import { RecipeFeedback } from 'src/app/interfaces/RecipeFeedback';
 @Component({
   selector: 'app-recipe-feedback',
   templateUrl: './recipe-feedback.component.html',

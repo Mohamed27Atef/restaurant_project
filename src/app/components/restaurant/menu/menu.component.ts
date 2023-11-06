@@ -12,6 +12,7 @@ export class MenuComponent implements AfterViewInit {
   selectedMenu: string = 'all'; // Initialize with 'all'
 
   public menus: Menu[] = [];   
+  public recipes: Recipe[] = []; 
 
   recipe1!: Recipe[];
   recipe2!: Recipe[];
