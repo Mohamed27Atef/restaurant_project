@@ -33,6 +33,7 @@ export class CreateCoponComponent {
       this.myCopon.createCopon(this.coponObj).subscribe({
         next: (data) => {
           console.log(data);
+          this.form.reset();
         },
         error: (e) => {
           console.log(e);
