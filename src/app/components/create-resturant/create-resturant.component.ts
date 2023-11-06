@@ -10,7 +10,10 @@ import {
 } from '@angular/forms';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 import { CategoryService } from 'src/app/services/category.service';
+import { HeaderService } from 'src/app/services/header.service';
+import { ImagesService } from 'src/app/services/images.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
+import { environment } from 'src/environments/environment.dev';
 
 @Component({
   selector: 'app-create-resturant',
@@ -22,13 +25,14 @@ export class CreateResturantComponent implements OnInit {
   @ViewChild('closing') closinHours!: ElementRef;
 
   closingTimeBeforeOpeningTime: boolean = false;
+  private apiPort = environment.apiPort;
   restaurantForm: FormGroup;
   categories: { id: number; title: string }[] = [];
   selectedCategoryId!: number;
   selectedImages: string[] = [];
   selectedImage: string = '';
   resturantObj: Restaurant = {
-    id: 0, // You can provide appropriate default values
+    id: 0,
     name: '',
     email: '',
     Password: '',
@@ -50,7 +54,7 @@ export class CreateResturantComponent implements OnInit {
     private formBuilder: FormBuilder,
     private Allcategory: CategoryService,
     private resturantServ: RestaurantService,
-    private http: HttpClient
+    private imageService: ImagesService
   ) {
     this.restaurantForm = this.formBuilder.group({
       Name: ['', [Validators.required]],
@@ -122,7 +126,6 @@ export class CreateResturantComponent implements OnInit {
       const closeHoursParts = formData.ClosingHours.split(':');
       const resclose = closeHoursParts[0] + '.' + closeHoursParts[1];
       this.resturantObj.ClosingHours = +resclose;
-
       this.resturantObj.image = formData.Image;
       this.resturantObj.images = formData.Images;
       this.resturantObj.restaurantCategories = [];
@@ -148,20 +151,17 @@ export class CreateResturantComponent implements OnInit {
     const selectedId = parseInt((event.target as HTMLSelectElement).value, 10);
     this.selectedCategoryId = selectedId;
   }
+
+
   onOneImageUpload(event: any) {
-////////////////////////////////////////////////////////
-this.selectedFile = event.target.files[0];
-this.http.put("https://localhost:44397/api/images", this.selectedFile).subscribe({
-  next: d => console.log(d)
-})
-////////////////////////////////////////////////////////
+    this.imageService.uploadImage(event.target.files[0]);
 
     const files: FileList | null = event.target.files;
 
     if (files && files.length > 0) {
       const file: File = files[0]; // Access the first file from the list
 
-      this.selectedImage = `assets/images/${file.name}`;
+      this.selectedImage = `https://localhost:${this.apiPort}/images/${file.name}`;
       console.log(`File 1: ${file.name}, Size: ${file.size} bytes`);
     }
   }
@@ -170,12 +170,14 @@ this.http.put("https://localhost:44397/api/images", this.selectedFile).subscribe
     const files: FileList | null = event.target.files;
     this.selectedImages = [];
     if (files) {
+      for(let image of event.target.files)
+        this.imageService.uploadImage(image);
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i);
 
         if (file) {
           // Now, 'file' contains the individual file, and you can work with it as needed.
-          this.selectedImages.push(`assets/images/res/${file.name}`);
+          this.selectedImages.push(`https://localhost:${this.apiPort}/images/${file.name}`);
           // console.log(`File ${i + 1}: ${file.name}, Size: ${file.size} bytes`);
         }
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { data } from 'isotope-layout';
 import { Menu } from 'src/app/interfaces/menu';
 import { Recipe } from 'src/app/interfaces/recipe';
@@ -24,13 +24,23 @@ export class RestaurantComponent implements OnInit {
   name!: string;
   userImage!: string;
   jsonTokenWithoutDecode!: any;
+  postedReview: any;
 
+ 
   looding: boolean = false
 
   @ViewChild("menu") menuCompent!: MenuComponent;
   constructor(private restaurantService: RestaurantService, private menuService: MenuService, activeRoute : ActivatedRoute){
     this.id =activeRoute.snapshot.params["id"];
+
   }
+
+  postReivew(postedReivew: any){
+    this.postedReview = postedReivew;
+  }
+
+
+
   ngOnInit(): void {
 
     ///// get name and image
@@ -69,9 +79,6 @@ export class RestaurantComponent implements OnInit {
       }
     })
   }
-
- 
-
 
 
   loggedInUser = {

@@ -127,5 +127,5 @@
     </div> -->
 
 </div>
-<app-recipe-feedback [recipeId]="Id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-recipe-feedback>
-<app-recipe-feddback-reviews [recipeId]="Id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-recipe-feddback-reviews>
+<app-recipe-feedback (submit)="submit($event)" [recipeId]="Id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-recipe-feedback>
+<app-recipe-feddback-reviews [postedFeedback]="postedFeedBack" [recipeId]="Id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-recipe-feddback-reviews>

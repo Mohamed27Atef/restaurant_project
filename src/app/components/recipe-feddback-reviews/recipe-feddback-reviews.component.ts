@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 import { RecipeFeedback } from 'src/app/interfaces/RecipeFeedback';
 @Component({
@@ -6,7 +6,7 @@ import { RecipeFeedback } from 'src/app/interfaces/RecipeFeedback';
   templateUrl: './recipe-feddback-reviews.component.html',
   styleUrls: ['./recipe-feddback-reviews.component.css']
 })
-export class RecipeFeddbackReviewsComponent  implements OnInit {
+export class RecipeFeddbackReviewsComponent  implements OnInit, OnChanges {
   @Input() userName!: string;
   @Input() userAvatar!: string;
   @Input() recipeId!: number;
@@ -17,8 +17,13 @@ export class RecipeFeddbackReviewsComponent  implements OnInit {
   averageRating: number = 0;
   selectedRating: number | null = null;
   totalRating: number = 0;
-
+  @Input() postedFeedback: any;
   constructor(private feedbackService: RecipeFeedbackService) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.feedbackData.reviews.push(this.postedFeedback);
+  }
+
+
 
   ngOnInit() {
     this.feedbackService.getReviewsForRecipe(this.recipeId).subscribe(
@@ -26,11 +31,11 @@ export class RecipeFeddbackReviewsComponent  implements OnInit {
         this.feedbackData.reviews = data;
         this.calculateRatingCounts();
         this.filterDisplayedReviews();
-if(data.length>0){
-        for (const review of data) {
-          this.totalRating += review.rate;
-        }
-        this.averageRating = this.totalRating / data.length;
+        if(data.length>0){
+          for (const review of data) {
+            this.totalRating += review.rate;
+          }
+          this.averageRating = this.totalRating / data.length;
       }
       else{this.averageRating=0;}
       }

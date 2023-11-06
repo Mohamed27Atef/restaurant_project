@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/interfaces/recipe';
 import { RecipeService } from 'src/app/services/recipe.service';
+import {AddToCartService} from 'src/app/services/add-to-cart.service';
+
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css']
 })
-export class RecipeComponent {//implements OnInit {
+export class RecipeComponent implements OnInit {
   recipes: Recipe[] = [];
   selectedCategoryFilter: string = 'All Categories';
   uniqueCategories: string[] = [];
@@ -21,10 +23,29 @@ export class RecipeComponent {//implements OnInit {
   uniqueRestaurants: string[] = [];
   selectedCategories: { [category: string]: boolean } = {};
   selectedRatings: { [rating: number]: boolean } = {};
-
-  constructor(private recipeService: RecipeService) {
+  constructor(private recipeService: RecipeService,private addToCartService: AddToCartService, ) {
     this.filteredRecipes = [];
+    
   }
+
+  addToCart(recipe: Recipe) {
+    const CartItemData = {
+      quantity: 1,
+      totalPrice: recipe.price,
+      recipeId: recipe.id.toString(),
+      restaurantId: recipe.restaurantId,
+    };
+
+    this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
+      next: (response) => {
+        console.log('Added to cart:', response);
+      },
+      error: (err) => {
+        console.log('Error adding to cart:', err);
+      },
+    });
+  }
+
   ngOnInit() {
     this.recipeService.getRecipes().subscribe((recipes) => {
       this.recipes = recipes;
@@ -51,7 +72,7 @@ export class RecipeComponent {//implements OnInit {
   filterRecipes() {
     this.filteredRecipes = this.recipes.filter((recipe) => {
       const nameMatch = recipe.name.toLowerCase().includes(this.searchText.toLowerCase());
-      const ratingMatch = recipe.rating >= this.minRating && recipe.rating <= this.maxRating;
+      const ratingMatch = recipe.rate >= this.minRating && recipe.rate <= this.maxRating;
       const priceMatch = recipe.price >= this.minPrice && recipe.price <= this.maxPrice;
 
       if (this.restaurantFilter) {
@@ -66,7 +87,7 @@ export class RecipeComponent {//implements OnInit {
   filterByCategory() {
     this.filteredRecipes = this.recipes.filter((recipe) => {
       const nameMatch = recipe.name.toLowerCase().includes(this.searchText.toLowerCase());
-      const ratingMatch = recipe.rating >= this.minRating && recipe.rating <= this.maxRating;
+      const ratingMatch = recipe.rate >= this.minRating && recipe.rate <= this.maxRating;
       const priceMatch = recipe.price >= this.minPrice && recipe.price <= this.maxPrice;
 
       if (Object.values(this.selectedCategories).some((selected) => selected)) {
@@ -102,4 +123,9 @@ export class RecipeComponent {//implements OnInit {
   addFilterToApplied(filter: string) {
     this.appliedFilters.push(filter);
   }
+  searchRecipesByName() {
+    this.recipeService.searchRecipesByName(this.searchText).subscribe((recipes) => {
+      this.filteredRecipes = recipes;
+    });
+}
 }
