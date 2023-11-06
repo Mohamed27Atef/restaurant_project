@@ -29,7 +29,6 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
   }
 
   addToCart(){
-    console.log( this.recipe)
     const CartItemData={
        quantity: this.quantity,
        totalPrice: this.recipe.price * this.quantity,
