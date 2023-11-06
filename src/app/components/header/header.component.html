@@ -45,7 +45,10 @@
             </li>
             <div id="tables" class="hidden bg-dark">
               <li *ngIf="isAuthServices.isAuth" class="nav-item">
-                <a class="nav-link" routerLink="userTableReservation"
+                <a
+                  class="nav-link"
+                  routerLink="userTableReservation"
+                  (click)="toggleTable($event)"
                   >Table Reservations</a
                 >
               </li>
@@ -73,7 +76,7 @@
             </li>
           </ul>
 
-          <div class="user_option gap-3">
+          <div class="user_option gap-3 user-select-none">
             <a
               class="user_link"
               [attr.href]="name ? null : '/'"
@@ -98,10 +101,18 @@
                 }}</span>
               </div>
 
-              <div id="logOut" class="hidden">
-                <a (click)="LogOut()" class="btn btn-warning btn-lg">
-                  <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Log
-                  out
+              <div id="logOut" class="hidden row" style="width: 180px">
+                <a
+                  routerLink="/profile"
+                  class="nav-link bg-dark text-center fs-6 fw-bold p-3"
+                  >Edit Profile</a
+                >
+                <a
+                  (click)="LogOut()"
+                  class="nav-link bg-dark text-center fs-6 fw-bold p-3"
+                >
+                  <i class="fa-solid fa-arrow-right-from-bracket me-1"></i
+                  ><span> Logout </span>
                 </a>
               </div>
             </a>
@@ -113,7 +124,8 @@
               data-bs-target="#cartSidebar"
               aria-controls="offcanvasRight"
             >
-              <svg (click)="updateItems()"
+              <svg
+                (click)="updateItems()"
                 version="1.1"
                 id="Capa_1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -184,6 +196,7 @@
       tabindex="-1"
       id="cartSidebar"
       aria-labelledby="offcanvasRightLabel"
+      data-bs-backdrop="static"
     >
       <div class="offcanvas-header">
         <h1
@@ -194,7 +207,7 @@
         </h1>
         <button
           type="button"
-          class="btn-close"
+          class="btn-close fs-5"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
         ></button>

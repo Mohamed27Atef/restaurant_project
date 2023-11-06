@@ -15,6 +15,7 @@ export class FeedbackComponent implements OnInit {
   @Input() restaurantId!: number;
   @Output() postedReview = new EventEmitter();
   userComment: string = '';
+  RemoveComponentAfterSubmit:boolean=false;
 
 
   constructor(private feedbackService: FeedbackService) {}
@@ -28,6 +29,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   submitFeedback() {
+    this.RemoveComponentAfterSubmit=true;
     const feedbackToAdd = {
       text: this.userComment,
       rate: this.selectedRating,
@@ -35,6 +37,7 @@ export class FeedbackComponent implements OnInit {
       ResturantId: this.restaurantId,
     };
     this.postedReview.emit(feedbackToAdd);
+
     this.feedbackService.postFeedback(feedbackToAdd).subscribe(
       {
         next: (response) => {

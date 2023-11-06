@@ -11,7 +11,10 @@ import { IsAuthService } from 'src/app/services/is-auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private myServices: LoginService, private isAuthServices: IsAuthService) {}
+  constructor(
+    private myServices: LoginService,
+    private isAuthServices: IsAuthService
+  ) {}
   userLogin: UserLogin = {
     email: '',
     password: '',
