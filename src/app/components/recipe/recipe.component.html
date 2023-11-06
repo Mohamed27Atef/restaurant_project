@@ -2,7 +2,7 @@
   <div class="page-title">Recipes</div>
 </div>
 <div class="search-container">
-  <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterRecipes()" id="searchText" placeholder="Search by name" class="search-input" />
+  <input type="text" [(ngModel)]="searchText" (ngModelChange)="searchRecipesByName()" id="searchText" placeholder="Search by name" class="search-input" />
 </div>
 <div class="recipe-page">
   <div class="filter-column">
@@ -68,11 +68,11 @@
         <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" class="recipe-image" />
         <div class="recipe-details">
           <h2>{{ recipe.name }}</h2>
-          <p>Rating: {{ recipe.rating }} <i class="fa-solid fa-star"></i></p>
+          <p>Rating: {{ recipe.rate }} <i class="fa-solid fa-star"></i></p>
           <p>Restaurant Name: {{ recipe.restaurantName }}</p>
-          <p>Category: {{ recipe.category }}</p>
+          <p>Category: {{ recipe.menuName }}</p>
           <p>Price: ${{ recipe.price }}</p>
-          <button class="buy-button">Buy Now</button>
+          <button onclick="addToCart(recipe)" class="buy-button">Buy Now</button>
         </div>
       </div>
     </div>
