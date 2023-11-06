@@ -18,52 +18,74 @@ export class OrdersComponent implements OnInit {
   statusColor: string = 'bg-success';
 
   filteredOrders: UserOrders[] = [];
-  filterStatus: string = "";
-  filterRestaurant: string = "";
-  filterDate: string = "";
+  filterStatus: string = '';
+  filterRestaurant: string = '';
+  filterDate: string = '';
 
   restaurants: Restaurant[] = [];
-  status:string[]=[ "processed","shipped","enRoute","arrived","Canceled"]
+  status: string[] = ['processed', 'shipped', 'enRoute', 'arrived', 'Canceled'];
 
-  constructor(private myService: OrdersService,private _RestaurantService:RestaurantService) {
+  constructor(
+    private myService: OrdersService,
+    private _RestaurantService: RestaurantService
+  ) {
     let user = getCookie('User');
   }
   ngOnInit(): void {
-    this._RestaurantService.getAllRestaurant().subscribe((data)=>{
-      this.restaurants=data
-  })
+    this._RestaurantService.getAllRestaurant().subscribe((data) => {
+      this.restaurants = data;
+    });
 
     this.myService.getUserOrder().subscribe({
-      next: (data) => {this.orders = data, this.filteredOrders = data},
+      next: (data) => {
+        (this.orders = data), (this.filteredOrders = data);
+      },
       error: (err) => console.log(err),
     });
   }
 
-
   applyFilters() {
     this.filteredOrders = this.orders.filter((order) => {
-      const statusMatch = this.filterStatus === "" || order.status === this.filterStatus;
-      const restaurantMatch = this.filterRestaurant === "" || order.restaurantName.toLowerCase().includes(this.filterRestaurant.toLowerCase());
-      const dateMatch = this.filterDate === "" || order.createdAt.toLocaleString().toLowerCase().includes(this.filterDate.toLowerCase());
+      const statusMatch =
+        this.filterStatus === '' || order.status === this.filterStatus;
+      const restaurantMatch =
+        this.filterRestaurant === '' ||
+        order.restaurantName
+          .toLowerCase()
+          .includes(this.filterRestaurant.toLowerCase());
+      const dateMatch =
+        this.filterDate === '' ||
+        order.createdAt
+          .toLocaleString()
+          .toLowerCase()
+          .includes(this.filterDate.toLowerCase());
       return statusMatch && restaurantMatch && dateMatch;
     });
   }
 
-
   getSatausColor(status: string) {
     switch (status) {
       case 'processed':
-       return 'bg-primary';
+        return 'bg-primary';
       case 'shipped':
-       return 'bg-warning';
+        return 'bg-warning';
       case 'enRoute':
-       return 'bg-info';
+        return 'bg-info';
       case 'arrived':
-       return 'bg-success';
+        return 'bg-success';
       case 'Canceled':
-       return 'bg-danger';
+        return 'bg-danger';
       default:
-       return 'bg-Light';
+        return 'bg-Light';
     }
+  }
+  clearDate() {
+    this.myService.getUserOrder().subscribe({
+      next: (data) => {
+        (this.orders = data), (this.filteredOrders = data);
+      },
+      error: (err) => console.log(err),
+    });
+    this.filterDate = '';
   }
 }
