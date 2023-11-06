@@ -30,7 +30,6 @@ export class CreateCoponComponent {
         Text: formData.Text,
         DiscountPercentage: +formData.DiscountPercentage,
       };
-
       this.myCopon.createCopon(this.coponObj).subscribe({
         next: (data) => {
           console.log(data);

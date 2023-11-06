@@ -126,7 +126,7 @@ export class CreateResturantComponent implements OnInit {
       const closeHoursParts = formData.ClosingHours.split(':');
       const resclose = closeHoursParts[0] + '.' + closeHoursParts[1];
       this.resturantObj.ClosingHours = +resclose;
-      //this.resturantObj.image = `https://localhost:${this.apiPort}/images/${}`;
+      this.resturantObj.image = formData.Image;
       this.resturantObj.images = formData.Images;
       this.resturantObj.restaurantCategories = [];
       this.resturantObj.restaurantCategories.push(

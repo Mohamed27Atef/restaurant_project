@@ -8,6 +8,8 @@ h1 {
 .table-form {
   margin: 20px;
   padding: 20px;
+  width: 50%;
+  margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f8f8f8;

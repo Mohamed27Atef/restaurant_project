@@ -22,6 +22,9 @@ import { AdminOrdersComponent } from './components/admin-orders/admin-orders.com
 import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { CreateResturantComponent } from './components/create-resturant/create-resturant.component';
+import { CreateCoponComponent } from './components/create-copon/create-copon.component';
+import { CreateMenuComponent } from './components/create-menu/create-menu.component';
+import { CreateTableComponent } from './components/create-table/create-table.component';
 
 
 const routes: Routes = [
@@ -48,6 +51,9 @@ const routes: Routes = [
   // admin 
 
   { path: 'admin/orders', component: AdminOrderContainerComponent },
+  { path: 'coupon', component: CreateCoponComponent },
+  { path: 'menu', component: CreateMenuComponent },
+  { path: 'table', component: CreateTableComponent },
   { path: 'admin/reservation', component: AdminTablesComponent },
   { path: 'admin', component: CreateResturantComponent },
   // create recipe

@@ -1,5 +1,5 @@
 <h2 class="text-center m-4">Create Copon</h2>
-<form (ngSubmit)="onSubmit()" class="table-form" [formGroup]="form">
+<form  (ngSubmit)="onSubmit()" class="table-form" [formGroup]="form" >
   <div class="form-group">
     <label for="NumberOfUser">Number of Users:</label>
     <input
@@ -48,6 +48,7 @@
     DiscountPercentage is InValid.
   </div>
   <br />
-
-  <button type="submit" class="btn btn-primary">Submit Form</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary rounded">Submit Form</button>
+  </div>
 </form>

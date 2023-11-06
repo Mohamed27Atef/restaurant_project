@@ -76,6 +76,9 @@ import { FeedbackScoreComponent } from './components/feedback-score/feedback-sco
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 import { RecipeFeddbackReviewsComponent } from './components/recipe-feddback-reviews/recipe-feddback-reviews.component';
 import { MapComponent } from './components/map/map.component';
+import { CreateCoponComponent } from './components/create-copon/create-copon.component';
+import { CreateMenuComponent } from './components/create-menu/create-menu.component';
+import { CreateTableComponent } from './components/create-table/create-table.component';
 
 
 
@@ -123,6 +126,9 @@ import { MapComponent } from './components/map/map.component';
 
     CreateResturantComponent,
     CreateRecipeComponent,
+    CreateCoponComponent,
+    CreateMenuComponent,
+    CreateTableComponent,
 
     FeedbackReviewsComponent,
     RecipeComponent,
