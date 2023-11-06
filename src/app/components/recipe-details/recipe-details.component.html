@@ -58,10 +58,11 @@
           </button>
         </div>
         <div>
-          <button (click)="addToCart()" class="btn btn-outline-warning me-4 text-dark">
+          <button [disabled]="recipeAddedToCart" (click)="addToCart()" class="btn btn-outline-warning me-4 text-dark">
             <i class="fa-solid fa-cart-shopping"></i>
             Add to Cart
           </button>
+          <p class="text-success mt-2" *ngIf="recipeAddedToCart">Recipe is added to cart successfully</p>
           <!-- <div id="wishlistBtn" class="btn border-0 btn-outline-dark">
 
               <i
