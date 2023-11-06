@@ -47,17 +47,23 @@
   <div class="recipes-column">
     <!-- Recipe list -->
     <div class="recipe-list">
-      <div *ngFor="let recipe of filteredRecipe" class="recipe-item">
-        <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" class="recipe-image" />
-        <div class="recipe-details">
-          <h2>{{ recipe.name }}</h2>
-          <p>Rating: {{ recipe.rate }} <i class="fa-solid fa-star"></i></p>
-          <p>Restaurant Name: {{ recipe.restaurantName }}</p>
-          <p>Category: {{ recipe.menuName }}</p>
-          <p>Price: ${{ recipe.price }}</p>
-          <button (click)="addToCart(recipe)" class="buy-button">Buy Now</button>
-        </div>
+      <div *ngIf="!filteredRecipe || filteredRecipe.length == 0">
+        <h2>there is no recipe to show</h2>
       </div>
+      <div *ngIf="filteredRecipe">
+        <div *ngFor="let recipe of filteredRecipe " class="recipe-item">
+          <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" class="recipe-image" />
+          <div class="recipe-details">
+            <h2>{{ recipe.name }}</h2>
+            <p>Rating: {{ recipe.rate }} <i class="fa-solid fa-star"></i></p>
+            <p>Restaurant Name: {{ recipe.restaurantName }}</p>
+            <p>Category: {{ recipe.menuName }}</p>
+            <p>Price: ${{ recipe.price }}</p>
+            <button (click)="addToCart(recipe)" class="buy-button">Buy Now</button>
+          </div>
+        </div>
+    </div>
+
     </div>
   </div>
 </div>
