@@ -13,6 +13,6 @@
     <app-book-container [restaurantId]="currentRestaurant.id" [openHour]="currentRestaurant.openHours" [closeHour]="currentRestaurant.closingHours"></app-book-container> 
   </div> 
   <app-map [latitude]="currentRestaurant.latitude" [longitude]="currentRestaurant.latitude"></app-map>
-  <app-feedback  [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback>
+  <app-feedback (postedReview)="postReivew($event)"  [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback>
   <app-feedback-reviews [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback-reviews>
-  <app-feedback-score [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback-score>
+  <app-feedback-score [postedReview]="postedReview" [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback-score>

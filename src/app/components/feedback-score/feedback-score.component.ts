@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
 import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
 
@@ -7,10 +7,11 @@ import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
   templateUrl: './feedback-score.component.html',
   styleUrls: ['./feedback-score.component.css'],
 })
-export class FeedbackScoreComponent implements OnInit {
+export class FeedbackScoreComponent implements OnInit, OnChanges {
   @Input() userName!: string;
   @Input() userAvatar!: string;
   @Input() restaurantId!: number;
+  @Input() postedReview: any;
   feedbackData: any = { reviews: [] };
   filteredReviews: IRestaurantFeedback[] = [];
   ratingCounts: number[] = [0, 0, 0, 0, 0];
@@ -19,6 +20,10 @@ export class FeedbackScoreComponent implements OnInit {
   totalRating: number = 0;
 
   constructor(private feedbackService: FeedbackService) {}
+  ngOnChanges(): void {
+    console.log(this.postedReview);
+    this.feedbackData.reviews.push(this.postedReview);
+  }
 
   ngOnInit() {
     this.feedbackService

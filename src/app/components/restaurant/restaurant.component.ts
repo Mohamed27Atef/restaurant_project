@@ -24,6 +24,7 @@ export class RestaurantComponent implements OnInit {
   name!: string;
   userImage!: string;
   jsonTokenWithoutDecode!: any;
+  postedReview: any;
 
  
   looding: boolean = false
@@ -32,6 +33,10 @@ export class RestaurantComponent implements OnInit {
   constructor(private restaurantService: RestaurantService, private menuService: MenuService, activeRoute : ActivatedRoute){
     this.id =activeRoute.snapshot.params["id"];
 
+  }
+
+  postReivew(postedReivew: any){
+    this.postedReview = postedReivew;
   }
 
 

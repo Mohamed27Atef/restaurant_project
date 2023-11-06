@@ -37,7 +37,6 @@ const routes: Routes = [
     component: SignupComponent,
   },
   { path: '', component: HomeComponent },
-  { path: 'test', component: RecipeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'orderDetials', component: OrderDetailsComponent },
