@@ -45,7 +45,10 @@
             </li>
             <div id="tables" class="hidden bg-dark">
               <li *ngIf="isAuthServices.isAuth" class="nav-item">
-                <a class="nav-link" routerLink="userTableReservation"
+                <a
+                  class="nav-link"
+                  routerLink="userTableReservation"
+                  (click)="toggleTable($event)"
                   >Table Reservations</a
                 >
               </li>
