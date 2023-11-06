@@ -26,16 +26,11 @@ import { CreateCoponComponent } from './components/create-copon/create-copon.com
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { CreateTableComponent } from './components/create-table/create-table.component';
 
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '', component: HomeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
@@ -46,8 +41,8 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'recipes', component: RecipeComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
-
-  // admin 
+  { path: 'profile', component: ProfileComponent },
+  // admin
 
   { path: 'admin/orders', component: AdminOrderContainerComponent },
   { path: 'coupon', component: CreateCoponComponent },
@@ -60,7 +55,6 @@ const routes: Routes = [
 
   /////////////////////////////////////////////////////////////////////////////////
   { path: '**', component: HomeComponent },
-
 ];
 
 @NgModule({

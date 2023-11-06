@@ -216,6 +216,11 @@
   transition: top 0.3s ease-in-out;
 }
 
+#logOut a:hover {
+  color: white;
+}
+
+
 #tables {
   position: absolute;
   top: -60px;
