@@ -18,6 +18,7 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
   relatedRecipe: any;
   quantity: number = 1;
   numberOfReview: number = 0;
+  postedFeedBack: any;
   Id: number = 0;
   recipeAddedToCart:boolean=false;
   feedbackAddedFromUser:boolean=true;
@@ -46,7 +47,9 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
        error:(err)=>console.log(err)
      })   
    }
-
+   submit(feedback: any) {
+    this.postedFeedBack = feedback;
+   }
   ngOnInit(): void {
     // this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
     //   next: data=> 

@@ -22,6 +22,9 @@ import { AdminOrdersComponent } from './components/admin-orders/admin-orders.com
 import { AdminTablesComponent } from './components/admin-tables/admin-tables.component';
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { CreateResturantComponent } from './components/create-resturant/create-resturant.component';
+import { CreateCoponComponent } from './components/create-copon/create-copon.component';
+import { CreateMenuComponent } from './components/create-menu/create-menu.component';
+import { CreateTableComponent } from './components/create-table/create-table.component';
 
 
 const routes: Routes = [
@@ -34,7 +37,6 @@ const routes: Routes = [
     component: SignupComponent,
   },
   { path: '', component: HomeComponent },
-  { path: 'test', component: RecipeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'orderDetials', component: OrderDetailsComponent },
@@ -42,15 +44,19 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'restaurant/:id', component: RestaurantComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'recipes', component: RecipeComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
 
   // admin 
 
   { path: 'admin/orders', component: AdminOrderContainerComponent },
+  { path: 'coupon', component: CreateCoponComponent },
+  { path: 'menu', component: CreateMenuComponent },
+  { path: 'table', component: CreateTableComponent },
   { path: 'admin/reservation', component: AdminTablesComponent },
-  // { path: 'admin', component: CreateResturantComponent },
+  { path: 'admin', component: CreateResturantComponent },
   // create recipe
-  { path: 'admin', component: CreateRecipeComponent },
+  // { path: 'admin', component: CreateRecipeComponent },
 
   /////////////////////////////////////////////////////////////////////////////////
   { path: '**', component: HomeComponent },

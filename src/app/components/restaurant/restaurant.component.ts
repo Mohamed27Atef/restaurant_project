@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { data } from 'isotope-layout';
 import { Menu } from 'src/app/interfaces/menu';
 import { Recipe } from 'src/app/interfaces/recipe';
@@ -25,7 +25,9 @@ export class RestaurantComponent implements OnInit {
   name!: string;
   userImage!: string;
   jsonTokenWithoutDecode!: any;
+  postedReview: any;
 
+ 
   looding: boolean = false
   feedbackAddedFromUser:boolean=true;
   @ViewChild("menu") menuCompent!: MenuComponent;
@@ -34,7 +36,15 @@ export class RestaurantComponent implements OnInit {
       activeRoute : ActivatedRoute,
       private  feedbackAddedService:FeedbackAddedService){
     this.id =activeRoute.snapshot.params["id"];
+
   }
+
+  postReivew(postedReivew: any){
+    this.postedReview = postedReivew;
+  }
+
+
+
   ngOnInit(): void {
     this.feedbackAddedService.checkIfFeedbackAddedToRestaurant(this.id).subscribe(
       {
@@ -78,9 +88,6 @@ export class RestaurantComponent implements OnInit {
       }
     })
   }
-
- 
-
 
 
   loggedInUser = {

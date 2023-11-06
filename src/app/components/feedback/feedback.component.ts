@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
 import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
 
@@ -13,6 +13,7 @@ export class FeedbackComponent implements OnInit {
   @Input() userName!: string;
   @Input() userAvatar!: string;
   @Input() restaurantId!: number;
+  @Output() postedReview = new EventEmitter();
   userComment: string = '';
   RemoveComponentAfterSubmit:boolean=false;
 
@@ -34,7 +35,8 @@ export class FeedbackComponent implements OnInit {
       rate: this.selectedRating,
       postDate: new Date(),
       ResturantId: this.restaurantId,
-    };      
+    };
+    this.postedReview.emit(feedbackToAdd);
 
     this.feedbackService.postFeedback(feedbackToAdd).subscribe(
       {
