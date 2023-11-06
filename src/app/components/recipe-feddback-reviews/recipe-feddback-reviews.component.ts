@@ -17,20 +17,21 @@ export class RecipeFeddbackReviewsComponent  implements OnInit {
   averageRating: number = 0;
   selectedRating: number | null = null;
   totalRating: number = 0;
-
+  @Input() postedFeedback: any;
   constructor(private feedbackService: RecipeFeedbackService) {}
 
   ngOnInit() {
+    console.log(this.postedFeedback)
     this.feedbackService.getReviewsForRecipe(this.recipeId).subscribe(
       (data: RecipeFeedback[]) => {  console.log(this.feedbackData);
         this.feedbackData.reviews = data;
         this.calculateRatingCounts();
         this.filterDisplayedReviews();
-if(data.length>0){
-        for (const review of data) {
-          this.totalRating += review.rate;
-        }
-        this.averageRating = this.totalRating / data.length;
+        if(data.length>0){
+          for (const review of data) {
+            this.totalRating += review.rate;
+          }
+          this.averageRating = this.totalRating / data.length;
       }
       else{this.averageRating=0;}
       }
