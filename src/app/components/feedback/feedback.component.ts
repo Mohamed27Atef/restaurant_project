@@ -14,6 +14,7 @@ export class FeedbackComponent implements OnInit {
   @Input() userAvatar!: string;
   @Input() restaurantId!: number;
   userComment: string = '';
+  RemoveComponentAfterSubmit:boolean=false;
 
 
   constructor(private feedbackService: FeedbackService) {}
@@ -27,6 +28,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   submitFeedback() {
+    this.RemoveComponentAfterSubmit=true;
     const feedbackToAdd = {
       text: this.userComment,
       rate: this.selectedRating,

@@ -1,4 +1,4 @@
-<div class="feedback-component">
+<div class="feedback-component" *ngIf="!RemoveComponentAfterSubmit">
   <div class="rating">
     <span
       *ngFor="let star of stars"

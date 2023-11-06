@@ -9,7 +9,8 @@ import { MenuComponent } from './menu/menu.component';
 import { ActivatedRoute, TitleStrategy } from '@angular/router';
 import { getCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
-
+import { FeedbackAddedService } from 'src/app/services/feedback-added.service';
+ 
 
 @Component({
   selector: 'app-restaurant',
@@ -26,13 +27,21 @@ export class RestaurantComponent implements OnInit {
   jsonTokenWithoutDecode!: any;
 
   looding: boolean = false
-
+  feedbackAddedFromUser:boolean=true;
   @ViewChild("menu") menuCompent!: MenuComponent;
-  constructor(private restaurantService: RestaurantService, private menuService: MenuService, activeRoute : ActivatedRoute){
+  constructor(private restaurantService: RestaurantService,
+     private menuService: MenuService,
+      activeRoute : ActivatedRoute,
+      private  feedbackAddedService:FeedbackAddedService){
     this.id =activeRoute.snapshot.params["id"];
   }
   ngOnInit(): void {
-
+    this.feedbackAddedService.checkIfFeedbackAddedToRestaurant(this.id).subscribe(
+      {
+        next: (data) =>{ this.feedbackAddedFromUser=data
+          console.log("feedbackFromDataBase"+data)},
+        error: (err) => console.log(err),
+      })
     ///// get name and image
     this.jsonTokenWithoutDecode = getCookie('User');
     let UserImageFromCookie: any = getCookie('UserImage');

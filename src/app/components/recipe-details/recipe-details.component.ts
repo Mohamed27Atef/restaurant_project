@@ -6,6 +6,7 @@ import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service'
 import { RecipeService } from 'src/app/services/recipe.service';
 import { AddToCartService } from 'src/app/services/add-to-cart.service';
 import { IsAddedToCartService } from 'src/app/services/is-added-to-cart.service';
+import { FeedbackAddedService } from 'src/app/services/feedback-added.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -19,12 +20,14 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
   numberOfReview: number = 0;
   Id: number = 0;
   recipeAddedToCart:boolean=false;
+  feedbackAddedFromUser:boolean=true;
   constructor(
     private myService: RecipeService,
     private myActive: ActivatedRoute,
     private addToCartService : AddToCartService,
     private recipeFeedbackService: RecipeFeedbackService,
-    private isAddedToCartService:IsAddedToCartService
+    private isAddedToCartService:IsAddedToCartService,
+    private  feedbackAddedService:FeedbackAddedService
   ) {
     this.Id = this.myActive.snapshot.params['id'];
   }
@@ -64,6 +67,13 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
         error: (err) => console.log(err),
       })
 
+      this.feedbackAddedService.checkIfFeedbackAddedToRecipe(this.Id).subscribe(
+        {
+          next: (data) =>{ this.feedbackAddedFromUser=data
+            console.log("feedbackFromDataBase"+data)},
+          error: (err) => console.log(err),
+        })
+
   }
 
   ngAfterViewInit() {
@@ -100,7 +110,7 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
 
       function RoundToNearestHalf(num: number) {
         const rounded = Math.round(num * 2) / 2;
-        return rounded;
+        return rounded; 
       }
 
       const starsElement = ratingElement.querySelector('.stars');
