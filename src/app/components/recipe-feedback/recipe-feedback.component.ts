@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 @Component({
   selector: 'app-recipe-feedback',
@@ -12,7 +12,7 @@ export class RecipeFeedbackComponent  implements OnInit {
   @Input() userAvatar!: string;
   @Input() recipeId!: number;
   userComment: string = '';
-
+  @Output() submit =  new EventEmitter();
 
   constructor(private RecipeFeedbackService: RecipeFeedbackService) {}
 
@@ -31,7 +31,7 @@ export class RecipeFeedbackComponent  implements OnInit {
       postDate: new Date(),
       RecipeId: this.recipeId,
     };
-  
+    this.submit.emit(feedbackToAdd);
     this.RecipeFeedbackService.postFeedback(feedbackToAdd).subscribe(
       (response) => {
         console.log('Feedback submitted successfully.', response);

@@ -11,5 +11,4 @@ export interface Recipe {
   category: string;
   menuId: Number;
   restaurantId: number;
-
 }
