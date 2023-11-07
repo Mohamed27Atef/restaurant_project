@@ -46,13 +46,28 @@
 
   <div class="mb-3">
     <label for="registerPassword" class="form-label">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="registerPassword"
-      name="registerPassword"
-      [(ngModel)]="user.password"
-    />
+    <div class="input-group">
+      <input
+        [type]="user.passwordVisible ? 'text' : 'password'"
+        class="form-control"
+        id="registerPassword"
+        name="registerPassword"
+        [(ngModel)]="user.password"
+      />
+      <button
+        class="btn btn-light"
+        type="button"
+        (click)="togglePasswordVisibility()"
+      >
+        <i
+          class="fa"
+          [ngClass]="{
+            'fa-eye': user.passwordVisible,
+            'fa-eye-slash': !user.passwordVisible
+          }"
+        ></i>
+      </button>
+    </div>
     <div *ngIf="user.password == ''" class="text-danger mt-1 fw-bold">
       {{ user.passwordError }}
     </div>
@@ -62,14 +77,28 @@
     <label for="registerconfirmPassword" class="form-label"
       >Confirm Password</label
     >
-
-    <input
-      type="password"
-      class="form-control"
-      id="registerconfirmPassword"
-      name="registerConfirmPassword"
-      [(ngModel)]="user.confirmPassword"
-    />
+    <div class="input-group">
+      <input
+        [type]="user.confirmPasswordVisible ? 'text' : 'password'"
+        class="form-control"
+        id="registerconfirmPassword"
+        name="registerConfirmPassword"
+        [(ngModel)]="user.confirmPassword"
+      />
+      <button
+        class="btn btn-light"
+        type="button"
+        (click)="togglePasswordVisibility2()"
+      >
+        <i
+          class="fa"
+          [ngClass]="{
+            'fa-eye': user.confirmPasswordVisible,
+            'fa-eye-slash': !user.confirmPasswordVisible
+          }"
+        ></i>
+      </button>
+    </div>
     <div
       *ngIf="user.confirmPassword == '' || user.confirmPassword != ''"
       class="text-danger mt-1 fw-bold"
@@ -91,10 +120,10 @@
       name="registerCheck"
       [(ngModel)]="registerCheck"
     /> -->
-    <label class="form-check-label" for="registerCheck"
-    >Share location with us?</label
-  >
-</div>
-<button (click)="signUp()" class="btn btn-warning shadow">Sign up</button>
-</div>
+      <label class="form-check-label" for="registerCheck"
+        >Share location with us?</label
+      >
+    </div>
+    <button (click)="signUp()" class="btn btn-warning shadow">Sign up</button>
+  </div>
 </form>
