@@ -84,6 +84,9 @@ import { DashBoardComponent } from './components/dash-board/dash-board.component
 
 import { PaginationComponent } from './pagination/pagination.component';
 import { SystemAdminDashboardComponent } from './components/system-admin-dashboard/system-admin-dashboard.component';
+import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+
 
 
 
@@ -155,7 +158,11 @@ import { SystemAdminDashboardComponent } from './components/system-admin-dashboa
     MapComponent,
     DashBoardComponent,
     PaginationComponent,
+
     SystemAdminDashboardComponent,
+
+    UpdateRecipeComponent,
+    UpdateRestaurantComponent,
 
 
 
