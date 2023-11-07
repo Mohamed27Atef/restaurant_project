@@ -26,9 +26,10 @@
 }
 
 .main-image {
- width: 330px;
+ width: 360px;
  height: 300px;
  overflow: hidden;
+ max-width: 360px;
  padding: 0px;
 }
 
