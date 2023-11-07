@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                     <div class="form-group"> 
                         <label class="head" for="">Time</label>
-                        <input (ngModelChange)="onDateTimeChange()" min="09:00" max="22:00" formControlName="time" type="text"  onfocus="(this.type='time')"  onblur="(this.type='text')" class="form-control" id="book_date" placeholder="Time">
+                        <input (ngModelChange)="onDateTimeChange()"  formControlName="time" type="time" class="form-control" placeholder="Time">
                         <span class="text-danger small" *ngIf="reservationForm.get('time')?.getError('required')&& reservationForm.get('time')?.touched">Required !</span>
                         <span class="text-danger small" *ngIf="reservationForm.hasError('dateTimeInvalid')">The selected date and time must be in the future</span>
                     </div>
