@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FeedbackService } from 'src/app/services/restaurant-feedback.service';
 import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
 
@@ -13,7 +13,9 @@ export class FeedbackComponent implements OnInit {
   @Input() userName!: string;
   @Input() userAvatar!: string;
   @Input() restaurantId!: number;
+  @Output() postedReview = new EventEmitter();
   userComment: string = '';
+  RemoveComponentAfterSubmit:boolean=false;
 
 
   constructor(private feedbackService: FeedbackService) {}
@@ -27,12 +29,14 @@ export class FeedbackComponent implements OnInit {
   }
 
   submitFeedback() {
+    this.RemoveComponentAfterSubmit=true;
     const feedbackToAdd = {
       text: this.userComment,
       rate: this.selectedRating,
       postDate: new Date(),
       ResturantId: this.restaurantId,
     };
+    this.postedReview.emit(feedbackToAdd);
 
     this.feedbackService.postFeedback(feedbackToAdd).subscribe(
       {

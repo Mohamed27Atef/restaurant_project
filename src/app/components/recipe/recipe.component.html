@@ -2,7 +2,7 @@
   <div class="page-title">Recipes</div>
 </div>
 <div class="search-container">
-  <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterRecipes()" id="searchText" placeholder="Search by name" class="search-input" />
+  <input type="text" [(ngModel)]="searchText" (ngModelChange)="searchRecipesByName()" id="searchText" placeholder="Search by name" class="form-control rounded" />
 </div>
 <div class="recipe-page">
   <div class="filter-column">
@@ -24,11 +24,11 @@
     <hr /> <!-- Thin line to separate filters -->
     <div class="filter-group">
       <label for="minPrice">Minimum Price:</label>
-      <input type="number" [(ngModel)]="minPrice" (ngModelChange)="filterRecipes()" id="minPrice" placeholder="Min Price" />
+      <input type="number" [(ngModel)]="minPrice" (ngModelChange)="filterRecipes()" class="form-control w-75" id="minPrice" placeholder="Min Price" />
     </div>
     <div class="filter-group">
       <label for="maxPrice">Maximum Price:</label>
-      <input type="number" [(ngModel)]="maxPrice" (ngModelChange)="filterRecipes()" id="maxPrice" placeholder="Max Price" />
+      <input type="number" [(ngModel)]="maxPrice" (ngModelChange)="filterRecipes()" class="form-control w-75" id="maxPrice" placeholder="Max Price" />
     </div>
     <hr /> <!-- Thin line to separate filters -->
     <div class="filter-group">
@@ -36,45 +36,34 @@
       <div class="category-checkboxes">
         <ng-container *ngFor="let category of uniqueCategories">
           <label class="category-checkbox">
-            <input type="checkbox" [(ngModel)]="selectedCategories[category]" (ngModelChange)="filterByCategory()" [id]="'category_' + category" />
-            <span class="category-name">{{ category }}</span>
+            <input type="radio" (click)="selectedCategory($event)" name="category" [id]="'category_' + category.title" [value]="category.title" />
+            <span class="category-name">{{ category.title }}</span>
           </label>
         </ng-container>
       </div>
     </div>
     <hr />
-    <div class="filter-group">
-      <label for="restaurantFilter">Filter by Restaurant Name:</label>
-  <div class="restaurant-list">
-    <div *ngFor="let restaurant of uniqueRestaurants" class="restaurant-item">
-      <label class="radio-label">
-        <input type="radio" [(ngModel)]="restaurantFilter" [value]="restaurant" (change)="filterRecipes()" id="restaurant_{{restaurant}}" />
-        {{ restaurant }}
-      </label>
-    </div>
-    <div class="restaurant-item">
-      <label class="radio-label">
-        <input type="radio" [(ngModel)]="restaurantFilter" value="" (change)="filterRecipes()" id="restaurant_reset" />
-        Reset
-      </label>
-    </div>
-  </div>
-    </div>
   </div>
   <div class="recipes-column">
     <!-- Recipe list -->
     <div class="recipe-list">
-      <div *ngFor="let recipe of filteredRecipes" class="recipe-item">
-        <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" class="recipe-image" />
-        <div class="recipe-details">
-          <h2>{{ recipe.name }}</h2>
-          <p>Rating: {{ recipe.rating }} <i class="fa-solid fa-star"></i></p>
-          <p>Restaurant Name: {{ recipe.restaurantName }}</p>
-          <p>Category: {{ recipe.category }}</p>
-          <p>Price: ${{ recipe.price }}</p>
-          <button class="buy-button">Buy Now</button>
-        </div>
+      <div *ngIf="!filteredRecipe || filteredRecipe.length == 0">
+        <h2>there is no recipe to show</h2>
       </div>
+      <div *ngIf="filteredRecipe">
+        <div *ngFor="let recipe of filteredRecipe " class="recipe-item">
+          <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" class="recipe-image" />
+          <div class="recipe-details">
+            <h2>{{ recipe.name }}</h2>
+            <p>Rating: {{ recipe.rate }} <i class="fa-solid fa-star"></i></p>
+            <p>Restaurant Name: {{ recipe.restaurantName }}</p>
+            <p>Category: {{ recipe.menuName }}</p>
+            <p>Price: ${{ recipe.price }}</p>
+            <button (click)="addToCart(recipe)" class="buy-button">Buy Now</button>
+          </div>
+        </div>
+    </div>
+
     </div>
   </div>
 </div>

@@ -79,7 +79,11 @@ import { MapComponent } from './components/map/map.component';
 import { CreateCoponComponent } from './components/create-copon/create-copon.component';
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { CreateTableComponent } from './components/create-table/create-table.component';
+
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
+
+import { PaginationComponent } from './pagination/pagination.component';
+
 
 
 
@@ -149,6 +153,8 @@ import { DashBoardComponent } from './components/dash-board/dash-board.component
     RecipeFeddbackReviewsComponent,
     MapComponent,
     DashBoardComponent,
+    PaginationComponent,
+
 
 
   ],
