@@ -58,7 +58,7 @@ export class AdminOrdersComponent {
     const orderId = selection[1];
     console.log(orderId);
     this._AdminOrderService
-      .updateOrderStatusByOrderId(orderId, selectedValue)
+      .updateOrderStatusByOrderId(orderId, selectedValue, this.restaurantId)
       .subscribe({
         next: (Response) => console.log(Response),
         error: (err) => console.log(err),

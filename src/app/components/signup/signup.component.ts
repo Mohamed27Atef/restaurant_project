@@ -20,6 +20,12 @@ export class SignupComponent {
   @Output() clickEvent = new EventEmitter<void>();
   registerCheck: boolean = false;
   checkboxError: boolean = false;
+  togglePasswordVisibility() {
+    this.user.passwordVisible = !this.user.passwordVisible;
+  }
+  togglePasswordVisibility2() {
+    this.user.confirmPasswordVisible = !this.user.confirmPasswordVisible;
+  }
   signUp() {
     let signUpData: any = {
       firstName: this.user.firstName,

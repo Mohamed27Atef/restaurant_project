@@ -47,7 +47,11 @@ export class LoginComponent {
           image: loginResponse.imageUrl,
         };
         this.userName.emit(userData);
-        setCookie('UserImage', userData.image);
+        let userImage =
+          userData.image != null
+            ? userData.image
+            : '../../../assets/images/user2.png';
+        setCookie('UserImage', userImage);
       },
       error: (errorMassage) => {
         if (errorMassage) {

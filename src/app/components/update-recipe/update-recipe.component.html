@@ -1,4 +1,4 @@
-<h1>Recipe Registration</h1>
+<h1>Update Recipe</h1>
 <form [formGroup]="RecipeForm" (ngSubmit)="onSubmit()">
   <div class="parent-form row">
     <div class="col-6">
@@ -65,7 +65,7 @@
       >
         Image wrong format.
       </div>
-      <label for="Image">Images:</label>
+      <label for="Image">Images :</label>
       <input
         type="file"
         multiple
@@ -91,5 +91,5 @@
       ></textarea>
     </div>
   </div>
-  <button type="submit" [disabled]="RecipeForm.invalid">Register</button>
+  <button type="submit" [disabled]="RecipeForm.invalid">Update</button>
 </form>

@@ -1,26 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 import { CategoryService } from 'src/app/services/category.service';
-import { HeaderService } from 'src/app/services/header.service';
 import { ImagesService } from 'src/app/services/images.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { environment } from 'src/environments/environment.dev';
 
 @Component({
-  selector: 'app-create-resturant',
-  templateUrl: './create-resturant.component.html',
-  styleUrls: ['./create-resturant.component.css'],
+  selector: 'app-update-restaurant',
+  templateUrl: './update-restaurant.component.html',
+  styleUrls: ['./update-restaurant.component.css']
 })
-export class CreateResturantComponent implements OnInit {
+export class UpdateRestaurantComponent implements OnInit  {
   @ViewChild('opening') openginHours!: ElementRef;
   @ViewChild('closing') closinHours!: ElementRef;
 
@@ -31,6 +22,7 @@ export class CreateResturantComponent implements OnInit {
   selectedCategoryId!: number;
   selectedImages: string[] = [];
   selectedImage: string = '';
+  id: Number = 0;
   resturantObj: Restaurant = {
     id: 0,
     name: '',
@@ -74,8 +66,7 @@ export class CreateResturantComponent implements OnInit {
         [
           Validators.pattern(
             /.*\.(jpg|jpeg|png|gif|bmp|svg|webp|tiff|ico|jfif)$/i
-          ),
-          Validators.required,
+          )
         ],
       ],
       Images: [
@@ -87,7 +78,36 @@ export class CreateResturantComponent implements OnInit {
       phone: ['', [Validators.pattern(/^\d{11}$/)]],
     });
   }
-  ngOnInit() {
+  ngOnInit(): void {
+      this.resturantServ.getRestaurantByِApplicationId().subscribe({
+      next: (data) => {
+        if (this.resturantObj) {
+         
+         this.id= data.id;
+          this.restaurantForm.setValue({
+            Name: data.name,
+            email: data.email,
+            Password: data.password,
+            Address: data.address,
+            Description: data.description,
+            Cusinetype: data.cusinetype,
+            Longitude: data.longitude,
+            Latitude: data.latitude,
+            category: data.cateigories[0].categoryId,
+            OpenHours: this.convertDecimalToTimeString(data.openHours),
+            ClosingHours: this.convertDecimalToTimeString(data.closingHours),
+            Image: '',
+            Images: [],
+            phone: data.phone,
+          });
+
+        }
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
+
     this.Allcategory.getAllCategory().subscribe({
       next: (data) => {
         this.categories = data;
@@ -104,7 +124,12 @@ export class CreateResturantComponent implements OnInit {
       formData.Image = this.selectedImage;
       formData.Images = this.selectedImages;
 
+      console.log(formData);
+
+      //mapping
+
       this.resturantObj.name = formData.Name;
+      this.resturantObj.id= this.id;
       this.resturantObj.email = formData.email;
       this.resturantObj.Password = formData.Password;
       this.resturantObj.address = formData.Address;
