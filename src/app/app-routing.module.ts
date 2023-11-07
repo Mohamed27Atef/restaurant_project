@@ -34,6 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
+import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -56,19 +58,16 @@ const routes: Routes = [
     { path: 'CreateReceipe', component: CreateRecipeComponent },
     { path: 'CreateMenu', component: CreateMenuComponent },
     { path: 'CreateTable', component: CreateTableComponent },
-    { path: 'UpdateResturant', component: CreateResturantComponent },
-    { path: 'UpdateReceipe', component: CreateRecipeComponent },
+    { path: 'UpdateResturant', component: UpdateRestaurantComponent },
+    { path: 'UpdateReceipe', component: UpdateRecipeComponent },
     { path: 'ResturantOrders', component: AdminOrderContainerComponent },
     { path: 'reservation', component: AdminTablesComponent },
     { path: 'ResturanrReservation', component:  AdminTablesComponent},
+    { path: 'coupon', component: CreateCoponComponent }, 
     { path: '**', component: DashBoardComponent },
     
   ] },
-  
-  // admin
 
-
-  { path: 'coupon', component: CreateCoponComponent },
   // create recipe
   // { path: 'admin', component: CreateRecipeComponent },
 

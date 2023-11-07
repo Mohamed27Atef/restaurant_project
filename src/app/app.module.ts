@@ -83,6 +83,8 @@ import { CreateTableComponent } from './components/create-table/create-table.com
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 
 import { PaginationComponent } from './pagination/pagination.component';
+import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
 
 
 
@@ -154,6 +156,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     MapComponent,
     DashBoardComponent,
     PaginationComponent,
+    UpdateRecipeComponent,
+    UpdateRestaurantComponent,
 
 
 
