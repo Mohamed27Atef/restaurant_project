@@ -138,6 +138,7 @@ export class CreateResturantComponent implements OnInit {
       this.resturantServ.createResturant(this.resturantObj).subscribe({
         next: (data) => {
           console.log(data);
+          this.restaurantForm.reset();
         },
         error: (e) => {
           console.log(e);
@@ -145,13 +146,12 @@ export class CreateResturantComponent implements OnInit {
       });
     }
   }
-  selectedFile: any = "";
-  imageSrc : any = "";
+  selectedFile: any = '';
+  imageSrc: any = '';
   onCategoryChange(event: Event) {
     const selectedId = parseInt((event.target as HTMLSelectElement).value, 10);
     this.selectedCategoryId = selectedId;
   }
-
 
   onOneImageUpload(event: any) {
     this.imageService.uploadImage(event.target.files[0]);
@@ -170,14 +170,16 @@ export class CreateResturantComponent implements OnInit {
     const files: FileList | null = event.target.files;
     this.selectedImages = [];
     if (files) {
-      for(let image of event.target.files)
+      for (let image of event.target.files)
         this.imageService.uploadImage(image);
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i);
 
         if (file) {
           // Now, 'file' contains the individual file, and you can work with it as needed.
-          this.selectedImages.push(`https://localhost:${this.apiPort}/images/${file.name}`);
+          this.selectedImages.push(
+            `https://localhost:${this.apiPort}/images/${file.name}`
+          );
           // console.log(`File ${i + 1}: ${file.name}, Size: ${file.size} bytes`);
         }
       }
