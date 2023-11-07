@@ -83,6 +83,7 @@ import { CreateTableComponent } from './components/create-table/create-table.com
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 
 import { PaginationComponent } from './pagination/pagination.component';
+import { SearchReceipeResturantComponent } from './components/search-receipe-resturant/search-receipe-resturant.component';
 
 
 
@@ -154,6 +155,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     MapComponent,
     DashBoardComponent,
     PaginationComponent,
+    SearchReceipeResturantComponent,
 
 
 
