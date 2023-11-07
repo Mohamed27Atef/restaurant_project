@@ -27,6 +27,7 @@ import { CreateMenuComponent } from './components/create-menu/create-menu.compon
 import { CreateTableComponent } from './components/create-table/create-table.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -42,6 +43,8 @@ const routes: Routes = [
   { path: 'recipes', component: RecipeComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'test', component: PaginationComponent },
+  
   // admin
 
   { path: 'admin/orders', component: AdminOrderContainerComponent },
