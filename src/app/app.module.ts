@@ -163,6 +163,7 @@ import { CreateTableComponent } from './components/create-table/create-table.com
     ReactiveFormsModule,
     SidebarModule,
     CommonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

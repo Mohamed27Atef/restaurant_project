@@ -6,7 +6,7 @@
 <!-- <app-admin-orders></app-admin-orders> -->
 
 <router-outlet></router-outlet>
-
+<app-admin-tables *ngIf="role === 'admin'"></app-admin-tables>
 <app-footer class="d-inline"></app-footer>
 
 <!-- <app-status [showStatus]="showStatusComponent"></app-status>

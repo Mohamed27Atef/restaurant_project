@@ -13,7 +13,7 @@ export class AdminReservationsService {
   private BaseUrl: string = `https://localhost:${this.apiPort}/`;
 
   constructor(private httpClient : HttpClient) { }
-//https://localhost:7058/api/Table/getReservationByrestaurantId/1
+
   GetReservationsByRestaurantId(restaurantId:number):Observable<any>{
     console.log(restaurantId)
     let JsonToken = getCookie('User');
