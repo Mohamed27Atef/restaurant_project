@@ -22,6 +22,12 @@
         <div [class]="divClass" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
+              <a class="nav-link" *ngIf="role === 'admin'" id="DashbordForRestaurantAdmin" routerLink="admin">Dashboard </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="role === 'SystemAdmin'" id="DashbordForSystemAdmin" routerLink="SystemAdmin">Dashboard </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" routerLink="">Home </a>
             </li>
             <li class="nav-item">
@@ -89,7 +95,7 @@
                   [attr.src]="
                     userImage != null
                       ? userImage
-                      : '../../../assets/images/user.png'
+                      : '../../../assets/images/user2.png'
                   "
                   alt="User Avatar"
                   class="user-avatar"
@@ -180,11 +186,6 @@
               </svg>
             </a>
 
-            <form class="form-inline">
-              <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
             <a routerLink="recipes" class="order_online"> Order Online </a>
           </div>
         </div>
@@ -230,24 +231,24 @@
           <div class="modal-header">
             <button
               type="button"
-              class="btn-close"
+              class="btn-close fs-6"
               data-bs-dismiss="modal"
               aria-label="Close"
               #closeModal
             ></button>
           </div>
-          <div class="modal-body bg-dark">
+          <div class="modal-body bg-dark rounded-1">
             <div class="container mt-3 mb-2">
               <div class="row justify-content-center">
                 <div class="col-12 col-md-6" style="width: 20rem">
                   <ul
-                    class="nav nav-pills nav-justified mb-3"
+                    class="nav nav-pills nav-justified mb-3 fs-5"
                     id="ex1"
                     role="tablist"
                   >
                     <li class="nav-item m-1" role="presentation">
                       <a
-                        class="nav-link active shadow text-light"
+                        class="nav-link active shadow text-white"
                         id="tab-login"
                         data-bs-toggle="pill"
                         href="#pills-login"
@@ -260,7 +261,7 @@
                     </li>
                     <li class="nav-item m-1" role="presentation">
                       <a
-                        class="nav-link shadow text-light"
+                        class="nav-link shadow text-white"
                         id="tab-register"
                         data-bs-toggle="pill"
                         href="#pills-register"
@@ -272,7 +273,7 @@
                     </li>
                   </ul>
 
-                  <div class="tab-content">
+                  <div class="tab-content fs-5">
                     <div
                       class="tab-pane fade show active"
                       id="pills-login"

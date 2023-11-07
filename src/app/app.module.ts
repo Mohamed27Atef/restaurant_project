@@ -84,6 +84,10 @@ import { DashBoardComponent } from './components/dash-board/dash-board.component
 
 import { PaginationComponent } from './pagination/pagination.component';
 import { SearchReceipeResturantComponent } from './components/search-receipe-resturant/search-receipe-resturant.component';
+import { SystemAdminDashboardComponent } from './components/system-admin-dashboard/system-admin-dashboard.component';
+import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+
 
 
 
@@ -157,6 +161,11 @@ import { SearchReceipeResturantComponent } from './components/search-receipe-res
     PaginationComponent,
     SearchReceipeResturantComponent,
 
+    SystemAdminDashboardComponent,
+
+    UpdateRecipeComponent,
+    UpdateRestaurantComponent,
+
 
 
   ],
@@ -173,6 +182,7 @@ import { SearchReceipeResturantComponent } from './components/search-receipe-res
     ReactiveFormsModule,
     SidebarModule,
     CommonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -17,7 +17,7 @@ export class ProfileComponent {
     this.profile = false;
     this.profileSecurity = true;
   }
-  profileImageSrc: string = '../../../assets/images/user.png';
+  profileImageSrc: string = '../../../assets/images/user2.png';
 
   onImageSelected(event: any) {
     const file = event.target.files[0];

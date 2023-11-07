@@ -30,6 +30,8 @@ export class AdminOrderService {
   }
 
   GetCartItemsbyOrderId(OrderId:number,restaurantId:number):Observable<any>{
+
+
     let JsonToken = getCookie('User');
     console.log(JsonToken)
    let Token = JsonToken !=undefined? JSON.parse(JsonToken):null;
@@ -43,10 +45,10 @@ export class AdminOrderService {
   }
 
 
-  updateOrderStatusByOrderId(OrderId:number,newStatus: string):Observable<any>{
+  updateOrderStatusByOrderId(OrderId:number,newStatus: string, restaurantId: number):Observable<any>{
     const headers = this.header.getHeader();
     //updateStatus/{orderId}/{status}
-    return this.httpClient.put(this.BaseUrl+"api/Order/updateStatus/"+OrderId+"/"+newStatus, null,{headers});
+    return this.httpClient.put(this.BaseUrl+"api/Order/updateStatus/"+OrderId+"/"+newStatus+ "?restaurantId=" + restaurantId, null,{headers});
   }
 
 

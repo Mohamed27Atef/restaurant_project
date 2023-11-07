@@ -4,6 +4,8 @@ export interface User {
   email: string | null;
   password: string;
   confirmPassword: string;
+  passwordVisible?: boolean;
+  confirmPasswordVisible?: boolean;
   firstNameError?: string;
   LastNameError?: string;
   emailError?: string;
