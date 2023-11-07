@@ -5,9 +5,10 @@ import { RecipeService } from 'src/app/services/recipe.service';
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+  styleUrls: ['./recipe.component.css'],
 })
-export class RecipeComponent {//implements OnInit {
+export class RecipeComponent {
+  //implements OnInit {
   recipes: Recipe[] = [];
   selectedCategoryFilter: string = 'All Categories';
   uniqueCategories: string[] = [];
@@ -34,12 +35,16 @@ export class RecipeComponent {//implements OnInit {
     });
   }
   private getUniqueCategories(): string[] {
-    const uniqueCategories = [...new Set(this.recipes.map((recipe) => recipe.category))];
+    const uniqueCategories = [
+      ...new Set(this.recipes.map((recipe) => recipe.category)),
+    ];
     return uniqueCategories;
   }
 
   private getUniqueRestaurants(): string[] {
-    const uniqueNames = [...new Set(this.recipes.map((recipe) => recipe.restaurantName))];
+    const uniqueNames = [
+      ...new Set(this.recipes.map((recipe) => recipe.restaurantName)),
+    ];
     return uniqueNames;
   }
 
@@ -50,12 +55,18 @@ export class RecipeComponent {//implements OnInit {
 
   filterRecipes() {
     this.filteredRecipes = this.recipes.filter((recipe) => {
-      const nameMatch = recipe.name.toLowerCase().includes(this.searchText.toLowerCase());
-      const ratingMatch = recipe.rating >= this.minRating && recipe.rating <= this.maxRating;
-      const priceMatch = recipe.price >= this.minPrice && recipe.price <= this.maxPrice;
+      const nameMatch = recipe.name
+        .toLowerCase()
+        .includes(this.searchText.toLowerCase());
+      const ratingMatch =
+        recipe.rating >= this.minRating && recipe.rating <= this.maxRating;
+      const priceMatch =
+        recipe.price >= this.minPrice && recipe.price <= this.maxPrice;
 
       if (this.restaurantFilter) {
-        const restaurantMatch = recipe.restaurantName.toLowerCase().includes(this.restaurantFilter.toLowerCase());
+        const restaurantMatch = recipe.restaurantName
+          .toLowerCase()
+          .includes(this.restaurantFilter.toLowerCase());
         return nameMatch && ratingMatch && priceMatch && restaurantMatch;
       } else {
         return nameMatch && ratingMatch && priceMatch;
@@ -65,9 +76,13 @@ export class RecipeComponent {//implements OnInit {
 
   filterByCategory() {
     this.filteredRecipes = this.recipes.filter((recipe) => {
-      const nameMatch = recipe.name.toLowerCase().includes(this.searchText.toLowerCase());
-      const ratingMatch = recipe.rating >= this.minRating && recipe.rating <= this.maxRating;
-      const priceMatch = recipe.price >= this.minPrice && recipe.price <= this.maxPrice;
+      const nameMatch = recipe.name
+        .toLowerCase()
+        .includes(this.searchText.toLowerCase());
+      const ratingMatch =
+        recipe.rating >= this.minRating && recipe.rating <= this.maxRating;
+      const priceMatch =
+        recipe.price >= this.minPrice && recipe.price <= this.maxPrice;
 
       if (Object.values(this.selectedCategories).some((selected) => selected)) {
         return (
@@ -75,7 +90,11 @@ export class RecipeComponent {//implements OnInit {
           ratingMatch &&
           priceMatch &&
           (Object.keys(this.selectedCategories).length === 0 ||
-            Object.keys(this.selectedCategories).some((category) => this.selectedCategories[category] && recipe.category === category))
+            Object.keys(this.selectedCategories).some(
+              (category) =>
+                this.selectedCategories[category] &&
+                recipe.category === category
+            ))
         );
       } else {
         return nameMatch && ratingMatch && priceMatch;
@@ -86,7 +105,9 @@ export class RecipeComponent {//implements OnInit {
   sortRecipesByPrice() {
     this.filteredRecipes.sort((a, b) => a.price - b.price);
 
-    const cheapestContainer = document.querySelector('.cheapest-container') as HTMLElement;
+    const cheapestContainer = document.querySelector(
+      '.cheapest-container'
+    ) as HTMLElement;
     cheapestContainer.style.backgroundColor = 'orange';
   }
 
