@@ -9,9 +9,11 @@ import { Menu } from '@syncfusion/ej2-angular-navigations';
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+  styleUrls: ['./recipe.component.css'],
 })
+
 export class RecipeComponent implements OnInit {
+
   recipes: Recipe[] = [];
   selectedCategoryFilter: string = 'All Categories';
   uniqueCategories: Menu[] = [];
@@ -56,8 +58,19 @@ export class RecipeComponent implements OnInit {
       this.uniqueRestaurants = this.getUniqueRestaurants();
     });
   }
+
+  private getUniqueCategories(): string[] {
+    const uniqueCategories = [
+      ...new Set(this.recipes.map((recipe) => recipe.category)),
+    ];
+    return uniqueCategories;
+  }
+
+
   private getUniqueRestaurants(): string[] {
-    const uniqueNames = [...new Set(this.recipes.map((recipe) => recipe.restaurantName))];
+    const uniqueNames = [
+      ...new Set(this.recipes.map((recipe) => recipe.restaurantName)),
+    ];
     return uniqueNames;
   }
 
@@ -65,6 +78,7 @@ export class RecipeComponent implements OnInit {
     //this.restaurantFilter = restaurant;
     this.filterRecipes();
   }
+
 
   filterCategory(){
     this.filteredRecipe = this.recipes.filter((recipe) =>
@@ -75,10 +89,12 @@ export class RecipeComponent implements OnInit {
   }
 
 
+
   selectedCategory(selectedCategory: any) {
     this.selectCategory = selectedCategory.target.value;
     this.filterCategory();
   } 
+
 
   filterRecipes() {
     if(this.selectCategory == ''){
@@ -87,6 +103,7 @@ export class RecipeComponent implements OnInit {
           && recipe.price >= this.minPrice && recipe.price <= this.maxPrice
       );
     }else  this.filterCategory();
+
   }
 
 

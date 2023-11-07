@@ -26,6 +26,10 @@ import { CreateCoponComponent } from './components/create-copon/create-copon.com
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { CreateTableComponent } from './components/create-table/create-table.component';
 
+import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
+import { AdminReservationsService } from './services/admin-reservations.service';
+
+
 import { ProfileComponent } from './components/profile/profile.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
@@ -42,17 +46,24 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'recipes', component: RecipeComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
+
+  // admin
+  { path: 'admin/CreateReceipe', component: CreateRecipeComponent },
+  { path: 'admin/CreateMenu', component: CreateMenuComponent },
+  { path: 'admin/CreateTable', component: CreateTableComponent },
+  { path: 'admin/UpdateResturant', component: CreateResturantComponent },
+  { path: 'admin/UpdateReceipe', component: CreateRecipeComponent },
+  { path: 'admin/ResturantOrders', component: AdminOrderContainerComponent },
+  { path: 'admin/ResturanrReservation', component: AdminReservationsService },
+
   { path: 'profile', component: ProfileComponent },
   { path: 'test', component: PaginationComponent },
   
   // admin
 
-  { path: 'admin/orders', component: AdminOrderContainerComponent },
+
   { path: 'coupon', component: CreateCoponComponent },
-  { path: 'menu', component: CreateMenuComponent },
-  { path: 'table', component: CreateTableComponent },
   { path: 'admin/reservation', component: AdminTablesComponent },
-  { path: 'admin', component: CreateResturantComponent },
   // create recipe
   // { path: 'admin', component: CreateRecipeComponent },
 
