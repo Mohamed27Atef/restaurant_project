@@ -32,6 +32,7 @@ import { AdminReservationsService } from './services/admin-reservations.service'
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -48,16 +49,18 @@ const routes: Routes = [
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
 
   // admin
-  { path: 'admin/CreateReceipe', component: CreateRecipeComponent },
-  { path: 'admin/CreateMenu', component: CreateMenuComponent },
-  { path: 'admin/CreateTable', component: CreateTableComponent },
-  { path: 'admin/UpdateResturant', component: CreateResturantComponent },
-  { path: 'admin/UpdateReceipe', component: CreateRecipeComponent },
-  { path: 'admin/ResturantOrders', component: AdminOrderContainerComponent },
-  { path: 'admin/ResturanrReservation', component: AdminReservationsService },
 
   { path: 'profile', component: ProfileComponent },
-  { path: 'test', component: PaginationComponent },
+  { path: 'admin', component: DashBoardComponent, children: [
+    { path: 'CreateReceipe', component: CreateRecipeComponent },
+    { path: 'CreateMenu', component: CreateMenuComponent },
+    { path: 'CreateTable', component: CreateTableComponent },
+    { path: 'UpdateResturant', component: CreateResturantComponent },
+    { path: 'UpdateReceipe', component: CreateRecipeComponent },
+    { path: 'ResturantOrders', component: AdminOrderContainerComponent },
+    { path: 'ResturanrReservation', component: AdminReservationsService },
+  
+  ] },
   
   // admin
 
