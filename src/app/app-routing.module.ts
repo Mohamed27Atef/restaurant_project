@@ -34,6 +34,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
+import { SystemAdminDashboardComponent } from './components/system-admin-dashboard/system-admin-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -52,6 +53,10 @@ const routes: Routes = [
   // admin
 
   { path: 'profile', component: ProfileComponent },
+  { path: 'SystemAdmin', component: SystemAdminDashboardComponent, children: [
+    { path: 'CreateRestaurant', component: CreateResturantComponent },
+    { path: 'CreateCopon', component: CreateCoponComponent }] },
+
   { path: 'admin', component: DashBoardComponent, children: [
     { path: 'CreateReceipe', component: CreateRecipeComponent },
     { path: 'CreateMenu', component: CreateMenuComponent },

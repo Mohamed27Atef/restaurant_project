@@ -83,6 +83,7 @@ import { CreateTableComponent } from './components/create-table/create-table.com
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 
 import { PaginationComponent } from './pagination/pagination.component';
+import { SystemAdminDashboardComponent } from './components/system-admin-dashboard/system-admin-dashboard.component';
 
 
 
@@ -154,6 +155,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     MapComponent,
     DashBoardComponent,
     PaginationComponent,
+    SystemAdminDashboardComponent,
 
 
 
