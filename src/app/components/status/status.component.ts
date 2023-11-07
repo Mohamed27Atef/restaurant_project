@@ -20,5 +20,8 @@ import {
   ],
 })
 export class StatusComponent {
-  @Input() showStatus: boolean = false;
+  @Input() showStatus!: boolean
+  constructor(){
+    console.log('lfkjasdlkfjasdlkfasdjfas;iofjasdo')
+  }
 }

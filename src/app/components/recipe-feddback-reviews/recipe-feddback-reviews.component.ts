@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 import { RecipeFeedback } from 'src/app/interfaces/RecipeFeedback';
 @Component({
@@ -6,7 +6,7 @@ import { RecipeFeedback } from 'src/app/interfaces/RecipeFeedback';
   templateUrl: './recipe-feddback-reviews.component.html',
   styleUrls: ['./recipe-feddback-reviews.component.css']
 })
-export class RecipeFeddbackReviewsComponent  implements OnInit {
+export class RecipeFeddbackReviewsComponent  implements OnInit, OnChanges {
   @Input() userName!: string;
   @Input() userAvatar!: string;
   @Input() recipeId!: number;
@@ -19,9 +19,13 @@ export class RecipeFeddbackReviewsComponent  implements OnInit {
   totalRating: number = 0;
   @Input() postedFeedback: any;
   constructor(private feedbackService: RecipeFeedbackService) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.feedbackData.reviews.push(this.postedFeedback);
+  }
+
+
 
   ngOnInit() {
-    console.log(this.postedFeedback)
     this.feedbackService.getReviewsForRecipe(this.recipeId).subscribe(
       (data: RecipeFeedback[]) => {  console.log(this.feedbackData);
         this.feedbackData.reviews = data;
