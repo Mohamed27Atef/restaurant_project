@@ -33,6 +33,7 @@ import { AdminReservationsService } from './services/admin-reservations.service'
 import { ProfileComponent } from './components/profile/profile.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -58,15 +59,16 @@ const routes: Routes = [
     { path: 'UpdateResturant', component: CreateResturantComponent },
     { path: 'UpdateReceipe', component: CreateRecipeComponent },
     { path: 'ResturantOrders', component: AdminOrderContainerComponent },
-    { path: 'ResturanrReservation', component: AdminReservationsService },
-  
+    { path: 'reservation', component: AdminTablesComponent },
+    { path: 'ResturanrReservation', component:  AdminTablesComponent},
+    { path: '**', component: DashBoardComponent },
+    
   ] },
   
   // admin
 
 
   { path: 'coupon', component: CreateCoponComponent },
-  { path: 'admin/reservation', component: AdminTablesComponent },
   // create recipe
   // { path: 'admin', component: CreateRecipeComponent },
 
