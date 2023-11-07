@@ -26,16 +26,18 @@ import { CreateCoponComponent } from './components/create-copon/create-copon.com
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { CreateTableComponent } from './components/create-table/create-table.component';
 
+import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
+import { AdminReservationsService } from './services/admin-reservations.service';
+
+
+import { ProfileComponent } from './components/profile/profile.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '', component: HomeComponent },
   { path: 'userTableReservation', component: ReserveTableComponent },
   { path: 'cart', component: CartPageComponent },
@@ -47,20 +49,31 @@ const routes: Routes = [
   { path: 'recipes', component: RecipeComponent },
   { path: 'orders/OrderUserDetails/:id', component: OrderUserDetailsComponent },
 
-  // admin 
+  // admin
 
-  { path: 'admin/orders', component: AdminOrderContainerComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'admin', component: DashBoardComponent, children: [
+    { path: 'CreateReceipe', component: CreateRecipeComponent },
+    { path: 'CreateMenu', component: CreateMenuComponent },
+    { path: 'CreateTable', component: CreateTableComponent },
+    { path: 'UpdateResturant', component: CreateResturantComponent },
+    { path: 'UpdateReceipe', component: CreateRecipeComponent },
+    { path: 'ResturantOrders', component: AdminOrderContainerComponent },
+    { path: 'reservation', component: AdminTablesComponent },
+    { path: 'ResturanrReservation', component:  AdminTablesComponent},
+    { path: '**', component: DashBoardComponent },
+    
+  ] },
+  
+  // admin
+
+
   { path: 'coupon', component: CreateCoponComponent },
-  { path: 'menu', component: CreateMenuComponent },
-  { path: 'table', component: CreateTableComponent },
-  { path: 'admin/reservation', component: AdminTablesComponent },
-  { path: 'admin', component: CreateResturantComponent },
   // create recipe
   // { path: 'admin', component: CreateRecipeComponent },
 
   /////////////////////////////////////////////////////////////////////////////////
   { path: '**', component: HomeComponent },
-
 ];
 
 @NgModule({

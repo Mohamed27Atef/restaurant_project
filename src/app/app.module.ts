@@ -80,6 +80,11 @@ import { CreateCoponComponent } from './components/create-copon/create-copon.com
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { CreateTableComponent } from './components/create-table/create-table.component';
 
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+
+import { PaginationComponent } from './pagination/pagination.component';
+
+
 
 
 @NgModule({
@@ -147,6 +152,9 @@ import { CreateTableComponent } from './components/create-table/create-table.com
     RecipeFeedbackComponent,
     RecipeFeddbackReviewsComponent,
     MapComponent,
+    DashBoardComponent,
+    PaginationComponent,
+
 
 
   ],

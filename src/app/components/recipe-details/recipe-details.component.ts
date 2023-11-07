@@ -5,6 +5,8 @@ import { Recipe } from 'src/app/interfaces/recipe';
 import { RecipeFeedbackService } from 'src/app/services/recipe-feedback.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { AddToCartService } from 'src/app/services/add-to-cart.service';
+import { IsAddedToCartService } from 'src/app/services/is-added-to-cart.service';
+import { FeedbackAddedService } from 'src/app/services/feedback-added.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -18,17 +20,21 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
   numberOfReview: number = 0;
   postedFeedBack: any;
   Id: number = 0;
- 
+  recipeAddedToCart:boolean=false;
+  feedbackAddedFromUser:boolean=true;
   constructor(
     private myService: RecipeService,
     private myActive: ActivatedRoute,
     private addToCartService : AddToCartService,
-    private recipeFeedbackService: RecipeFeedbackService
+    private recipeFeedbackService: RecipeFeedbackService,
+    private isAddedToCartService:IsAddedToCartService,
+    private  feedbackAddedService:FeedbackAddedService
   ) {
     this.Id = this.myActive.snapshot.params['id'];
   }
 
   addToCart(){
+    this.recipeAddedToCart=true
     console.log( this.recipe)
     const CartItemData={
        quantity: this.quantity,
@@ -37,7 +43,7 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
        restaurantId: this.recipe.restaurantId
      }
      this.addToCartService.AddRecipeToCart(CartItemData).subscribe({
-       next:(Response)=>console.log(Response),
+       next:(Response)=>{console.log(Response)},
        error:(err)=>console.log(err)
      })   
    }
@@ -57,6 +63,20 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
       next: (data) => this.relatedRecipe = data,
       error: (err) => console.log(err),
     });
+    this.isAddedToCartService.checkIfAddedToCart(this.Id).subscribe(
+      {
+        next: (data) =>{ this.recipeAddedToCart=data
+          console.log("addedToCartFeomDataBase"+data)},
+        error: (err) => console.log(err),
+      })
+
+      this.feedbackAddedService.checkIfFeedbackAddedToRecipe(this.Id).subscribe(
+        {
+          next: (data) =>{ this.feedbackAddedFromUser=data
+            console.log("feedbackFromDataBase"+data)},
+          error: (err) => console.log(err),
+        })
+
   }
 
   ngAfterViewInit() {
@@ -93,7 +113,7 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
 
       function RoundToNearestHalf(num: number) {
         const rounded = Math.round(num * 2) / 2;
-        return rounded;
+        return rounded; 
       }
 
       const starsElement = ratingElement.querySelector('.stars');
