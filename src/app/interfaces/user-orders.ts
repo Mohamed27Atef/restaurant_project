@@ -7,5 +7,6 @@ export interface UserOrders {
     street: string;
     status: string;
     restaurantName: string,
-    restaurantId: number
+    restaurantId: number,
+    formattedDateTime:string | null,
 }

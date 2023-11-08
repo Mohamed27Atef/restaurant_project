@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -11,6 +11,7 @@ export class PaginationComponent implements OnInit {
   currentPage = 1;
   pages: number[] = [];
   pagesToShow = 4;  //how many number between > <
+  @Output() changeDataEvent = new EventEmitter<number>()
 
   constructor() {}
 
@@ -40,6 +41,7 @@ export class PaginationComponent implements OnInit {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.calculatePageNumbers();
+      this.changeDataEvent.emit(this.currentPage);
     }
   }
 
@@ -47,6 +49,7 @@ export class PaginationComponent implements OnInit {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
       this.calculatePageNumbers();
+      this.changeDataEvent.emit(this.currentPage);
     }
   }
 
@@ -54,6 +57,8 @@ export class PaginationComponent implements OnInit {
     if (pageNumber >= 1 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
       this.calculatePageNumbers();
+      this.changeDataEvent.emit(pageNumber);
+
     }
   }
 

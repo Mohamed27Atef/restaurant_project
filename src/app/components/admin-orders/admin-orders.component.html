@@ -58,7 +58,7 @@
           <th>{{ order.orderId }}</th>
           <td>{{ order.customerName }}</td>
           <td>{{ order.country }} - {{ order.city }} - {{ order.street }}</td>
-          <td>{{ order.date }}</td>
+          <td>{{ order.formattedDateTime  }}</td>
           <td>{{ order.totalPrice }}</td>
           <td>
             <select
@@ -97,3 +97,4 @@
     </tbody>
   </table>
 </div>
+<app-pagination (changeDataEvent)="handleChangeDataEvent($event)"></app-pagination>

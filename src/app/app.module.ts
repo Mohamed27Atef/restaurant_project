@@ -29,7 +29,7 @@ import { OffersComponent } from './components/restaurant/offers/offers.component
 import { ReservationsComponent } from './components/restaurant/reservations/reservations.component';
 import { ContactComponent } from './components/restaurant/contact/contact.component';
 import { MenuComponent } from './components/restaurant/menu/menu.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RestaurantOwlCarouselComponent } from './components/restaurant-owl-carousel/restaurant-owl-carousel.component';
 import { GetLocationComponent } from './components/get-location/get-location.component';
 import { FAQComponent } from './components/faq/faq.component';
@@ -166,8 +166,6 @@ import { UpdateRestaurantComponent } from './components/update-restaurant/update
     UpdateRecipeComponent,
     UpdateRestaurantComponent,
 
-
-
   ],
   imports: [
     BrowserModule,
@@ -182,9 +180,8 @@ import { UpdateRestaurantComponent } from './components/update-restaurant/update
     ReactiveFormsModule,
     SidebarModule,
     CommonModule,
-
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
