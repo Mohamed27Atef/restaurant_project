@@ -50,12 +50,14 @@ export class TableReservationComponent {
   onDateTimeChange() {
   
     if (this.reservationForm.get('date')&& this.reservationForm.get('time')) {
-      const dateTime=new Date(`${this.reservationForm.get('date')?.value} ${this.reservationForm.get('time')?.value}`)
+      var t : Date  = new Date(`${this.reservationForm.value.date}T${this.reservationForm.value.time}`);
+      t.setHours(Number(t.getHours() + 2)); 
+      const dateTime= t;
       const currentDateTime = new Date();
       this.isDateTimeSelected = false;
       if(dateTime > currentDateTime){
         this.isDateTimeSelected = true;
-        const ApidateTime=new Date(`${this.reservationForm.get('date')?.value}T${this.reservationForm.get('time')?.value}`).toISOString()
+        const ApidateTime= t.toISOString();
       
         this._TableService.getTableByRestaurantIdAndDAteTime(ApidateTime,this.RestaurantId).subscribe((data)=>{
           this.tables=data

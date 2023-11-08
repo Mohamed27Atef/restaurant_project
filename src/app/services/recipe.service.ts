@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment.dev';
 import { Observable } from 'rxjs';
 import { Recipe } from '../interfaces/recipe';
 import { getCookie } from 'typescript-cookie';
+import { HeaderService } from './header.service';
 const JsonToken = getCookie('User');
 const token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
 
@@ -14,12 +15,13 @@ const headers = new HttpHeaders({
   providedIn: 'root',
 })
 export class RecipeService {
-  constructor(private myClient: HttpClient) {}
+  constructor(private myClient: HttpClient, private header: HeaderService) {}
   private apiPort = environment.apiPort;
   private DB_URL = `https://localhost:${this.apiPort}/api/Recipe/`;
 
   createRecipe(recipe: Recipe) {
-    return this.myClient.post(this.DB_URL, recipe);
+    const headers = this.header.getHeader();
+    return this.myClient.post(this.DB_URL, recipe, {headers});
   }
 
   getRecipe(id: number): Observable<any> {

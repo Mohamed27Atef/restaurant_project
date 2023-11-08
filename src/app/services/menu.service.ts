@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.dev';
 import { Menu } from '../interfaces/menu';
 import { getCookie } from 'typescript-cookie';
+import { HeaderService } from './header.service';
 
 const JsonToken = getCookie('User');
 const token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
@@ -19,7 +20,7 @@ export class MenuService {
   private apiPort = environment.apiPort;
   baseUrl: string = `https://localhost:${this.apiPort}/api/Menu/`;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private header: HeaderService) {}
 
   createMenu(menu: Menu): Observable<any> {
     return this.httpClient.post(this.baseUrl, menu, {
@@ -28,7 +29,8 @@ export class MenuService {
   }
 
   getMenu(): Observable<any> {
-    return this.httpClient.get(this.baseUrl);
+    const headers = this.header.getHeader();
+    return this.httpClient.get(this.baseUrl + "getall", {headers});
   }
 
   getMenuByRestaurnatId(restaurantId: number): Observable<any> {

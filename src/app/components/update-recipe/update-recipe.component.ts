@@ -46,21 +46,7 @@ export class UpdateRecipeComponent {
       Price: [null, [Validators.required, Validators.min(1)]],
       Description: [null, []],
       Menu: new FormControl('', [Validators.required]),
-      Image: [
-        null,
-        [
-          Validators.pattern(
-            /.*\.(jpg|jpeg|png|gif|bmp|svg|webp|tiff|ico|jfif)$/i
-          ),
-          Validators.required,
-        ],
-      ],
-      Images: [
-        null,
-        Validators.pattern(
-          /.*\.(jpg|jpeg|png|gif|bmp|svg|webp|tiff|ico|jfif)$/i
-        ),
-      ],
+    
     });
   }
   ngOnInit() {
@@ -94,6 +80,7 @@ export class UpdateRecipeComponent {
   }
 
   onSubmit() {
+    console.log(' asdfasdfasd')
     if (this.RecipeForm.valid) {
       const formData = this.RecipeForm.value;
       formData.Image = this.selectedImage;

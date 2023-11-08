@@ -10,6 +10,7 @@ import { ActivatedRoute, TitleStrategy } from '@angular/router';
 import { getCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
 import { FeedbackAddedService } from 'src/app/services/feedback-added.service';
+import { FeedbackScoreComponent } from '../feedback-score/feedback-score.component';
  
 
 @Component({
@@ -26,7 +27,7 @@ export class RestaurantComponent implements OnInit {
   userImage!: any;
   jsonTokenWithoutDecode!: any;
   postedReview: any;
-
+  @ViewChild("feedBackScoreComponent") feedBackScoreChild!: FeedbackScoreComponent
  
   looding: boolean = false
   feedbackAddedFromUser:boolean=true;
@@ -40,7 +41,7 @@ export class RestaurantComponent implements OnInit {
   }
 
   postReivew(postedReivew: any){
-    this.postedReview = postedReivew;
+    this.feedBackScoreChild.filteredReviews.push(postedReivew)
   }
 
 
@@ -62,7 +63,7 @@ export class RestaurantComponent implements OnInit {
     ///////////////////////////////////////////
 
     this.restaurantService.getRestaurantById(this.id).subscribe({
-      next: data => {this.currentRestaurant = data;}
+      next: data => {this.currentRestaurant = data; console.log(data)}
     })
     this.restaurantService.getRestaurantImages(this.id).subscribe({
       next: data => this.images = data
@@ -73,7 +74,7 @@ export class RestaurantComponent implements OnInit {
         this.looding= true;
         this.menuCompent.menus = data.menuDto;
         const recipes = data.recipeDtos;
-        
+        console.log(data)
       const midIndex = Math.floor(recipes.length / 2);
       this.menuCompent.recipe1 = recipes.slice(0, midIndex);
       this.menuCompent.recipe2 = recipes.slice(midIndex);
@@ -81,6 +82,7 @@ export class RestaurantComponent implements OnInit {
         
       }
     })
+    
   }
 
 }

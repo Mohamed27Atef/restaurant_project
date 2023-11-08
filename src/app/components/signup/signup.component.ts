@@ -36,6 +36,7 @@ export class SignupComponent {
       phone: '63010714182',
       address: 'string',
     };
+    console.log(signUpData)
     if (!this.registerCheck) {
       this.checkboxError = true; // Apply the red border
     } else {

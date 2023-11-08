@@ -14,7 +14,7 @@ export class RecipeFeedbackComponent  implements OnInit {
   userComment: string = '';
   RemoveComponentAfterSubmit:boolean=false;
 
-  @Output() submit =  new EventEmitter();
+  @Output() submitFeedBackOne =  new EventEmitter();
 
   constructor(private RecipeFeedbackService: RecipeFeedbackService) {}
 
@@ -35,9 +35,7 @@ export class RecipeFeedbackComponent  implements OnInit {
     };
 
     this.RemoveComponentAfterSubmit=true;
-
-    this.submit.emit(feedbackToAdd);
-
+    this.submitFeedBackOne.emit(feedbackToAdd);
     this.RecipeFeedbackService.postFeedback(feedbackToAdd).subscribe(
       (response) => {
         console.log('Feedback submitted successfully.', response);

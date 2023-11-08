@@ -1,4 +1,4 @@
-<div class="container my-2">
+<div class=" myContainer my-2">
   <div class="row justify-content-strat align-items-center">
     <div class="col-1">
       <a [routerLink]="'/restaurant/' + recipe.restaurantId" class="nav-link">{{
@@ -22,11 +22,11 @@
       </ul>
     </div>
     <div class="col-md-7 rounded-1 main-image">
-      <img src="{{ recipe.imageUrl }}" alt="Product Image" />
+      <img class="image" src="{{ recipe.imageUrl }}" alt="Product Image" />
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 detials">
       <div class="product-details">
-        <h3 class="my-3">{{ recipe.name }}</h3>
+        <h1 class="my-3">{{ recipe.name }}</h1>
         <p class="price">${{ recipe.price }}</p>
         <!-- <p>Availability: In Stock</p> -->
         <p class="product-rating mb-3" data-section="product">
@@ -134,14 +134,14 @@
 
 <app-recipe-feedback
   *ngIf="!feedbackAddedFromUser"
-  (submit)="submit($event)"
+  (submitFeedBackOne)="submitFeedBackOne($event)"
   [recipeId]="Id"
-  [userName]="loggedInUser.name"
-  [userAvatar]="loggedInUser.photoUrl"
+  [userName]="name"
+  [userAvatar]="userImage"
 ></app-recipe-feedback>
 <app-recipe-feddback-reviews
-  [postedFeedback]="postedFeedBack"
+  #recipeFeedBack
   [recipeId]="Id"
-  [userName]="loggedInUser.name"
-  [userAvatar]="loggedInUser.photoUrl"
+  [userName]="name"
+  [userAvatar]="userImage"
 ></app-recipe-feddback-reviews>

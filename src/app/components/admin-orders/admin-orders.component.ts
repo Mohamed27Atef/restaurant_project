@@ -86,14 +86,14 @@ export class AdminOrdersComponent {
       });
   }
 
-  clearDate() {
-    this._AdminOrderService
-      .GetOrdersByRestaurantId()
-      .subscribe((data) => {
-        this.orders = data;
-        this.filteredOrders = data;
-        console.log(data);
-      });
-    this.filterDate = '';
-  }
+  // clearDate() {
+  //   this._AdminOrderService
+  //     .GetOrdersByRestaurantId()
+  //     .subscribe((data) => {
+  //       this.orders = data;
+  //       this.filteredOrders = data;
+  //       console.log(data);
+  //     });
+  //   this.filterDate = '';
+  // }
 }
