@@ -46,7 +46,7 @@ export class AdminOrdersComponent {
   handleChangeDataEvent(data:number){
     this.selectedPage=data;
     this._AdminOrderService
-    .GetOrdersByRestaurantId(this.restaurantId)
+    .GetOrdersByRestaurantId()
     .subscribe((data) => {
       this.orders = data;
       this.filteredOrders = data;

@@ -31,7 +31,7 @@ constructor(private _AdminReservationsService :AdminReservationsService,
 
 ngOnInit(){
 
-  this._AdminReservationsService.GetReservationsByRestaurantId(this.restaurantId,this.selectedPage).subscribe((data)=>{
+  this._AdminReservationsService.GetReservationsByRestaurantId(this.selectedPage).subscribe((data)=>{
 
     this.reservations=data
     this.filteredReservations = data;
@@ -44,7 +44,7 @@ ngOnInit(){
 
 handleChangeDataEvent(data:number){
 this.selectedPage=data;
-this._AdminReservationsService.GetReservationsByRestaurantId(this.restaurantId,this.selectedPage).subscribe((data)=>{
+this._AdminReservationsService.GetReservationsByRestaurantId(this.selectedPage).subscribe((data)=>{
   this.reservations=data
   this.filteredReservations = data;
   console.log(data);

@@ -14,8 +14,7 @@ export class AdminReservationsService {
 
   constructor(private httpClient : HttpClient) { }
 
-  GetReservationsByRestaurantId(restaurantId:number,pagenNum:number):Observable<any>{
-    console.log(restaurantId)
+  GetReservationsByRestaurantId(pagenNum:number):Observable<any>{
 
     let JsonToken = getCookie('User');
     console.log(JsonToken)
@@ -27,7 +26,7 @@ export class AdminReservationsService {
     });
 
 
-    return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId/"+restaurantId+"?p="+pagenNum,{headers});
+    return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId"+"?p="+pagenNum,{headers});
 
   }
 
