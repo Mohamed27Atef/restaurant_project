@@ -38,6 +38,7 @@ import { ReservationContainerComponent } from './components/reservation-containe
 import { SystemAdminDashboardComponent } from './components/system-admin-dashboard/system-admin-dashboard.component';
 import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
 import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+import { SearchReceipeResturantComponent } from './components/search-receipe-resturant/search-receipe-resturant.component';
 
 
 const routes: Routes = [
@@ -66,7 +67,8 @@ const routes: Routes = [
     { path: 'CreateMenu', component: CreateMenuComponent },
     { path: 'CreateTable', component: CreateTableComponent },
     { path: 'UpdateResturant', component: UpdateRestaurantComponent },
-    { path: 'UpdateReceipe', component: UpdateRecipeComponent },
+    { path: 'UpdateReceipe', component: SearchReceipeResturantComponent },
+    { path: 'updateRecipe/:id', component: UpdateRecipeComponent },
     { path: 'ResturantOrders', component: AdminOrderContainerComponent },
     { path: 'reservation', component: AdminTablesComponent },
     { path: 'ResturanrReservation', component:  AdminTablesComponent},

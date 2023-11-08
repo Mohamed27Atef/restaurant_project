@@ -14,8 +14,7 @@ export class AdminReservationsService {
 
   constructor(private httpClient : HttpClient) { }
 
-  GetReservationsByRestaurantId(restaurantId:number):Observable<any>{
-    console.log(restaurantId)
+  GetReservationsByRestaurantId():Observable<any>{
     let JsonToken = getCookie('User');
     console.log(JsonToken)
    let Token = JsonToken !=undefined? JSON.parse(JsonToken):null;
@@ -25,7 +24,7 @@ export class AdminReservationsService {
       Authorization: `Bearer ${Token}`
     });
 
-    return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId/"+restaurantId,{headers});
+    return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId",{headers});
   }
 
 }

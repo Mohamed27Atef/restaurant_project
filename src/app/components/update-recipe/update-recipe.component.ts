@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Recipe } from 'src/app/interfaces/recipe';
 import { ImageService } from 'src/app/services/image-service.service';
 import { MenuService } from 'src/app/services/menu.service';
@@ -16,7 +17,7 @@ export class UpdateRecipeComponent {
   selectedMenuId!: Number;
   selectedImages: string[] = [];
   selectedImage: string = '';
-
+  id!: number;
   receipeObj: Recipe = {
     id: 0,
     name: '',
@@ -35,8 +36,10 @@ export class UpdateRecipeComponent {
     private formBuilder: FormBuilder,
     private imageService: ImageService,
     private recipeService: RecipeService,
+    activeRoute : ActivatedRoute,
     private menuService: MenuService
   ) {
+    this.id = activeRoute.snapshot.params['id'];
     this.RecipeForm = this.formBuilder.group({
       Id: [null, []],
       Name: ['', [Validators.required]],
@@ -61,7 +64,7 @@ export class UpdateRecipeComponent {
     });
   }
   ngOnInit() {
-    this.recipeService.getRecipe(2).subscribe({
+    this.recipeService.getRecipe(this.id).subscribe({
       next: (data) => {
         console.log(data);
         if (data) {

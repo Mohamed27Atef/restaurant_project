@@ -7,7 +7,7 @@
       [(ngModel)]="recipeName"
       placeholder="Enter Recipe Name"
       class="search-input custom-input-width"
-      (change)="ngOnChanges()"
+      (input)="ngOnChanges()"
     />
     <!-- <button class="search-button">Search</button> -->
   </div>
@@ -17,7 +17,7 @@
   <div class="recipes-column">
     <!-- Recipe list -->
     <div class="recipe-list">
-      <div *ngFor="let recipe of filteredRecipe" class="recipe-item">
+      <div [routerLink]="'/admin/updateRecipe/' + recipe.id" *ngFor="let recipe of filteredRecipe" class="recipe-item">
         <img
           [src]="recipe.imageUrl"
           alt="{{ recipe.name }}"

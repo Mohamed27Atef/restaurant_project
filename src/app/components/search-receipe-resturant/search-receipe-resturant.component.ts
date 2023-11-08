@@ -15,7 +15,6 @@ export class SearchReceipeResturantComponent {
   }
 
   ngOnChanges() {
-    console.log('recipeName has changed:', this.recipeName);
     this.myReceipe.searchRecipeInResByName(this.recipeName).subscribe({
       next: (data) => {
         console.log(data);
