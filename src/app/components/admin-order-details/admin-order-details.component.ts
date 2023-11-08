@@ -11,7 +11,6 @@ import { AdminOrderService } from 'src/app/services/admin-order.service';
 export class AdminOrderDetailsComponent {
   @Input() orderObj:any;
   @Input() status:string="";
- restaurantId:number=1;
   @Output() backdata = new EventEmitter<void>();
   
   orderItems:OrderItems[]=[]
@@ -19,8 +18,7 @@ export class AdminOrderDetailsComponent {
   constructor(private _AdminOrderService:AdminOrderService){}
 
   ngOnInit(){
-    console.log(this.restaurantId)
-    this._AdminOrderService.GetCartItemsbyOrderId(this.orderObj.orderId,this.restaurantId).subscribe((data)=>{
+    this._AdminOrderService.GetCartItemsbyOrderId(this.orderObj.orderId).subscribe((data)=>{
       this. orderItems=data
       console.log(data)
     }) 

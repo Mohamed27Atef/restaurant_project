@@ -15,8 +15,7 @@ export class AdminOrderService {
 
   constructor(private httpClient : HttpClient, private header: HeaderService) { }
 
-  GetOrdersByRestaurantId(restaurantId:number):Observable<any>{
-    console.log(restaurantId)
+  GetOrdersByRestaurantId():Observable<any>{
     let JsonToken = getCookie('User');
     console.log(JsonToken)
    let Token = JsonToken !=undefined? JSON.parse(JsonToken):null;
@@ -26,10 +25,10 @@ export class AdminOrderService {
       Authorization: `Bearer ${Token}`
     });
 
-    return this.httpClient.get(this.BaseUrl+"api/Order/getOrderByReataurantId/"+restaurantId,{headers});
+    return this.httpClient.get(this.BaseUrl+"api/Order/getOrderByReataurantId",{headers});
   }
 
-  GetCartItemsbyOrderId(OrderId:number,restaurantId:number):Observable<any>{
+  GetCartItemsbyOrderId(OrderId:number):Observable<any>{
 
 
     let JsonToken = getCookie('User');
@@ -41,14 +40,14 @@ export class AdminOrderService {
       Authorization: `Bearer ${Token}`
     });
 
-    return this.httpClient.get(this.BaseUrl+"api/CartItem/getOrderItemsByOrderId?orderId="+OrderId+"&restaurantId="+restaurantId,{headers});
+    return this.httpClient.get(this.BaseUrl+"api/CartItem/getOrderItemsByOrderId?orderId="+OrderId,{headers});
   }
 
 
-  updateOrderStatusByOrderId(OrderId:number,newStatus: string, restaurantId: number):Observable<any>{
+  updateOrderStatusByOrderId(OrderId:number,newStatus: string):Observable<any>{
     const headers = this.header.getHeader();
     //updateStatus/{orderId}/{status}
-    return this.httpClient.put(this.BaseUrl+"api/Order/updateStatus/"+OrderId+"/"+newStatus+ "?restaurantId=" + restaurantId, null,{headers});
+    return this.httpClient.put(this.BaseUrl+"api/Order/updateStatus/"+OrderId+"/"+newStatus, null,{headers});
   }
 
 

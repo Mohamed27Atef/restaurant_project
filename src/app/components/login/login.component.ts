@@ -23,6 +23,7 @@ export class LoginComponent {
   @Output() userName: any = new EventEmitter();
 
   @Output() clickEvent = new EventEmitter<void>();
+  @Output() cookie = new EventEmitter();
 
   signIn() {
     let loginData: any = {
@@ -35,6 +36,7 @@ export class LoginComponent {
         let tokenExpiration: any = new Date(loginResponse.expiration);
         this.isAuthServices.isAuth = true;
         let jsonTokenWithoutDecode = JSON.stringify(loginResponse.token);
+        this.cookie.emit(jsonTokenWithoutDecode)
         setCookie('User', jsonTokenWithoutDecode, {
           expires: tokenExpiration,
           path: '',

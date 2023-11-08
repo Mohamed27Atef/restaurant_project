@@ -9,7 +9,6 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./admin-tables.component.css']
 })
 export class AdminTablesComponent {
-restaurantId:number=1
 reservations:AdminTable[]=[] 
 filteredReservations: AdminTable[] = [];
 
@@ -31,7 +30,9 @@ constructor(private _AdminReservationsService :AdminReservationsService,
   }
 
 ngOnInit(){
+
   this._AdminReservationsService.GetReservationsByRestaurantId(this.restaurantId,this.selectedPage).subscribe((data)=>{
+
     this.reservations=data
     this.filteredReservations = data;
     this.formatDates();

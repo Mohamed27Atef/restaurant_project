@@ -23,7 +23,7 @@ export class RestaurantComponent implements OnInit {
   id!: number;
   images!: string[];
   name!: string;
-  userImage!: string;
+  userImage!: any;
   jsonTokenWithoutDecode!: any;
   postedReview: any;
 
@@ -54,17 +54,11 @@ export class RestaurantComponent implements OnInit {
       })
     ///// get name and image
     this.jsonTokenWithoutDecode = getCookie('User');
-    let UserImageFromCookie: any = getCookie('UserImage');
-    try {
-      let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
-      this.name =
-        Token != null
-          ? Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
-          : '';
-      this.userImage = UserImageFromCookie;
-    } catch (error) {
-      // console.error('Error decoding JWT:', error);
-    }
+    this.userImage = getCookie('UserImage');
+    let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
+    this.name = Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+
+
     ///////////////////////////////////////////
 
     this.restaurantService.getRestaurantById(this.id).subscribe({
@@ -89,9 +83,4 @@ export class RestaurantComponent implements OnInit {
     })
   }
 
-
-  loggedInUser = {
-    name: this.name,
-    photoUrl: this.userImage, 
-  };
 }

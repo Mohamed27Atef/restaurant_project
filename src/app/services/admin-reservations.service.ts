@@ -16,6 +16,7 @@ export class AdminReservationsService {
 
   GetReservationsByRestaurantId(restaurantId:number,pagenNum:number):Observable<any>{
     console.log(restaurantId)
+
     let JsonToken = getCookie('User');
     console.log(JsonToken)
    let Token = JsonToken !=undefined? JSON.parse(JsonToken):null;
@@ -25,7 +26,9 @@ export class AdminReservationsService {
       Authorization: `Bearer ${Token}`
     });
 
+
     return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId/"+restaurantId+"?p="+pagenNum,{headers});
+
   }
 
 }
