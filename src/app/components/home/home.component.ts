@@ -24,4 +24,14 @@ export class HomeComponent{
       next: data => this.restaurantComponent.restaurants = data
     }) 
   }
+  images=[
+    {imgSrc:"assets/images/o1.jpg" },
+    {imgSrc:"assets/images/o2.jpg" },
+    {imgSrc:"assets/images/o1.jpg" },
+    {imgSrc:"assets/images/o2.jpg" },
+  ]
+  
 }
+
+
+  
