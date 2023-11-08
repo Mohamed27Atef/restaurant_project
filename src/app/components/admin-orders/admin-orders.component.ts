@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { OrderForAdmin } from 'src/app/interfaces/order-for-admin';
 import { AdminOrderService } from 'src/app/services/admin-order.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin-orders',
@@ -14,6 +15,7 @@ export class AdminOrdersComponent {
   filterStatus: string = '';
   filterCustomerName: string = '';
   filterDate: string = '';
+  selectedPage:number=1;
   //
 
   restaurantId: number = 1;
@@ -21,8 +23,16 @@ export class AdminOrdersComponent {
 
   @Output() changeDataEvent = new EventEmitter<any>();
 
-  constructor(private _AdminOrderService: AdminOrderService) {}
+  constructor(private _AdminOrderService: AdminOrderService,
+    private datePipe: DatePipe ) {}
 
+    formatDates() {
+      for (const obj of this.filteredOrders) {
+        const formattedDate = this.datePipe.transform(obj.date, 'dd/MM/yyyy hh:mm a');
+        obj.formattedDateTime = formattedDate;
+        console.log(formattedDate)
+      }
+    }
   ngOnInit() {
     this._AdminOrderService
       .GetOrdersByRestaurantId(this.restaurantId)
@@ -30,8 +40,20 @@ export class AdminOrdersComponent {
         this.orders = data;
         this.filteredOrders = data;
         console.log(data);
+        this.formatDates()
       });
   }
+  
+  handleChangeDataEvent(data:number){
+    this.selectedPage=data;
+    this._AdminOrderService
+    .GetOrdersByRestaurantId(this.restaurantId)
+    .subscribe((data) => {
+      this.orders = data;
+      this.filteredOrders = data;
+      console.log(data);
+    });
+    }
 
   applyFilters() {
     this.filteredOrders = this.orders.filter((order) => {

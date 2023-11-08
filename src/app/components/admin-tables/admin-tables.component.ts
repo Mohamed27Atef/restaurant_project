@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminTable } from 'src/app/interfaces/admin-table';
 import { AdminReservationsService } from 'src/app/services/admin-reservations.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin-tables',
@@ -15,16 +16,39 @@ filteredReservations: AdminTable[] = [];
 filterTableId: string = "";
 filterCustomerName: string = "";
 filterDate: string = "";
+selectedPage:number=1;
 
-constructor(private _AdminReservationsService :AdminReservationsService ){}
+constructor(private _AdminReservationsService :AdminReservationsService,
+  private datePipe: DatePipe ){}
+
+
+  formatDates() {
+    for (const obj of this.filteredReservations) {
+      const formattedDate = this.datePipe.transform(obj.dateTime, 'dd/MM/yyyy hh:mm a');
+      obj.formattedDateTime = formattedDate;
+      console.log(formattedDate)
+    }
+  }
+
 ngOnInit(){
-  this._AdminReservationsService .GetReservationsByRestaurantId(this.restaurantId).subscribe((data)=>{
+  this._AdminReservationsService.GetReservationsByRestaurantId(this.restaurantId,this.selectedPage).subscribe((data)=>{
     this.reservations=data
     this.filteredReservations = data;
-    console.log(data)
+    this.formatDates();
+    console.log(this.filteredReservations);
   }) 
+ 
 }
 
+
+handleChangeDataEvent(data:number){
+this.selectedPage=data;
+this._AdminReservationsService.GetReservationsByRestaurantId(this.restaurantId,this.selectedPage).subscribe((data)=>{
+  this.reservations=data
+  this.filteredReservations = data;
+  console.log(data);
+})
+}
 
 applyFilters() {
   this.filteredReservations = this.reservations.filter((reservation) => {

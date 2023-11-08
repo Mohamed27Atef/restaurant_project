@@ -10,4 +10,5 @@ export interface OrderForAdmin {
     status:string;
     totalPrice:number;
     customerPhone:string;
+    formattedDateTime:string | null,
 }

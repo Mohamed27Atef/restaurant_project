@@ -7,6 +7,7 @@ import { UserOrders } from 'src/app/interfaces/user-orders';
 import { OrdersService } from 'src/app/services/orders.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { getCookie } from 'typescript-cookie';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-orders',
@@ -24,12 +25,22 @@ export class OrdersComponent implements OnInit {
 
   restaurants: Restaurant[] = [];
   status: string[] = ['processed', 'shipped', 'enRoute', 'arrived', 'Canceled'];
+  selectedPage:number=1;
 
   constructor(
     private myService: OrdersService,
-    private _RestaurantService: RestaurantService
+    private _RestaurantService: RestaurantService,
+    private datePipe: DatePipe
   ) {
     let user = getCookie('User');
+  }
+
+  formatDates() {
+    for (const obj of this.filteredOrders) {
+      const formattedDate = this.datePipe.transform(obj.createdAt, 'dd/MM/yyyy hh:mm a');
+      obj.formattedDateTime = formattedDate;
+      console.log(formattedDate)
+    }
   }
   ngOnInit(): void {
     this._RestaurantService.getAllRestaurant().subscribe((data) => {
@@ -39,10 +50,22 @@ export class OrdersComponent implements OnInit {
     this.myService.getUserOrder().subscribe({
       next: (data) => {
         (this.orders = data), (this.filteredOrders = data);
+        this.formatDates();
       },
       error: (err) => console.log(err),
     });
   }
+
+  handleChangeDataEvent(data:number){
+    this.selectedPage=data;
+    
+    this.myService.getUserOrder().subscribe({
+      next: (data) => {
+        (this.orders = data), (this.filteredOrders = data);
+      },
+      error: (err) => console.log(err),
+    });
+    }
 
   applyFilters() {
     this.filteredOrders = this.orders.filter((order) => {

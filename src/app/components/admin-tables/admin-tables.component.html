@@ -28,12 +28,12 @@
             <th>{{reservation.tableNumber}}</th>
             <td>{{reservation.customerName}}</td>
             <td>{{reservation.duration}} Hours</td>
-            <td>{{reservation.dateTime}}</td>
+            <td>{{reservation.formattedDateTime}}</td>
             <td>{{reservation.customerPhone}}</td>  
           </tr>
         </tbody>
-      </table>
+      </table> 
       </div>
-      
+      <app-pagination (changeDataEvent)="handleChangeDataEvent($event)"></app-pagination>
       
       

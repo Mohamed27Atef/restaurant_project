@@ -67,7 +67,7 @@
             >
           </td>
           <td>{{ order.restaurantName }}</td>
-          <td>{{ order.createdAt.toLocaleString() }}</td>
+          <td>{{ order.formattedDateTime }}</td>
           <td>
             <p class="text-muted mb-0">${{ order.totalPrice }}</p>
           </td>
@@ -122,3 +122,4 @@
     </div>
   </div>
 </div>
+<app-pagination (changeDataEvent)="handleChangeDataEvent($event)"></app-pagination>

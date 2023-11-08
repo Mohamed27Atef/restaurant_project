@@ -4,4 +4,5 @@ export interface AdminTable {
     duration:number,
     dateTime:string,
     customerPhone:string,
+    formattedDateTime:string | null,
 }
