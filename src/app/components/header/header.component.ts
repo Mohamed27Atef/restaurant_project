@@ -12,7 +12,7 @@ import {
   OnInit,
   AfterViewInit,
 } from '@angular/core';
-import { getCookie, removeCookie } from 'typescript-cookie';
+import { Cookies, getCookie, removeCookie } from 'typescript-cookie';
 import jwtDecode from 'jwt-decode';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { IsAuthService } from 'src/app/services/is-auth.service';
@@ -25,7 +25,7 @@ import { GetRoleService } from 'src/app/services/get-role.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   totalPrice: number = 0;
   myroute!: string;
   jsonTokenWithoutDecode!: any;
@@ -61,8 +61,12 @@ export class HeaderComponent {
       this.isCartVisible = false;
     }
   }
-  ngOnInit() {
 
+  getCookie(cookie: string){
+    this.role=this.getRoleService.GetRoleBytoken(cookie);
+
+  }
+  ngOnInit() {
     this.role=this.getRoleService.GetRole();
      }
   updateItems() {

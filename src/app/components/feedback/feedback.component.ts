@@ -21,7 +21,7 @@ export class FeedbackComponent implements OnInit {
   constructor(private feedbackService: FeedbackService) {}
 
   ngOnInit(): void {
-    console.log(this.restaurantId);
+    console.log(this.userName)
   }
 
   rate(rating: number): void {

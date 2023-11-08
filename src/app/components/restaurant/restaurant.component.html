@@ -14,7 +14,7 @@
   </div> 
 
   <app-map [latitude]="currentRestaurant.latitude" [longitude]="currentRestaurant.latitude"></app-map>
-  <app-feedback *ngIf="!feedbackAddedFromUser" (postedReview)="postReivew($event)"  [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback>
+  <app-feedback *ngIf="!feedbackAddedFromUser" (postedReview)="postReivew($event)"  [restaurantId]="id" [userName]="name" [userAvatar]="userImage"></app-feedback>
 
-  <app-feedback-reviews [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback-reviews>
-  <app-feedback-score [postedReview]="postedReview" [restaurantId]="id" [userName]="loggedInUser.name" [userAvatar]="loggedInUser.photoUrl"></app-feedback-score>
+  <app-feedback-reviews [restaurantId]="id" [userName]="name" [userAvatar]="userImage"></app-feedback-reviews>
+  <app-feedback-score [postedReview]="postedReview" [restaurantId]="id" [userName]="name" [userAvatar]="userImage"></app-feedback-score>
