@@ -13,9 +13,8 @@ export class AdminReservationsService {
   private BaseUrl: string = `https://localhost:${this.apiPort}/`;
 
   constructor(private httpClient : HttpClient) { }
-//https://localhost:7058/api/Table/getReservationByrestaurantId/1
-  GetReservationsByRestaurantId(restaurantId:number):Observable<any>{
-    console.log(restaurantId)
+
+  GetReservationsByRestaurantId():Observable<any>{
     let JsonToken = getCookie('User');
     console.log(JsonToken)
    let Token = JsonToken !=undefined? JSON.parse(JsonToken):null;
@@ -25,7 +24,7 @@ export class AdminReservationsService {
       Authorization: `Bearer ${Token}`
     });
 
-    return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId/"+restaurantId,{headers});
+    return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId",{headers});
   }
 
 }

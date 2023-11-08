@@ -16,7 +16,6 @@ export class AdminOrdersComponent {
   filterDate: string = '';
   //
 
-  restaurantId: number = 1;
   status: string[] = ['processed', 'shipped', 'enRoute', 'arrived', 'Canceled'];
 
   @Output() changeDataEvent = new EventEmitter<any>();
@@ -25,7 +24,7 @@ export class AdminOrdersComponent {
 
   ngOnInit() {
     this._AdminOrderService
-      .GetOrdersByRestaurantId(this.restaurantId)
+      .GetOrdersByRestaurantId()
       .subscribe((data) => {
         this.orders = data;
         this.filteredOrders = data;
@@ -67,7 +66,7 @@ export class AdminOrdersComponent {
 
   clearDate() {
     this._AdminOrderService
-      .GetOrdersByRestaurantId(this.restaurantId)
+      .GetOrdersByRestaurantId()
       .subscribe((data) => {
         this.orders = data;
         this.filteredOrders = data;

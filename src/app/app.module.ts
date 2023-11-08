@@ -80,6 +80,16 @@ import { CreateCoponComponent } from './components/create-copon/create-copon.com
 import { CreateMenuComponent } from './components/create-menu/create-menu.component';
 import { CreateTableComponent } from './components/create-table/create-table.component';
 
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+
+import { PaginationComponent } from './pagination/pagination.component';
+import { SearchReceipeResturantComponent } from './components/search-receipe-resturant/search-receipe-resturant.component';
+import { SystemAdminDashboardComponent } from './components/system-admin-dashboard/system-admin-dashboard.component';
+import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+
+
+
 
 
 @NgModule({
@@ -147,6 +157,15 @@ import { CreateTableComponent } from './components/create-table/create-table.com
     RecipeFeedbackComponent,
     RecipeFeddbackReviewsComponent,
     MapComponent,
+    DashBoardComponent,
+    PaginationComponent,
+    SearchReceipeResturantComponent,
+
+    SystemAdminDashboardComponent,
+
+    UpdateRecipeComponent,
+    UpdateRestaurantComponent,
+
 
 
   ],
@@ -163,6 +182,7 @@ import { CreateTableComponent } from './components/create-table/create-table.com
     ReactiveFormsModule,
     SidebarModule,
     CommonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

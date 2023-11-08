@@ -1,31 +1,23 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Recipe } from 'src/app/interfaces/recipe';
 import { ImageService } from 'src/app/services/image-service.service';
-import { ImagesService } from 'src/app/services/images.service';
 import { MenuService } from 'src/app/services/menu.service';
 import { RecipeService } from 'src/app/services/recipe.service';
-import { environment } from 'src/environments/environment.dev';
 
 @Component({
-  selector: 'app-create-recipe',
-  templateUrl: './create-recipe.component.html',
-  styleUrls: ['./create-recipe.component.css'],
+  selector: 'app-update-recipe',
+  templateUrl: './update-recipe.component.html',
+  styleUrls: ['./update-recipe.component.css']
 })
-export class CreateRecipeComponent implements OnInit {
+export class UpdateRecipeComponent {
   RecipeForm: FormGroup;
   Menus: { id: number; title: string }[] = [];
   selectedMenuId!: Number;
   selectedImages: string[] = [];
   selectedImage: string = '';
-  private apiPort = environment.apiPort;
+  id!: number;
   receipeObj: Recipe = {
     id: 0,
     name: '',
@@ -44,9 +36,10 @@ export class CreateRecipeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private imageService: ImageService,
     private recipeService: RecipeService,
-    private menuService: MenuService,
-    private imagesService: ImagesService
+    activeRoute : ActivatedRoute,
+    private menuService: MenuService
   ) {
+    this.id = activeRoute.snapshot.params['id'];
     this.RecipeForm = this.formBuilder.group({
       Id: [null, []],
       Name: ['', [Validators.required]],
@@ -71,6 +64,25 @@ export class CreateRecipeComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.recipeService.getRecipe(this.id).subscribe({
+      next: (data) => {
+        console.log(data);
+        if (data) {
+          this.RecipeForm.setValue({
+            Id: data.id,
+            Name: data.name,
+            Price: data.price,
+            Menu: data.menuId,
+            Description: data.description,
+            Image: '',
+            Images: [],
+          });
+        }
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
     this.menuService.getMenu().subscribe({
       next: (data) => {
         this.Menus = data;
@@ -88,12 +100,12 @@ export class CreateRecipeComponent implements OnInit {
       formData.Images = this.selectedImages;
 
       console.log(formData);
+      this.receipeObj.id = formData.Id;
       this.receipeObj.name = formData.Name;
       this.receipeObj.price = formData.Price;
       this.receipeObj.menuId = formData.Menu;
       this.receipeObj.description = formData.Description;
-      this.receipeObj.imageUrl = formData.Image;
-      this.receipeObj.images = formData.Images;
+
       this.recipeService.createRecipe(this.receipeObj).subscribe({
         next: (data) => {
           console.log(data);
@@ -114,8 +126,9 @@ export class CreateRecipeComponent implements OnInit {
 
     if (files && files.length > 0) {
       const file: File = files[0];
-      this.imagesService.uploadImage(event.target.files[0]);
-      this.selectedImage = `https://localhost:${this.apiPort}/images/${file.name}`;
+
+      this.selectedImage = `assets/images/${file.name}`;
+      console.log(`File 1: ${file.name}, Size: ${file.size} bytes`);
     }
   }
 
@@ -123,12 +136,12 @@ export class CreateRecipeComponent implements OnInit {
     const files: FileList | null = event.target.files;
     this.selectedImages = [];
     if (files) {
-      for (let image of event.target.files)
-          this.imagesService.uploadImage(image);
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i);
+
         if (file) {
-          this.selectedImages.push( `https://localhost:${this.apiPort}/images/${file.name}`);
+          this.selectedImages.push(`assets/images/receipe/${file.name}`);
+          // console.log(`File ${i + 1}: ${file.name}, Size: ${file.size} bytes`);
         }
       }
     }

@@ -8,7 +8,6 @@ import { AdminReservationsService } from 'src/app/services/admin-reservations.se
   styleUrls: ['./admin-tables.component.css']
 })
 export class AdminTablesComponent {
-restaurantId:number=1
 reservations:AdminTable[]=[] 
 filteredReservations: AdminTable[] = [];
 
@@ -18,7 +17,7 @@ filterDate: string = "";
 
 constructor(private _AdminReservationsService :AdminReservationsService ){}
 ngOnInit(){
-  this._AdminReservationsService .GetReservationsByRestaurantId(this.restaurantId).subscribe((data)=>{
+  this._AdminReservationsService .GetReservationsByRestaurantId().subscribe((data)=>{
     this.reservations=data
     this.filteredReservations = data;
     console.log(data)
