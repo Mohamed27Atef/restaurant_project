@@ -46,6 +46,7 @@
     "@types/isotope-layout": "^3.0.11",
     "@types/jasmine": "~4.3.0",
     "@types/jquery": "^3.5.25",
+    "@types/jwt-decode": "^3.1.0",
     "@types/slick-carousel": "^1.6.39",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
