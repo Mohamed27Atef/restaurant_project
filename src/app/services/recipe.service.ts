@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Recipe } from '../interfaces/recipe';
 import { getCookie } from 'typescript-cookie';
 import { HeaderService } from './header.service';
+import {MostPopularRecipe} from'../interfaces/MostPopularRecipe';
 const JsonToken = getCookie('User');
 const token = JsonToken != undefined ? JSON.parse(JsonToken) : null;
 
@@ -44,4 +45,10 @@ export class RecipeService {
     const url = `${this.DB_URL}searchReceipeInResturant/${name}?p=${page}`;
     return this.myClient.get<Recipe[]>(url, { headers: headers });
   }
+
+  getMostPopularRecipes(): Observable<MostPopularRecipe[]> {
+    const url = `${this.DB_URL}getMostRated`; 
+    return this.myClient.get<MostPopularRecipe[]>(url);
+  }
+
 }

@@ -45,3 +45,16 @@
   -o-object-position: right top;
   object-position: right top;
 }
+
+.mostPopular {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+
+  .container{
+  width: 600px;
+  height:300px;
+  }
+}

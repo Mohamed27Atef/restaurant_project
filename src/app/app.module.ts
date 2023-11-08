@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule,HammerModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxStarRatingModule } from 'ngx-star-rating-latest';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -87,6 +87,7 @@ import { SearchReceipeResturantComponent } from './components/search-receipe-res
 import { SystemAdminDashboardComponent } from './components/system-admin-dashboard/system-admin-dashboard.component';
 import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
 import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+import { MostPopularRecipesComponent } from './components/most-popular-recipes/most-popular-recipes.component';
 
 
 
@@ -165,6 +166,7 @@ import { UpdateRestaurantComponent } from './components/update-restaurant/update
 
     UpdateRecipeComponent,
     UpdateRestaurantComponent,
+    MostPopularRecipesComponent,
 
   ],
   imports: [
@@ -180,6 +182,7 @@ import { UpdateRestaurantComponent } from './components/update-restaurant/update
     ReactiveFormsModule,
     SidebarModule,
     CommonModule,
+    HammerModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
