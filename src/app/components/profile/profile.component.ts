@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProfileInfo } from 'src/app/interfaces/profile-info';
+import { ImagesService } from 'src/app/services/images.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { setCookie } from 'typescript-cookie';
 
 @Component({
@@ -6,7 +9,27 @@ import { setCookie } from 'typescript-cookie';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
+  apiPort: any;
+
+
+  constructor(private profileService: ProfileService, private imageService: ImagesService){}
+  ngOnInit(): void {
+    this.profileService.getUserInfo().subscribe({
+      next: data => this.profileInfo = data
+    })
+  }
+
+
+  profileInfo: ProfileInfo = {
+    userName: '',
+    firstName: '',
+    lastName : '',
+    email : '',
+    location: '',
+    PhoneNumber : '',
+    profileImage : '',
+  };
   profile: boolean = true;
   profileSecurity: boolean = false;
   openProfile() {
@@ -18,22 +41,15 @@ export class ProfileComponent {
     this.profileSecurity = true;
   }
   profileImageSrc: string = '../../../assets/images/user2.png';
-
+  selectedImage: any;
   onImageSelected(event: any) {
-    const file = event.target.files[0];
+    this.imageService.uploadImage(event.target.files[0]);
 
-    if (file) {
-      if (file.size <= 5242880) {
-        const reader = new FileReader();
+    const files: FileList | null = event.target.files;
 
-        reader.onload = (e: any) => {
-          this.profileImageSrc = e.target.result;
-        };
-
-        reader.readAsDataURL(file);
-      } else {
-        alert('File size exceeds 5 MB. Please choose a smaller image.');
-      }
+    if (files && files.length > 0) {
+      const file: File = files[0]; // Access the first file from the list
+      this.selectedImage = `https://localhost:${this.apiPort}/images/${file.name}`;
     }
   }
 }

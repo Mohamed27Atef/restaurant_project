@@ -15,6 +15,7 @@ export class MostPopularRecipesComponent implements OnInit {
   ngOnInit() {
     this.recipeService.getMostPopularRecipes().subscribe(
       (data: MostPopularRecipe[]) => {
+        
         this.recipes = data;
         console.log(data);
 

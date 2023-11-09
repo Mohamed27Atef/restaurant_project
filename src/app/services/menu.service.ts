@@ -33,6 +33,11 @@ export class MenuService {
     return this.httpClient.get(this.baseUrl + "getall", {headers});
   }
 
+  getMenuOfRestaurant(): Observable<any> {
+    const headers = this.header.getHeader();
+    return this.httpClient.get(this.baseUrl, {headers});
+  }
+
   getMenuByRestaurnatId(restaurantId: number): Observable<any> {
     return this.httpClient.get(this.baseUrl + restaurantId);
   }

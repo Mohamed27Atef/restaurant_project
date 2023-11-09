@@ -69,7 +69,7 @@ export class UpdateRecipeComponent {
         console.log(e);
       },
     });
-    this.menuService.getMenu().subscribe({
+    this.menuService.getMenuOfRestaurant().subscribe({
       next: (data) => {
         this.Menus = data;
       },
@@ -80,7 +80,6 @@ export class UpdateRecipeComponent {
   }
 
   onSubmit() {
-    console.log(' asdfasdfasd')
     if (this.RecipeForm.valid) {
       const formData = this.RecipeForm.value;
       formData.Image = this.selectedImage;
