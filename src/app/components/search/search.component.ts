@@ -31,13 +31,8 @@ export class SearchComponent implements OnInit {
       },
       error: err => console.log(err)
     })
-      this.locatoinServices.getAllLocation().subscribe({
-        next: data => this.locatoins = data
-      })
   }
-  selectLocation(locationSelected: string){
-    this.selectedLocatoin.emit(locationSelected);
-  }
+
 
   SelectCategory(categorySelected : string) {
     this.category_id = Number(categorySelected);

@@ -85,3 +85,16 @@
  height: 120px;
  object-fit: cover;
 }
+
+.myContainer {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.image{
+    margin-left: 15px;
+}
+.product-details ,
+.product-buttons{
+    margin-left: 20px;
+}

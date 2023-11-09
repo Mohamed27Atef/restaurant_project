@@ -21,24 +21,26 @@
       [ngClass]="'filter-' + recipe.menuName"
       *ngIf="selectedMenu === 'all' || selectedMenu === recipe.menuName"
        >
-         <div class="row my-1">
-          <div class="col-2">
-            <img
-              class="img-fluid rounded"
-              [src]="recipe.imageUrl"
-            />
+         <a [routerLink]="'/recipe/' + recipe.id">
+          <div class="row my-1">
+            <div class="col-2">
+              <img
+                class="img-fluid rounded"
+                [src]="recipe.imageUrl"
+              />
+            </div>
+  
+            <div class="col">
+                <div class="menu-content">
+                  <a href="#">{{recipe.name}}</a
+                  ><span>${{recipe.price}}</span>
+                </div>
+                <div class="menu-ingredients">
+                  {{recipe.description}}
+                </div>
+            </div>
           </div>
-
-          <div class="col">
-              <div class="menu-content">
-                <a href="#">{{recipe.name}}</a
-                ><span>${{recipe.price}}</span>
-              </div>
-              <div class="menu-ingredients">
-                {{recipe.description}}
-              </div>
-          </div>
-        </div>
+         </a>
         </div>
 
 
@@ -47,24 +49,26 @@
           [ngClass]="'filter-' + recipee.menuName"
           *ngIf="selectedMenu === 'all' || selectedMenu === recipee.menuName"
          >
-          <div class="row my-1">
-            <div class="col-2">
-              <img
-                class="img-fluid rounded"
-                [src]="recipee.imageUrl"
-              />
+          <a [routerLink]="'/recipe/' + recipee.id">
+            <div class="row my-1">
+              <div class="col-2">
+                <img
+                  class="img-fluid rounded"
+                  [src]="recipee.imageUrl"
+                />
+              </div>
+  
+              <div class="col">
+                  <div class="menu-content">
+                    <a href="#">{{recipee.name}}</a
+                    ><span>${{recipee.price}}</span>
+                  </div>
+                  <div class="menu-ingredients">
+                    {{recipee.description}}
+                  </div>
+              </div>
             </div>
-
-            <div class="col">
-                <div class="menu-content">
-                  <a href="#">{{recipee.name}}</a
-                  ><span>${{recipee.price}}</span>
-                </div>
-                <div class="menu-ingredients">
-                  {{recipee.description}}
-                </div>
-            </div>
-          </div>
+          </a>
         </div>
     </div>
   </div>

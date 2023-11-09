@@ -19,7 +19,6 @@ export class ReserveTableComponent {
       this.reservationTable.findIndex((r) => r.id == item.id),
       1
     );
-    console.log(item);
     this.userTableService
       .deleteUserReservation(item.reservationNumber)
       .subscribe({

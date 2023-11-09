@@ -7,6 +7,10 @@ import { RecipeService } from 'src/app/services/recipe.service';
 import { AddToCartService } from 'src/app/services/add-to-cart.service';
 import { IsAddedToCartService } from 'src/app/services/is-added-to-cart.service';
 import { FeedbackAddedService } from 'src/app/services/feedback-added.service';
+import { getCookie } from 'typescript-cookie';
+import jwtDecode from 'jwt-decode';
+import { RecipeFeedbackComponent } from '../recipe-feedback/recipe-feedback.component';
+import { RecipeFeddbackReviewsComponent } from '../recipe-feddback-reviews/recipe-feddback-reviews.component';
 
 @Component({
   selector: 'app-recipe-details',
@@ -14,11 +18,11 @@ import { FeedbackAddedService } from 'src/app/services/feedback-added.service';
   styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit, AfterViewInit {
-loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  recipe!: any;
+  recipe!: any;
   relatedRecipe: any;
   quantity: number = 1;
   numberOfReview: number = 0;
-  postedFeedBack: any;
+  @ViewChild("recipeFeedBack") recipeFeedBackChild!: RecipeFeddbackReviewsComponent;
   Id: number = 0;
   recipeAddedToCart:boolean=false;
   feedbackAddedFromUser:boolean=true;
@@ -47,10 +51,17 @@ loggedInUser: { name: string, photoUrl: string } = { name: '', photoUrl: '' };  
        error:(err)=>console.log(err)
      })   
    }
-   submit(feedback: any) {
-    this.postedFeedBack = feedback;
+   submitFeedBackOne(feedback: any) {
+    this.recipeFeedBackChild.filteredReviews.push(feedback);
    }
+   jsonTokenWithoutDecode: any
+   userImage!: any;
+   name!: any;
   ngOnInit(): void {
+    this.jsonTokenWithoutDecode = getCookie('User');
+    this.userImage = getCookie('UserImage');
+    let Token: any = jwtDecode(this.jsonTokenWithoutDecode);
+    this.name = Token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
     // this.recipeFeedbackService.getNumberOfReivew(this.Id).subscribe({
     //   next: data=> 
     //     this.numberOfReview = data

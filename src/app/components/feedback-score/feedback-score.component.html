@@ -7,7 +7,16 @@
             <div class="col-lg-4">
               <div class="rating-box">
                 <div class="rating-number">{{ averageRating.toFixed(1) }}</div>
-                
+                <div class="rating">
+                  <ng-container
+                    *ngFor="
+                      let _ of [].constructor(averageRating);
+                      let i = index
+                    "
+                  >
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </ng-container>
+                </div>
                 <span>{{ feedbackData.reviews.length }} (Reviews)</span>
               </div>
             </div>

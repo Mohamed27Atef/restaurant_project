@@ -24,8 +24,6 @@ export class AdminReservationsService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${Token}`
     });
-
-
     return this.httpClient.get(this.BaseUrl+"api/Table/getReservationByrestaurantId"+"?p="+pagenNum,{headers});
 
   }

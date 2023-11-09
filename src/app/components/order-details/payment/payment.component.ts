@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { OrderDetails } from 'src/app/interfaces/order-details';
 import { OrderdAddress } from 'src/app/interfaces/orderd-address';
 import { CoponService } from 'src/app/services/copon.service';
@@ -50,6 +51,7 @@ export class PaymentComponent {
   constructor(
     private orderdetailService: OrderDetailsService,
     private createorder: CreateorderService,
+    private route: Router,
     private myCopon: CoponService
   ) {
     this.orderdetailService.getAllCartItems().subscribe({
@@ -108,9 +110,9 @@ export class PaymentComponent {
     this.orderAddress.country = this.country;
     this.createorder.postCartItem(this.orderAddress).subscribe({
       next: (data) => {
-        console.log(data);
+        this.route.navigate(["/orders"]);
       },
-      error: (err) => console.log(err),
+      error: (err) => this.route.navigate(["/orders"])
     });
   }
 
