@@ -8,10 +8,8 @@ import { IRestaurantFeedback } from 'src/app/interfaces/RestaurantFeedback';
   styleUrls: ['./feedback-score.component.css'],
 })
 export class FeedbackScoreComponent implements OnInit, OnChanges {
-  @Input() userName!: string;
   @Input() userAvatar!: string;
   @Input() restaurantId!: number;
-  @Input() postedReview: any;
   feedbackData: any = { reviews: [] };
   filteredReviews: IRestaurantFeedback[] = [];
   ratingCounts: number[] = [0, 0, 0, 0, 0];
@@ -21,15 +19,15 @@ export class FeedbackScoreComponent implements OnInit, OnChanges {
 
   constructor(private feedbackService: FeedbackService) {}
   ngOnChanges(): void {
-    console.log(this.postedReview);
-    this.feedbackData.reviews.push(this.postedReview);
   }
 
   ngOnInit() {
     this.feedbackService
       .getReviewsForRestaurant(this.restaurantId)
       .subscribe((data: any) => {
+        console.log(data);
         this.feedbackData.reviews = data;
+        console.log(this.feedbackData.reivews)
         this.calculateRatingCounts();
         this.filterDisplayedReviews();
         if (data.length > 0) {
@@ -44,7 +42,6 @@ export class FeedbackScoreComponent implements OnInit, OnChanges {
   }
 
   calculateRatingCounts() {
-    console.log('Calculating Rating Counts');
 
     if (this.feedbackData.reviews && this.feedbackData.reviews.length > 0) {
       this.feedbackData.reviews.forEach((review: IRestaurantFeedback) => {

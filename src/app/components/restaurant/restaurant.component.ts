@@ -26,7 +26,6 @@ export class RestaurantComponent implements OnInit {
   name!: string;
   userImage!: any;
   jsonTokenWithoutDecode!: any;
-  postedReview: any;
   @ViewChild("feedBackScoreComponent") feedBackScoreChild!: FeedbackScoreComponent
  
   looding: boolean = false
