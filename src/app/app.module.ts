@@ -88,6 +88,7 @@ import { SystemAdminDashboardComponent } from './components/system-admin-dashboa
 import { UpdateRecipeComponent } from './components/update-recipe/update-recipe.component';
 import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
 import { MostPopularRecipesComponent } from './components/most-popular-recipes/most-popular-recipes.component';
+import { ToTopButtonComponent } from './components/to-top-button/to-top-button.component';
 
 
 
@@ -167,6 +168,7 @@ import { MostPopularRecipesComponent } from './components/most-popular-recipes/m
     UpdateRecipeComponent,
     UpdateRestaurantComponent,
     MostPopularRecipesComponent,
+    ToTopButtonComponent,
 
   ],
   imports: [

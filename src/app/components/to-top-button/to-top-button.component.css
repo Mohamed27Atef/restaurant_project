@@ -1,11 +1,7 @@
-html {
-    scroll-behavior: smooth;
-  }
-
-  #toTop{
+#toTop{
     position: fixed;
-    bottom: 20px;
-    right: 9px;
+    bottom: 30px;
+    right: 9px; 
     cursor: pointer;
     opacity: 0.8;
     transition: 0.3s;
@@ -14,4 +10,3 @@ html {
   #toTop:hover{
    opacity:1;
   }
-
