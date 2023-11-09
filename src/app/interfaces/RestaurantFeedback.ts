@@ -3,5 +3,6 @@ export interface IRestaurantFeedback {
     rate: number;
     postDate: Date;
     ResturantId: number;
+    userName: string;
   }
   

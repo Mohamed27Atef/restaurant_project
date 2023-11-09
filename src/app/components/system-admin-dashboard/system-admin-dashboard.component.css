@@ -75,7 +75,7 @@
     top: 0;
     padding: 80px 0 200px 0;
     color: #7d84ab;
-    background-color: #0c1e35;
+    background-color: rgb(35, 32, 32);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   }
   
@@ -136,4 +136,12 @@
   .container {
     margin-left: 20%;
     margin-top: 20px;
+  }
+
+  a {
+    color: white;
+  }
+  
+  .active {
+    color: yellowgreen;
   }
