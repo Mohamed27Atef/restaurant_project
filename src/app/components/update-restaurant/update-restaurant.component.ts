@@ -60,48 +60,29 @@ export class UpdateRestaurantComponent implements OnInit  {
       category: new FormControl('', [Validators.required]),
       OpenHours: [null, [Validators.min(0), Validators.max(24)]],
       ClosingHours: [null, [Validators.min(0), Validators.max(24)]],
-
-      Image: [
-        '',
-        [
-          Validators.pattern(
-            /.*\.(jpg|jpeg|png|gif|bmp|svg|webp|tiff|ico|jfif)$/i
-          )
-        ],
-      ],
-      Images: [
-        '',
-        Validators.pattern(
-          /.*\.(jpg|jpeg|png|gif|bmp|svg|webp|tiff|ico|jfif)$/i
-        ),
-      ],
       phone: ['', [Validators.pattern(/^\d{11}$/)]],
     });
   }
   ngOnInit(): void {
       this.resturantServ.getRestaurantByِApplicationId().subscribe({
       next: (data) => {
-        if (this.resturantObj) {
-         
-         this.id= data.id;
-          this.restaurantForm.setValue({
-            Name: data.name,
-            email: data.email,
-            Password: data.password,
-            Address: data.address,
-            Description: data.description,
-            Cusinetype: data.cusinetype,
-            Longitude: data.longitude,
-            Latitude: data.latitude,
-            category: data.cateigories[0].categoryId,
-            OpenHours: this.convertDecimalToTimeString(data.openHours),
-            ClosingHours: this.convertDecimalToTimeString(data.closingHours),
-            Image: '',
-            Images: [],
-            phone: data.phone,
-          });
+        console.log(data.phone)
+        this.id= data.id;
+        this.restaurantForm.setValue({
+          Name: data.name,
+          email: data.email,
+          Password: data.password,
+          Address: data.address,
+          Description: data.description,
+          Cusinetype: data.cusinetype,
+          Longitude: data.longitude,
+          Latitude: data.latitude,
+          category: data.cateigories[0].categoryId,
+          OpenHours: this.convertDecimalToTimeString(data.openHours),
+          ClosingHours: this.convertDecimalToTimeString(data.closingHours),
+          phone: data.phone,
+        });
 
-        }
       },
       error: (e) => {
         console.log(e);
@@ -117,7 +98,6 @@ export class UpdateRestaurantComponent implements OnInit  {
   }
 
   onSubmit() {
-    console.log('Submit');
     if (this.restaurantForm.valid) {
       // Handle form submission here, for example, send data to the server
       const formData = this.restaurantForm.value;
@@ -141,7 +121,6 @@ export class UpdateRestaurantComponent implements OnInit  {
 
       const openHoursParts = formData.OpenHours.split(':');
       const resOpen = openHoursParts[0] + '.' + openHoursParts[1];
-      console.log(resOpen);
       this.resturantObj.openHours = +resOpen;
 
       const closeHoursParts = formData.ClosingHours.split(':');
@@ -155,11 +134,8 @@ export class UpdateRestaurantComponent implements OnInit  {
       );
 
       this.resturantObj.rate = 1;
-      console.log(this.resturantObj);
       this.resturantServ.createResturant(this.resturantObj).subscribe({
         next: (data) => {
-          console.log(data);
-          this.restaurantForm.reset();
         },
         error: (e) => {
           console.log(e);

@@ -1,8 +1,8 @@
 export interface MostPopularRecipe {
     id: number;
-    Name: string;
-    Description: string;
-    Price: number;
+    name: string;
+    description: string;
+    price: number;
     imageUrl: string;
     rate:number;
   }

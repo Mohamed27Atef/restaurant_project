@@ -49,6 +49,6 @@ export class RecipeService {
   getMostPopularRecipes(): Observable<MostPopularRecipe[]> {
     const url = `${this.DB_URL}getMostRated`; 
     return this.myClient.get<MostPopularRecipe[]>(url);
-  }
+  }
 
 }

@@ -71,7 +71,7 @@ export class CreateRecipeComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.menuService.getMenu().subscribe({
+    this.menuService.getMenuOfRestaurant().subscribe({
       next: (data) => {
         this.Menus = data;
       },
