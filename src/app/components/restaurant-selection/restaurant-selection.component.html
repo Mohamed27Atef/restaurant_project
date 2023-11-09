@@ -1,5 +1,5 @@
 <div
-  class="col order-md-last ftco-animate makereservation p-4 p-md-5 pt-5 fadeInUp ftco-animated align-self-center"
+  class="col-md-6 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5 fadeInUp ftco-animated"
 >
   <div class="all">
     <div class="overlay">
@@ -10,8 +10,8 @@
           <h2 class="mb-3 head">Make Reservation</h2>
         </div>
         <form (submit)="performAction()" [formGroup]="selectionForm">
-          <div class="row justify-content-center align-items-center text-center">
-            <div class="col-6">
+          <div class="row">
+            <div class="col-md-6">
               <div class="form-group">
                 <label class="mb-2" class="head">Select Restaurant</label>
                 <div class="select-wrap one-third">
@@ -23,7 +23,7 @@
                     formControlName="rest"
                     [(ngModel)]="selectedId"
                     name="restaurantName"
-                    class="form-control w-50 mx-auto"
+                    class="form-control"
                   >
                     <option
                       *ngFor="let restaurant of restaurants"

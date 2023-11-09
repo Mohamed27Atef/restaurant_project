@@ -13,8 +13,9 @@
     <app-book-container [restaurantId]="currentRestaurant.id" [openHour]="currentRestaurant.openHours" [closeHour]="currentRestaurant.closingHours"></app-book-container> 
   </div> 
 
-  <app-map [latitude]="currentRestaurant.latitude" [longitude]="currentRestaurant.latitude"></app-map>
+  <!-- <app-map [latitude]="currentRestaurant.latitude" [longitude]="currentRestaurant.latitude"></app-map> -->
   <app-feedback *ngIf="!feedbackAddedFromUser" (postedReview)="postReivew($event)"  [restaurantId]="id" [userName]="name" [userAvatar]="userImage"></app-feedback>
 
-  <app-feedback-reviews [restaurantId]="id" [userName]="name" [userAvatar]="userImage"></app-feedback-reviews>
+
   <app-feedback-score #feedBackScoreComponent [postedReview]="postedReview" [restaurantId]="id" [userName]="name" [userAvatar]="userImage"></app-feedback-score>
+  <app-feedback-reviews [restaurantId]="id" [userName]="name" [userAvatar]="userImage"></app-feedback-reviews>

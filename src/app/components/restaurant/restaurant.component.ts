@@ -79,7 +79,6 @@ export class RestaurantComponent implements OnInit {
       this.menuCompent.recipe1 = recipes.slice(0, midIndex);
       this.menuCompent.recipe2 = recipes.slice(midIndex);
 
-        
       }
     })
     
